@@ -1,0 +1,76 @@
+% -- Formato para ejemplos
+\newtheoremstyle{estiloejemplo}%
+    {9pt}{9pt}%
+    {}%
+    {0pt}%
+    {\bfseries\scshape}{.}%
+    { }%
+    {}
+
+% -- Ambiente para ejemplos
+\theoremstyle{estiloejemplo}
+    \newtheorem{ejemplo}{Ejemplo}
+    \newtheorem*{observacion}{Observación}
+
+% -- Formato para teoremas
+\newtheoremstyle{estiloteorema}%
+    {9pt}{9pt}%
+    {\slshape}%
+    {0pt}%
+    {\bfseries\scshape}{.}%
+    { }%
+    {}
+
+% -- Ambiente para teoremas
+\theoremstyle{estiloteorema}
+    \newtheorem{definicion}{Definición}[chapter]
+    \newtheorem{axioma}{Axioma}
+    \newtheorem{teorema}{Teorema}[chapter]
+    \newtheorem{corolario}[teorema]{Corolario}
+    \newtheorem{proposicion}[teorema]{Proposición}
+    \newtheorem{lema}[teorema]{Lema}
+
+% -- Función con 5 argumentos
+\newcommand{\funcion}[5]{%
+    {\setlength{\arraycolsep}{2pt}
+        \begin{array}{r@{}ccl}
+        #1\colon & #2 & \longrightarrow & #3\\
+        & #4 & \longmapsto & #5
+        \end{array}}
+    }
+
+% -- Función con 3 argumentos
+\newcommand{\func}[3]{%
+    #1\colon  #2  \to  #3
+}
+
+% -- Clausura
+\newcommand{\cl}[1]{\overline{#1}}
+
+% -- Conjuntos
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\omega}
+
+% -- Sucesiones
+\newcommand{\suc}[2][n]{
+    \left(#2\right)_{#1\in\naturales}
+}
+
+% -- Comentario
+\newcommand{\comentario}[1]{
+    {\color{red!50!black}\textsf{#1}}}
+    
+\newenvironment{Comentario}{
+    \bgroup
+    \color{red!50!black}
+    \sffamily
+    }
+    {
+    \egroup
+    }
+
+% -- Estilo de listas
+\setlist[itemize,1]{label=$\bullet$}
+
+% -- Permitir cortes de ecuaciones
+\allowdisplaybreaks 

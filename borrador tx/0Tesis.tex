@@ -1,0 +1,81 @@
+\documentclass[12pt,oneside]{book}
+
+% -- Paquetes
+\usepackage{tesis-epn}
+
+%\usepackage{showlabels}
+    % muestra etiquetas
+\usepackage{mathpazo}
+    % cambia el tipo de letra
+\usepackage{enumitem}
+    % personaliza enumeración
+\usepackage{amsmath,amssymb,amsthm}
+    % paquetes matemáticos básicos
+
+
+% -- Comandos extra
+\input{comandos.tex}
+
+% -- Información
+\titulo{Integración de Modelos Generativos para la Recuperación Académica}
+\carrera{Ingeniero de ciencias de la computacion}
+\autor{Alejandro Sebastian Chavez Vega}
+\correoautor{\url{chavezalejo85@gmail.com}}
+\director{Dra. Gabriela Suntaxi}
+\correodirector{\url{Gabriela.suntaxi@epn.edu.ec}}
+%\codirector{Dr. Rolando Sáenz Andrade}
+%\correocodirector{\url{rolando.saenz@epn.edu.ec}}
+\fecha{Julio 2025}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+
+\frontmatter
+\portadilla
+\declaracion
+\certificacion
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{agradecimiento}
+    A todos.
+\end{agradecimiento}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{dedicatoria}
+    A Georg Ferdinand Ludwig Philipp Cantor,\\
+    pues nadie nos expulsará del paraíso que creó para nosotros.
+\end{dedicatoria}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{Capitulos/00Resumen}
+
+\mainmatter
+\addtolength{\abovedisplayskip}{-1mm}
+\addtolength{\belowdisplayskip}{-1mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{Capitulos/01Introduccion}
+\include{Capitulos/02Metodologia}
+
+
+
+
+\nocite{*}
+
+% -- estilo por defecto español
+\bibliographystyle{plain-es}
+% -- estilo apalike español (paquete natbib)
+% \bibliographystyle{apalike-es}
+
+\addcontentsline{toc}{chapter}{Bibliografía}
+\bibliography{bibTesis}
+
+\end{document} 
