@@ -1,2 +1,2 @@
-# tics
+# Tesis RAG
 
