@@ -7,5 +7,5 @@
 \contentsline {subsection}{\numberline {1.1.2}Objetivos específicos}{1}{subsection.1.1.2}%
 \contentsline {chapter}{\numberline {2}Metodología}{2}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Revisión sistemática}{2}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Enfoque Design Science Research (DSR)}{2}{section.2.2}%
+\contentsline {section}{\numberline {2.2}Enfoque Design Science Research (DSR)}{3}{section.2.2}%
 \contentsline {chapter}{Bibliografía}{6}{figure.caption.4}%
