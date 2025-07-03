@@ -2,7 +2,7 @@
 \section{Revisión sistemática}
 Una revisión sistemática de la literatura es un estudio que utiliza una metodología para seleccionar, analizar y sintetizar toda la investigación relevante que responda a una pregunta de investigación. Este tipo de metodología garantiza la validez científica y favorece su reproducibilidad, lo que permite que otros investigadores verifiquen los resultados y repliquen el proceso.
 En este texto se adopta un enfoque combinado que integra una revisión sistemática tipo umbrella \cite{peffers2008design} y la declaración PRISMA 2020 (cita de PRISMA).
-La Umbrella SLR permite ordenar y jerarquizar la información científica disponible al recopilar y evaluar sistemáticamente evidencia de múltiples revisiones sistemáticas y meta-análisis sobre un mismo tema \cite{Papatheodorou2019}. Este tipo de revisión ofrece una forma de identificar patrones consistentes, contradicciones y vacíos en la literatura. Además, su utilización se combina perfectamente con la guía PRISMA, ya que ambas garantizan que el proceso sea transparente y reproducible.
+Umbrella SLR permite ordenar y jerarquizar la información científica disponible al recopilar y evaluar sistemáticamente evidencia de múltiples revisiones sistemáticas y meta-análisis sobre un mismo tema \cite{Papatheodorou2019}. Este tipo de revisión ofrece una forma de identificar patrones consistentes, contradicciones y vacíos en la literatura. Además, su utilización se combina perfectamente con la guía PRISMA, ya que ambas garantizan que el proceso sea transparente y reproducible.
 
 Para el presente trabajo en TIC, se siguió la lista de verificación PRISMA 2020, la cual define los ítems esenciales para reportar una revisión sistemática de manera clara y estructurada. La estructura PRISMA se utiliza para definir las etapas de búsqueda, selección, evaluación y reporte, mientras que el enfoque Umbrella permitió organizar y sintetizar el conocimiento acumulado de forma jerárquica.
 
@@ -33,4 +33,24 @@ En complemento, vom Brocke et al. (2020) plantean una visión más dinámica al 
 Finalmente, esta etapa consiste en difundir de forma clara los resultados del diseño y de la investigación realizada.
 \end{itemize}
 
-Estos pasos están basados en el modelo clásico de DSR de Peffers (2008), que vom Brocke adapta y expande en su guía.
+Estos pasos están basados en el modelo clásico de DSR de Peffers (2008), que vom Brocke adapta y expande en su guía.\\
+\begin{landscape}
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[scale=0.9, transform shape, node distance=1cm and 1cm,
+        squarednode/.style={rectangle, draw=black, fill=white, very thick, minimum size=5mm, text width=3cm},
+        every node/.style={align=center}, 
+        ]
+        
+        \node[squarednode] (problema) {Identificación del problema};
+        \node[squarednode] (objetivos) [right=of problema] {Objetivos para la solución};
+        \node[squarednode] (diseno) [right=of objetivos] {Diseño y desarrollo del artefacto};
+        \node[squarednode] (demostracion) [right=of diseno] {Demostración};
+        \node[squarednode] (evaluacion) [right=of demostracion] {Evaluación del desempeño};
+        \node[squarednode] (comunicacion) [right=of evaluacion] {Comunicación de resultados};
+        \draw[-stealth] (problema) -- (objetivos);
+    \end{tikzpicture}
+    \caption{Proceso de Diseño de Investigación}
+\end{figure}
+\end{landscape}
+

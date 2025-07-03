@@ -11,11 +11,17 @@
     % personaliza enumeración
 \usepackage{amsmath,amssymb,amsthm}
     % paquetes matemáticos básicos
-\usepackage[spanish]{babel}
-\usepackage[utf8]{inputenc}   % Para acentos directamente
-\usepackage[T1]{fontenc}      % Codificación correcta de caracteres
+% Codificación y español moderno (babel actual + T1)
+\usepackage[utf8]{inputenc}  % entrada en UTF-8
+\usepackage[T1]{fontenc}     % salida correcta (acentos)
+\usepackage[spanish]{babel}  % idioma
+\usepackage{lmodern}         % fuentes modernas para compatibilidad
+% Gráficos y diagramas
 \usepackage{graphicx}
 \usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{pdflscape}
+
 % -- Comandos extra
 \input{comandos.tex}
 
