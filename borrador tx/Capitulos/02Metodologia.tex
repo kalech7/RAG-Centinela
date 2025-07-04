@@ -37,18 +37,52 @@ Estos pasos están basados en el modelo clásico de DSR de Peffers (2008), que v
 \begin{landscape}
 \begin{figure}[ht]
     \centering
-    \begin{tikzpicture}[scale=0.9, transform shape, node distance=1cm and 1cm,
+    \begin{tikzpicture}[scale=1, transform shape, node distance=1cm and 1cm,
         squarednode/.style={rectangle, draw=black, fill=white, very thick, minimum size=5mm, text width=3cm},
-        every node/.style={align=center}, 
+        everynode/.style={align=center}, 
+        rectalbecirc/.style={
+        draw=black,           % borde negro
+        fill=white,           % fondo blanco
+        line width=0.1pt,           % grosor del borde
+        rounded corners=9pt,  % esquinas redondeadas
+        align=center,         % alinear texto al centro
+        text width=2.5cm,       % ancho del texto
+        minimum height=1cm,   % altura mínima del nodo
+        inner sep=6.5pt,
+        font=\small
+}
         ]
-        
+        % nodos
+        %horizontal
         \node[squarednode] (problema) {Identificación del problema};
         \node[squarednode] (objetivos) [right=of problema] {Objetivos para la solución};
         \node[squarednode] (diseno) [right=of objetivos] {Diseño y desarrollo del artefacto};
         \node[squarednode] (demostracion) [right=of diseno] {Demostración};
         \node[squarednode] (evaluacion) [right=of demostracion] {Evaluación del desempeño};
         \node[squarednode] (comunicacion) [right=of evaluacion] {Comunicación de resultados};
+        %vertical
+        \node[rectalbecirc] (start) [below=of problema] {Centinela tiene que presentar mejores resultados en las respuestas al momento de buscar información y generar contenido de valor para el usuario.};
+        \node[rectalbecirc] (obj) [below=of objetivos] {
+            \vspace*{-\baselineskip} % reduce el espacio inicial de la lista
+            \begin{itemize} [left=0pt]\setlength\itemsep{1pt}\setlength\leftmargini{1pt}
+                \item Mejorar la precisión de las respuestas.
+                \item Aumentar la relevancia del contenido generado.
+                \item Optimizar la experiencia del usuario.
+            \end{itemize}
+        };
+        \node[rectalbecirc] (design) [below=of diseno] {Se contempla un diseño que integra retriver, augmented y generation lo que da como resultado un buscador el cual su respuesta es en lenguaje natural.};
+
+        %conexiones horizontales
         \draw[-to] (problema) -- (objetivos);
+        \draw[-to] (objetivos) -- (diseno);
+        \draw[-to] (diseno) -- (demostracion);
+        \draw[-to] (demostracion) -- (evaluacion);
+        \draw[-to] (evaluacion) -- (comunicacion);
+        %conexiones verticales
+        \draw[-to] (problema) -- (start);
+        \draw[-to] (objetivos) -- (obj);
+        \draw[-to] (diseno) -- (design);
+
     \end{tikzpicture}
     \caption{Proceso de Diseño de Investigación}
 \end{figure}
