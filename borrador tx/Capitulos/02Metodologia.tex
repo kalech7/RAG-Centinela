@@ -37,8 +37,9 @@ Estos pasos están basados en el modelo clásico de DSR de Peffers (2008), que v
 \begin{landscape}
 \begin{figure}[ht]
     \centering
-    \begin{tikzpicture}[scale=1, transform shape, node distance=1cm and 1cm,
-        squarednode/.style={rectangle, draw=black, fill=white, very thick, minimum size=5mm, text width=3cm},
+    \resizebox{\linewidth}{!}{%
+    \begin{tikzpicture}[scale=0.9, transform shape, node distance=1cm and 1.5cm,
+        squarednode/.style={rectangle, draw=black, fill=white, very thick, minimum size=5mm, text width=4cm},
         everynode/.style={align=center}, 
         rectalbecirc/.style={
         draw=black,           % borde negro
@@ -46,7 +47,7 @@ Estos pasos están basados en el modelo clásico de DSR de Peffers (2008), que v
         line width=0.1pt,           % grosor del borde
         rounded corners=9pt,  % esquinas redondeadas
         align=center,         % alinear texto al centro
-        text width=2.5cm,       % ancho del texto
+        text width=3cm,       % ancho del texto
         minimum height=1cm,   % altura mínima del nodo
         inner sep=6.5pt,
         font=\small
@@ -91,9 +92,28 @@ Estos pasos están basados en el modelo clásico de DSR de Peffers (2008), que v
         \draw[-to] (comunicacion) -- (com);
 
         %contenedor
-        
-        
+        \node[draw=black, rounded corners=10pt, thick, minimum width=23cm, minimum height=4cm, fill=gray!5, anchor=north, name=contenedor] 
+at ([yshift=-0.75cm]current bounding box.south) {};
+        \coordinate (center) at (contenedor.center);
+        \def\sep{7} % Separación horizontal
+        % Elipses dentro del contenedor
+        \node[draw=black, ellipse, minimum width=3cm, minimum height=2.2cm, fill=blue!10, align=center, font=\small] 
+            (elipse1) at ($(center) + (-\sep,0)$) 
+            {Fase de exploración};
+
+        \node[draw=black, ellipse, minimum width=3cm, minimum height=2.2cm, fill=green!10, align=center, font=\small] 
+            (elipse2) at ($(center)$) 
+            {Fase de desarrollo};
+
+        \node[draw=black, ellipse, minimum width=3cm, minimum height=2.2cm, fill=orange!10, align=center, font=\small] 
+            (elipse3) at ($(center) + (\sep,0)$) 
+            {Fase de resultados};
+        \node[align=center, text width=30cm, yshift=-1.5cm] at (center) {\fontsize{10}{12}\selectfont
+    Texto explicativo sobre las fases...};
+
+
     \end{tikzpicture}
+    }
     \caption{Proceso de Diseño de Investigación para el desarrollo de RAG en Centinela}
 \end{figure}
 \end{landscape}
