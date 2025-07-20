@@ -1,0 +1,136 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{titlesec}
+\usepackage{setspace}
+
+% Formato general
+\setlength{\parskip}{0.5em}   % espacio entre párrafos
+\setlength{\parindent}{1.25em} % indentación primer renglón
+
+% Para títulos, sin indentación y con espacio inferior
+\titleformat{\section}{\large\bfseries}{}{0em}{}
+\titlespacing*{\section}{0pt}{1em}{0.5em} % margen izq, espacio arriba y abajo
+
+% Unificar sangría y espacio para listas itemize
+\setlist[itemize]{leftmargin=2em, noitemsep, topsep=0pt}
+
+% Definir un entorno general para sangría uniforme
+\newenvironment{uniformindent}{%
+  \begin{list}{}{%
+    \setlength{\leftmargin}{2em}
+    \setlength{\rightmargin}{0pt}
+    \setlength{\topsep}{0pt}
+    \setlength{\partopsep}{0pt}
+    \setlength{\parsep}{0pt}
+    \setlength{\itemsep}{0pt}
+  }
+  \item[]
+}{%
+  \end{list}
+}
+\newenvironment{indentedpar}{%
+  \begin{list}{}{%
+    \setlength{\leftmargin}{2em}
+    \setlength{\rightmargin}{0pt}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parsep}{0pt}
+    \setlength{\topsep}{0pt}
+  }
+  \item[]
+}{%
+  \end{list}
+}
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Alejandro Chavez}} \\[0.2cm]
+    Computer Science Engineer \\[0.1cm]
+    Phone: +593 999274384 \\[0.1cm]
+    LinkedIn: \href{https://www.linkedin.com/in/alech7/}{linkedin.com/in/alech7}
+\end{center}
+
+\begin{uniformindent}
+
+\section*{Professional Objective}
+Passionate about cybersecurity, artificial intelligence, and application development, with hands-on experience in collaborative projects and active participation on platforms like Hack The Box. International Baccalaureate graduate, fluent in English with basic knowledge of French.
+
+\section*{Experience}
+
+\textbf{IQVIA Internship} \hfill March 2024 -- May 2024
+\begin{itemize}
+    \item Internship in database support and administration.
+    \item Automation and verification of weekly processes using ETL, SQL, and PowerShell.
+    \item Designed and developed tailored queries to address unique client needs and ensure accurate data delivery.
+\end{itemize}
+
+\textbf{SLB Internship} \hfill October 2024 -- March 2025
+\begin{itemize}
+    \item PowerPlatform developer intern.
+    \item Designed and developed PowerApps solutions to streamline diesel usage tracking and asset management.
+    \item Contributed to Dataverse data models, UX/UI components, and agile project management via Azure DevOps.
+\end{itemize}
+
+\textbf{BlueHat Corp} \hfill April 2025 -- July 2025
+\begin{itemize}
+    \item Performed OSINT and web application penetration testing to assess exposure, reputational risks, and security posture.
+    \item Supported cybersecurity governance efforts aligned with CGCI, including follow-up based on ISO/IEC 27001.
+\end{itemize}
+
+\section*{Personal Projects}
+
+\textbf{Pixelia Project}
+\begin{indentedpar}
+Developed a video game sales app using SQL and C\#, including inventory control, transaction handling, and UI.
+\end{indentedpar}
+
+\textbf{Connect}
+\begin{indentedpar}
+Implemented redundancy protocols to enhance QoS, security, and fault tolerance in WAN and switch-level networks.
+\end{indentedpar}
+
+\textbf{Vertex Capital}
+\begin{indentedpar}
+Created a banking website using React, Node.js, and cloud services. Integrated AI-based spending predictions.
+\end{indentedpar}
+
+\textbf{Retrieval Augmented System}
+\begin{indentedpar}
+Built a RAG system to retrieve data from a custom corpus and generate concise, context-aware summaries.
+\end{indentedpar}
+\section*{Education}
+
+\textbf{International Baccalaureate} \hfill 2017 -- 2020\\
+Colegio 24 de Mayo\\
+\begin{indentedpar}
+A globally recognized educational program offering a comprehensive and balanced education.\\
+\end{indentedpar}
+
+\textbf{Computer Science Engineering} \hfill 2021 -- Present\\
+Escuela Politécnica Nacional\\
+\begin{indentedpar}
+Acquired a strong foundation in programming, algorithm design, databases, networking, and cybersecurity principles.
+\end{indentedpar}
+
+\section*{Certifications}
+
+\textbf{Network Defense Essentials}\\
+EC-Council \\ Issued: January 2025 -- Expires: January 2028\\
+Credential ID: ECC5837692041
+
+\section*{Publications}
+
+\textit{"A Comprehensive Survey on Retrieval-Augmented Generation (RAG): Foundations, Architectures, and Implementation Practices"} — In progress.\\
+A systematic review covering the fundamentals of RAG systems, key components, implementation pipelines, applications in scientific research, and current challenges.
+
+\section*{Languages and Skills}
+
+\textbf{Programming:} Python, Java, JavaScript, HTML, CSS\\
+\textbf{Tools:} Kali Linux, SQL, React, Azure, PowerShell\\
+\textbf{Methodologies:} Scrum, XP\\
+\textbf{Other:} Fluent English, Basic French, Cisco Systems knowledge
+
+\end{uniformindent}
+
+\end{document}
