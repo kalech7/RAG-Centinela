@@ -10,12 +10,21 @@
 \contentsline {subsection}{\numberline {1.4.2}Objetivos específicos}{1}{subsection.1.4.2}%
 \contentsline {section}{\numberline {1.5}Alcance}{2}{section.1.5}%
 \contentsline {section}{\numberline {1.6}Marco Teórico}{2}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Revision de literatura}{2}{section.1.7}%
 \contentsline {chapter}{\numberline {2}Metodología}{3}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Revisión sistemática}{3}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Enfoque Design Science Research (DSR)}{6}{section.2.2}%
-\contentsline {chapter}{\numberline {3}Revisión de la Literatura}{9}{chapter.3}%
-\contentsline {chapter}{\numberline {4}Diseño del Sistema RAG}{10}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Implementación y demostración}{11}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Evaluación}{12}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Conclusiones y recomendaciones}{13}{chapter.7}%
-\contentsline {chapter}{Bibliografía}{14}{section*.6}%
+\contentsline {subsection}{\numberline {2.1.1}Ejecución del estudio de la literatura}{6}{subsection.2.1.1}%
+\contentsline {subsubsection}{Propósito y objetivos de la revisión}{6}{section*.5}%
+\contentsline {subsubsection}{Criterios de inclusión y exclusión}{6}{section*.6}%
+\contentsline {subsubsection}{Identificación del estudio semilla y selección de revisiones relevantes}{6}{section*.7}%
+\contentsline {subsubsection}{Valaracion de la evidencias y extracion de la infomacion}{7}{section*.8}%
+\contentsline {subsubsection}{Síntesis y representación de resultados}{7}{section*.9}%
+\contentsline {section}{\numberline {2.2}Enfoque Design Science Research (DSR)}{7}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Diseño y desarrollo del artefacto}{10}{section.2.3}%
+\contentsline {chapter}{\numberline {3}Pruebas, Resultados, Conclusiones y Recomendaciones}{11}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Demostracion}{11}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Evaluacion del desempeño}{11}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Resultados}{11}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Conclusiones}{11}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Recomendaciones}{11}{section.3.5}%
+\contentsline {chapter}{Bibliografía}{12}{section*.11}%
