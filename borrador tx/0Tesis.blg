@@ -4,11 +4,16 @@ The top-level auxiliary file: 0Tesis.aux
 A level-1 auxiliary file: Capitulos/00Resumen.aux
 A level-1 auxiliary file: Capitulos/01Introduccion.aux
 A level-1 auxiliary file: Capitulos/02Metodologia.aux
+A level-1 auxiliary file: Capitulos/03RevisionLiteratura.aux
+A level-1 auxiliary file: Capitulos/04RAGDesign.aux
+A level-1 auxiliary file: Capitulos/05Implementacion.aux
+A level-1 auxiliary file: Capitulos/06Evaluacion.aux
+A level-1 auxiliary file: Capitulos/07Conclusiones.aux
 The style file: plain-es.bst
 Database file #1: bibTesis.bib
 You've used 4 entries,
             2134 wiz_defined-function locations,
-            537 strings with 4903 characters,
+            542 strings with 5046 characters,
 and the built_in function-call counts, 1375 in all, are:
 = -- 129
 > -- 81

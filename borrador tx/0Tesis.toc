@@ -1,11 +1,21 @@
 \babel@toc {spanish}{}\relax 
-\contentsline {chapter}{Resumen}{\es@scroman {vii}}{chapter*.2}%
-\contentsline {chapter}{Abstract}{\es@scroman {viii}}{chapter*.3}%
+\contentsline {chapter}{Resumen}{\es@scroman {viii}}{chapter*.2}%
+\contentsline {chapter}{Abstract}{\es@scroman {ix}}{chapter*.3}%
 \contentsline {chapter}{\numberline {1}Introducción}{1}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Objetivos}{1}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Objetivo general}{1}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Objetivos específicos}{1}{subsection.1.1.2}%
-\contentsline {chapter}{\numberline {2}Metodología}{2}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Revisión sistemática}{2}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Enfoque Design Science Research (DSR)}{5}{section.2.2}%
-\contentsline {chapter}{Bibliografía}{8}{figure.caption.5}%
+\contentsline {section}{\numberline {1.1}Planteamiento del problema}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Justificación}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Justificación Metodológica}{1}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Objetivos}{1}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Objetivo general}{1}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Objetivos específicos}{1}{subsection.1.4.2}%
+\contentsline {section}{\numberline {1.5}Alcance}{2}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Marco Teórico}{2}{section.1.6}%
+\contentsline {chapter}{\numberline {2}Metodología}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Revisión sistemática}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Enfoque Design Science Research (DSR)}{6}{section.2.2}%
+\contentsline {chapter}{\numberline {3}Revisión de la Literatura}{9}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Diseño del Sistema RAG}{10}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Implementación y demostración}{11}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Evaluación}{12}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Conclusiones y recomendaciones}{13}{chapter.7}%
+\contentsline {chapter}{Bibliografía}{14}{chapter.7}%
