@@ -56,6 +56,15 @@
     \left(#2\right)_{#1\in\naturales}
 }
 
+\newcommand{\pill}[4]{%
+  % Pastilla de fondo
+  \node[ pill, fill=#2 ] (p#3) at (0,#1) {};
+  % Etiqueta romana a la izquierda
+  \node[ roman, anchor=west ] at ($(p#3.west)+(0.25,0)$) {#3};
+  % Título centrado
+  \node[ titletext ] at (p#3.center) {#4};
+}
+
 % -- Comentario
 \newcommand{\comentario}[1]{
     {\color{red!50!black}\textsf{#1}}}

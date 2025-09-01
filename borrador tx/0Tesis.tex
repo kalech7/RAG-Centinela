@@ -15,6 +15,7 @@
 \usepackage[utf8]{inputenc}  % entrada en UTF-8
 \usepackage[T1]{fontenc}     % salida correcta (acentos)
 \usepackage[spanish]{babel}  % idioma
+\usepackage{float}
 % Gráficos y diagramas
 \usepackage{graphicx}
 \usepackage{tikz}
@@ -23,6 +24,40 @@
 
 % -- Comandos extra
 \input{comandos.tex}
+\definecolor{softyellow}{RGB}{255,245,200}
+\definecolor{softpink}{RGB}{255,220,220}
+\definecolor{softblue}{RGB}{215,230,245}
+\definecolor{softpeach}{RGB}{255,235,215}
+\definecolor{softcream}{RGB}{255,250,225}
+\definecolor{softgreen}{RGB}{210,240,220}
+\definecolor{softlilac}{RGB}{230,215,255}
+\definecolor{softlav}{RGB}{235,225,255}
+\definecolor{softrose}{RGB}{245,225,235}
+\definecolor{softmint}{RGB}{215,245,225}
+
+% Estilo base para cada bloque
+\tikzset{
+  pill/.style={
+    rounded corners=6pt,
+    draw=black!65,
+    line width=0.5pt,
+    minimum width=12.5cm,    % ancho de la pastilla
+    minimum height=1.2cm,    % alto de la pastilla
+    inner sep=0pt
+  },
+  roman/.style={
+    fill=black!6,
+    draw=black!65,
+    line width=0.5pt,
+    rounded corners=4pt,
+    minimum width=1.1cm,
+    minimum height=0.8cm,
+    font=\bfseries\small
+  },
+  titletext/.style={
+    font=\bfseries\small
+  }
+}
 
 % -- Información
 \titulo{Integración de Modelos Generativos para la Recuperación Académica}
