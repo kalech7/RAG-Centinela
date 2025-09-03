@@ -17,14 +17,14 @@
 \contentsline {subsubsection}{Propósito y objetivos de la revisión}{6}{section*.5}%
 \contentsline {subsubsection}{Criterios de inclusión y exclusión}{6}{section*.6}%
 \contentsline {subsubsection}{Identificación del estudio semilla y selección de revisiones relevantes}{6}{section*.7}%
-\contentsline {subsubsection}{Valaracion de la evidencias y extracion de la infomacion}{6}{section*.8}%
-\contentsline {subsubsection}{Síntesis y representación de resultados}{6}{section*.9}%
-\contentsline {section}{\numberline {2.2}Enfoque Design Science Research (DSR)}{8}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Diseño y desarrollo del artefacto}{11}{section.2.3}%
-\contentsline {chapter}{\numberline {3}Pruebas, Resultados, Conclusiones y Recomendaciones}{12}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Demostracion}{12}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Evaluacion del desempeño}{12}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Resultados}{12}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Conclusiones}{12}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Recomendaciones}{12}{section.3.5}%
-\contentsline {chapter}{Bibliografía}{13}{section*.13}%
+\contentsline {subsubsection}{Valoracion de la evidencias y extracion de la infomacion}{7}{section*.8}%
+\contentsline {subsubsection}{Síntesis y representación de resultados}{7}{section*.9}%
+\contentsline {section}{\numberline {2.2}Enfoque Design Science Research (DSR)}{9}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Diseño y desarrollo del artefacto}{12}{section.2.3}%
+\contentsline {chapter}{\numberline {3}Pruebas, Resultados, Conclusiones y Recomendaciones}{13}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Demostracion}{13}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Evaluacion del desempeño}{13}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Resultados}{13}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Conclusiones}{13}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Recomendaciones}{13}{section.3.5}%
+\contentsline {chapter}{Bibliografía}{14}{section*.13}%
