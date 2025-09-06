@@ -23,3 +23,173 @@ de valor para el usuario.
 \section{Marco Teórico}
 
 \section{Revision de literatura}
+
+introduccion poner 
+
+\subsection{Propósito y objetivos de la revisión}
+El propósito de esta revisión es consolidar la información disponible sobre los RAG, abordando su estudio desde los fundamentos hasta las fases de desarrollo. 
+Se inicia con su definición y arquitectura, para luego profundizar en las etapas clave del proceso: Extraccion del corpus, preprocesamiento, vectorización, recuperación de información, 
+evaluación, almacenamiento en bases vectoriales y generación de resultados. Asimismo, se examinan los paradigmas, las métricas de evaluación y el futuro de RAG.
+Durante esta revision se busca lograr el objetivo general de proporcionar un panorama global y actualizado sobre los RAG,
+exponiendo sus fundamentos, desarollo y aplicación.
+
+\subsection{Criterios de inclusión y exclusión}
+Se incluyen únicamente revisiones sistemáticas y metaanálisis publicados entre 2018 y 2025, en inglés o español, dado que la producción científica en el área comienza 
+a incrementarse a partir de 2018, con la popularización de los modelos de lenguaje basados en transformers (p. ej., BERT, GPT-2, T5). Los estudios deben provenir de 
+fuentes confiables los cuales son, a su vez, revisados por un experto. Se da preferencia a aquellos que presenten una cobertura de los temas más relevantes para 
+el objeto de estudio. 
+Se excluyen las revisiones narrativas, los documentos que carezcan de transparencia en sus métodos de búsqueda o síntesis, así como las publicaciones que no estén 
+directamente relacionadas con el objeto de estudio delimitado.
+
+\subsection{Identificación del estudio semilla y selección de revisiones relevantes}
+El proceso de búsqueda se inicia con la identificación de dos estudios semilla, extraídos de Google Scholar con los parámetros de búsqueda "retrieval information" 
+y "retrieval augmented generation", aplicando el filtro desde el año 2018 hasta 2025. (aqui jusstifico porque)
+
+El primer estudio seleccionado fue Information Retrieval: Recent Advances and Beyond (Hambarde \& Proença, 2023), publicado en IEEE Access. 
+Este trabajo constituye una revisión exhaustiva de la recuperación de información, abarcando desde los métodos tradicionales hasta los enfoques 
+basados en deep learning y transformers, por lo que resulta un punto de partida principal para explorar la literatura reciente y relevante.
+
+El segundo estudio semilla corresponde al artículo Retrieval-Augmented Generation for Large Language Models (Gao, Xiong, Gao, Jia, Pan, Bi, Dai, Sun \& Wang, 2023), publicado en
+arXiv,
+el cual presenta un marco conceptual y aplicado sobre la integración de recuperación de información y modelos generativos de gran escala. Su incorporación permite 
+establecer una base teórica para contextualizar el análisis de las revisiones seleccionadas.
+
+A partir de estos dos estudios semilla, y aplicando los criterios de inclusión y exclusión previamente definidos, se identificaron \textcolor{blue}{25} revisiones 
+relevantes que cumplen con los criterios establecidos. 
+Estas revisiones constituyen la base para el análisis y síntesis en el presente trabajo.
+
+
+poner pie de pagina al lenso or g y explicar que es lens org (2 lineas apartir de un analisis de la eherremienta analisis y para que srive y apartir del 2018 hubo un auge)
+
+\subsection{Valoracion de la evidencias y extracion de la infomacion}
+De los estudios seleccionados se procede a realizar un análisis, 
+con el fin de excluir aquellos artículos que no cumplen con los criterios establecidos 
+o que presentan un nivel de profundidad insuficiente para los objetivos de la revisión. 
+La selección final de los estudios se realiza en consenso con expertos en el área, 
+garantizando así la pertinencia y relevancia de la evidencia incluida.Para la organización, codificación y síntesis de la 
+información se usa ATLAS.ti que facilitará la estructuración de los hallazgos.
+
+
+pie de pagina de atalas ti url
+
+
+% para resuemir la informacion se uso (herramienta) atlas por ejemplo
+
+\subsection{Síntesis y representación de resultados}
+Con la literatura seleccionada se identificó la hoja de ruta que se presenta a continuación en la Figura \ref{fig:secciones-rag}.
+
+% --- Grafico resumen
+
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+  % distancia vertical entre pastillas
+  \def\step{-1.5}
+
+  % y inicial (arriba)
+  \def\y{0}
+
+  \pill{\y}{softcream}{I}{Fundamentos}
+  \pgfmathsetmacro\y{\y+\step}
+  \pill{\y}{softpink}{II}{Arquitectura}
+  \pgfmathsetmacro\y{\y+\step}
+  \pill{\y}{softblue}{III}{Fases de Implementación}
+  \pgfmathsetmacro\y{\y+\step}
+  \pill{\y}{softpeach}{IV}{Paradigmas}
+  \pgfmathsetmacro\y{\y+\step}
+  \pill{\y}{softyellow}{V}{Evaluación y metricas}
+  \pgfmathsetmacro\y{\y+\step}
+  \pill{\y}{softgreen}{VI}{Futuro de RAG}
+  
+\end{tikzpicture}
+\end{center}
+\caption{Resumen esquemático de RAG}
+\label{fig:secciones-rag}
+\end{figure}
+
+A partir de esta hoja de ruta se desarrolla un esquema más detallado, en el que se expone primero exploraremos su teoría, 
+características y aplicaciones, como se muestra en la Fig \ref{fig:Fudamentos}. Luego profundizamos en su arquitectura en la cual 
+se describe cada uno de los componentes que lo conforman (retriever, augmented y generation) y las variantes y mejoras que existen de cada uno. 
+Posteriormente, se detalla el proceso de implementación, desde la preparación de datos hasta el componente de generación, incluyendo las técnicas y herramientas más relevantes.
+A continuación en la Fig , se examinan los paradigmas de RAG, dando a conocer los tipos de paradigmas y sus clases, para luego en la Fig , se presentan las métricas y evaluadores automáticos 
+utilizados en la evaluación de sistemas RAG, así como las consideraciones éticas y de equidad que deben tenerse en cuenta.
+Finalmente, se discuten las tendencias emergentes, los desafíos que actualmente se tienen y futuras direcciones que podrían tomar los sistemas RAG.
+
+
+
+% --- Grafico fundamentos
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\tikzset{
+  mindoval/.style={
+    rounded corners=18pt,
+    draw=black!70,
+    line width=0.7pt,
+    minimum width=3.2cm,
+    minimum height=1.1cm,
+    inner sep=6pt,
+    fill=white      % <<< todos los nodos en blanco
+  },
+  mindcenter/.style={
+    rounded corners=8pt,
+    draw=black!70,
+    line width=0.9pt,
+    minimum width=3.6cm,
+    minimum height=1.1cm,
+    inner sep=4pt,
+    fill=softrose,  % <<< centro en morado
+    font=\bfseries
+  },
+  mindapp/.style={
+    mindoval,
+    fill=softblue   % <<< nodo aplicación en azul
+  },
+  mindarrow/.style={-latex, line width=0.9pt}
+}
+
+% --- Nodo central
+\node[mindcenter] (fund) at (0,0) {Fundamentos};
+
+% --- Nodos arriba
+\node[mindoval] (aport)  at (0,3) {Aportes de RAGs};
+\node[mindoval] (ragft)  at (5,0) {RAG vs fine tuning};
+
+% --- Nodos izquierda
+\node[mindoval] (rolrag) at (-5,2.5) {Rol de RAG};
+\node[mindoval] (qrag)   at (-5,0.75) {¿Qué es RAG?};
+\node[mindoval] (qllm)   at (-5,-1.0) {¿Qué es un LLM?};
+
+% --- Nodos abajo
+\node[mindapp, minimum width=3.0cm] (apli) at (0,-3.0) {Aplicación};
+\node[mindoval] (texto)  at (-5,-4.5) {Texto};
+\node[mindoval] (img)    at (-2,-6) {Imagen};
+\node[mindoval, minimum width=3.6cm] (audio)  at (2,-6) {Audio y video};
+\node[mindoval] (codigo) at (5,-4.5) {Código};
+
+% --- Flechas (tocando bordes de nodos)
+\draw[mindarrow] (fund.north) -- (aport.south);
+\draw[mindarrow] (fund.east) -- (ragft.west);
+\draw[mindarrow] (fund.west) -- (rolrag.east);
+\draw[mindarrow] (fund.west) -- (qrag.east);
+\draw[mindarrow] (fund.west) -- (qllm.east);
+\draw[mindarrow] (fund.south) -- (apli.north);
+
+\draw[mindarrow] (apli.west) -- (texto.east);
+\draw[mindarrow] (apli) -- (img.north);
+\draw[mindarrow] (apli) -- (audio.north);
+\draw[mindarrow] (apli.east) -- (codigo.west);
+
+\end{tikzpicture}
+\end{center}
+\caption{Fundamentos de RAG}
+\label{fig:Fudamentos}
+\end{figure}
+
+\subsubsection{Fundamentos}
+en esta subseccion se va tratar 
+\paragraph{Que es un llm}
+explico
+\paragraph{QUes un rag}
+explico 
+y asi describo
