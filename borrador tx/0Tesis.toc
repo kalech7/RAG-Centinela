@@ -12,21 +12,21 @@
 \contentsline {section}{\numberline {1.6}Marco Teórico}{2}{section.1.6}%
 \contentsline {section}{\numberline {1.7}Revision de literatura}{2}{section.1.7}%
 \contentsline {subsection}{\numberline {1.7.1}Propósito y objetivos de la revisión}{2}{subsection.1.7.1}%
-\contentsline {subsection}{\numberline {1.7.2}Criterios de inclusión y exclusión}{2}{subsection.1.7.2}%
+\contentsline {subsection}{\numberline {1.7.2}Criterios de inclusión y exclusión}{3}{subsection.1.7.2}%
 \contentsline {subsection}{\numberline {1.7.3}Identificación del estudio semilla y selección de revisiones relevantes}{3}{subsection.1.7.3}%
-\contentsline {subsection}{\numberline {1.7.4}Valoracion de la evidencias y extracion de la infomacion}{3}{subsection.1.7.4}%
+\contentsline {subsection}{\numberline {1.7.4}Valoracion de la evidencias y extracion de la infomacion}{4}{subsection.1.7.4}%
 \contentsline {subsection}{\numberline {1.7.5}Síntesis y representación de resultados}{4}{subsection.1.7.5}%
-\contentsline {subsubsection}{Fundamentos}{5}{section*.6}%
-\contentsline {paragraph}{Que es un llm}{5}{section*.7}%
-\contentsline {paragraph}{QUes un rag}{5}{section*.8}%
-\contentsline {chapter}{\numberline {2}Metodología}{6}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Revisión sistemática}{6}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Enfoque Design Science Research (DSR)}{8}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Diseño y desarrollo del artefacto}{12}{section.2.3}%
-\contentsline {chapter}{\numberline {3}Pruebas, Resultados, Conclusiones y Recomendaciones}{13}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Demostracion}{13}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Evaluacion del desempeño}{13}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Resultados}{13}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Conclusiones}{13}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Recomendaciones}{13}{section.3.5}%
-\contentsline {chapter}{Bibliografía}{14}{section*.11}%
+\contentsline {subsubsection}{Fundamentos}{6}{section*.6}%
+\contentsline {paragraph}{Que es un llm}{6}{section*.7}%
+\contentsline {paragraph}{QUes un rag}{6}{section*.8}%
+\contentsline {chapter}{\numberline {2}Metodología}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Revisión sistemática}{7}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Enfoque Design Science Research (DSR)}{9}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Diseño y desarrollo del artefacto}{13}{section.2.3}%
+\contentsline {chapter}{\numberline {3}Pruebas, Resultados, Conclusiones y Recomendaciones}{14}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Demostracion}{14}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Evaluacion del desempeño}{14}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Resultados}{14}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Conclusiones}{14}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Recomendaciones}{14}{section.3.5}%
+\contentsline {chapter}{Bibliografía}{15}{section*.11}%
