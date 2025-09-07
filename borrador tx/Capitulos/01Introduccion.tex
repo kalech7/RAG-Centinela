@@ -231,3 +231,64 @@ una respuesta basada tanto en su conocimiento interno como en la información re
 de las respuestas, facilita la actualización del conocimiento sin necesidad de reentrenar el modelo y mejora la transparencia al permitir la 
 cita de fuentes. Como lo mencionan estos autores, se ha consolidado como una de las técnicas más relevantes en tareas que requieren gran 
 cantidad de conocimiento, como el ámbito médico, legal o de investigación científica.  
+
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{Categoría} & \textbf{Subcategoría / Tipo} & \textbf{Técnicas} \\ \hline
+Indexing & Vector DB & StepBack Prompt \\ \hline
+         & Algoritmos de búsqueda & Approximate Nearest Neighbors, Locality-Sensitive Hashing \\ \hline
+Enhancements & Reranking & HyDE \\ \hline
+             & Retriever Finetuning & - \\ \hline
+             & Hybrid Search & - \\ \hline
+             & Chunk Optimization & - \\ \hline
+             & Recursive Retrieval & - \\ \hline
+Tipos de retrievers & Sparse & BM25, TF-IDF \\ \hline
+                    & Dense & Embeddings (ej. BERT, OpenAI, etc.) \\ \hline
+                    & Others & Modelos híbridos u otros \\ \hline
+\end{tabularx}
+\caption{Componente Retriever}
+\end{table}
+
+
+
+\begin{table}[H]
+\centering
+
+\begin{tabularx}{\textwidth}{|l|l|>{\raggedright\arraybackslash}X|}
+\hline
+\textbf{Categoría} & \textbf{Subcategoría / Tipo} & \textbf{Técnicas} \\ \hline
+Tipos   & Pre-training  & - \\ \hline
+        & Fine-tuning   & - \\ \hline
+        & Inference     & - \\ \hline
+Data    & Structured    & - \\ \hline
+        & Unstructured  & - \\ \hline
+        & LLM generated content & - \\ \hline
+Process & Once          & - \\ \hline
+        & Iterative     & - \\ \hline
+        & Adaptative    & - \\ \hline
+\end{tabularx}
+\caption{Componente Augmentation}
+\end{table}
+
+\begin{table}[H]
+\centering
+
+
+\begin{tabularx}{\textwidth}{|l|l|>{\raggedright\arraybackslash}X|}
+\hline
+\textbf{Categoría} & \textbf{Subcategoría / Tipo} & \textbf{Ejemplos} \\ \hline
+Tipos & Transformers & GPT, BART, T5 \\ \hline
+      & LSTM         & Modelos secuencia a secuencia tradicionales \\ \hline
+      & GANs         & Generación adversarial en imágenes y texto \\ \hline
+      & Diffusion Models & Imagen, audio y video \\ \hline
+Enhancements & Prompt Engineering & Diseño de instrucciones, chain-of-thought, step-back prompts \\ \hline
+             & Generator Fine-tuning & Ajuste del modelo al dominio específico \\ \hline
+             & Decoding Tuning & Beam search, nucleus sampling, top-k sampling \\ \hline
+\end{tabularx}
+\caption{Componente Generator}
+\end{table}
+
+\subsubsection{Arquitectura}
