@@ -165,16 +165,16 @@ Finalmente, se discuten las tendencias emergentes, los desafíos que actualmente
 \node[mindcenter] (fund) at (0,0) {Fundamentos};
 
 % --- Nodos arriba
-\node[mindoval] (aport)  at (0,3) {Aportes de RAGs};
-\node[mindoval] (ragft)  at (5,0) {RAG vs fine tuning};
+\node[mindoval] (aport)  at (0,3) {4. Aportes de RAGs};
+\node[mindoval] (ragft)  at (5,0) {5. RAG vs fine tuning};
 
 % --- Nodos izquierda
-\node[mindoval] (rolrag) at (-5,2.5) {Rol de RAG};
-\node[mindoval] (qrag)   at (-5,0.75) {¿Qué es RAG?};
-\node[mindoval] (qllm)   at (-5,-1.0) {¿Qué es un LLM?};
+\node[mindoval] (rolrag) at (-5,2.5) {3. Rol de RAG};
+\node[mindoval] (qrag)   at (-5,0.75) {2. ¿Qué es RAG?};
+\node[mindoval] (qllm)   at (-5,-1.0) {1. ¿Qué es un LLM?};
 
 % --- Nodos abajo
-\node[mindapp, minimum width=3.0cm] (apli) at (0,-3.0) {Aplicación};
+\node[mindapp, minimum width=3.0cm] (apli) at (0,-3.0) {6. Aplicación};
 \node[mindoval] (texto)  at (-5,-4.5) {Texto};
 \node[mindoval] (img)    at (-2,-6) {Imagen};
 \node[mindoval, minimum width=3.6cm] (audio)  at (2,-6) {Audio y video};
@@ -200,11 +200,34 @@ Finalmente, se discuten las tendencias emergentes, los desafíos que actualmente
 \end{figure}
 
 \subsubsection{Fundamentos}
-en esta subseccion se va tratar 
+En esta subsección se presentan los fundamentos teóricos de Retrieval Augmented Generation (RAG), 
+comenzando con la definición de los modelos de lenguaje de gran escala (LLMs) y su relación. Se expone 
+también el papel que desempeña RAG, los principales aportes que ha generado en distintos ámbitos y su diferenciación frente al 
+fine tuning. Finalmente, se introduce su aplicación práctica, lo que permite comprender la importancia y el impacto que RAG tiene en 
+la actualidad.
 
+\paragraph{Que es un LLM}
+Los LLM son modelos de inteligencia artificial (IA) basados en la arquitectura transformer, entrenados con grandes volumnes de datos textuales con el objetivo de aprender representaciones
+contextuales del lenguaje. Según \textcite{casola2022pretrained}, estos modelos utilizan técnicas de pre-entrenamiento no supervisado para captar patrones lingüísticos y semánticos,
+lo que permite que posteriormente puedan ajustarse a tareas específicas como clasificación de texto, análisis de sentimientos, traducción automática, reconocimiento de entidades
+o respuesta a preguntas. Ejemplos destacados son \textit{BERT, RoBERTa, ALBERT, XLNet, DistilBERT y GPT-3}, que han mostrado rendimientos sobresalientes en diversas aplicaciones de procesamiento de lenguaje natural (NLP).
 
-\paragraph{Que es un llm}
-explico
-\paragraph{QUes un rag}
-explico 
-y asi describo
+De acuerdo con \textcite{ramdurai2025llm}, los LLMs también se definen como una clase de modelos de IA capaces de procesar y generar texto de forma similar al lenguaje humano,
+gracias al uso de redes neuronales profundas y la capacidad de aprender no solo gramática y relaciones entre palabras, sino también aspectos más complejos como humor, 
+tono emocional y contexto. Entrenados en enormes corpus de datos provenientes de libros, artículos y sitios web, estos modelos pueden responder preguntas, redactar ensayos,
+traducir, resumir y crear contenido de manera autónoma. Ejemplos recientes incluyen \textit{GPT-4, T5, XLNet y PaLM}, los cuales demuestran su versatilidad en tareas avanzadas
+de NLP y en sistemas aplicados en diferentes industrias. 
+
+\paragraph{Que es un RAG}
+Según \textcite{han2024rag},\textit{Retrieval-Augmented Generation} (RAG) es una técnica que integra la capacidad generativa de los modelos 
+de lenguaje con la precisión de la recuperación de información en tiempo real. En lugar de basarse únicamente en el conocimiento almacenado en
+los parámetros durante el entrenamiento, RAG permite consultar repositorios externos como bases de datos o motores de búsqueda para obtener
+documentos relevantes y actualizados. Estos se incorporan al prompt del usuario, lo que fundamenta la respuesta en fuentes 
+verificables y disminuye los problemas de errores y alucinaciones que suelen presentarse en los modelos de lenguaje de gran escala.  
+
+El proceso de RAG se compone de tres fases: recuperación, augmentación y generación. Como lo menciona \textcite{gao2023rag}, primero se 
+localizan documentos relevantes para la consulta; luego, se enriquece la entrada del usuario con esos textos; finalmente, el modelo produce 
+una respuesta basada tanto en su conocimiento interno como en la información recuperada. Gracias a este enfoque, RAG incrementa la exactitud 
+de las respuestas, facilita la actualización del conocimiento sin necesidad de reentrenar el modelo y mejora la transparencia al permitir la 
+cita de fuentes. Como lo mencionan estos autores, se ha consolidado como una de las técnicas más relevantes en tareas que requieren gran 
+cantidad de conocimiento, como el ámbito médico, legal o de investigación científica.  

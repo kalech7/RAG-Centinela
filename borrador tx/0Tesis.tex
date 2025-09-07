@@ -22,6 +22,22 @@
 \usetikzlibrary{shapes.geometric, positioning, fit, backgrounds,calc}
 \usepackage{pdflscape}
 \usepackage{hyperref} 
+\usepackage{xurl}  
+\urlstyle{same}
+\usepackage[final]{microtype}
+\emergencystretch=2em
+% \usepackage[natbibapa]{apacite} 
+
+\usepackage[backend=biber,
+            style=numeric,
+            sorting=nty,        % Name → Title → Year
+            defernumbers=true, % asigna números después de ordenar
+            language=spanish]{biblatex}
+\addbibresource{bibTesis.bib}
+
+
+
+
 % -- Comandos extra
 \input{comandos.tex}
 \definecolor{softyellow}{RGB}{255,245,200}
@@ -35,6 +51,11 @@
 \definecolor{softrose}{RGB}{245,225,235}
 \definecolor{softmint}{RGB}{215,245,225}
 
+
+\setcounter{biburlnumpenalty}{9000}
+\setcounter{biburlucpenalty}{9000}
+\setcounter{biburllcpenalty}{9000}
+\AtBeginBibliography{\normalsize\sloppy}
 % Estilo base para cada bloque
 \tikzset{
   pill/.style={
@@ -114,13 +135,10 @@
 \nocite{*}
 
 % -- estilo por defecto español
-\bibliographystyle{plain-es}
+% \bibliographystyle{apacite}
 % -- estilo apalike español (paquete natbib)
 % \bibliographystyle{apalike-es}
-
 \cleardoublepage
 \phantomsection
-\addcontentsline{toc}{chapter}{Bibliografía}
-\bibliography{bibTesis}
-
+\printbibliography[heading=bibintoc,title={Bibliografía}]
 \end{document} 

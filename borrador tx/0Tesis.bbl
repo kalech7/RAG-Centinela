@@ -1,24 +1,451 @@
-\begin{thebibliography}{1}
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
 
-\bibitem{aromataris2014umbrella}
-Aromataris, E., Fernandez, R.~S., Godfrey, C., Holly, C., Khalil, H., y Tungpunkom, P.
-\newblock {\em Methodology for JBI Umbrella Reviews}.
-\newblock Joanna Briggs Institute, 2014.
-\newblock Disponible en Research Online de la University of Wollongong.
 
-\bibitem{Papatheodorou2019}
-Papatheodorou, S.
-\newblock Umbrella reviews: what they are and why we need them.
-\newblock {\em European Journal of Epidemiology}, 34(6):543--546, 2019.
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{aromataris2014umbrella}{book}{}
+      \name{author}{6}{}{%
+        {{hash=9789e5de0b3c25689ab1c8c90f72e03c}{%
+           family={Aromataris},
+           familyi={A\bibinitperiod},
+           given={Edoardo},
+           giveni={E\bibinitperiod}}}%
+        {{hash=cd0cbe8c9ab8bb71fe912dce036af8bd}{%
+           family={Fernandez},
+           familyi={F\bibinitperiod},
+           given={Ritin\bibnamedelima S.},
+           giveni={R\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=3725857225d35aa7797895203abcd16a}{%
+           family={Godfrey},
+           familyi={G\bibinitperiod},
+           given={Christina},
+           giveni={C\bibinitperiod}}}%
+        {{hash=4eae65a9164dc2083d1198033636acb4}{%
+           family={Holly},
+           familyi={H\bibinitperiod},
+           given={Cheryl},
+           giveni={C\bibinitperiod}}}%
+        {{hash=1485ad42e71896666c059ba57f3f4b2a}{%
+           family={Khalil},
+           familyi={K\bibinitperiod},
+           given={Hanan},
+           giveni={H\bibinitperiod}}}%
+        {{hash=8bf493b80d3f09db86e29a8ba3f5d307}{%
+           family={Tungpunkom},
+           familyi={T\bibinitperiod},
+           given={Patraporn},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Adelaide}%
+      }
+      \list{publisher}{1}{%
+        {Joanna Briggs Institute}%
+      }
+      \strng{namehash}{3e55a3b31ba80c91ef5f93ee3e8e1e6e}
+      \strng{fullhash}{f4177c863a60fe060aab6dd60c539d70}
+      \strng{bibnamehash}{3e55a3b31ba80c91ef5f93ee3e8e1e6e}
+      \strng{authorbibnamehash}{3e55a3b31ba80c91ef5f93ee3e8e1e6e}
+      \strng{authornamehash}{3e55a3b31ba80c91ef5f93ee3e8e1e6e}
+      \strng{authorfullhash}{f4177c863a60fe060aab6dd60c539d70}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Disponible en Research Online de la University of Wollongong}
+      \field{title}{Methodology for {JBI} Umbrella Reviews}
+      \field{year}{2014}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://ro.uow.edu.au/smhpapers/3344
+      \endverb
+      \verb{url}
+      \verb https://ro.uow.edu.au/smhpapers/3344
+      \endverb
+    \endentry
+    \entry{vombrocke2020}{incollection}{}
+      \name{author}{3}{}{%
+        {{hash=12c8a93a870d1bc7a6de117db0e7f71d}{%
+           family={Brocke},
+           familyi={B\bibinitperiod},
+           given={Jan},
+           giveni={J\bibinitperiod},
+           prefix={vom},
+           prefixi={v\bibinitperiod}}}%
+        {{hash=d9ddca3b1b7af0f96d62a62424bd939a}{%
+           family={Hevner},
+           familyi={H\bibinitperiod},
+           given={Alan},
+           giveni={A\bibinitperiod}}}%
+        {{hash=49b9d2bfb4f6405fb255c47831e440ec}{%
+           family={Maedche},
+           familyi={M\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+      }
+      \name{editor}{3}{}{%
+        {{hash=12c8a93a870d1bc7a6de117db0e7f71d}{%
+           family={Brocke},
+           familyi={B\bibinitperiod},
+           given={Jan},
+           giveni={J\bibinitperiod},
+           prefix={vom},
+           prefixi={v\bibinitperiod}}}%
+        {{hash=d9ddca3b1b7af0f96d62a62424bd939a}{%
+           family={Hevner},
+           familyi={H\bibinitperiod},
+           given={Alan},
+           giveni={A\bibinitperiod}}}%
+        {{hash=49b9d2bfb4f6405fb255c47831e440ec}{%
+           family={Maedche},
+           familyi={M\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Cham}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{9cebafea24306d429d193cc87fd3fb14}
+      \strng{fullhash}{9cebafea24306d429d193cc87fd3fb14}
+      \strng{bibnamehash}{9cebafea24306d429d193cc87fd3fb14}
+      \strng{authorbibnamehash}{9cebafea24306d429d193cc87fd3fb14}
+      \strng{authornamehash}{9cebafea24306d429d193cc87fd3fb14}
+      \strng{authorfullhash}{9cebafea24306d429d193cc87fd3fb14}
+      \strng{editorbibnamehash}{9cebafea24306d429d193cc87fd3fb14}
+      \strng{editornamehash}{9cebafea24306d429d193cc87fd3fb14}
+      \strng{editorfullhash}{9cebafea24306d429d193cc87fd3fb14}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Design Science Research. Cases}
+      \field{title}{Introduction to Design Science Research}
+      \field{year}{2020}
+      \field{pages}{1\bibrangedash 13}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1007/978-3-030-46781-4_1
+      \endverb
+    \endentry
+    \entry{casola2022pretrained}{article}{}
+      \name{author}{3}{}{%
+        {{hash=4f99196adc6072ef560961e0dcfa30cf}{%
+           family={Casola},
+           familyi={C\bibinitperiod},
+           given={Silvia},
+           giveni={S\bibinitperiod}}}%
+        {{hash=2b7dabc0dce2c7e76ca1d008cbe0e1d8}{%
+           family={Lauriola},
+           familyi={L\bibinitperiod},
+           given={Ivano},
+           giveni={I\bibinitperiod}}}%
+        {{hash=0cb3f7330eec88b9c994afc64ad2cdfd}{%
+           family={Lavelli},
+           familyi={L\bibinitperiod},
+           given={Alberto},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{3f5b22e8a6b4cef881f9703e6137bd80}
+      \strng{fullhash}{3f5b22e8a6b4cef881f9703e6137bd80}
+      \strng{bibnamehash}{3f5b22e8a6b4cef881f9703e6137bd80}
+      \strng{authorbibnamehash}{3f5b22e8a6b4cef881f9703e6137bd80}
+      \strng{authornamehash}{3f5b22e8a6b4cef881f9703e6137bd80}
+      \strng{authorfullhash}{3f5b22e8a6b4cef881f9703e6137bd80}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Machine Learning with Applications}
+      \field{note}{Acceso abierto, CC BY 4.0}
+      \field{title}{Pre-trained transformers: An empirical comparison}
+      \field{volume}{9}
+      \field{year}{2022}
+      \field{pages}{100334}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.mlwa.2022.100334
+      \endverb
+    \endentry
+    \entry{gao2023rag}{misc}{}
+      \name{author}{9}{}{%
+        {{hash=572def57560315de76cedfc3e17c2eb2}{%
+           family={Gao},
+           familyi={G\bibinitperiod},
+           given={Yunfan},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=bdc1e50b7faa4f8d1a9844199179e6c2}{%
+           family={Xiong},
+           familyi={X\bibinitperiod},
+           given={Yun},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=03e7985fe5e84b74e9f01c4cdbaaee9c}{%
+           family={Gao},
+           familyi={G\bibinitperiod},
+           given={Xinyu},
+           giveni={X\bibinitperiod}}}%
+        {{hash=16ccf3d9ea55a78a7d3dfea173515f1f}{%
+           family={Jia},
+           familyi={J\bibinitperiod},
+           given={Kangxiang},
+           giveni={K\bibinitperiod}}}%
+        {{hash=fd6e4a40c152c7e39a43964918a2c4a5}{%
+           family={Pan},
+           familyi={P\bibinitperiod},
+           given={Jinliu},
+           giveni={J\bibinitperiod}}}%
+        {{hash=efef66e4d4bad100544cfae4a2b3104b}{%
+           family={Bi},
+           familyi={B\bibinitperiod},
+           given={Yuxi},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=f59ef2d4288d687c75882fd75c94cd09}{%
+           family={Dai},
+           familyi={D\bibinitperiod},
+           given={Yi},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=5541cd69dde50ba09f8968212da6602c}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Jiawei},
+           giveni={J\bibinitperiod}}}%
+        {{hash=9cca37a322a37778f7e30f057e2c2f90}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Haofen},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{f1678cfa142d8029151d4faacf40f176}
+      \strng{fullhash}{d439bedbf62a8843c8be1e435742e6a3}
+      \strng{bibnamehash}{f1678cfa142d8029151d4faacf40f176}
+      \strng{authorbibnamehash}{f1678cfa142d8029151d4faacf40f176}
+      \strng{authornamehash}{f1678cfa142d8029151d4faacf40f176}
+      \strng{authorfullhash}{d439bedbf62a8843c8be1e435742e6a3}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.CL}
+      \field{eprinttype}{arXiv}
+      \field{title}{Retrieval Augmented Generation for Large Language Models: A Survey}
+      \field{year}{2023}
+      \verb{eprint}
+      \verb 2312.10997
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2312.10997
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2312.10997
+      \endverb
+    \endentry
+    \entry{hambarde2023ir}{article}{}
+      \name{author}{2}{}{%
+        {{hash=e7f437da42b80bc590cb31c8265831b1}{%
+           family={Hambarde},
+           familyi={H\bibinitperiod},
+           given={Kailash\bibnamedelima A.},
+           giveni={K\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=19f598d31a3aab81ad8262c2bac15d12}{%
+           family={Proença},
+           familyi={P\bibinitperiod},
+           given={Hugo},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{bf6a7fb687ad19afe170b8d5bde79c55}
+      \strng{fullhash}{bf6a7fb687ad19afe170b8d5bde79c55}
+      \strng{bibnamehash}{bf6a7fb687ad19afe170b8d5bde79c55}
+      \strng{authorbibnamehash}{bf6a7fb687ad19afe170b8d5bde79c55}
+      \strng{authornamehash}{bf6a7fb687ad19afe170b8d5bde79c55}
+      \strng{authorfullhash}{bf6a7fb687ad19afe170b8d5bde79c55}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Access}
+      \field{title}{Information Retrieval: Recent Advances and Beyond}
+      \field{volume}{11}
+      \field{year}{2023}
+      \true{nocite}
+      \field{pages}{76581 76620}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1109/ACCESS.2023.3295776
+      \endverb
+    \endentry
+    \entry{han2024rag}{article}{}
+      \name{author}{3}{}{%
+        {{hash=b6b13f059844cdb7fee46be628c8d6aa}{%
+           family={Han},
+           familyi={H\bibinitperiod},
+           given={Binglan},
+           giveni={B\bibinitperiod}}}%
+        {{hash=7d6d5d9d26d627cbbb81f1460a53f68c}{%
+           family={Susnjak},
+           familyi={S\bibinitperiod},
+           given={Teo},
+           giveni={T\bibinitperiod}}}%
+        {{hash=99719c85db7336c581e5f6c9b223fdd6}{%
+           family={Mathrani},
+           familyi={M\bibinitperiod},
+           given={Anuradha},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{158ac2069673550184bc6bc2ee50b689}
+      \strng{fullhash}{158ac2069673550184bc6bc2ee50b689}
+      \strng{bibnamehash}{158ac2069673550184bc6bc2ee50b689}
+      \strng{authorbibnamehash}{158ac2069673550184bc6bc2ee50b689}
+      \strng{authornamehash}{158ac2069673550184bc6bc2ee50b689}
+      \strng{authorfullhash}{158ac2069673550184bc6bc2ee50b689}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Applied Sciences}
+      \field{number}{19}
+      \field{title}{Automating Systematic Literature Reviews with Retrieval Augmented Generation: A Comprehensive Overview}
+      \field{volume}{14}
+      \field{year}{2024}
+      \field{pages}{9103}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/app14199103
+      \endverb
+    \endentry
+    \entry{papatheodorou2019}{article}{}
+      \name{author}{1}{}{%
+        {{hash=4ad0d6e9659b615d38db97e4e5cc5fa6}{%
+           family={Papatheodorou},
+           familyi={P\bibinitperiod},
+           given={Stefania},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{4ad0d6e9659b615d38db97e4e5cc5fa6}
+      \strng{fullhash}{4ad0d6e9659b615d38db97e4e5cc5fa6}
+      \strng{bibnamehash}{4ad0d6e9659b615d38db97e4e5cc5fa6}
+      \strng{authorbibnamehash}{4ad0d6e9659b615d38db97e4e5cc5fa6}
+      \strng{authornamehash}{4ad0d6e9659b615d38db97e4e5cc5fa6}
+      \strng{authorfullhash}{4ad0d6e9659b615d38db97e4e5cc5fa6}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{European Journal of Epidemiology}
+      \field{number}{6}
+      \field{title}{Umbrella reviews: what they are and why we need them}
+      \field{volume}{34}
+      \field{year}{2019}
+      \true{nocite}
+      \field{pages}{543\bibrangedash 546}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1007/s10654-019-00505-6
+      \endverb
+    \endentry
+    \entry{peffers2008design}{article}{}
+      \name{author}{4}{}{%
+        {{hash=3127efe8cdd4557b7228a8724f568529}{%
+           family={Peffers},
+           familyi={P\bibinitperiod},
+           given={Ken},
+           giveni={K\bibinitperiod}}}%
+        {{hash=8b17b21a3e4c61d1302f46cba38c6e50}{%
+           family={Tuunanen},
+           familyi={T\bibinitperiod},
+           given={Tuure},
+           giveni={T\bibinitperiod}}}%
+        {{hash=33ad207ea3031c6d744a31f5bc43c547}{%
+           family={Rothenberger},
+           familyi={R\bibinitperiod},
+           given={Marcus\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=edf3e165ce4429b30d49e353a7d1417a}{%
+           family={Chatterjee},
+           familyi={C\bibinitperiod},
+           given={Samir},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{4ccaed1d47a4875e5f027cdf2d20bbca}
+      \strng{fullhash}{0d82c455b50c2b184d97697dac2e8660}
+      \strng{bibnamehash}{4ccaed1d47a4875e5f027cdf2d20bbca}
+      \strng{authorbibnamehash}{4ccaed1d47a4875e5f027cdf2d20bbca}
+      \strng{authornamehash}{4ccaed1d47a4875e5f027cdf2d20bbca}
+      \strng{authorfullhash}{0d82c455b50c2b184d97697dac2e8660}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Management Information Systems}
+      \field{number}{3}
+      \field{title}{A design science research methodology for information systems research}
+      \field{volume}{24}
+      \field{year}{2008}
+      \true{nocite}
+      \field{pages}{45 77}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.2753/MIS0742-1222240302
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.2753/MIS0742-1222240302
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.2753/MIS0742-1222240302
+      \endverb
+    \endentry
+    \entry{ramdurai2025llm}{article}{}
+      \name{author}{1}{}{%
+        {{hash=f1a4e140cbad614b58b8cd90dd50e430}{%
+           family={Ramdurai},
+           familyi={R\bibinitperiod},
+           given={Balagopal},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{f1a4e140cbad614b58b8cd90dd50e430}
+      \strng{fullhash}{f1a4e140cbad614b58b8cd90dd50e430}
+      \strng{bibnamehash}{f1a4e140cbad614b58b8cd90dd50e430}
+      \strng{authorbibnamehash}{f1a4e140cbad614b58b8cd90dd50e430}
+      \strng{authornamehash}{f1a4e140cbad614b58b8cd90dd50e430}
+      \strng{authorfullhash}{f1a4e140cbad614b58b8cd90dd50e430}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Journal of Marketing and Technology}
+      \field{note}{Disponible en acceso abierto en ResearchGate}
+      \field{number}{01}
+      \field{title}{Large Language Models ({LLMs}), Retrieval-Augmented Generation ({RAG}) systems, and Convolutional Neural Networks ({CNNs}) in Application systems}
+      \field{volume}{15}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.researchgate.net/publication/387128512
+      \endverb
+      \verb{url}
+      \verb https://www.researchgate.net/publication/387128512
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
 
-\bibitem{peffers2008design}
-Peffers, K., Tuunanen, T., Rothenberger, M.~A., y Chatterjee, S.
-\newblock A design science research methodology for information systems research.
-\newblock {\em Journal of Management Information Systems}, 24(3):45--77, 2008.
-
-\bibitem{vomBrocke2020}
-vom Brocke, J., Hevner, A., y Maedche, A.
-\newblock {\em Design Science Research}.
-\newblock Springer, Cham, 2020.
-
-\end{thebibliography}
