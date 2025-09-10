@@ -19,7 +19,17 @@
 \contentsline {subsubsection}{Fundamentos}{6}{section*.6}%
 \contentsline {paragraph}{Que es un LLM}{6}{section*.7}%
 \contentsline {paragraph}{Que es un RAG}{7}{section*.8}%
-\contentsline {subsubsection}{Arquitectura}{9}{section*.12}%
+\contentsline {subsubsection}{Arquitectura}{7}{section*.10}%
+\contentsline {subsubsection}{Paradigmas}{9}{section*.14}%
+\contentsline {paragraph}{Tipos de Paradigmas}{9}{section*.15}%
+\contentsline {paragraph}{Clases}{9}{section*.16}%
+\contentsline {subsubsection}{Evaluacion}{9}{section*.17}%
+\contentsline {paragraph}{Metricas}{9}{section*.18}%
+\contentsline {paragraph}{Evaluadores automaticos}{9}{section*.19}%
+\contentsline {subsubsection}{Futuro de RAG}{9}{section*.20}%
+\contentsline {paragraph}{Desafios Actuales}{9}{section*.21}%
+\contentsline {paragraph}{Direcciones potenciales}{9}{section*.22}%
+\contentsline {paragraph}{Perspectivas}{9}{section*.23}%
 \contentsline {chapter}{\numberline {2}Metodología}{10}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Revisión sistemática}{10}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Enfoque Design Science Research (DSR)}{12}{section.2.2}%
@@ -30,4 +40,4 @@
 \contentsline {section}{\numberline {3.3}Resultados}{17}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Conclusiones}{17}{section.3.4}%
 \contentsline {section}{\numberline {3.5}Recomendaciones}{17}{section.3.5}%
-\contentsline {chapter}{Bibliografía}{18}{chapter*.16}%
+\contentsline {chapter}{Bibliografía}{18}{chapter*.27}%

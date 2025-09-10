@@ -207,7 +207,7 @@ fine tuning. Finalmente, se introduce su aplicación práctica, lo que permite c
 la actualidad.
 
 \paragraph{Que es un LLM}
-Los LLM son modelos de inteligencia artificial (IA) basados en la arquitectura transformer, entrenados con grandes volumnes de datos textuales con el objetivo de aprender representaciones
+Son modelos de inteligencia artificial (IA) basados en la arquitectura transformer, entrenados con grandes volumnes de datos textuales con el objetivo de aprender representaciones
 contextuales del lenguaje. Según \textcite{casola2022pretrained}, estos modelos utilizan técnicas de pre-entrenamiento no supervisado para captar patrones lingüísticos y semánticos,
 lo que permite que posteriormente puedan ajustarse a tareas específicas como clasificación de texto, análisis de sentimientos, traducción automática, reconocimiento de entidades
 o respuesta a preguntas. Ejemplos destacados son \textit{BERT, RoBERTa, ALBERT, XLNet, DistilBERT y GPT-3}, que han mostrado rendimientos sobresalientes en diversas aplicaciones de procesamiento de lenguaje natural (NLP).
@@ -219,17 +219,65 @@ traducir, resumir y crear contenido de manera autónoma. Ejemplos recientes incl
 de NLP y en sistemas aplicados en diferentes industrias. 
 
 \paragraph{Que es un RAG}
-Según \textcite{han2024rag},\textit{Retrieval-Augmented Generation} (RAG) es una técnica que integra la capacidad generativa de los modelos 
+Según \textcite{han2024rag}, Retrieval-Augmented Generation (RAG) es una técnica que integra la capacidad generativa de los modelos 
 de lenguaje con la precisión de la recuperación de información en tiempo real. En lugar de basarse únicamente en el conocimiento almacenado en
 los parámetros durante el entrenamiento, RAG permite consultar repositorios externos como bases de datos o motores de búsqueda para obtener
 documentos relevantes y actualizados. Estos se incorporan al prompt del usuario, lo que fundamenta la respuesta en fuentes 
 verificables y disminuye los problemas de errores y alucinaciones que suelen presentarse en los modelos de lenguaje de gran escala.  
 
-El proceso de RAG se compone de tres fases: recuperación, augmentación y generación. Como lo menciona \textcite{gao2023rag}, primero se 
+
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\tikzset{
+  mindoval/.style={
+    rounded corners=18pt,
+    draw=black!70,
+    line width=0.7pt,
+    minimum width=3.6cm,
+    minimum height=1.1cm,
+    inner sep=6pt,
+    fill=white
+  },
+  mindcenter/.style={
+    rounded corners=8pt,
+    draw=black!70,
+    line width=0.9pt,
+    minimum width=4.0cm,
+    minimum height=1.2cm,
+    inner sep=4pt,
+    fill=softrose,
+    font=\bfseries
+  },
+  mindarrow/.style={-latex, line width=0.9pt}
+}
+
+% --- Nodo central
+\node[mindcenter] (arquitectura) at (0,0) {Arquitectura};
+
+% --- Nodos conectados
+\node[mindoval] (retrieval) at (-5,-3) {Retrieval};
+\node[mindoval] (augmented) at (0,-3) {Augmented};
+\node[mindoval] (generation) at (5,-3) {Generation};
+
+% --- Flechas
+\draw[mindarrow] (arquitectura.south west) -- (retrieval.north);
+\draw[mindarrow] (arquitectura.south) -- (augmented.north);
+\draw[mindarrow] (arquitectura.south east) -- (generation.north);
+
+\end{tikzpicture}
+\end{center}
+\caption{Componentes de RAG}
+\label{fig:arquitectura_rag}
+\end{figure}
+
+\subsubsection{Arquitectura}
+
+RAG se compone de tres fases: recuperación, augmentación y generación. Como lo menciona \textcite{gao2023rag}, primero se 
 localizan documentos relevantes para la consulta; luego, se enriquece la entrada del usuario con esos textos; finalmente, el modelo produce 
 una respuesta basada tanto en su conocimiento interno como en la información recuperada. Gracias a este enfoque, RAG incrementa la exactitud 
 de las respuestas, facilita la actualización del conocimiento sin necesidad de reentrenar el modelo y mejora la transparencia al permitir la 
-cita de fuentes. Como lo mencionan estos autores, se ha consolidado como una de las técnicas más relevantes en tareas que requieren gran 
+cita de fuentes. Es una de las técnicas más relevantes en tareas que requieren gran 
 cantidad de conocimiento, como el ámbito médico, legal o de investigación científica.  
 
 
@@ -291,4 +339,31 @@ Enhancements & Prompt Engineering & Diseño de instrucciones, chain-of-thought, 
 \caption{Componente Generator}
 \end{table}
 
-\subsubsection{Arquitectura}
+\subsubsection{Paradigmas}
+
+\paragraph{Tipos de Paradigmas}
+
+\paragraph{Clases}
+
+\subsubsection{Evaluacion}
+
+\paragraph{Metricas}
+
+
+\paragraph{Evaluadores automaticos}
+
+
+
+
+
+
+\subsubsection{Futuro de RAG}
+
+\paragraph{Desafios Actuales}
+
+
+\paragraph{Direcciones potenciales}
+
+
+\paragraph{Perspectivas}
+
