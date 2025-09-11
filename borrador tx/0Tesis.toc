@@ -25,8 +25,8 @@
 \contentsline {paragraph}{Tipos de Paradigmas}{10}{section*.17}%
 \contentsline {subsubsection}{Evaluacion y Metricas}{10}{section*.18}%
 \contentsline {paragraph}{Categorías de Evaluación}{11}{section*.19}%
-\contentsline {subsubsection}{Futuro de RAG}{12}{section*.20}%
-\contentsline {paragraph}{Desafios Actuales}{12}{section*.21}%
+\contentsline {subsubsection}{Futuro de RAG}{13}{section*.20}%
+\contentsline {paragraph}{Desafios Actuales}{13}{section*.21}%
 \contentsline {paragraph}{Direcciones potenciales}{13}{section*.22}%
 \contentsline {paragraph}{Perspectivas}{13}{section*.23}%
 \contentsline {chapter}{\numberline {2}Metodología}{14}{chapter.2}%

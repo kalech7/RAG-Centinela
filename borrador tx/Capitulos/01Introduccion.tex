@@ -437,6 +437,16 @@ aspectos como coherencia, transparencia y verificabilidad.
 
 \paragraph{Categorías de Evaluación}
 \begin{itemize}
+  \item \textbf{Enfoques de Evaluación - Gao et al. (2023)}
+        \begin{itemize}
+          \item Evaluación independiente por etapas: análisis separado de retrieval, augmentation y generation, con métricas específicas en cada módulo.
+          \item Evaluación End-to-End: valoración directa de la salida final del sistema RAG, con dos variantes:
+          \begin{itemize}
+              \item Evaluación End-to-End automática: frameworks que miden habilidades/abilities clave como exactitud, fidelidad (\textit{faithfulness}), atribución de fuentes, reducción de alucinaciones y transparencia.
+              \item Evaluación End-to-End con juicio humano: juicios expertos que valoran coherencia, verificabilidad, utilidad práctica y confianza.
+          \end{itemize}
+          \item Combinación de métricas: integración de métricas clásicas de recuperación (precisión, recall, nDCG), métricas de generación (coherencia, verificabilidad, calidad narrativa) y evaluación humana.
+      \end{itemize}
     \item \textbf{Evaluación en IR con FATE — Bernard \& Balog (2025)}
     \begin{itemize}
         \item Fairness: métricas automáticas como \textit{top-k}, \textit{exposure} y \textit{pairwise metrics}.
@@ -453,7 +463,7 @@ aspectos como coherencia, transparencia y verificabilidad.
         \item Dimensión multi-modal: evaluación de IR en escenarios que integran texto, imágenes y audio.
     \end{itemize}
 
-    \item \textbf{Evaluación en RAG — Knollmeyer et al. (2024)}
+    \item \textbf{Evaluación en RAG — Knollmeyer et al. (2024); Gao et al. (2023)}
     \begin{itemize}
         \item \textit{Fase de Recuperación}: 
         \begin{itemize}
@@ -461,6 +471,7 @@ aspectos como coherencia, transparencia y verificabilidad.
             \item Dataset quality: uso de bases de datos curadas y representativas (ej. Wikipedia, MS MARCO).
             \item Métricas aplicadas: precisión, recall, nDCG, cobertura de conocimiento.
         \end{itemize}
+
         \item \textit{Fase de Generación}: 
         \begin{itemize}
             \item Faithfulness: consistencia factual entre recuperación y generación.
@@ -468,24 +479,23 @@ aspectos como coherencia, transparencia y verificabilidad.
             \item Correctness: exactitud de la información producida y reducción de alucinaciones.
             \item Métricas aplicadas: BLEU, ROUGE, métricas de consistencia factual y evaluaciones humanas.
         \end{itemize}
+
         \item \textit{Fase de Integración}: 
         \begin{itemize}
             \item Citation quality: precisión, trazabilidad y cobertura de las fuentes citadas.
         \end{itemize}
+
         \item \textit{Evaluación Global}: 
         \begin{itemize}
             \item Evaluadores mixtos: combinación de métricas automáticas (similaridad semántica, BLEU, ROUGE) con juicios humanos (coherencia, verificabilidad, utilidad práctica).
             \item Datasets: necesidad de colecciones específicas adaptadas a RAG, más allá de benchmarks tradicionales de IR.
         \end{itemize}
-    \end{itemize}
 
-    \item \textbf{Perspectiva de Métricas Mixtas — Gao et al. (2023)}
-    \begin{itemize}
-        \item Recuperación: precisión, recall, nDCG, métricas de cobertura del conocimiento.
-        \item Generación: coherencia, verificabilidad, reducción de alucinaciones, calidad narrativa.
-        \item Evaluación humana: juicios expertos sobre transparencia, confianza y utilidad práctica.
+        
     \end{itemize}
+    
 \end{itemize}
+
 
 
 \subsubsection{Futuro de RAG}
