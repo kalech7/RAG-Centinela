@@ -339,15 +339,91 @@ Enhancements & Prompt Engineering & Diseño de instrucciones, chain-of-thought, 
 \caption{Componente Generator}
 \end{table}
 
+\subsubsection{Fases de Implementación}
+
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\tikzset{
+  mindoval/.style={
+    rounded corners=18pt,
+    draw=black!70,
+    line width=0.7pt,
+    minimum width=3.6cm,
+    minimum height=1.1cm,
+    inner sep=6pt,
+    fill=white
+  },
+  mindcenter/.style={
+    rounded corners=8pt,
+    draw=black!70,
+    line width=0.9pt,
+    minimum width=4.0cm,
+    minimum height=1.2cm,
+    inner sep=4pt,
+    fill=softrose,
+    font=\bfseries
+  },
+  mindarrow/.style={-latex, line width=0.9pt}
+}
+
+% --- Nodo central
+\node[mindcenter] (paradigmas) at (0,0) {Paradigmas};
+
+% --- Nodos conectados
+\node[mindoval, text width=5cm, align=center] 
+  (rag) at (-4,-3) {Retrieval-Augmented Generation (RAG)};
+\node[mindoval, text width=4.2cm, align=center] 
+  (hallucination) at (4,-3) {Hallucination Mitigation};
+
+% --- Flechas
+\draw[mindarrow] (paradigmas.south west) -- (rag.north);
+\draw[mindarrow] (paradigmas.south east) -- (hallucination.north);
+
+\end{tikzpicture}
+\end{center}
+\caption{Paradigmas principales en RAG y Hallucination Mitigation}
+\label{fig:paradigmas}
+\end{figure}
+
 \subsubsection{Paradigmas}
+Dentro del area de Retrieval Augmented Generation (RAG) \textcite{gao2023rag} distiguen los paradigmas Naive RAG, Advanced RAG y Modular RAG, que representan un progreso
+desde enfoques básicos de recuperación y generación hasta arquitecturas modulares y flexibles. A su vez \textcite{zhang2025hallucination} clasifican los problemas, en el area de 
+Hallucination Mitigation, en dos ejes: retrieval failure (fallos en fuentes, consultas o recuperadores ) y generation deficiency 
+(ruido o conflicto contextual y límites de capacidad). FInalmente, 
+\textcite{zhao2024rag} proponen fundaciones de RAG segun la forma que el retriver complementa al generador se clasifican en Query-based RAG, Latent Representation-based RAG,
+Logit-based RAG y Speculative RAG, de esta forma se expande la aplicación de RAG a múltiples dominios y modalidades.
+
 
 \paragraph{Tipos de Paradigmas}
 
-\paragraph{Clases}
+\begin{itemize}
+    \item \textbf{Retrieval-Augmented Generation (RAG) — Gao et al. (2023)}
+    \begin{itemize}
+        \item Naive RAG: enfoque básico de recuperación y generación.
+        \item Advanced RAG: incorpora optimizaciones como segmentación fina, re-ranking y recuperación iterativa.
+        \item Modular RAG: paradigma flexible con módulos especializados para búsqueda, memoria, alineación y validación.
+    \end{itemize}
 
-\subsubsection{Evaluacion}
+    \item \textbf{Tipos de RAG — Zhao et al. (2024)}
+    \begin{itemize}
+        \item Query-based RAG: integra directamente la consulta y la información recuperada en el input del generador.
+        \item Latent Representation-based RAG: incorpora la información recuperada como representaciones latentes en el modelo generativo.
+        \item Logit-based RAG: combina la información de recuperación en la fase de decodificación a nivel de logits.
+        \item Speculative RAG: sustituye pasos de generación por recuperación para acelerar y reducir costes.
+    \end{itemize}
 
-\paragraph{Metricas}
+    \item \textbf{Hallucination Mitigation — Zhang \& Zhang (2025)}
+    \begin{itemize}
+        \item Retrieval failure: fallos en las fuentes, consultas, recuperadores o estrategias de recuperación.
+        \item Generation deficiency: deficiencias en la generación como ruido, conflictos contextuales, middle curse, problemas de alineación y límites de capacidad.
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\subsubsection{Evaluacion y Metricas}
 
 
 \paragraph{Evaluadores automaticos}

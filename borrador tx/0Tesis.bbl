@@ -445,6 +445,130 @@
       \verb https://www.researchgate.net/publication/387128512
       \endverb
     \endentry
+    \entry{zhang2025hallucination}{article}{}
+      \name{author}{2}{}{%
+        {{hash=b5ae214880e8a2e25c7d101903c6a913}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Wan},
+           giveni={W\bibinitperiod}}}%
+        {{hash=948f26b38fba102b6f820808e554bc53}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Jing},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MDPI}%
+      }
+      \strng{namehash}{b6c9c73e060f46b9205570798108a706}
+      \strng{fullhash}{b6c9c73e060f46b9205570798108a706}
+      \strng{bibnamehash}{b6c9c73e060f46b9205570798108a706}
+      \strng{authorbibnamehash}{b6c9c73e060f46b9205570798108a706}
+      \strng{authornamehash}{b6c9c73e060f46b9205570798108a706}
+      \strng{authorfullhash}{b6c9c73e060f46b9205570798108a706}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematics}
+      \field{number}{5}
+      \field{title}{Hallucination Mitigation for Retrieval-Augmented Large Language Models: A Review}
+      \field{volume}{13}
+      \field{year}{2025}
+      \field{pages}{856}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/math13050856
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.3390/math13050856
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.3390/math13050856
+      \endverb
+    \endentry
+    \entry{zhao2024rag}{article}{}
+      \name{author}{10}{}{%
+        {{hash=ad8f58d196bf0334ce91123bd6ad23e2}{%
+           family={Zhao},
+           familyi={Z\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+        {{hash=32e563370422457790db030ab2c13183}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod}}}%
+        {{hash=8e5b4fa8a6cded2e238a8680d133a1e1}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Q.},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=cc4aadc875d7abdbaf96dfa4a83d8b77}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Z.},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=04ffd5cf5986242e8af48c8db023f622}{%
+           family={Geng},
+           familyi={G\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=77c4d7849b734433a85c29d19eef4278}{%
+           family={Fu},
+           familyi={F\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod}}}%
+        {{hash=527f0ca92e7ed462c77915036481c907}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod}}}%
+        {{hash=13414502df57d59c82c59a065c752294}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod}}}%
+        {{hash=850b9e61b9cc106cd1b82515e62128e8}{%
+           family={Jiang},
+           familyi={J\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=c9588dcc196324256c24dd1857e31955}{%
+           family={Cui},
+           familyi={C\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{2aa429c6b36f65205d0b1a81105422b8}
+      \strng{fullhash}{f49841053c0c349ca19f33472d2801e5}
+      \strng{bibnamehash}{2aa429c6b36f65205d0b1a81105422b8}
+      \strng{authorbibnamehash}{2aa429c6b36f65205d0b1a81105422b8}
+      \strng{authornamehash}{2aa429c6b36f65205d0b1a81105422b8}
+      \strng{authorfullhash}{f49841053c0c349ca19f33472d2801e5}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv}
+      \field{note}{APA style: Zhao, P., Zhang, H., Yu, Q., Wang, Z., Geng, Y., Fu, F., Yang, L., Zhang, W., Jiang, J., \& Cui, B. (2024). Retrieval-augmented generation for AI-generated content: A survey. \textit{arXiv.} https://doi.org/10.48550/arXiv.2402.19473}
+      \field{title}{Retrieval-Augmented Generation for AI-Generated Content: A Survey}
+      \field{volume}{abs/2402.19473}
+      \field{year}{2024}
+      \verb{doi}
+      \verb 10.48550/arXiv.2402.19473
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2402.19473
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2402.19473
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput
