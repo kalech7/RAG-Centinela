@@ -273,7 +273,7 @@ verificables y disminuye los problemas de errores y alucinaciones que suelen pre
 
 \subsubsection{Arquitectura}
 
-RAG se compone de tres fases: recuperación, augmentación y generación. Como lo menciona \textcite{gao2023rag}, primero se 
+RAG se compone de tres fases: recuperación, augmentation y generación (ver Figura~\ref{fig:arquitectura_rag}). Como lo menciona \textcite{gao2023rag}, primero se 
 localizan documentos relevantes para la consulta; luego, se enriquece la entrada del usuario con esos textos; finalmente, el modelo produce 
 una respuesta basada tanto en su conocimiento interno como en la información recuperada. Gracias a este enfoque, RAG incrementa la exactitud 
 de las respuestas, facilita la actualización del conocimiento sin necesidad de reentrenar el modelo y mejora la transparencia al permitir la 
@@ -339,8 +339,13 @@ Enhancements & Prompt Engineering & Diseño de instrucciones, chain-of-thought, 
 \caption{Componente Generator}
 \end{table}
 
+explicar tablas
+
 \subsubsection{Fases de Implementación}
 
+
+
+\subsubsection{Paradigmas}
 \begin{figure}[H]
 \begin{center}
 \begin{tikzpicture}[x=1cm,y=1cm]
@@ -386,7 +391,6 @@ Enhancements & Prompt Engineering & Diseño de instrucciones, chain-of-thought, 
 \label{fig:paradigmas}
 \end{figure}
 
-\subsubsection{Paradigmas}
 Dentro del area de Retrieval Augmented Generation (RAG) \textcite{gao2023rag} distiguen los paradigmas Naive RAG, Advanced RAG y Modular RAG, que representan un progreso
 desde enfoques básicos de recuperación y generación hasta arquitecturas modulares y flexibles. A su vez \textcite{zhang2025hallucination} clasifican los problemas, en el area de 
 Hallucination Mitigation, en dos ejes: retrieval failure (fallos en fuentes, consultas o recuperadores ) y generation deficiency 

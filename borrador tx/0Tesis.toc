@@ -21,7 +21,7 @@
 \contentsline {paragraph}{Que es un RAG}{7}{section*.8}%
 \contentsline {subsubsection}{Arquitectura}{7}{section*.10}%
 \contentsline {subsubsection}{Fases de Implementación}{9}{section*.14}%
-\contentsline {subsubsection}{Paradigmas}{9}{section*.16}%
+\contentsline {subsubsection}{Paradigmas}{9}{section*.15}%
 \contentsline {paragraph}{Tipos de Paradigmas}{10}{section*.17}%
 \contentsline {subsubsection}{Evaluacion y Metricas}{10}{section*.18}%
 \contentsline {paragraph}{Categorías de Evaluación}{11}{section*.19}%

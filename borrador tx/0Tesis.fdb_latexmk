@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber 0Tesis"] 1757574215.7903 "0Tesis.bcf" "0Tesis.bbl" "0Tesis" 1757574216.50538 0
-  "0Tesis.bcf" 1757574111.31567 109314 09a996adcf02268b65d61ec28f1bedd5 "pdflatex"
+["biber 0Tesis"] 0 "0Tesis.bcf" "0Tesis.bbl" "0Tesis" 1757600410.19931 -1
+  "0Tesis.bcf" 1757600410.07494 109314 09a996adcf02268b65d61ec28f1bedd5 "pdflatex"
   "bibTesis.bib" 1757574215.62196 6003 407cdb9bbba79db2458435b04eaf5804 ""
   (generated)
   "0Tesis.bbl"
   "0Tesis.blg"
   (rewritten before read)
-["pdflatex"] 1757574109.54533 "/run/media/alech/backup/Github/tesis/borrador tx/0Tesis.tex" "0Tesis.pdf" "0Tesis" 1757574216.50554 0
+["pdflatex"] 1757600408.27319 "/run/media/alech/backup/Github/tesis/borrador tx/0Tesis.tex" "0Tesis.pdf" "0Tesis" 1757600410.19992 0
   "/run/media/alech/backup/Github/tesis/borrador tx/0Tesis.tex" 1757262058.10288 3897 0e7adb52e8831300f2dc9961f8bfd214 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1721433600 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
@@ -228,19 +228,19 @@
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1721433600 40900 887e0dc8cac988a9e9c574af364cf837 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1750432974.34085 4602002 62dba5fc29055c16380d7393a2adb07a ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1750432725 7753792 3c03957cf8d817594a5c5896b126197c ""
-  "0Tesis.aux" 1757574111.30758 4544 f29f6011f594adc635aa7d7a351a8210 "pdflatex"
-  "0Tesis.bbl" 1757574216.47365 25902 a4549ab0d8c0c6a354b63a7cb31d3a63 "biber 0Tesis"
-  "0Tesis.out" 1757574111.31424 5005 9aea9896b93c7c1014a4185da6dc5e4d "pdflatex"
-  "0Tesis.run.xml" 1757574111.31665 2348 115a50135b088cde4a4e57687f24f24b "pdflatex"
+  "0Tesis.aux" 1757600410.06449 4544 f29f6011f594adc635aa7d7a351a8210 "pdflatex"
+  "0Tesis.bbl" 1757599781.78192 25902 a4549ab0d8c0c6a354b63a7cb31d3a63 "biber 0Tesis"
+  "0Tesis.out" 1757600410.07333 5005 9aea9896b93c7c1014a4185da6dc5e4d "pdflatex"
+  "0Tesis.run.xml" 1757600410.07605 2348 115a50135b088cde4a4e57687f24f24b "pdflatex"
   "0Tesis.tex" 1757262058.10288 3897 0e7adb52e8831300f2dc9961f8bfd214 ""
-  "0Tesis.toc" 1757574111.31674 3258 0bc294eeba501c61ca172efe9f26ca47 "pdflatex"
-  "Capitulos/00Resumen.aux" 1757574110.68656 4282 2d1c2d4675b03c386ad086b63d64e541 "pdflatex"
+  "0Tesis.toc" 1757600410.07616 3258 414bd792a2b1bb522dd4e6cbbe6c3d14 "pdflatex"
+  "Capitulos/00Resumen.aux" 1757600409.44913 4282 2d1c2d4675b03c386ad086b63d64e541 "pdflatex"
   "Capitulos/00Resumen.tex" 1750451154 167 2f96e86a344ae7d1bf1b4583b1c179cc ""
-  "Capitulos/01Introduccion.aux" 1757574111.0675 9035 8451ae95a612a5fa83d87ee1a82eb584 "pdflatex"
-  "Capitulos/01Introduccion.tex" 1757574109.35643 26168 54c202620d938a0fcb27f4bdd086b710 ""
-  "Capitulos/02Metodologia.aux" 1757574111.22559 4863 345f6249c959bf10a4144e489b449d79 "pdflatex"
+  "Capitulos/01Introduccion.aux" 1757600409.80868 9035 84ad80be71647a9153960c5805f83912 "pdflatex"
+  "Capitulos/01Introduccion.tex" 1757600406.14437 26226 458c780e3ead20ab1a80884e0fcf3fd9 ""
+  "Capitulos/02Metodologia.aux" 1757600409.97297 4863 345f6249c959bf10a4144e489b449d79 "pdflatex"
   "Capitulos/02Metodologia.tex" 1757472285.02858 14074 52a098de08340aae0faf45acc7ce5e8c ""
-  "Capitulos/03Pruebas.aux" 1757574111.23455 4878 32b666d3eb8556dfeb49d287a9b85562 "pdflatex"
+  "Capitulos/03Pruebas.aux" 1757600409.98231 4878 32b666d3eb8556dfeb49d287a9b85562 "pdflatex"
   "Capitulos/03Pruebas.tex" 1756400969.67982 190 736a454314b02f005ba7d67d5eac2cc7 ""
   "comandos.tex" 1756688743.10718 1829 2fc85ed3075015e2e04a3252f0df389a ""
   "tesis-epn.sty" 1750451154 4894 1bc12e431c280781225b91e689960444 ""
