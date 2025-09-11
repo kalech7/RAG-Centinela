@@ -1,16 +1,14 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is '0Tesis.blg'
-[56] biber:340> INFO - === Thu Sep 11, 2025, 02:01:37
-[67] Biber.pm:419> INFO - Reading '0Tesis.bcf'
-[115] Biber.pm:976> INFO - Using all citekeys in bib section 0
-[124] Biber.pm:4419> INFO - Processing section 0
-[131] Biber.pm:4610> INFO - Looking for bibtex file 'bibTesis.bib' for section 0
-[133] bibtex.pm:1713> INFO - LaTeX decoding ...
-[142] bibtex.pm:1519> INFO - Found BibTeX data source 'bibTesis.bib'
-[259] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[259] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
-[259] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'es-ES'
-[271] bbl.pm:660> INFO - Writing '0Tesis.bbl' with encoding 'UTF-8'
-[276] bbl.pm:763> INFO - Output to 0Tesis.bbl
-[276] Biber.pm:131> WARN - legacy month field 'February' in entry 'bernard2025fate' is not an integer - this will probably not sort properly.
-[276] Biber.pm:133> INFO - WARNINGS: 1
+[54] biber:340> INFO - === Thu Sep 11, 2025, 02:03:36
+[64] Biber.pm:419> INFO - Reading '0Tesis.bcf'
+[111] Biber.pm:976> INFO - Using all citekeys in bib section 0
+[119] Biber.pm:4419> INFO - Processing section 0
+[126] Biber.pm:4610> INFO - Looking for bibtex file 'bibTesis.bib' for section 0
+[128] bibtex.pm:1713> INFO - LaTeX decoding ...
+[136] bibtex.pm:1519> INFO - Found BibTeX data source 'bibTesis.bib'
+[254] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[254] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
+[255] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'es-ES'
+[267] bbl.pm:660> INFO - Writing '0Tesis.bbl' with encoding 'UTF-8'
+[273] bbl.pm:763> INFO - Output to 0Tesis.bbl
