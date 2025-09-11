@@ -79,6 +79,47 @@
       \verb https://ro.uow.edu.au/smhpapers/3344
       \endverb
     \endentry
+    \entry{bernard2025fate}{article}{}
+      \name{author}{2}{}{%
+        {{hash=c715661a8b6ee01e2e28eb6084bcdcde}{%
+           family={Bernard},
+           familyi={B\bibinitperiod},
+           given={Nolwenn},
+           giveni={N\bibinitperiod}}}%
+        {{hash=bb706bacb251c39d000c0da6d6bd67f7}{%
+           family={Balog},
+           familyi={B\bibinitperiod},
+           given={Krisztian},
+           giveni={K\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York, NY, USA}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{54b888fa1f91d5bf99828444e3032681}
+      \strng{fullhash}{54b888fa1f91d5bf99828444e3032681}
+      \strng{bibnamehash}{54b888fa1f91d5bf99828444e3032681}
+      \strng{authorbibnamehash}{54b888fa1f91d5bf99828444e3032681}
+      \strng{authornamehash}{54b888fa1f91d5bf99828444e3032681}
+      \strng{authorfullhash}{54b888fa1f91d5bf99828444e3032681}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ACM Computing Surveys}
+      \field{month}{2}
+      \field{number}{6}
+      \field{title}{A Systematic Review of Fairness, Accountability, Transparency, and Ethics in Information Retrieval}
+      \field{volume}{57}
+      \field{year}{2025}
+      \field{pages}{136:1\bibrangedash 136:29}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1145/3637211
+      \endverb
+    \endentry
     \entry{vombrocke2020}{incollection}{}
       \name{author}{3}{}{%
         {{hash=12c8a93a870d1bc7a6de117db0e7f71d}{%
@@ -328,6 +369,75 @@
       \range{pages}{1}
       \verb{doi}
       \verb 10.3390/app14199103
+      \endverb
+    \endentry
+    \entry{knollmeyer2024benchmarking}{inproceedings}{}
+      \name{author}{7}{}{%
+        {{hash=11519144b6750365b474f030bf7b4759}{%
+           family={Knollmeyer},
+           familyi={K\bibinitperiod},
+           given={Simon},
+           giveni={S\bibinitperiod}}}%
+        {{hash=1342a12a836e83b982432f56afcab6da}{%
+           family={Caymazer},
+           familyi={C\bibinitperiod},
+           given={Oğuz},
+           giveni={O\bibinitperiod}}}%
+        {{hash=21251cf78e7caa35836fa5f2674a34b4}{%
+           family={Koval},
+           familyi={K\bibinitperiod},
+           given={Leonid},
+           giveni={L\bibinitperiod}}}%
+        {{hash=30f04ca97570eab5422c684fa8d0ed48}{%
+           family={Akmal},
+           familyi={A\bibinitperiod},
+           given={Muhammad\bibnamedelima Uzair},
+           giveni={M\bibinitperiod\bibinitdelim U\bibinitperiod}}}%
+        {{hash=fe22107d4ce16bffa503cf84e98d6dfe}{%
+           family={Asif},
+           familyi={A\bibinitperiod},
+           given={Saara},
+           giveni={S\bibinitperiod}}}%
+        {{hash=fedf3bff9b7022c8f0cbbc640a40a584}{%
+           family={Mathias},
+           familyi={M\bibinitperiod},
+           given={Selvine\bibnamedelima G.},
+           giveni={S\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=c8aff4e3d601acab10e44169fbdb1f26}{%
+           family={Großmann},
+           familyi={G\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {SCITEPRESS -- Science}%
+        {Technology Publications, Lda}%
+      }
+      \strng{namehash}{39550c1878f3fafdf230c90abaafe8ec}
+      \strng{fullhash}{2f71db4585cba768c360f3bb98bf7a55}
+      \strng{bibnamehash}{39550c1878f3fafdf230c90abaafe8ec}
+      \strng{authorbibnamehash}{39550c1878f3fafdf230c90abaafe8ec}
+      \strng{authornamehash}{39550c1878f3fafdf230c90abaafe8ec}
+      \strng{authorfullhash}{2f71db4585cba768c360f3bb98bf7a55}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 16th International Joint Conference on Knowledge Discovery, Knowledge Engineering and Knowledge Management (IC3K 2024) - Volume 3: KMIS}
+      \field{isbn}{978-989-758-716-0}
+      \field{issn}{2184-3228}
+      \field{title}{Benchmarking of Retrieval Augmented Generation: A Comprehensive Systematic Literature Review on Evaluation Dimensions, Evaluation Metrics and Datasets}
+      \field{year}{2024}
+      \field{pages}{137\bibrangedash 148}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.5220/0013065700003838
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.5220/0013065700003838
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.5220/0013065700003838
       \endverb
     \endentry
     \entry{papatheodorou2019}{article}{}

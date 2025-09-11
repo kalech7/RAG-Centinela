@@ -425,12 +425,67 @@ Logit-based RAG y Speculative RAG, de esta forma se expande la aplicación de RA
 
 \subsubsection{Evaluacion y Metricas}
 
+La evaluación de los sistemas de Recuperación de Información (IR) y de Retrieval-Augmented Generation (RAG) ha sido objeto de un creciente interés en la literatura reciente. 
+En el ámbito de IR, \textcite{bernard2025fate} destacan que las nociones de equidad, transparencia y responsabilidad requieren enfoques diversos: mientras la \textit{fairness} 
+se mide mayormente con métricas automáticas, la \textit{transparency} y la \textit{accountability} suelen evaluarse mediante auditorías y estudios con usuarios. En contraste, 
+la dimensión ética carece de métricas claras y se asocia más a aspectos como privacidad y seguridad.  
 
-\paragraph{Evaluadores automaticos}
+En el área de RAG, \textcite{knollmeyer2024benchmarking} identifican cinco dimensiones clave de evaluación: relevancia del contexto, fidelidad (\textit{faithfulness}), relevancia 
+de la respuesta, corrección y calidad de las citas. Estas dimensiones permiten evaluar de manera más integral los sistemas que combinan recuperación y generación. Asimismo, 
+\textcite{gao2023rag} señalan que, además de las métricas automáticas tradicionales de IR (precisión, recall, nDCG), resulta fundamental incluir evaluaciones humanas que capten 
+aspectos como coherencia, transparencia y verificabilidad.  
 
+\paragraph{Categorías de Evaluación}
+\begin{itemize}
+    \item \textbf{Evaluación en IR con FATE — Bernard \& Balog (2025)}
+    \begin{itemize}
+        \item Fairness: métricas automáticas como \textit{top-k}, \textit{exposure} y \textit{pairwise metrics}.
+        \item Transparency y Accountability: auditorías y estudios de usuarios, centrados en interpretabilidad y trazabilidad.
+        \item Ethics: enfoques cualitativos vinculados a privacidad y seguridad.
+        \item Tensiones: conflictos entre fairness individual vs. grupal y entre transparencia excesiva vs. carga cognitiva.
+    \end{itemize}
 
+    \item \textbf{Evaluación Clásica en IR — Hambarde \& Proença (2023)}
+    \begin{itemize}
+        \item Métricas de recuperación: precisión, recall, F1, MAP (Mean Average Precision), MRR (Mean Reciprocal Rank).
+        \item Métricas de ranking: nDCG (Normalized Discounted Cumulative Gain) y calidad del ordenamiento.
+        \item Evaluación de modelos neuronales: comparación con benchmarks tradicionales (TREC, MS MARCO).
+        \item Dimensión multi-modal: evaluación de IR en escenarios que integran texto, imágenes y audio.
+    \end{itemize}
 
+    \item \textbf{Evaluación en RAG — Knollmeyer et al. (2024)}
+    \begin{itemize}
+        \item \textit{Fase de Recuperación}: 
+        \begin{itemize}
+            \item Context relevance: grado de pertinencia de los documentos recuperados.
+            \item Dataset quality: uso de bases de datos curadas y representativas (ej. Wikipedia, MS MARCO).
+            \item Métricas aplicadas: precisión, recall, nDCG, cobertura de conocimiento.
+        \end{itemize}
+        \item \textit{Fase de Generación}: 
+        \begin{itemize}
+            \item Faithfulness: consistencia factual entre recuperación y generación.
+            \item Answer relevance: utilidad de la respuesta respecto a la consulta.
+            \item Correctness: exactitud de la información producida y reducción de alucinaciones.
+            \item Métricas aplicadas: BLEU, ROUGE, métricas de consistencia factual y evaluaciones humanas.
+        \end{itemize}
+        \item \textit{Fase de Integración}: 
+        \begin{itemize}
+            \item Citation quality: precisión, trazabilidad y cobertura de las fuentes citadas.
+        \end{itemize}
+        \item \textit{Evaluación Global}: 
+        \begin{itemize}
+            \item Evaluadores mixtos: combinación de métricas automáticas (similaridad semántica, BLEU, ROUGE) con juicios humanos (coherencia, verificabilidad, utilidad práctica).
+            \item Datasets: necesidad de colecciones específicas adaptadas a RAG, más allá de benchmarks tradicionales de IR.
+        \end{itemize}
+    \end{itemize}
 
+    \item \textbf{Perspectiva de Métricas Mixtas — Gao et al. (2023)}
+    \begin{itemize}
+        \item Recuperación: precisión, recall, nDCG, métricas de cobertura del conocimiento.
+        \item Generación: coherencia, verificabilidad, reducción de alucinaciones, calidad narrativa.
+        \item Evaluación humana: juicios expertos sobre transparencia, confianza y utilidad práctica.
+    \end{itemize}
+\end{itemize}
 
 
 \subsubsection{Futuro de RAG}

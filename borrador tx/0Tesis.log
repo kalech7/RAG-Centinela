@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2025.6.20)  11 SEP 2025 01:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2025.6.20)  11 SEP 2025 01:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1099,22 +1099,22 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 403.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
-) [10]) [11]
+) [10] [11] [12]) [13]
 \openout2 = `Capitulos/02Metodologia.aux'.
 
  (./Capitulos/02Metodologia.tex
 Cap\'{\i }tulo 2.
-[12
+[14
 
 
 
 
-] [13] [14] [15]
+] [15] [16] [17]
 Underfull \hbox (badness 10000) in paragraph at lines 116--117
 
  []
 
-[16]
+[18]
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
 (Font)              scaled to size 11.40997pt on input line 204.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
@@ -1127,7 +1127,7 @@ LaTeX Font Info:    Font shape `U/msa/m/n' will be
 (Font)              scaled to size 5.21004pt on input line 204.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 5.21004pt on input line 204.
- [17]) [18
+ [19]) [20
 
 
 ]
@@ -1135,7 +1135,7 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 
  (./Capitulos/03Pruebas.tex
 Cap\'{\i }tulo 3.
-) [19
+) [21
 
 
 
@@ -1149,12 +1149,12 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [20
+ [22
 
 
 
 
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] [21] (./0Tesis.aux
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] [23] (./0Tesis.aux
 LaTeX Info: Redefining \sptext on input line 23.
 LaTeX Info: Redefining \. on input line 23.
 LaTeX Info: Redefining \% on input line 23.
@@ -1166,18 +1166,18 @@ Package logreq Info: Writing requests to '0Tesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 36498 strings out of 476041
- 686888 string characters out of 5793174
+ 36519 strings out of 476041
+ 687549 string characters out of 5793174
  1868388 words of memory out of 6000000
- 55889 multiletter control sequences out of 15000+600000
- 580112 words of font info for 351 fonts, out of 8000000 for 9000
+ 55900 multiletter control sequences out of 15000+600000
+ 580426 words of font info for 355 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
  90i,12n,90p,1182b,2324s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on 0Tesis.pdf (30 pages, 152759 bytes).
+Output written on 0Tesis.pdf (32 pages, 159213 bytes).
 PDF statistics:
- 414 PDF objects out of 1000 (max. 8388607)
- 368 compressed objects within 4 object streams
- 106 named destinations out of 1000 (max. 500000)
+ 433 PDF objects out of 1000 (max. 8388607)
+ 385 compressed objects within 4 object streams
+ 110 named destinations out of 1000 (max. 500000)
  99565 words of extra memory for PDF output out of 106986 (max. 10000000)
 
