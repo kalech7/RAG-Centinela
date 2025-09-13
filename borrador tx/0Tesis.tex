@@ -14,7 +14,17 @@
 % Codificación y español moderno (babel actual + T1)
 \usepackage[utf8]{inputenc}  % entrada en UTF-8
 \usepackage[T1]{fontenc}     % salida correcta (acentos)
-\usepackage[spanish]{babel}  % idioma
+\usepackage[spanish]{babel} 
+\addto\captionsspanish{%
+  \renewcommand{\tablename}{Tabla}%
+}
+
+\usepackage{booktabs}
+\usepackage{multirow}
+
+\usepackage{bookmark}
+
+% idioma
 \usepackage{float}
 % Gráficos y diagramas
 \usepackage{graphicx}
