@@ -16,27 +16,27 @@
 \contentsline {subsection}{\numberline {1.7.3}Identificación del estudio semilla y selección de revisiones relevantes}{3}{subsection.1.7.3}%
 \contentsline {subsection}{\numberline {1.7.4}Valoracion de la evidencias y extracion de la infomacion}{4}{subsection.1.7.4}%
 \contentsline {subsection}{\numberline {1.7.5}Síntesis y representación de resultados}{4}{subsection.1.7.5}%
-\contentsline {subsubsection}{Fundamentos}{6}{section*.6}%
+\contentsline {subsubsection}{Fundamentos}{6}{section*.5}%
 \contentsline {paragraph}{Que es un LLM}{6}{section*.7}%
 \contentsline {paragraph}{Que es un RAG}{7}{section*.8}%
-\contentsline {subsubsection}{Arquitectura}{7}{section*.10}%
-\contentsline {subsubsection}{Fases de Implementación}{9}{section*.14}%
-\contentsline {subsubsection}{Paradigmas}{9}{section*.15}%
-\contentsline {paragraph}{Tipos de Paradigmas}{10}{section*.17}%
-\contentsline {subsubsection}{Evaluacion y Metricas}{10}{section*.18}%
-\contentsline {paragraph}{Categorías de Evaluación}{11}{section*.19}%
-\contentsline {subsubsection}{Futuro de RAG}{13}{section*.20}%
-\contentsline {paragraph}{Desafios Actuales}{13}{section*.21}%
-\contentsline {paragraph}{Direcciones potenciales}{13}{section*.22}%
-\contentsline {paragraph}{Perspectivas}{13}{section*.23}%
-\contentsline {chapter}{\numberline {2}Metodología}{14}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Revisión sistemática}{14}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Enfoque Design Science Research (DSR)}{16}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Diseño y desarrollo del artefacto}{20}{section.2.3}%
-\contentsline {chapter}{\numberline {3}Pruebas, Resultados, Conclusiones y Recomendaciones}{21}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Demostracion}{21}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Evaluacion del desempeño}{21}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Resultados}{21}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Conclusiones}{21}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Recomendaciones}{21}{section.3.5}%
-\contentsline {chapter}{Bibliografía}{22}{chapter*.27}%
+\contentsline {subsubsection}{Arquitectura}{7}{section*.9}%
+\contentsline {subsubsection}{Fases de Implementación}{13}{section*.14}%
+\contentsline {subsubsection}{Paradigmas}{13}{section*.15}%
+\contentsline {paragraph}{Tipos de Paradigmas}{13}{section*.17}%
+\contentsline {subsubsection}{Evaluacion y Metricas}{14}{section*.18}%
+\contentsline {paragraph}{Categorías de Evaluación}{14}{section*.19}%
+\contentsline {subsubsection}{Futuro de RAG}{16}{section*.20}%
+\contentsline {paragraph}{Desafios Actuales}{16}{section*.21}%
+\contentsline {paragraph}{Direcciones Potenciales}{17}{section*.22}%
+\contentsline {paragraph}{Perspectivas}{17}{section*.23}%
+\contentsline {chapter}{\numberline {2}Metodología}{18}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Revisión sistemática}{18}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Enfoque Design Science Research (DSR)}{20}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Diseño y desarrollo del artefacto}{24}{section.2.3}%
+\contentsline {chapter}{\numberline {3}Pruebas, Resultados, Conclusiones y Recomendaciones}{25}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Demostracion}{25}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Evaluacion del desempeño}{25}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Resultados}{25}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Conclusiones}{25}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Recomendaciones}{25}{section.3.5}%
+\contentsline {chapter}{Bibliografía}{26}{chapter*.27}%

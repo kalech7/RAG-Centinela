@@ -69,7 +69,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{note}{Disponible en Research Online de la University of Wollongong}
-      \field{title}{Methodology for {JBI} Umbrella Reviews}
+      \field{title}{Methodology for JBI Umbrella Reviews}
       \field{year}{2014}
       \true{nocite}
       \verb{urlraw}
@@ -226,6 +226,146 @@
       \verb 10.1016/j.mlwa.2022.100334
       \endverb
     \endentry
+    \entry{fan2024ragllm}{inproceedings}{}
+      \name{author}{8}{}{%
+        {{hash=c962fa5377a09410d9645db6e5704558}{%
+           family={Fan},
+           familyi={F\bibinitperiod},
+           given={Wenqi},
+           giveni={W\bibinitperiod}}}%
+        {{hash=9255b65965fc24a3fe7e07e19121e255}{%
+           family={Ding},
+           familyi={D\bibinitperiod},
+           given={Yujuan},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=a26132c529ee9e29003497240faa4bce}{%
+           family={Ning},
+           familyi={N\bibinitperiod},
+           given={Liangbo},
+           giveni={L\bibinitperiod}}}%
+        {{hash=be21ceb52b7089f735f8f579b1a18cb6}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Shijie},
+           giveni={S\bibinitperiod}}}%
+        {{hash=bf04d8ba95f163f55fce0643ad266884}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Hengyun},
+           giveni={H\bibinitperiod}}}%
+        {{hash=866fc31d9db55acbc0a55c2b3c929414}{%
+           family={Yin},
+           familyi={Y\bibinitperiod},
+           given={Dawei},
+           giveni={D\bibinitperiod}}}%
+        {{hash=57e4257ea3484acff91be2a3df96d16b}{%
+           family={Chua},
+           familyi={C\bibinitperiod},
+           given={Tat-Seng},
+           giveni={T\bibinithyphendelim S\bibinitperiod}}}%
+        {{hash=16a77262afb7cc9b0229c21f168bd098}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Qing},
+           giveni={Q\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Barcelona, Spain}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{eb25007ac5b5dcfb3bbc997db67f5ab4}
+      \strng{fullhash}{627cbccaa220e670d6067767b5b1a3f5}
+      \strng{bibnamehash}{eb25007ac5b5dcfb3bbc997db67f5ab4}
+      \strng{authorbibnamehash}{eb25007ac5b5dcfb3bbc997db67f5ab4}
+      \strng{authornamehash}{eb25007ac5b5dcfb3bbc997db67f5ab4}
+      \strng{authorfullhash}{627cbccaa220e670d6067767b5b1a3f5}
+      \field{extraname}{1}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining KDD '24}
+      \field{title}{A Survey on RAG Meeting LLMs: Towards Retrieval-Augmented Large Language Models}
+      \field{year}{2024}
+      \field{pages}{6491\bibrangedash 6501}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1145/3637528.3671470
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/3637528.3671470
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/3637528.3671470
+      \endverb
+    \endentry
+    \entry{fan2021pretraining}{article}{}
+      \name{author}{8}{}{%
+        {{hash=0c2ecb63e8980eb8dbcf4a604ec94ca5}{%
+           family={Fan},
+           familyi={F\bibinitperiod},
+           given={Yixing},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=80995e442d7d89d8247316162a3e1945}{%
+           family={Xie},
+           familyi={X\bibinitperiod},
+           given={Xiaohui},
+           giveni={X\bibinitperiod}}}%
+        {{hash=8facb2c986b99dfb59c8d88c2a11b754}{%
+           family={Cai},
+           familyi={C\bibinitperiod},
+           given={Yinqiong},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=95d25145789eb692784f0e434ed1b801}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Jia},
+           giveni={J\bibinitperiod}}}%
+        {{hash=43aa7beb99bf5590e74b6cd104d38617}{%
+           family={Ma},
+           familyi={M\bibinitperiod},
+           given={Xinyu},
+           giveni={X\bibinitperiod}}}%
+        {{hash=06b30df203742a9c62fdd4600ffdf0f5}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Xiangsheng},
+           giveni={X\bibinitperiod}}}%
+        {{hash=b81bf0de98d741047b84d65d15117f32}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Ruqing},
+           giveni={R\bibinitperiod}}}%
+        {{hash=3a4015314b36f50d72a43c8fb03ca87e}{%
+           family={Guo},
+           familyi={G\bibinitperiod},
+           given={Jiafeng},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{5c91d734aedc7df93d92038d668ff2db}
+      \strng{fullhash}{b9b9fcee3dd4d0e2bdb83e6623a9f2a6}
+      \strng{bibnamehash}{5c91d734aedc7df93d92038d668ff2db}
+      \strng{authorbibnamehash}{5c91d734aedc7df93d92038d668ff2db}
+      \strng{authornamehash}{5c91d734aedc7df93d92038d668ff2db}
+      \strng{authorfullhash}{b9b9fcee3dd4d0e2bdb83e6623a9f2a6}
+      \field{extraname}{2}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2111.13853}
+      \field{title}{Pre-training Methods in Information Retrieval}
+      \field{year}{2021}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2111.13853
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2111.13853
+      \endverb
+    \endentry
     \entry{gao2023rag}{misc}{}
       \name{author}{9}{}{%
         {{hash=572def57560315de76cedfc3e17c2eb2}{%
@@ -305,18 +445,18 @@
            familyi={H\bibinitperiod},
            given={Kailash\bibnamedelima A.},
            giveni={K\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
-        {{hash=19f598d31a3aab81ad8262c2bac15d12}{%
-           family={Proença},
-           familyi={P\bibinitperiod},
-           given={Hugo},
-           giveni={H\bibinitperiod}}}%
+        {{hash=ddccca7ea1aa7ef178f4c5e5948a0d8d}{%
+           family={Hugo},
+           familyi={H\bibinitperiod},
+           given={Proen},
+           giveni={P\bibinitperiod}}}%
       }
-      \strng{namehash}{bf6a7fb687ad19afe170b8d5bde79c55}
-      \strng{fullhash}{bf6a7fb687ad19afe170b8d5bde79c55}
-      \strng{bibnamehash}{bf6a7fb687ad19afe170b8d5bde79c55}
-      \strng{authorbibnamehash}{bf6a7fb687ad19afe170b8d5bde79c55}
-      \strng{authornamehash}{bf6a7fb687ad19afe170b8d5bde79c55}
-      \strng{authorfullhash}{bf6a7fb687ad19afe170b8d5bde79c55}
+      \strng{namehash}{484a298a97dad0c0e1888ab2dc0d7ef9}
+      \strng{fullhash}{484a298a97dad0c0e1888ab2dc0d7ef9}
+      \strng{bibnamehash}{484a298a97dad0c0e1888ab2dc0d7ef9}
+      \strng{authorbibnamehash}{484a298a97dad0c0e1888ab2dc0d7ef9}
+      \strng{authornamehash}{484a298a97dad0c0e1888ab2dc0d7ef9}
+      \strng{authorfullhash}{484a298a97dad0c0e1888ab2dc0d7ef9}
       \field{sortinit}{H}
       \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
       \field{labelnamesource}{author}
@@ -369,6 +509,150 @@
       \range{pages}{1}
       \verb{doi}
       \verb 10.3390/app14199103
+      \endverb
+    \endentry
+    \entry{han2023vector}{article}{}
+      \name{author}{3}{}{%
+        {{hash=d9942c8f94de98edbe308f40f0e2e4b3}{%
+           family={Han},
+           familyi={H\bibinitperiod},
+           given={Yikun},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=d7ef2818d06a3deb289a104d667457f3}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Chunjiang},
+           giveni={C\bibinitperiod}}}%
+        {{hash=d3bba33b51acaa0a272de7a2f6dfa233}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Pengfei},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{166556e90d0a73da611f4b1ca9aed27a}
+      \strng{fullhash}{166556e90d0a73da611f4b1ca9aed27a}
+      \strng{bibnamehash}{166556e90d0a73da611f4b1ca9aed27a}
+      \strng{authorbibnamehash}{166556e90d0a73da611f4b1ca9aed27a}
+      \strng{authornamehash}{166556e90d0a73da611f4b1ca9aed27a}
+      \strng{authorfullhash}{166556e90d0a73da611f4b1ca9aed27a}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2310.11703}
+      \field{title}{A Comprehensive Survey on Vector Database: Storage and Retrieval Technique, Challenge}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2310.11703
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2310.11703
+      \endverb
+    \endentry
+    \entry{hu2024ragrau}{article}{}
+      \name{author}{2}{}{%
+        {{hash=3eaa37b256671c030f4b5c9a99ce2e94}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Yucheng},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=2663a34fb6dcb94590371554949c4236}{%
+           family={Lu},
+           familyi={L\bibinitperiod},
+           given={Yuxing},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{4e255e563456175381fc46dc5f69e1ff}
+      \strng{fullhash}{4e255e563456175381fc46dc5f69e1ff}
+      \strng{bibnamehash}{4e255e563456175381fc46dc5f69e1ff}
+      \strng{authorbibnamehash}{4e255e563456175381fc46dc5f69e1ff}
+      \strng{authornamehash}{4e255e563456175381fc46dc5f69e1ff}
+      \strng{authorfullhash}{4e255e563456175381fc46dc5f69e1ff}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2404.19543}
+      \field{title}{RAG and RAU: A Survey on Retrieval-Augmented Language Models in Natural Language Processing}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2404.19543
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2404.19543
+      \endverb
+    \endentry
+    \entry{jing2024vecdb}{article}{}
+      \name{author}{3}{}{%
+        {{hash=c053d61dfacc3624a4fd3470518809b9}{%
+           family={Jing},
+           familyi={J\bibinitperiod},
+           given={Zhi},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=d6af3f8efc81e9274e28407871ac4604}{%
+           family={Su},
+           familyi={S\bibinitperiod},
+           given={Yongye},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=d9942c8f94de98edbe308f40f0e2e4b3}{%
+           family={Han},
+           familyi={H\bibinitperiod},
+           given={Yikun},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{4cc18587af704432899f951638b842be}
+      \strng{fullhash}{4cc18587af704432899f951638b842be}
+      \strng{bibnamehash}{4cc18587af704432899f951638b842be}
+      \strng{authorbibnamehash}{4cc18587af704432899f951638b842be}
+      \strng{authornamehash}{4cc18587af704432899f951638b842be}
+      \strng{authorfullhash}{4cc18587af704432899f951638b842be}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2402.01763}
+      \field{title}{When Large Language Models Meet Vector Databases: A Survey}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2402.01763
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2402.01763
+      \endverb
+    \endentry
+    \entry{joshi2025vector}{article}{}
+      \name{author}{1}{}{%
+        {{hash=3bbe5695aae2f7d6e1560876b54233b6}{%
+           family={Joshi},
+           familyi={J\bibinitperiod},
+           given={Satyadhar},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{3bbe5695aae2f7d6e1560876b54233b6}
+      \strng{fullhash}{3bbe5695aae2f7d6e1560876b54233b6}
+      \strng{bibnamehash}{3bbe5695aae2f7d6e1560876b54233b6}
+      \strng{authorbibnamehash}{3bbe5695aae2f7d6e1560876b54233b6}
+      \strng{authornamehash}{3bbe5695aae2f7d6e1560876b54233b6}
+      \strng{authorfullhash}{3bbe5695aae2f7d6e1560876b54233b6}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Advanced Research Journal in Science, Engineering and Technology (IARJSET)}
+      \field{number}{2}
+      \field{title}{Introduction to Vector Databases for Generative AI: Applications, Performance, Future Projections, and Cost Considerations}
+      \field{volume}{12}
+      \field{year}{2025}
+      \field{pages}{79\bibrangedash 89}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.17148/IARJSET.2025.12210
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.17148/IARJSET.2025.12210
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.17148/IARJSET.2025.12210
       \endverb
     \endentry
     \entry{knollmeyer2024benchmarking}{inproceedings}{}
@@ -438,6 +722,124 @@
       \endverb
       \verb{url}
       \verb https://doi.org/10.5220/0013065700003838
+      \endverb
+    \endentry
+    \entry{ma2025vector}{article}{}
+      \name{author}{19}{}{%
+        {{hash=6170af1d06971013df5b44a3bec188d2}{%
+           family={Ma},
+           familyi={M\bibinitperiod},
+           given={Le},
+           giveni={L\bibinitperiod}}}%
+        {{hash=90a19aa2fbf7fc18c6cc07430ece08f3}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Ran},
+           giveni={R\bibinitperiod}}}%
+        {{hash=d9942c8f94de98edbe308f40f0e2e4b3}{%
+           family={Han},
+           familyi={H\bibinitperiod},
+           given={Yikun},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=8a4587a0fe0fd22f27beebaf925dac46}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Shirui},
+           giveni={S\bibinitperiod}}}%
+        {{hash=5b7727d4920d8a77a04972dfebca1887}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Zaitian},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=47cc45241cfe257441ce8c01b1dd1480}{%
+           family={Ning},
+           familyi={N\bibinitperiod},
+           given={Zhiyuan},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=79da4cae8f949eeacf9871a347b43b97}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Jinghan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=56296b2fca0239a30ba5983073009f40}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Ping},
+           giveni={P\bibinitperiod}}}%
+        {{hash=f0aadf5de65ea90dd6bbece091f8af99}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Pengjiang},
+           giveni={P\bibinitperiod}}}%
+        {{hash=7f1819a2766c380b6995ff381e753a7a}{%
+           family={Ju},
+           familyi={J\bibinitperiod},
+           given={Wei},
+           giveni={W\bibinitperiod}}}%
+        {{hash=ea1fab8979cc9aaa8f8ac5e6b5fb3e05}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Chong},
+           giveni={C\bibinitperiod}}}%
+        {{hash=f89e457033ec814b873db80b2d89fe2e}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Dongjie},
+           giveni={D\bibinitperiod}}}%
+        {{hash=a3c728f4b40a169c3129a2143707fe5d}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Kunpeng},
+           giveni={K\bibinitperiod}}}%
+        {{hash=383f6a19f33570e9728b845565696929}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Pengyang},
+           giveni={P\bibinitperiod}}}%
+        {{hash=d3bba33b51acaa0a272de7a2f6dfa233}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Pengfei},
+           giveni={P\bibinitperiod}}}%
+        {{hash=30ae9e14692d8631346a8a8ab6beebd5}{%
+           family={Fu},
+           familyi={F\bibinitperiod},
+           given={Yanjie},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=d7ef2818d06a3deb289a104d667457f3}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Chunjiang},
+           giveni={C\bibinitperiod}}}%
+        {{hash=840edade569a44955bbe6b6cdc7e9a6c}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Yuanchun},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=0020134a2e62698855d909d1958ac498}{%
+           family={Lu},
+           familyi={L\bibinitperiod},
+           given={Chang-Tien},
+           giveni={C\bibinithyphendelim T\bibinitperiod}}}%
+      }
+      \strng{namehash}{70616c05f21fe1b1cea1bacc98706222}
+      \strng{fullhash}{b37668d4f142928c123a3afadba64494}
+      \strng{bibnamehash}{70616c05f21fe1b1cea1bacc98706222}
+      \strng{authorbibnamehash}{70616c05f21fe1b1cea1bacc98706222}
+      \strng{authornamehash}{70616c05f21fe1b1cea1bacc98706222}
+      \strng{authorfullhash}{b37668d4f142928c123a3afadba64494}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2310.11703}
+      \field{title}{A Comprehensive Survey on Vector Database: Storage and Retrieval Technique, Challenge}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2310.11703v2
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2310.11703v2
       \endverb
     \endentry
     \entry{papatheodorou2019}{article}{}
@@ -545,7 +947,7 @@
       \field{journaltitle}{International Journal of Marketing and Technology}
       \field{note}{Disponible en acceso abierto en ResearchGate}
       \field{number}{01}
-      \field{title}{Large Language Models ({LLMs}), Retrieval-Augmented Generation ({RAG}) systems, and Convolutional Neural Networks ({CNNs}) in Application systems}
+      \field{title}{Large Language Models (LLMs), Retrieval-Augmented Generation (RAG) systems, and Convolutional Neural Networks (CNNs) in Application systems}
       \field{volume}{15}
       \field{year}{2025}
       \verb{urlraw}
@@ -553,6 +955,45 @@
       \endverb
       \verb{url}
       \verb https://www.researchgate.net/publication/387128512
+      \endverb
+    \endentry
+    \entry{zhai2024llmIR}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=4ea38b05f3ab367265bad8159b9911ef}{%
+           family={Zhai},
+           familyi={Z\bibinitperiod},
+           given={ChengXiang},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Washington, DC, USA}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{4ea38b05f3ab367265bad8159b9911ef}
+      \strng{fullhash}{4ea38b05f3ab367265bad8159b9911ef}
+      \strng{bibnamehash}{4ea38b05f3ab367265bad8159b9911ef}
+      \strng{authorbibnamehash}{4ea38b05f3ab367265bad8159b9911ef}
+      \strng{authornamehash}{4ea38b05f3ab367265bad8159b9911ef}
+      \strng{authorfullhash}{4ea38b05f3ab367265bad8159b9911ef}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 47th International ACM SIGIR Conference on Research and Development in Information Retrieval}
+      \field{title}{Large Language Models and Future of Information Retrieval: Opportunities and Challenges}
+      \field{year}{2024}
+      \field{pages}{1\bibrangedash 10}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1145/3626772.3657848
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/3626772.3657848
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/3626772.3657848
       \endverb
     \endentry
     \entry{zhang2025hallucination}{article}{}

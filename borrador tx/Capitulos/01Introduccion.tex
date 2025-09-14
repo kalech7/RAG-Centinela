@@ -130,6 +130,9 @@ Finalmente, se discuten las tendencias emergentes, los desafíos que actualmente
 
 
 
+
+\subsubsection{Fundamentos}
+
 % --- Grafico fundamentos
 \begin{figure}[H]
 \begin{center}
@@ -199,7 +202,6 @@ Finalmente, se discuten las tendencias emergentes, los desafíos que actualmente
 \label{fig:Fudamentos}
 \end{figure}
 
-\subsubsection{Fundamentos}
 En esta subsección se presentan los fundamentos teóricos de Retrieval Augmented Generation (RAG), 
 comenzando con la definición de los modelos de lenguaje de gran escala (LLMs) y su relación. Se expone 
 también el papel que desempeña RAG, los principales aportes que ha generado en distintos ámbitos y su diferenciación frente al 
@@ -226,6 +228,9 @@ documentos relevantes y actualizados. Estos se incorporan al prompt del usuario,
 verificables y disminuye los problemas de errores y alucinaciones que suelen presentarse en los modelos de lenguaje de gran escala.  
 
 
+
+
+\subsubsection{Arquitectura}
 \begin{figure}[H]
 \begin{center}
 \begin{tikzpicture}[x=1cm,y=1cm]
@@ -271,8 +276,6 @@ verificables y disminuye los problemas de errores y alucinaciones que suelen pre
 \label{fig:arquitectura_rag}
 \end{figure}
 
-\subsubsection{Arquitectura}
-
 RAG se compone de tres fases: recuperación, augmentation y generación (ver Figura~\ref{fig:arquitectura_rag}). Como lo menciona \textcite{gao2023rag}, primero se 
 localizan documentos relevantes para la consulta; luego, se enriquece la entrada del usuario con esos textos; finalmente, el modelo produce 
 una respuesta basada tanto en su conocimiento interno como en la información recuperada. Gracias a este enfoque, RAG incrementa la exactitud 
@@ -287,14 +290,15 @@ cantidad de conocimiento, como el ámbito médico, legal o de investigación cie
 \toprule
 \textbf{Categoría} & \textbf{Subcategoría / Tipo} & \textbf{Técnicas} \\
 \midrule
-Indexing     & Vector DB               & StepBack Prompt \\
+Indexing     & Vector DB               & FAISS, Annoy, Milvus, Weaviate, Pinecone, Qdrant\\
              & Algoritmos de búsqueda  & Approximate Nearest Neighbors, Locality-Sensitive Hashing \\
 \midrule
-Enhancements & Reranking               & HyDE \\
-             & Retriever Finetuning    & - \\
-             & Hybrid Search           & - \\
-             & Chunk Optimization      & - \\
-             & Recursive Retrieval     & - \\
+Enhancements & Reranking               & Re2G, AceCoder, XRICL, monoT5\\
+             & Retriever Finetuning    & REPLUG, APICoder, EDITSUM \\
+             & Hybrid Search           & RAP-Gen, BlendedRAG, ReACC\\
+             & Chunk Optimization      & RAPTOR, LlamaIndex  \\
+             & Recursive Retrieval     & ReAct, RATP \\
+             & Query Reformulation     &  HyDE \\
 \midrule
 Tipos de retrievers & Sparse            & BM25, TF-IDF \\
                     & Dense             & Embeddings (ej. BERT, OpenAI, etc.) \\
@@ -305,32 +309,71 @@ Tipos de retrievers & Sparse            & BM25, TF-IDF \\
 \end{table}
 
 
-
-
+Indexing es encargado de organizar y representar la informacion de forma eficiente. En este sentido los vector databases (VDBs) han aumentado su popularidad ya que permiten alamacenar 
+vectores de alta dimensionalidad y permiten realizar busquedas por similitud semantica. Como explica \textcite{joshi2025vector} estas bases de datos resultan esenciales para 
+en aplicacion de inteligencia artificial generativa, ya que superan las limitacion de las bases realcionales en el manejo de datos no estructurados.
+Los VDBs integran mecanismos de busqueda aproximada de vecinos mas cercanos (ANNS) lo que posibilita consultas rapidas incluso sobre miles de objetos. Ademas, como lo menciona
+\textcite{ma2025vector} incorporan técnicas de optimización como particionamiento, sharding, cachés y replicación para garantizar escalabilidad y baja latencia en entornos distribuidos
+Locality-Sensitive Hashing (LSH) es una técnica de indexación ampliamente utilizada en VDBs para acelerar la búsqueda de vecinos aproximados en espacios de alta 
+dimensionalidad. A diferencia de los esquemas de hashing tradicionales, cuyo objetivo es dispersar uniformemente los datos para minimizar colisiones, LSH está diseñado 
+para maximizar la probabilidad de que vectores similares se asignen al mismo bucket de hash \parencite{ma2025vector}. Según esta técnica, la preservación de la localidad 
+se consigue mediante funciones de hash que reflejan la similitud entre vectores en colisiones más frecuentes dentro del espacio reducido. De esta manera, al realizar una 
+consulta, el sistema solo necesita comparar el vector de entrada con aquellos almacenados en el mismo o en buckets cercanos, reduciendo drásticamente la complejidad 
+computacional de la búsqueda \parencite{han2023vector}. Estas características explican por qué los VDBs se han consolidado como una infraestructura fundamental en el soporte
+de sistemas RAG.
 
 \begin{table}[H]
 \centering
 \begin{tabularx}{\textwidth}{l l >{\raggedright\arraybackslash}X}
 \toprule
-\textbf{Categoría} & \textbf{Subcategoría / Tipo} & \textbf{Técnicas} \\
+\textbf{Categoría} & \textbf{Subcategoría / Tipo} & \textbf{Técnicas / Ejemplos} \\
 \midrule
-Tipos   & Pre-training          & - \\
-        & Fine-tuning           & - \\
-        & Inference             & - \\
+Tipos   & Pre-training          & knowledge graph embeddings \\
+        & Fine-tuning           & REPLUG,UPRISE \\
+        & Inference             & Retrieve-then-Read-then-Revise (RARR), Lost in the Middle  \\
 \midrule
-Data    & Structured            & - \\
-        & Unstructured          & - \\
-        & LLM generated content & - \\
+Data    & Structured            & Knowledge Graphs \\
+        & Unstructured          & open corpus (Common Crawl, PubMed, etc.) \\
+        & LLM generated content & self-retrieval \\
 \midrule
-Process & Once                  & - \\
-        & Iterative             & - \\
-        & Adaptative            & - \\
+Process & Once                  & document augmentation \\
+        & Iterative             & pseudo-relevance feedback (PRF) \\
+        & Adaptative            & SKR (Selective Knowledge Retrieval)\\
 \bottomrule
 \end{tabularx}
 \caption{Componente Augmentation}
 \end{table}
+Augmentation es el proceso el cual un modelo de lenguaje incorpora información adicional 
+ya sea externa, como documentos, bases de conocimiento o corpus abiertos, o procesada internamente en diferentes etapas de su funcionamiento.
+Los autores coinciden en que esta integración cumple objetivos clave: mejorar la precisión de las respuestas al aportar evidencia relevante, 
+reducir las alucinaciones al contrastar el conocimiento implícito del modelo con fuentes verificables, y actualizar el conocimiento de los LLMs sin 
+necesidad de reentrenarlos desde cero, ya que el acceso a información recuperada permite mantenerlos al día en dominios dinámicos como ciencia, medicina o derecho.
 
+Los tipos de augmentation, \textcite{zhao2024rag} señalan que se puede aplicar en 3 momentos distintos. Durante el pre-training, se integran representaciones estructuradas 
+como knowledge graph embeddings que dotan al modelo de memoria explícita sobre entidades y relaciones. En la etapa de fine-tuning, técnicas como REPLUG y UPRISE 
+permiten alinear mejor el recuperador y el generador en dominios específicos. Finalmente, en la inferencia, se aplican métodos sin reentrenamiento: por ejemplo, 
+RARR (Retrieve-then-Read-then-Revise) refina las respuestas con evidencia recuperada, mientras que la mitigación de Lost in the Middle reorganiza documentos recuperados
+para que el modelo aproveche mejor la ventana de contexto.
 
+Con respecto a los datos, \textcite{fan2024ragllm} detancan tres clases. La información estructurada, como los Knowledge Graphs, es fundamental para tareas de razonamiento 
+factual ya que permite modelar entidades y relaciones explícitas. La información no estructurada, como corpus abiertos (Common Crawl, PubMed, Wikipedia), se ha vuelto estándar en open-domain QA.
+Tal como explican \textcite{gao2023rag} estos corpus aportan amplitud temática, pero también requieren mecanismos de filtrado, chunking y re-ranking 
+para evitar ruido y mitigar el problema de Lost in the Middle. Finalmente, surge la categoría de contenido generado por LLM, donde el propio modelo actúa 
+como fuente en esquemas de self-retrieval, generando y reutilizando conocimiento de manera autónoma. En este caso, los LLMs generan documentos intermedios, 
+hipótesis o representaciones que se utilizan posteriormente como consultas o evidencia emplean un módulo crítico que evalúa si es necesario recuperar información externa o 
+si el propio contenido generado basta para resolver la tarea. Gracias a este enfoque , como subraya \textcite{fan2024ragllm} abre la posibilidad de que los modelos se autocomplementen y 
+reutilicen su conocimiento previo sin depender exclusivamente de bases externas.
+
+Los procesos de \textit{augmentation} se los clasifica en tres modalidades según \textcite{zhao2024rag}. 
+Augmentation puede aplicarse una sola vez (Once), como en el caso de la document augmentation, 
+donde se enriquece directamente la entrada con información adicional antes de la generación. 
+Otra modalidad es la iterativa, que emplea técnicas como el pseudo-relevance feedback (PRF), 
+mediante el cual la consulta inicial se reformula a partir de los resultados recuperados, repitiendo el ciclo 
+para refinar la relevancia. 
+La modalidad adaptativa es cuando el sistema decide dinámicamente si conviene recuperar 
+información o no. Un ejemplo de esto es Selective Knowledge Retrieval (SKR), que evita búsquedas 
+innecesarias cuando el modelo ya posee el conocimiento suficiente, reduciendo costes y minimizando la 
+incorporación de ruido.
 
 \begin{table}[h]
 \centering
@@ -350,8 +393,39 @@ Process & Once                  & - \\
 \caption{Componente Generator}
 \end{table}
 
+El componente generador es el encargado de producir texto,imagenes u otro tipo de contenido. La capacidad del generador no depende unicamente de su arquitectura sino de un conjunto 
+de estrategias que optmizan su rendimiento y controlan la calidad de las salidas. Estas mejoras incluyen prompt engineering, el fine-tuning especializado en dominios y 
+ajustes en los métodos de decodificación para equilibrar coherencia y diversidad en la generación. En este sentido, comprender tanto los tipos de modelos como las técnicas de optimización resulta fundamental para evaluar el papel del \textit{Generator} 
+en sistemas avanzados como los de Retrieval-Augmented Generation (RAG), donde la combinación de arquitectura y optimización garantiza la generación de respuestas 
+más fiables, contextualizadas y relevantes 
+\parencite{casola2022pretrained,fan2024ragllm,zhang2025hallucination}
 
-explicar tablas
+Los transformes son la arquitectura mas influyente en NLP ya que, según lo menciona \textcite{casola2022pretrained}, su capacidad de manejar dependencias a largo plazo 
+mediante mecanismos de auto-atención ha permitido el desarrollo de modelos como GPT, BART y T5, los cuales han superado ampliamente a enfoques previos y marcado un cambio 
+de paradigma en la generación de lenguaje. os LSTM se empleaban en arquitecturas secuencia a secuencia, resolviendo problemas de memoria en redes recurrentes, 
+aunque presentaban limitaciones en el escalamiento y en la captura de dependencias largas \parencite{jing2024vecdb}. Por otro lado, introdujeron un enfoque basado 
+en el enfrentamiento entre un generador y un discriminador, logrando avances en la creación de imágenes y, posteriormente, en la generación de texto. Mas recientemete los Diffusion Models
+se han consolidado en el ámbito multimodal (imagen, audio y video), gracias a su capacidad de producir datos de alta calidad a partir de procesos de ruido inverso,
+ampliando las fronteras de la generación más allá del texto. 
+
+Con respecto a la mejora, el Prompt Engineering ha demostrado ser una técnica central para guiar los modelos hacia respuestas más precisas y controladas. Segun \textcite{zhang2025hallucination}
+incluye el diseño de instrucciones específicas, así como métodos como chain of thought o step-back prompting, que mejoran la coherencia y reducen alucinaciones en los resultados
+Otra estrategia es el fine tuning que consiste en adaptar un modelo  a un modelo concreto, optimizando su capacidad de manejar informacion especial especializada y aumentando su fiabilidad en tareas críticas,
+por ejemplo en contextos científicos o legales
+El Decoding Tuning se refiere al ajuste de los métodos utilizados por un modelo generativo para decidir qué palabra o token producir a continuación. 
+En lugar de limitarse a elegir siempre la opción con mayor probabilidad, lo cual puede generar textos repetitivos y poco naturales, se aplican estrategias 
+que permiten modular el balance entre coherencia y diversidad. Entre ellas, el beam search explora varias rutas posibles de generación en paralelo para seleccionar 
+la más prometedora, garantizando coherencia aunque sacrificando creatividad. Por su parte, el nucleus sampling restringe las opciones a un conjunto dinámico de palabras 
+que concentran la mayor parte de la probabilidad acumulada y selecciona una de ellas de manera aleatoria, lo que produce textos más naturales y variados. Finalmente, 
+el top-k sampling limita las elecciones a las k palabras más probables y elige una de ellas de acuerdo con su distribución de probabilidad, lo que ofrece un equilibrio 
+controlado entre precisión y diversidad. 
+
+\begin{quote}
+Estas estrategias permiten modular el equilibrio entre coherencia y diversidad en la generación de texto, 
+adaptando el comportamiento del modelo sin necesidad de modificar su arquitectura 
+\parencite{hu2024ragrau}.
+\end{quote}
+
 
 \subsubsection{Fases de Implementación}
 
@@ -399,7 +473,7 @@ explicar tablas
 
 \end{tikzpicture}
 \end{center}
-\caption{Paradigmas principales en RAG y Hallucination Mitigation}
+\caption{Paradigmas principales en RAG}
 \label{fig:paradigmas}
 \end{figure}
 
@@ -409,6 +483,7 @@ Hallucination Mitigation, en dos ejes: retrieval failure (fallos en fuentes, con
 (ruido o conflicto contextual y límites de capacidad). FInalmente, 
 \textcite{zhao2024rag} proponen fundaciones de RAG segun la forma que el retriver complementa al generador se clasifican en Query-based RAG, Latent Representation-based RAG,
 Logit-based RAG y Speculative RAG, de esta forma se expande la aplicación de RAG a múltiples dominios y modalidades.
+
 
 
 \paragraph{Tipos de Paradigmas}
@@ -517,10 +592,19 @@ aspectos como coherencia, transparencia y verificabilidad.
 \subsubsection{Futuro de RAG}
 
 \paragraph{Desafios Actuales}
+De acuerdo con \textcite{zhai2024llmIR}, uno de los principales desafíos de los sistemas RAG es la generación de alucinaciones, que comprometen la confianza y 
+limitan su uso en aplicaciones críticas. Asimismo, persisten limitaciones en la calidad de la recuperación y en la eficiencia computacional, especialmente 
+en dominios donde se requiere información actualizada y especializada (Hu \& Lu, 2024). Además, \textcite{ramdurai2025llm} señala que la integración de RAG con otras
+arquitecturas, como redes neuronales convolucionales, enfrenta problemas de escalabilidad y de adaptación a contextos heterogéneos.
 
-
-\paragraph{Direcciones potenciales}
-
+\paragraph{Direcciones Potenciales}  
+Las líneas de avance incluyen el desarrollo de retrievers más robustos, la optimización de las interacciones entre modelo y recuperación, 
+así como mecanismos de evaluación que prioricen la relevancia y la coherencia.\textcite{ramdurai2025llm} enfatiza la sinergia con arquitecturas multimodales y con sistemas 
+capaces de combinar información textual, visual y estructurada. Asimismo, enfoques como RAPTOR que introduce resúmenes recursivos y jerárquicos en la recuperación
+muestran cómo superar la fragmentación del contexto y mejorar la integración semántica (Sarthi et al., 2024).
 
 \paragraph{Perspectivas}
-
+A medio plazo, RAG y los LLMs convergerán con la IR clásica hacia sistemas de acceso conversacional al conocimiento: motores de búsqueda “con opinión” pero con 
+respaldo documental, capaces de planificar, citar y aprender de la interacción. Incluso si los LLMs de contexto largo siguen mejorando, la recuperación seguirá 
+siendo diferencial por costo, frescura, control y gobernanza de la evidencia; veremos stacks donde RAG, herramientas y memoria trabajan de forma coordinada, 
+con evaluación centrada en utilidad y veracidad para tareas compuestas y empresariales
