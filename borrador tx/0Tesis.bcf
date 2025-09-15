@@ -2410,31 +2410,32 @@
     <bcf:citekey order="34" intorder="1">minaee2021</bcf:citekey>
     <bcf:citekey order="35" intorder="1">minaee2021</bcf:citekey>
     <bcf:citekey order="36" intorder="1">hu2024ragrau</bcf:citekey>
-    <bcf:citekey order="37" intorder="1">sarthi2024raptor</bcf:citekey>
+    <bcf:citekey order="37" intorder="1">hu2024ragrau</bcf:citekey>
     <bcf:citekey order="38" intorder="1">sarthi2024raptor</bcf:citekey>
-    <bcf:citekey order="39" intorder="1">knollmeyer2024benchmarking</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">sarthi2024raptor</bcf:citekey>
     <bcf:citekey order="40" intorder="1">knollmeyer2024benchmarking</bcf:citekey>
-    <bcf:citekey order="41" intorder="1">gao2023rag</bcf:citekey>
+    <bcf:citekey order="41" intorder="1">knollmeyer2024benchmarking</bcf:citekey>
     <bcf:citekey order="42" intorder="1">gao2023rag</bcf:citekey>
-    <bcf:citekey order="43" intorder="1">zhang2025hallucination</bcf:citekey>
+    <bcf:citekey order="43" intorder="1">gao2023rag</bcf:citekey>
     <bcf:citekey order="44" intorder="1">zhang2025hallucination</bcf:citekey>
-    <bcf:citekey order="45" intorder="1">zhao2024rag</bcf:citekey>
+    <bcf:citekey order="45" intorder="1">zhang2025hallucination</bcf:citekey>
     <bcf:citekey order="46" intorder="1">zhao2024rag</bcf:citekey>
-    <bcf:citekey order="47" intorder="1">bernard2025fate</bcf:citekey>
+    <bcf:citekey order="47" intorder="1">zhao2024rag</bcf:citekey>
     <bcf:citekey order="48" intorder="1">bernard2025fate</bcf:citekey>
-    <bcf:citekey order="49" intorder="1">knollmeyer2024benchmarking</bcf:citekey>
+    <bcf:citekey order="49" intorder="1">bernard2025fate</bcf:citekey>
     <bcf:citekey order="50" intorder="1">knollmeyer2024benchmarking</bcf:citekey>
-    <bcf:citekey order="51" intorder="1">gao2023rag</bcf:citekey>
+    <bcf:citekey order="51" intorder="1">knollmeyer2024benchmarking</bcf:citekey>
     <bcf:citekey order="52" intorder="1">gao2023rag</bcf:citekey>
-    <bcf:citekey order="53" intorder="1">zhai2024llmIR</bcf:citekey>
+    <bcf:citekey order="53" intorder="1">gao2023rag</bcf:citekey>
     <bcf:citekey order="54" intorder="1">zhai2024llmIR</bcf:citekey>
-    <bcf:citekey order="55" intorder="1">ramdurai2025llm</bcf:citekey>
+    <bcf:citekey order="55" intorder="1">zhai2024llmIR</bcf:citekey>
     <bcf:citekey order="56" intorder="1">ramdurai2025llm</bcf:citekey>
     <bcf:citekey order="57" intorder="1">ramdurai2025llm</bcf:citekey>
     <bcf:citekey order="58" intorder="1">ramdurai2025llm</bcf:citekey>
-    <bcf:citekey order="59" intorder="1">vombrocke2020</bcf:citekey>
+    <bcf:citekey order="59" intorder="1">ramdurai2025llm</bcf:citekey>
     <bcf:citekey order="60" intorder="1">vombrocke2020</bcf:citekey>
-    <bcf:citekey order="61" intorder="1" nocite="1">*</bcf:citekey>
+    <bcf:citekey order="61" intorder="1">vombrocke2020</bcf:citekey>
+    <bcf:citekey order="62" intorder="1" nocite="1">*</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
