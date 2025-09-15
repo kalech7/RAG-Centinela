@@ -428,6 +428,61 @@ adaptando el comportamiento del modelo sin necesidad de modificar su arquitectur
 
 
 \subsubsection{Fases de Implementación}
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \def\step{-1.5}
+  \def\y{0}
+
+  % Paso I: Ingesta
+  \pill{\y}{softcream}{I}{Ingesta}
+  \pgfmathsetmacro\y{\y+\step}
+
+  % Paso II: Preprocesamiento
+  \pill{\y}{softpink}{II}{Preprocesamiento}
+  \pgfmathsetmacro\y{\y+\step}
+
+  % Paso III: Vectorización
+  \pill{\y}{softblue}{III}{Vectorización (Embeddings)}
+  \pgfmathsetmacro\y{\y+\step}
+
+  % Paso IV: Indexación en Vector DB
+  \pill{\y}{softpeach}{IV}{Indexación en Vector DB}
+  \pgfmathsetmacro\y{\y+\step}
+
+  % Paso V: Recuperación
+  \pill{\y}{softyellow}{V}{Recuperación}
+  \pgfmathsetmacro\y{\y+\step}
+
+  % Paso VI: Re-ranking
+  \pill{\y}{softgreen}{VI}{Re-ranking}
+  \pgfmathsetmacro\y{\y+\step}
+
+  % Paso VII: Construcción de Contexto
+  \pill{\y}{softcream}{VII}{Construcción de Contexto}
+  \pgfmathsetmacro\y{\y+\step}
+
+  % Paso VIII: Generación
+  \pill{\y}{softpink}{VIII}{Generación (LLM)}
+  \pgfmathsetmacro\y{\y+\step}
+
+  % Paso IX: Evaluación
+  \pill{\y}{softblue}{IX}{Evaluación}
+\end{tikzpicture}
+\end{center}
+\caption{Pipeline de RAG}
+\label{fig:pipeline-rag}
+\end{figure}
+Las fases de implementacion son una secuencia de pasos diseñados para enriquecer la generación de respuestas con información externa y actualizada. 
+Según \textcite{tabassum2020}, todo inicia con la ingesta y el preprocesamiento de los datos, donde las técnicas de limpieza y segmentación garantizan 
+que el texto sea utilizable para fases posteriores. Luego se vectoriza mediante embeddings los cuales transforman los fragmentos de texto
+en representaciones numericas para la recuperacion semantica tal como lo expresa \textcite{minaee2021}. Estos vectores se almacenan en una base de datos vectorial que en
+conjunto con inidice tradicionales como bm25 permiten la recuperacion hibrida.\parencite{hu2024ragrau}. Con los datos obtenidos, como lo señala \textcite{sarthi2024raptor}, 
+es necesario aplicar procesos de re-ranking y filtrado que permiten priorizar las partes más relevantes dando lugar la construcción de contexto, en la que los fragmentos de texto seleccionados 
+se organizan, se condensan para reducir su extensión y se adaptan al límite de entrada del modelo.para conformar un contexto optimizado y manejable que servirá de entrada
+al modelo generativo. En la fase final, \textcite{knollmeyer2024benchmarking} sostiene que el LLM debe complementarse con mecanismos de evaluación para aegurar la 
+fidelidad y coherencia de las respuestas generadas.
+
 
 
 
