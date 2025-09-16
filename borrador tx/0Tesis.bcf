@@ -2359,4 +2359,151 @@
         <bcf:field>issn</bcf:field>
       </bcf:constraint>
       <bcf:constraint type="data" datatype="ismn">
-        <bcf:field>ismn<
+        <bcf:field>ismn</bcf:field>
+      </bcf:constraint>
+      <bcf:constraint type="data" datatype="pattern" pattern="(?:sf|sm|sn|pf|pm|pn|pp)">
+        <bcf:field>gender</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+  </bcf:datamodel>
+  <!-- CITATION DATA -->
+  <!-- SECTION 0 -->
+  <bcf:bibdata section="0">
+    <bcf:datasource type="file" datatype="bibtex" glob="false">bibTesis.bib</bcf:datasource>
+  </bcf:bibdata>
+  <bcf:section number="0">
+    <bcf:citekey order="1" intorder="1">casola2022pretrained</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">casola2022pretrained</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">ramdurai2025llm</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">ramdurai2025llm</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">han2024rag</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">han2024rag</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">gao2023rag</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">gao2023rag</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">joshi2025vector</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">joshi2025vector</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">ma2025vector</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">ma2025vector</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">ma2025vector</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">han2023vector</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">zhao2024rag</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">zhao2024rag</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">fan2024ragllm</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">fan2024ragllm</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">gao2023rag</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">gao2023rag</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">fan2024ragllm</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">fan2024ragllm</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">zhao2024rag</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">zhao2024rag</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">casola2022pretrained</bcf:citekey>
+    <bcf:citekey order="25" intorder="2">fan2024ragllm</bcf:citekey>
+    <bcf:citekey order="25" intorder="3">zhang2025hallucination</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">casola2022pretrained</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">casola2022pretrained</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">jing2024vecdb</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">zhang2025hallucination</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">zhang2025hallucination</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">hu2024ragrau</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">tabassum2020</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">tabassum2020</bcf:citekey>
+    <bcf:citekey order="34" intorder="1">minaee2021</bcf:citekey>
+    <bcf:citekey order="35" intorder="1">minaee2021</bcf:citekey>
+    <bcf:citekey order="36" intorder="1">hu2024ragrau</bcf:citekey>
+    <bcf:citekey order="37" intorder="1">hu2024ragrau</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">sarthi2024raptor</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">sarthi2024raptor</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">knollmeyer2024benchmarking</bcf:citekey>
+    <bcf:citekey order="41" intorder="1">knollmeyer2024benchmarking</bcf:citekey>
+    <bcf:citekey order="42" intorder="1">gao2023rag</bcf:citekey>
+    <bcf:citekey order="43" intorder="1">gao2023rag</bcf:citekey>
+    <bcf:citekey order="44" intorder="1">jing2024vecdb</bcf:citekey>
+    <bcf:citekey order="45" intorder="1">jing2024vecdb</bcf:citekey>
+    <bcf:citekey order="46" intorder="1">tabassum2020</bcf:citekey>
+    <bcf:citekey order="47" intorder="1">tabassum2020</bcf:citekey>
+    <bcf:citekey order="48" intorder="1">knollmeyer2024benchmarking</bcf:citekey>
+    <bcf:citekey order="49" intorder="1">knollmeyer2024benchmarking</bcf:citekey>
+    <bcf:citekey order="50" intorder="1">zhang2025hallucination</bcf:citekey>
+    <bcf:citekey order="51" intorder="1">zhang2025hallucination</bcf:citekey>
+    <bcf:citekey order="52" intorder="1">hu2024ragrau</bcf:citekey>
+    <bcf:citekey order="53" intorder="1">hu2024ragrau</bcf:citekey>
+    <bcf:citekey order="54" intorder="1">fan2021pretraining</bcf:citekey>
+    <bcf:citekey order="55" intorder="1">fan2021pretraining</bcf:citekey>
+    <bcf:citekey order="55" intorder="2">minaee2021</bcf:citekey>
+    <bcf:citekey order="56" intorder="1">casola2022pretrained</bcf:citekey>
+    <bcf:citekey order="57" intorder="1">casola2022pretrained</bcf:citekey>
+    <bcf:citekey order="58" intorder="1">jing2024vecdb</bcf:citekey>
+    <bcf:citekey order="59" intorder="1">jing2024vecdb</bcf:citekey>
+    <bcf:citekey order="60" intorder="1">fan2021pretraining</bcf:citekey>
+    <bcf:citekey order="61" intorder="1">fan2021pretraining</bcf:citekey>
+    <bcf:citekey order="62" intorder="1">ma2025vdb</bcf:citekey>
+    <bcf:citekey order="63" intorder="1">ma2025vdb</bcf:citekey>
+    <bcf:citekey order="64" intorder="1">jing2024vecdb</bcf:citekey>
+    <bcf:citekey order="65" intorder="1">fan2021pretraining</bcf:citekey>
+    <bcf:citekey order="66" intorder="1">ma2025vdb</bcf:citekey>
+    <bcf:citekey order="67" intorder="1">ma2025vdb</bcf:citekey>
+    <bcf:citekey order="68" intorder="1">ma2025vdb</bcf:citekey>
+    <bcf:citekey order="69" intorder="1">ma2025vdb</bcf:citekey>
+    <bcf:citekey order="70" intorder="1">gao2023rag</bcf:citekey>
+    <bcf:citekey order="71" intorder="1">gao2023rag</bcf:citekey>
+    <bcf:citekey order="72" intorder="1">zhang2025hallucination</bcf:citekey>
+    <bcf:citekey order="73" intorder="1">zhang2025hallucination</bcf:citekey>
+    <bcf:citekey order="74" intorder="1">zhao2024rag</bcf:citekey>
+    <bcf:citekey order="75" intorder="1">zhao2024rag</bcf:citekey>
+    <bcf:citekey order="76" intorder="1">bernard2025fate</bcf:citekey>
+    <bcf:citekey order="77" intorder="1">bernard2025fate</bcf:citekey>
+    <bcf:citekey order="78" intorder="1">knollmeyer2024benchmarking</bcf:citekey>
+    <bcf:citekey order="79" intorder="1">knollmeyer2024benchmarking</bcf:citekey>
+    <bcf:citekey order="80" intorder="1">gao2023rag</bcf:citekey>
+    <bcf:citekey order="81" intorder="1">gao2023rag</bcf:citekey>
+    <bcf:citekey order="82" intorder="1">zhai2024llmIR</bcf:citekey>
+    <bcf:citekey order="83" intorder="1">zhai2024llmIR</bcf:citekey>
+    <bcf:citekey order="84" intorder="1">ramdurai2025llm</bcf:citekey>
+    <bcf:citekey order="85" intorder="1">ramdurai2025llm</bcf:citekey>
+    <bcf:citekey order="86" intorder="1">ramdurai2025llm</bcf:citekey>
+    <bcf:citekey order="87" intorder="1">ramdurai2025llm</bcf:citekey>
+    <bcf:citekey order="88" intorder="1">vombrocke2020</bcf:citekey>
+    <bcf:citekey order="89" intorder="1">vombrocke2020</bcf:citekey>
+    <bcf:citekey order="90" intorder="1" nocite="1">*</bcf:citekey>
+  </bcf:section>
+  <!-- SORTING TEMPLATES -->
+  <bcf:sortingtemplate name="nty">
+    <bcf:sort order="1">
+      <bcf:sortitem order="1">presort</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="2" final="1">
+      <bcf:sortitem order="1">sortkey</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="3">
+      <bcf:sortitem order="1">sortname</bcf:sortitem>
+      <bcf:sortitem order="2">author</bcf:sortitem>
+      <bcf:sortitem order="3">editor</bcf:sortitem>
+      <bcf:sortitem order="4">translator</bcf:sortitem>
+      <bcf:sortitem order="5">sorttitle</bcf:sortitem>
+      <bcf:sortitem order="6">title</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="4">
+      <bcf:sortitem order="1">sorttitle</bcf:sortitem>
+      <bcf:sortitem order="2">title</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="5">
+      <bcf:sortitem order="1">sortyear</bcf:sortitem>
+      <bcf:sortitem order="2">year</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="6">
+      <bcf:sortitem order="1">volume</bcf:sortitem>
+      <bcf:sortitem literal="1" order="2">0</bcf:sortitem>
+    </bcf:sort>
+  </bcf:sortingtemplate>
+  <!-- DATALISTS -->
+  <bcf:datalist section="0"
+                name="nty/global//global/global/global"
+                type="entry"
+                sortingtemplatename="nty"
+                sortingnamekeytemplatename="global"
+                labelprefix=""
+                uniquenametemplatename="global"
+                labelalphanametemplatename="global"
+                namehashtemplatename="global">
+  </bcf:datalist>
+</bcf:controlfile>
