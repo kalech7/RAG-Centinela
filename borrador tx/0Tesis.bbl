@@ -371,7 +371,6 @@
       \field{journaltitle}{arXiv preprint arXiv:2111.13853}
       \field{title}{Pre-training Methods in Information Retrieval}
       \field{year}{2021}
-      \true{nocite}
       \verb{urlraw}
       \verb https://arxiv.org/abs/2111.13853
       \endverb
@@ -530,46 +529,6 @@
       \verb 10.3390/app14199103
       \endverb
     \endentry
-    \entry{han2023vector}{article}{}{}
-      \name{author}{3}{}{%
-        {{hash=d9942c8f94de98edbe308f40f0e2e4b3}{%
-           family={Han},
-           familyi={H\bibinitperiod},
-           given={Yikun},
-           giveni={Y\bibinitperiod}}}%
-        {{hash=d7ef2818d06a3deb289a104d667457f3}{%
-           family={Liu},
-           familyi={L\bibinitperiod},
-           given={Chunjiang},
-           giveni={C\bibinitperiod}}}%
-        {{hash=d3bba33b51acaa0a272de7a2f6dfa233}{%
-           family={Wang},
-           familyi={W\bibinitperiod},
-           given={Pengfei},
-           giveni={P\bibinitperiod}}}%
-      }
-      \strng{namehash}{166556e90d0a73da611f4b1ca9aed27a}
-      \strng{fullhash}{166556e90d0a73da611f4b1ca9aed27a}
-      \strng{fullhashraw}{166556e90d0a73da611f4b1ca9aed27a}
-      \strng{bibnamehash}{166556e90d0a73da611f4b1ca9aed27a}
-      \strng{authorbibnamehash}{166556e90d0a73da611f4b1ca9aed27a}
-      \strng{authornamehash}{166556e90d0a73da611f4b1ca9aed27a}
-      \strng{authorfullhash}{166556e90d0a73da611f4b1ca9aed27a}
-      \strng{authorfullhashraw}{166556e90d0a73da611f4b1ca9aed27a}
-      \field{sortinit}{H}
-      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{arXiv preprint arXiv:2310.11703}
-      \field{title}{A Comprehensive Survey on Vector Database: Storage and Retrieval Technique, Challenge}
-      \field{year}{2023}
-      \verb{urlraw}
-      \verb https://arxiv.org/abs/2310.11703
-      \endverb
-      \verb{url}
-      \verb https://arxiv.org/abs/2310.11703
-      \endverb
-    \endentry
     \entry{hu2024ragrau}{article}{}{}
       \name{author}{2}{}{%
         {{hash=3eaa37b256671c030f4b5c9a99ce2e94}{%
@@ -603,6 +562,43 @@
       \endverb
       \verb{url}
       \verb https://arxiv.org/abs/2404.19543
+      \endverb
+    \endentry
+    \entry{jiang2024textmatching}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=a6cd330d65a61e5776df47ea793c79e3}{%
+           family={Jiang},
+           familyi={J\bibinitperiod},
+           given={Peng},
+           giveni={P\bibinitperiod}}}%
+        {{hash=2fb3c8b3f60b853c28385fad2df1b131}{%
+           family={Cai},
+           familyi={C\bibinitperiod},
+           given={Xiaodong},
+           giveni={X\bibinitperiod}}}%
+      }
+      \strng{namehash}{7e96173b48c0fd8ee5f9ef3fe808fe7a}
+      \strng{fullhash}{7e96173b48c0fd8ee5f9ef3fe808fe7a}
+      \strng{fullhashraw}{7e96173b48c0fd8ee5f9ef3fe808fe7a}
+      \strng{bibnamehash}{7e96173b48c0fd8ee5f9ef3fe808fe7a}
+      \strng{authorbibnamehash}{7e96173b48c0fd8ee5f9ef3fe808fe7a}
+      \strng{authornamehash}{7e96173b48c0fd8ee5f9ef3fe808fe7a}
+      \strng{authorfullhash}{7e96173b48c0fd8ee5f9ef3fe808fe7a}
+      \strng{authorfullhashraw}{7e96173b48c0fd8ee5f9ef3fe808fe7a}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Information}
+      \field{number}{6}
+      \field{title}{A Survey of Text-Matching Techniques}
+      \field{volume}{15}
+      \field{year}{2024}
+      \true{nocite}
+      \field{pages}{332}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/info15060332
       \endverb
     \endentry
     \entry{jing2024vecdb}{article}{}{}
@@ -924,7 +920,7 @@
       \field{issn}{0360-0300}
       \field{journaltitle}{ACM Computing Surveys}
       \field{number}{3}
-      \field{title}{Deep Learning--based Text Classification: A Comprehensive Review}
+      \field{title}{Deep Learning-based Text Classification: A Comprehensive Review}
       \field{volume}{54}
       \field{year}{2021}
       \field{pages}{62:1\bibrangedash 62:40}

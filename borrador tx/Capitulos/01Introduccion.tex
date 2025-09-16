@@ -447,7 +447,7 @@ adaptando el comportamiento del modelo sin necesidad de modificar su arquitectur
   \pgfmathsetmacro\y{\y+\step}
 
   % Paso IV: Indexación en Vector DB
-  \pill{\y}{softpeach}{IV}{Indexación en Vector DB}
+  \pill{\y}{softpeach}{IV}{Vector DB}
   \pgfmathsetmacro\y{\y+\step}
 
   % Paso V: Recuperación
@@ -495,7 +495,55 @@ sistema. De acuerdo con \textcite{gao2023rag} y \textcite{jing2024vecdb} estos d
  afirma que la calidad del preprocesamiento incide directamente en dimensiones de evaluación como la relevancia contextual y la fidelidad de las respuestas. Una preparación deficiente del texto puede introducir ruido en el contexto recuperado 
  y favorecer inconsistencias en la generación, lo cual incrementa el riesgo de alucinaciones; en este sentido, se entiende que el preprocesamiento actua como una primera barrera de mitigación de errores (\textcite{zhang2025hallucination}).
 
-\paragraph{Vectorizacion} ES la fase en la que los fragmentos de texto
+\paragraph{Vectorizacion} Los fragmentos de texto una vez preprocesados se transforman en embeddings \footnote{Representacion numerica que codifica el significado del texto en un espacio vectorial} permitiendo capturar la semantica de tal manera que 
+los textos similares esten proximos en el espacio vectorial. De acuerdo con \textcite{hu2024ragrau} existen dos enfoques: la recuperacion dispersa (sparse) como por ejemplo 
+TF-IDF, BM25 y la recuperacion densa, la cual es basada en embeddings generados por modelos preentrenados como BERT. El primer enfoque se basa en su frecuencia estadistica del termino en los documentos \parencite{fan2021pretraining}.
+Posteriormente, metodos como Latent Semantic Analysis (LSA) incorporaron técnicas de reducción dimensional a la matriz termino-documento.mediante descomposición en valores singulares, lo que permitió identificar estructuras semánticas latentes y superar 
+limitaciones de los modelos basados únicamente en frecuencia. Estudios recientes lo consideran el punto de inicio de los embeddings neuronales los cuales ofrecen representaicones mas contextuales y expresivas que permiten clasificar y recuperar el texto adecuadamente.
+\parencite{fan2021pretraining,minaee2021}. Con la popularizacion del deep learning, surgieron represetaciondes densas como Word2Vec y GloVe las cuales son capaces de capturar relaciones semanticas entre palabras en espacios vectoriales continuos. Los transformers son una 
+evolucion del enfoque denso donde segun \textcite{casola2022pretrained} los transformers preentrenados al combinarlose con mecanismos de atencion y un preentrenamiento masivo, producen vectores contextualizados robustos capaces de capturar relaciones de dependencia a largo 
+plazo entre palabras.
+
+\paragraph{Vector DB} 
+Los VDBs son importantes dentro del desarrollo de sistemas RAG, pues permiten almacenar y organizar representaciones densas de texto para su posterior
+recuperación eficiente. Estos se emplean en lugar de los índices invertidos tradicionales, que basan la búsqueda en coincidencias exactas de palabras o estadísticas 
+de frecuencia, lo cual dificulta la detección de sinónimos y relaciones semánticas. De acuerdo con \textcite{jing2024vecdb}, los VDBs están diseñados para manejar 
+grandes volúmenes de representaciones de alta dimensionalidad y soportar búsquedas por similitud mediante métricas como la distancia euclidiana o el coseno. Además, 
+como menciona \textcite{fan2021pretraining}, el uso de representaciones preentrenadas mejora la calidad de los índices, ya que los embeddings capturan relaciones 
+semánticas profundas entre consultas y documentos. Para optimizar estas búsquedas se incorporan técnicas de indexación, que organizan los embeddings en estructuras preparadas para la búsqueda aproximada de vecinos más cercanos \parencite{ma2025vdb}.  
+
+Para llevar a cabo estas operaciones, los VDBs recurren a diferentes enfoques de búsqueda, tales como:
+
+\begin{itemize}
+    \item \textbf{Nearest Neighbor Search (NNS):} compara de manera exhaustiva el vector de consulta con todos los vectores almacenados. Garantiza la máxima precisión,
+     pero resulta poco escalable con colecciones masivas de datos \parencite{ma2025vdb}.
+    
+    \item \textbf{Graph-Based Approach:} emplea estructuras de grafos, como HNSW, que permiten navegar de forma eficiente entre vectores y localizar vecinos cercanos 
+    en pocas iteraciones, reduciendo considerablemente los tiempos de búsqueda \parencite{jing2024vecdb}.
+    
+    \item \textbf{Tree-Based Approach:} organiza los vectores en estructuras jerárquicas (ej. KD-Tree, Ball-Tree), dividiendo recursivamente el espacio. Es eficiente 
+    en dimensionalidades bajas o medias, pero pierde rendimiento en espacios de muy alta dimensión \parencite{fan2021pretraining}.
+    
+    \item \textbf{Approximate Nearest Neighbor Search (ANNS):} sacrifica una mínima exactitud para ganar eficiencia y escalabilidad. Métodos como IVF o PQ permiten 
+    realizar búsquedas rápidas en grandes colecciones, siendo muy usados en producción \parencite{ma2025vdb}.
+\end{itemize}
+Cuando una consulta es transformada en vector, el sistema no necesita recorrer todo el corpus, sino que localiza la región del espacio donde se ubica y 
+devuelve los vecinos más próximos. Para lograr esta eficiencia se emplean técnicas de indexación que organizan los embeddings en estructuras optimizadas para 
+la búsqueda aproximada. Se implementa mediante enfoques como:
+\begin{itemize}
+    \item \textbf{HNSW (Hierarchical Navigable Small World graphs):} construye un grafo jerárquico navegable que permite acceder rápidamente a los vecinos más cercanos reduciendo la complejidad de la búsqueda.\parencite{ma2025vdb}
+    \item \textbf{IVF (Inverted File Index):} agrupa los vectores en listas invertidas de centroides, de modo que la comparación se restringe a las regiones más prometedoras del espacio.\parencite{ma2025vdb}
+    \item \textbf{PQ (Product Quantization):} divide los vectores en subespacios y los representa de forma comprimida, lo que acelera significativamente el cálculo de distancias en colecciones de gran tamaño \parencite{ma2025vdb}.
+\end{itemize}
+
+\paragraph{Recuperacion} 
+
+
+
+
+
+
+
 
 
 
