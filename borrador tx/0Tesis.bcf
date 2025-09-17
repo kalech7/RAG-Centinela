@@ -2502,13 +2502,15 @@
     <bcf:citekey order="123" intorder="1">gao2023rag</bcf:citekey>
     <bcf:citekey order="124" intorder="1">zhai2024llmIR</bcf:citekey>
     <bcf:citekey order="125" intorder="1">zhai2024llmIR</bcf:citekey>
-    <bcf:citekey order="126" intorder="1">ramdurai2025llm</bcf:citekey>
+    <bcf:citekey order="126" intorder="1">hu2024ragrau</bcf:citekey>
     <bcf:citekey order="127" intorder="1">ramdurai2025llm</bcf:citekey>
     <bcf:citekey order="128" intorder="1">ramdurai2025llm</bcf:citekey>
     <bcf:citekey order="129" intorder="1">ramdurai2025llm</bcf:citekey>
-    <bcf:citekey order="130" intorder="1">vombrocke2020</bcf:citekey>
-    <bcf:citekey order="131" intorder="1">vombrocke2020</bcf:citekey>
-    <bcf:citekey order="132" intorder="1" nocite="1">*</bcf:citekey>
+    <bcf:citekey order="130" intorder="1">ramdurai2025llm</bcf:citekey>
+    <bcf:citekey order="131" intorder="1">sarthi2024raptor</bcf:citekey>
+    <bcf:citekey order="132" intorder="1">vombrocke2020</bcf:citekey>
+    <bcf:citekey order="133" intorder="1">vombrocke2020</bcf:citekey>
+    <bcf:citekey order="134" intorder="1" nocite="1">*</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

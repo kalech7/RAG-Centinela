@@ -25,17 +25,17 @@
 \contentsline {paragraph}{Preprocesamiento}{14}{section*.17}%
 \contentsline {paragraph}{Vectorización}{14}{section*.18}%
 \contentsline {paragraph}{Vector DB}{15}{section*.19}%
-\contentsline {paragraph}{Recuperacion}{16}{section*.20}%
+\contentsline {paragraph}{Recuperación}{16}{section*.20}%
 \contentsline {paragraph}{Re-Ranking}{17}{section*.21}%
 \contentsline {paragraph}{Construcción de Contexto}{18}{section*.22}%
 \contentsline {paragraph}{Generación (LLM)}{19}{section*.23}%
-\contentsline {paragraph}{Evaluacion}{19}{section*.24}%
+\contentsline {paragraph}{Evaluación}{19}{section*.24}%
 \contentsline {subsubsection}{Paradigmas}{20}{section*.25}%
 \contentsline {paragraph}{Tipos de Paradigmas}{21}{section*.27}%
-\contentsline {subsubsection}{Evaluacion y Metricas}{22}{section*.28}%
+\contentsline {subsubsection}{Evaluación y Métricas}{22}{section*.28}%
 \contentsline {paragraph}{Categorías de Evaluación}{22}{section*.29}%
 \contentsline {subsubsection}{Futuro de RAG}{24}{section*.30}%
-\contentsline {paragraph}{Desafios Actuales}{24}{section*.31}%
+\contentsline {paragraph}{Desafíos Actuales}{24}{section*.31}%
 \contentsline {paragraph}{Direcciones Potenciales}{24}{section*.32}%
 \contentsline {paragraph}{Perspectivas}{24}{section*.33}%
 \contentsline {chapter}{\numberline {2}Metodología}{25}{chapter.2}%

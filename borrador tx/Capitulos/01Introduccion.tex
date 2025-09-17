@@ -516,7 +516,7 @@ Para llevar a cabo estas operaciones, los VDBs recurren a diferentes enfoques de
 
 \begin{itemize}
     \item \textbf{Nearest Neighbor Search (NNS):} compara de manera exhaustiva el vector de consulta con todos los vectores almacenados. Garantiza la máxima precisión,
-     pero resulta poco escalable con colecciones masivas de datos \parencite{ma2025vector}.
+    pero resulta poco escalable con colecciones masivas de datos \parencite{ma2025vector}.
     
     \item \textbf{Graph-Based Approach:} emplea estructuras de grafos, como HNSW, que permiten navegar de forma eficiente entre vectores y localizar vecinos cercanos 
     en pocas iteraciones, reduciendo considerablemente los tiempos de búsqueda \parencite{jing2024vecdb}.
@@ -527,36 +527,36 @@ Para llevar a cabo estas operaciones, los VDBs recurren a diferentes enfoques de
     \item \textbf{Approximate Nearest Neighbor Search (ANNS):} sacrifica una mínima exactitud para ganar eficiencia y escalabilidad. Métodos como IVF o PQ permiten 
     realizar búsquedas rápidas en grandes colecciones, siendo muy usados en producción \parencite{ma2025vector}.
 \end{itemize}
+
 Cuando una consulta es transformada en vector, el sistema no necesita recorrer todo el corpus, sino que localiza la región del espacio donde se ubica y 
 devuelve los vecinos más próximos. Para lograr esta eficiencia se emplean técnicas de indexación que organizan los embeddings en estructuras optimizadas para 
 la búsqueda aproximada. Se implementa mediante enfoques como:
 \begin{itemize}
-    \item \textbf{HNSW (Hierarchical Navigable Small World graphs):} construye un grafo jerárquico navegable que permite acceder rápidamente a los vecinos más cercanos reduciendo la complejidad de la búsqueda.\parencite{ma2025vector}
-    \item \textbf{IVF (Inverted File Index):} agrupa los vectores en listas invertidas de centroides, de modo que la comparación se restringe a las regiones más prometedoras del espacio.\parencite{ma2025vector}
+    \item \textbf{HNSW (Hierarchical Navigable Small World graphs):} construye un grafo jerárquico navegable que permite acceder rápidamente a los vecinos más cercanos, reduciendo la complejidad de la búsqueda \parencite{ma2025vector}.
+    \item \textbf{IVF (Inverted File Index):} agrupa los vectores en listas invertidas de centroides, de modo que la comparación se restringe a las regiones más prometedoras del espacio \parencite{ma2025vector}.
     \item \textbf{PQ (Product Quantization):} divide los vectores en subespacios y los representa de forma comprimida, lo que acelera significativamente el cálculo de distancias en colecciones de gran tamaño \parencite{ma2025vector}.
 \end{itemize}
 
-\paragraph{Recuperacion} Esta fase es el punto donde el usuario interactura con el conocimiento almacenado y su eficiencia y eficacia se ve reflejada en la calidad 
-de la respuesta obtenida como señalan \textcite{fan2021pretraining} recuperación en sistemas de IR se centra en estimar la relevancia entre la consulta y los documentos, devolviendo una lista ordenada
- de resultados que responden a la necesidad de información.
- De acuerdo con \textcite{hambarde2023ir}, los enfoques de recuperación se dividen en cuatro categorías principales:
+\paragraph{Recuperación} Esta fase es el punto donde el usuario interactúa con el conocimiento almacenado y su eficiencia y eficacia se reflejan en la calidad 
+de la respuesta obtenida. Como señalan \textcite{fan2021pretraining}, la recuperación en sistemas de IR se centra en estimar la relevancia entre la consulta y los documentos, devolviendo una lista ordenada
+de resultados que responden a la necesidad de información.  
+De acuerdo con \textcite{hambarde2023ir}, los enfoques de recuperación se dividen en cuatro categorías principales:
 
 \begin{itemize}
     \item \textbf{Convencional}: se basa en modelos clásicos como el booleano, el de espacio vectorial o BM25, donde la similitud depende de coincidencias exactas de términos y estadísticas de frecuencia. Estos métodos son eficientes para recuperar información en grandes colecciones, aunque limitados ante problemas de sinonimia o polisemia \parencite{hambarde2023ir}.
     
     \item \textbf{Dispersa (sparse)}: representa consultas y documentos como vectores escasos. Una línea reciente ha mejorado este enfoque mediante esquemas neuronales que aprenden a ponderar términos o expandir documentos, como DeepCT o Doc2Query, integrando así señales semánticas en modelos léxicos tradicionales \parencite{hambarde2023ir,gao2023rag}. 
     
-    \item \textbf{Densa (dense)}: emplea \textit{embeddings} generados por modelos preentrenados (p. ej., BERT o variantes de transformers), que permiten medir similitud en espacios vectoriales continuos. Según \textcite{hu2024ragrau}, este enfoque captura relaciones semánticas profundas y resulta más eficaz en tareas de recuperación semántica abierta. Ejemplos destacados son Dense Passage Retrieval (DPR) y ANCE \parencite{hambarde2023ir}. 
+    \item \textbf{Densa (dense)}: emplea embeddings generados por modelos preentrenados (p. ej., BERT o variantes de transformers), que permiten medir similitud en espacios vectoriales continuos. Según \textcite{hu2024ragrau}, este enfoque captura relaciones semánticas profundas y resulta más eficaz en tareas de recuperación semántica abierta. Ejemplos destacados son Dense Passage Retrieval (DPR) y ANCE \parencite{hambarde2023ir}. 
     
     \item \textbf{Híbrida}: combina la precisión léxica de los enfoques dispersos con la riqueza semántica de los densos. Como indican \textcite{zhai2024llmIR}, este tipo de estrategias incrementa tanto la cobertura como la pertinencia, al integrar coincidencias exactas y relaciones semánticas, lo que resulta fundamental para sistemas RAG modernos.
 \end{itemize}
 
-
-\paragraph{Re-Ranking} Una vez recuperada la informacion requerida, el sistema aplica técnicas de ranking para refinar el orden y priorizar los fragmentos más relevantes.
+\paragraph{Re-Ranking} Una vez recuperada la información requerida, el sistema aplica técnicas de ranking para refinar el orden y priorizar los fragmentos más relevantes.
 Este proceso puede apoyarse en métodos tradicionales como BM25, en algoritmos de learning to rank (LTR) \footnote{Se refiere al uso de algoritmos de aprendizaje supervisado para optimizar el orden de los resultados en un sistema de recuperación de información.}
 Como explican \textcite{bernard2025fate}, LTR permitió combinar múltiples señales de ranking en un modelo unificado, superando las limitaciones de los métodos
- heurísticos. Entre los algoritmos más representativos se encuentran RankNet, LambdaRank y LambdaMART, que introdujeron redes neuronales y técnicas de gradiente 
- boosting para mejorar la calidad del ordenamiento. Según \textcite{hambarde2023ir}, el LTR representa un punto de transición entre los métodos tradicionales y los basados en 
+heurísticos. Entre los algoritmos más representativos se encuentran RankNet, LambdaRank y LambdaMART, que introdujeron redes neuronales y técnicas de gradiente 
+boosting para mejorar la calidad del ordenamiento. Según \textcite{hambarde2023ir}, el LTR representa un punto de transición entre los métodos tradicionales y los basados en 
 deep learning, abriendo el camino hacia arquitecturas neuronales.
 
 Dentro de los enfoques de deep learning para re-ranking, se distinguen los siguientes componentes principales:
@@ -568,15 +568,14 @@ Dentro de los enfoques de deep learning para re-ranking, se distinguen los sigui
     
     \item \textbf{Modelos attention-based}: utilizan mecanismos de atención (como el self-attention de los transformers) para ponderar dinámicamente qué partes del texto y la consulta son más relevantes, mejorando la identificación de dependencias contextuales \parencite{hambarde2023ir}.
     
-    \item \textbf{Transformers preentrenados}: arquitecturas como BERT, RoBERTa o T5 han revolucionado el re-ranking al permitir un entendimiento contextual profundo. Estos modelos, ajustados con tareas de recuperación, han demostrado superar ampliamente métodos previos.\parencite{zhai2024llmIR}.
+    \item \textbf{Transformers preentrenados}: arquitecturas como BERT, RoBERTa o T5 han revolucionado el re-ranking al permitir un entendimiento contextual profundo. Estos modelos, ajustados con tareas de recuperación, han demostrado superar ampliamente métodos previos \parencite{zhai2024llmIR}.
 \end{itemize}
-
 
 \paragraph{Construcción de Contexto}  
 En esta etapa, los fragmentos recuperados y reordenados se integran para formar un contexto que será utilizado por el modelo generador. El objetivo es seleccionar 
 fragmentos de texto relevantes, eliminar redundancias y organizar la información de manera que aporte evidencia sólida a la respuesta final. De acuerdo con 
 \textcite{sarthi2024raptor}, este proceso implica técnicas de agregación y filtrado que permiten priorizar el contenido más pertinente, evitando 
-la sobrecarga de información irrelevante.  Asimismo, \textcite{gao2023rag} destacan que la construcción de contexto debe considerar las limitaciones de los modelos 
+la sobrecarga de información irrelevante. Asimismo, \textcite{gao2023rag} destacan que la construcción de contexto debe considerar las limitaciones de los modelos 
 de lenguaje, como la longitud máxima de entrada, lo cual obliga a fragmentar, resumir o comprimir la información antes de su uso. Una preparación deficiente puede introducir ruido y
 aumentar el riesgo de alucinaciones.  
 En investigaciones recientes se han propuesto enfoques más avanzados, como la construcción jerárquica de contexto o el uso de resúmenes intermedios, que 
@@ -598,17 +597,15 @@ En conjunto, estas estrategias reflejan que la generación no es un proceso line
 recuperación con el modelo. Como señalan \textcite{zhao2024rag}, la elección del mecanismo de fusión es determinante para la fidelidad y coherencia de las respuestas 
 generadas.
 
-
-
-\paragraph{Evaluacion} La evaluacion en los sitemas RAG es un proceso donde no se centra unicamente en evaluar la calidad de la respuesta generada si no que debe evaluarse a todas las fases de implementacion. 
-Empezando por el retriver donde se verifica que este encontrando evidencia relevante y suficiente para llevar a cabo esta verificacion se utilizan metricas tradicionales como Recall@k, nDCG o MRR que permiten  
-cuantificar qué proporción de los documentos útiles fueron efectivamente recuperados. Es importante verificar que esten recuperando los documentos adecuandamente ya que la etapa de generacion no podra producir respuestas fieles si carece de evidencia adecuada por mas sofisticado que sea el generador.
-En segundo lugar, medimos la generacion mas alla de indicadores como BLEU, ROUGE o F1, introcuduciendo el concepto de de fidelidad o groundedness, que examina si el texto producido está sustentado en las fuentes recuperadas, reduciendo el riesgo de alucinaciones. 
-este criterio debe complementarse con la atribución de citas, es decir, si el sistema enlaza explícitamente sus afirmaciones con los fragmentos de textos extraidos, lo que facilita la trazabilidad \parencite{zhang2025hallucination}.
-Finalmente es una evaluacion general del sistema donde se considera la utilidad practica del sistema en un escenario real. Aquí entran en juego dimensiones como eficiencia (latencia y costo), robustez frente a consultas adversas y adaptabilidad en dominios específicos. \textcite{knollmeyer2024benchmarking} destacan que requiere combinar métricas automáticas con juicios humanos o LLM-as-a-judge calibrados 
-SIn embargo, en los últimos años se ha propuesto integrar criterios de Fairness, Accountability, Transparency and Ethics (FATE) como parte de la evaluación. Segun \textcite{bernard2025fate} la confianza en los sistemas de recuperación y generación depende no solo de su precisión, sino también de que sean justos (sin sesgos desproporcionados hacia ciertos grupos), responsables (documentando el procedimiento 
-de evaluación y anotadores), transparentes (explicando cómo se recuperó y procesó la información) y éticos (respetando la privacidad, la diversidad de fuentes y evitando desinformación)
-Incluir FATE como un parametro de evualicion permite generar confianza social y regulatoria ademas de estar alieando con una calidad tecnica. Como sugiere \textcite{ramdurai2025llm} a evaluación debe ser iterativa y multimodal: incluir tanto experimentos controlados en benchmarks como pruebas de usabilidad en escenarios reales. De esta manera se garantiza que el sitema sea confiable, util , socialemte responsable y no solamente funcione bien en metricas numericas. 
+\paragraph{Evaluación} La evaluación en los sistemas RAG es un proceso donde no se centra únicamente en evaluar la calidad de la respuesta generada, sino que debe evaluarse en todas las fases de implementación. 
+Empezando por el retriever, donde se verifica que esté encontrando evidencia relevante y suficiente. Para llevar a cabo esta verificación se utilizan métricas tradicionales como Recall@k, nDCG o MRR que permiten  
+cuantificar qué proporción de los documentos útiles fueron efectivamente recuperados. Es importante verificar que estén recuperando los documentos adecuadamente, ya que la etapa de generación no podrá producir respuestas fieles si carece de evidencia adecuada, por más sofisticado que sea el generador.  
+En segundo lugar, medimos la generación más allá de indicadores como BLEU, ROUGE o F1, introduciendo el concepto de fidelidad o groundedness, que examina si el texto producido está sustentado en las fuentes recuperadas, reduciendo el riesgo de alucinaciones. 
+Este criterio debe complementarse con la atribución de citas, es decir, si el sistema enlaza explícitamente sus afirmaciones con los fragmentos de textos extraídos, lo que facilita la trazabilidad \parencite{zhang2025hallucination}.  
+Finalmente, es necesaria una evaluación general del sistema donde se considere la utilidad práctica en un escenario real. Aquí entran en juego dimensiones como eficiencia (latencia y costo), robustez frente a consultas adversas y adaptabilidad en dominios específicos. \textcite{knollmeyer2024benchmarking} destacan que requiere combinar métricas automáticas con juicios humanos o LLM-as-a-judge calibrados.  
+Sin embargo, en los últimos años se ha propuesto integrar criterios de Fairness, Accountability, Transparency and Ethics (FATE) como parte de la evaluación. Según \textcite{bernard2025fate}, la confianza en los sistemas de recuperación y generación depende no solo de su precisión, sino también de que sean justos (sin sesgos desproporcionados hacia ciertos grupos), responsables (documentando el procedimiento 
+de evaluación y anotadores), transparentes (explicando cómo se recuperó y procesó la información) y éticos (respetando la privacidad, la diversidad de fuentes y evitando desinformación).  
+Incluir FATE como un parámetro de evaluación permite generar confianza social y regulatoria, además de estar alineado con la calidad técnica. Como sugiere \textcite{ramdurai2025llm}, la evaluación debe ser iterativa y multimodal: incluir tanto experimentos controlados en benchmarks como pruebas de usabilidad en escenarios reales. De esta manera se garantiza que el sistema sea confiable, útil, socialmente responsable y no solamente funcione bien en métricas numéricas.  
 
 \subsubsection{Paradigmas}
 \begin{figure}[H]
@@ -656,12 +653,12 @@ Incluir FATE como un parametro de evualicion permite generar confianza social y 
 \label{fig:paradigmas}
 \end{figure}
 
-Dentro del area de Retrieval Augmented Generation (RAG) \textcite{gao2023rag} distiguen los paradigmas Naive RAG, Advanced RAG y Modular RAG, que representan un progreso
-desde enfoques básicos de recuperación y generación hasta arquitecturas modulares y flexibles. A su vez \textcite{zhang2025hallucination} clasifican los problemas, en el area de 
-Hallucination Mitigation, en dos ejes: retrieval failure (fallos en fuentes, consultas o recuperadores ) y generation deficiency 
-(ruido o conflicto contextual y límites de capacidad). FInalmente, 
-\textcite{zhao2024rag} proponen fundaciones de RAG segun la forma que el retriver complementa al generador se clasifican en Query-based RAG, Latent Representation-based RAG,
-Logit-based RAG y Speculative RAG, de esta forma se expande la aplicación de RAG a múltiples dominios y modalidades.
+Dentro del área de Retrieval-Augmented Generation (RAG), \textcite{gao2023rag} distinguen los paradigmas Naive RAG, Advanced RAG y Modular RAG, que representan un progreso
+desde enfoques básicos de recuperación y generación hasta arquitecturas modulares y flexibles. A su vez, \textcite{zhang2025hallucination} clasifican los problemas en el área de 
+Hallucination Mitigation en dos ejes: retrieval failure (fallos en fuentes, consultas o recuperadores) y generation deficiency 
+(ruido o conflicto contextual y límites de capacidad). Finalmente, 
+\textcite{zhao2024rag} proponen fundaciones de RAG según la forma en que el retriever complementa al generador: Query-based RAG, Latent Representation-based RAG,
+Logit-based RAG y Speculative RAG. De esta forma se expande la aplicación de RAG a múltiples dominios y modalidades.
 
 
 
@@ -677,7 +674,7 @@ Logit-based RAG y Speculative RAG, de esta forma se expande la aplicación de RA
 
     \item \textbf{Tipos de RAG — Zhao et al. (2024)}
     \begin{itemize}
-        \item Query-based RAG: integra directamente la consulta y la información recuperada en el input del generador.
+        \item Query-based RAG: integra directamente la consulta y la información recuperada en la entrada del generador.
         \item Latent Representation-based RAG: incorpora la información recuperada como representaciones latentes en el modelo generativo.
         \item Logit-based RAG: combina la información de recuperación en la fase de decodificación a nivel de logits.
         \item Speculative RAG: sustituye pasos de generación por recuperación para acelerar y reducir costes.
@@ -690,10 +687,7 @@ Logit-based RAG y Speculative RAG, de esta forma se expande la aplicación de RA
     \end{itemize}
 \end{itemize}
 
-
-
-
-\subsubsection{Evaluacion y Metricas}
+\subsubsection{Evaluación y Métricas}
 
 La evaluación de los sistemas de Recuperación de Información (IR) y de Retrieval-Augmented Generation (RAG) ha sido objeto de un creciente interés en la literatura reciente. 
 En el ámbito de IR, \textcite{bernard2025fate} destacan que las nociones de equidad, transparencia y responsabilidad requieren enfoques diversos: mientras la \textit{fairness} 
@@ -707,12 +701,12 @@ aspectos como coherencia, transparencia y verificabilidad.
 
 \paragraph{Categorías de Evaluación}
 \begin{itemize}
-  \item \textbf{Enfoques de Evaluación - Gao et al. (2023)}
+  \item \textbf{Enfoques de Evaluación — Gao et al. (2023)}
         \begin{itemize}
           \item Evaluación independiente por etapas: análisis separado de retrieval, augmentation y generation, con métricas específicas en cada módulo.
           \item Evaluación End-to-End: valoración directa de la salida final del sistema RAG, con dos variantes:
           \begin{itemize}
-              \item Evaluación End-to-End automática: frameworks que miden habilidades/abilities clave como exactitud, fidelidad (\textit{faithfulness}), atribución de fuentes, reducción de alucinaciones y transparencia.
+              \item Evaluación End-to-End automática: frameworks que miden habilidades clave como exactitud, fidelidad (\textit{faithfulness}), atribución de fuentes, reducción de alucinaciones y transparencia.
               \item Evaluación End-to-End con juicio humano: juicios expertos que valoran coherencia, verificabilidad, utilidad práctica y confianza.
           \end{itemize}
           \item Combinación de métricas: integración de métricas clásicas de recuperación (precisión, recall, nDCG), métricas de generación (coherencia, verificabilidad, calidad narrativa) y evaluación humana.
@@ -730,7 +724,7 @@ aspectos como coherencia, transparencia y verificabilidad.
         \item Métricas de recuperación: precisión, recall, F1, MAP (Mean Average Precision), MRR (Mean Reciprocal Rank).
         \item Métricas de ranking: nDCG (Normalized Discounted Cumulative Gain) y calidad del ordenamiento.
         \item Evaluación de modelos neuronales: comparación con benchmarks tradicionales (TREC, MS MARCO).
-        \item Dimensión multi-modal: evaluación de IR en escenarios que integran texto, imágenes y audio.
+        \item Dimensión multimodal: evaluación de IR en escenarios que integran texto, imágenes y audio.
     \end{itemize}
 
     \item \textbf{Evaluación en RAG — Knollmeyer et al. (2024); Gao et al. (2023)}
@@ -760,30 +754,28 @@ aspectos como coherencia, transparencia y verificabilidad.
             \item Evaluadores mixtos: combinación de métricas automáticas (similaridad semántica, BLEU, ROUGE) con juicios humanos (coherencia, verificabilidad, utilidad práctica).
             \item Datasets: necesidad de colecciones específicas adaptadas a RAG, más allá de benchmarks tradicionales de IR.
         \end{itemize}
-
-        
     \end{itemize}
     
 \end{itemize}
 
 
-
 \subsubsection{Futuro de RAG}
 
-\paragraph{Desafios Actuales}
+\paragraph{Desafíos Actuales}
 De acuerdo con \textcite{zhai2024llmIR}, uno de los principales desafíos de los sistemas RAG es la generación de alucinaciones, que comprometen la confianza y 
 limitan su uso en aplicaciones críticas. Asimismo, persisten limitaciones en la calidad de la recuperación y en la eficiencia computacional, especialmente 
-en dominios donde se requiere información actualizada y especializada (Hu \& Lu, 2024). Además, \textcite{ramdurai2025llm} señala que la integración de RAG con otras
+en dominios donde se requiere información actualizada y especializada \parencite{hu2024ragrau}. Además, \textcite{ramdurai2025llm} señala que la integración de RAG con otras
 arquitecturas, como redes neuronales convolucionales, enfrenta problemas de escalabilidad y de adaptación a contextos heterogéneos.
 
 \paragraph{Direcciones Potenciales}  
 Las líneas de avance incluyen el desarrollo de retrievers más robustos, la optimización de las interacciones entre modelo y recuperación, 
-así como mecanismos de evaluación que prioricen la relevancia y la coherencia.\textcite{ramdurai2025llm} enfatiza la sinergia con arquitecturas multimodales y con sistemas 
-capaces de combinar información textual, visual y estructurada. Asimismo, enfoques como RAPTOR que introduce resúmenes recursivos y jerárquicos en la recuperación
-muestran cómo superar la fragmentación del contexto y mejorar la integración semántica (Sarthi et al., 2024).
+así como mecanismos de evaluación que prioricen la relevancia y la coherencia. \textcite{ramdurai2025llm} enfatiza la sinergia con arquitecturas multimodales y con sistemas 
+capaces de combinar información textual, visual y estructurada. Asimismo, enfoques como RAPTOR, que introduce resúmenes recursivos y jerárquicos en la recuperación,
+muestran cómo superar la fragmentación del contexto y mejorar la integración semántica \parencite{sarthi2024raptor}.
 
 \paragraph{Perspectivas}
-A medio plazo, RAG y los LLMs convergerán con la IR clásica hacia sistemas de acceso conversacional al conocimiento: motores de búsqueda “con opinión” pero con 
-respaldo documental, capaces de planificar, citar y aprender de la interacción. Incluso si los LLMs de contexto largo siguen mejorando, la recuperación seguirá 
-siendo diferencial por costo, frescura, control y gobernanza de la evidencia; veremos stacks donde RAG, herramientas y memoria trabajan de forma coordinada, 
-con evaluación centrada en utilidad y veracidad para tareas compuestas y empresariales
+A medio plazo, RAG y los LLM convergerán con la IR clásica hacia sistemas de acceso conversacional al conocimiento: motores de búsqueda “con opinión” pero con 
+respaldo documental, capaces de planificar, citar y aprender de la interacción. Incluso si los LLM de contexto largo siguen mejorando, la recuperación seguirá 
+siendo diferencial por costo, frescura, control y gobernanza de la evidencia; veremos stacks donde RAG, herramientas y memoria trabajen de forma coordinada, 
+con evaluación centrada en utilidad y veracidad para tareas compuestas y empresariales.
+
