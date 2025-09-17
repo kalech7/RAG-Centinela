@@ -10,7 +10,7 @@
 \contentsline {subsection}{\numberline {1.4.2}Objetivos específicos}{1}{subsection.1.4.2}%
 \contentsline {section}{\numberline {1.5}Alcance}{2}{section.1.5}%
 \contentsline {section}{\numberline {1.6}Marco Teórico}{2}{section.1.6}%
-\contentsline {section}{\numberline {1.7}Revision de literatura}{2}{section.1.7}%
+\contentsline {section}{\numberline {1.7}Revisión de literatura}{2}{section.1.7}%
 \contentsline {subsection}{\numberline {1.7.1}Propósito y objetivos de la revisión}{2}{subsection.1.7.1}%
 \contentsline {subsection}{\numberline {1.7.2}Criterios de inclusión y exclusión}{3}{subsection.1.7.2}%
 \contentsline {subsection}{\numberline {1.7.3}Identificación del estudio semilla y selección de revisiones relevantes}{3}{subsection.1.7.3}%
@@ -43,8 +43,8 @@
 \contentsline {section}{\numberline {2.2}Enfoque Design Science Research (DSR)}{27}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Diseño y desarrollo del artefacto}{31}{section.2.3}%
 \contentsline {chapter}{\numberline {3}Pruebas, Resultados, Conclusiones y Recomendaciones}{32}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Demostracion}{32}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Evaluacion del desempeño}{32}{section.3.2}%
+\contentsline {section}{\numberline {3.1}Demostración}{32}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Evaluación del desempeño}{32}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Resultados}{32}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Conclusiones}{32}{section.3.4}%
 \contentsline {section}{\numberline {3.5}Recomendaciones}{32}{section.3.5}%
