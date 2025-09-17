@@ -90,7 +90,7 @@ que facilitará la estructuración de los hallazgos.
 % para resuemir la informacion se uso (herramienta) atlas por ejemplo
 
 \subsection{Síntesis y representación de resultados}
-Con la literatura seleccionada se identificó la hoja de ruta que se presenta a continuación en la Figura \ref{fig:secciones-rag}.
+Con la literatura seleccionada se identificó la hoja de ruta que se presenta a continuación en la Figura~\ref{fig:secciones-rag}.
 
 % --- Grafico resumen
 
@@ -122,10 +122,10 @@ Con la literatura seleccionada se identificó la hoja de ruta que se presenta a 
 \end{figure}
 
 A partir de esta hoja de ruta se desarrolla un esquema más detallado, en el que primero se exploran la teoría, 
-las características y las aplicaciones, como se muestra en la Fig. \ref{fig:Fudamentos}. Posteriormente, se profundiza en la arquitectura, Fig. \ref{fig:arquitectura_rag}, 
+las características y las aplicaciones, como se muestra en la Figura.~\ref{fig:Fudamentos}. Posteriormente, se profundiza en la arquitectura, Figura. \ref{fig:arquitectura_rag}, 
 donde se describe cada uno de los componentes que la conforman (Retriever, Augmented y Generation), así como las variantes y mejoras que existen en cada uno. 
-Más adelante, se detalla el proceso de implementación vease la Fig. \ref{fig:pipeline-rag}, desde la preparación de los datos hasta el componente de generación, incluyendo las técnicas y herramientas más relevantes.  
-En la Fig. \ref{fig:paradigmas} correspondiente se examinan los paradigmas de RAG, presentando sus tipos y clases; seguidamente, en otra figura, se introducen las métricas y evaluadores automáticos 
+Más adelante, se detalla el proceso de implementación vease la Figura.~\ref{fig:pipeline-rag}, desde la preparación de los datos hasta el componente de generación, incluyendo las técnicas y herramientas más relevantes.  
+En la Figura.~\ref{fig:paradigmas} correspondiente se examinan los paradigmas de RAG, presentando sus tipos y clases; seguidamente, se introducen las métricas y evaluadores automáticos 
 empleados en la evaluación de sistemas RAG, junto con las consideraciones éticas y de equidad que deben tenerse en cuenta.  
 Finalmente, se discuten las tendencias emergentes, los desafíos actuales y las posibles direcciones futuras que podrían orientar la evolución de los sistemas RAG.  
 
@@ -305,10 +305,11 @@ Tipos de retrievers & Sparse            & BM25, TF-IDF \\
 \bottomrule
 \end{tabularx}
 \caption{Componente Retriever}
+\label{tab:retriver}
 \end{table}
 
 
-Indexing se encarga de organizar y representar la información de forma eficiente. En este sentido, los vector databases (VDBs) han aumentado su popularidad, ya que permiten almacenar 
+Como se puede observar en la Tabla~\ref{tab:retriver}, Indexing se encarga de organizar y representar la información de forma eficiente. En este sentido, los vector databases (VDBs) han aumentado su popularidad, ya que permiten almacenar 
 vectores de alta dimensionalidad y realizar búsquedas por similitud semántica. Como explica \textcite{joshi2025vector}, estas bases de datos resultan esenciales para 
 la aplicación de inteligencia artificial generativa, ya que superan las limitaciones de las bases relacionales en el manejo de datos no estructurados.  
 Los VDBs integran mecanismos de búsqueda aproximada de vecinos más cercanos (ANNS), lo que posibilita consultas rápidas incluso sobre miles de objetos. Además, como lo menciona
@@ -343,8 +344,9 @@ Process & Once                  & document augmentation \\
 \bottomrule
 \end{tabularx}
 \caption{Componente Augmentation}
+\label{tab:augmentation}
 \end{table}
-Augmentation es el proceso el cual un modelo de lenguaje incorpora información adicional 
+Como se muestra en la Tabla~\ref{tab:augmentation}, Augmentation es el proceso el cual un modelo de lenguaje incorpora información adicional 
 ya sea externa, como documentos, bases de conocimiento o corpus abiertos, o procesada internamente en diferentes etapas de su funcionamiento.
 Los autores coinciden en que esta integración cumple objetivos clave: mejorar la precisión de las respuestas al aportar evidencia relevante, 
 reducir las alucinaciones al contrastar el conocimiento implícito del modelo con fuentes verificables, y actualizar el conocimiento de los LLMs sin 
@@ -396,7 +398,7 @@ incorporación de ruido.
 \label{tab:generator}
 \end{table}
 
-El componente generador (ver Tabla\ref{tab:generator}) es el encargado de producir texto, imágenes u otro tipo de contenido. La capacidad del generador no depende únicamente de su arquitectura sino de un conjunto 
+El componente generador (ver Tabla~\ref{tab:generator}) es el encargado de producir texto, imágenes u otro tipo de contenido. La capacidad del generador no depende únicamente de su arquitectura sino de un conjunto 
 de estrategias que optimizan su rendimiento y controlan la calidad de las salidas. Estas mejoras incluyen prompt engineering, el fine-tuning especializado en dominios y 
 ajustes en los métodos de decodificación para equilibrar coherencia y diversidad en la generación. En este sentido, comprender tanto los tipos de modelos como las técnicas de optimización resulta fundamental para evaluar el papel del \textit{Generator} 
 en sistemas avanzados como los de Retrieval-Augmented Generation (RAG), donde la combinación de arquitectura y optimización garantiza la generación de respuestas 
@@ -473,7 +475,7 @@ adaptando el comportamiento del modelo sin necesidad de modificar su arquitectur
 \label{fig:pipeline-rag}
 \end{figure}
 
-Las fases de implementación son una secuencia de pasos diseñados para enriquecer la generación de respuestas con información externa y actualizada. 
+Las fases de implementación son una secuencia de pasos (Ver Figura.~\ref{fig:pipeline-rag}) diseñados para enriquecer la generación de respuestas con información externa y actualizada. 
 Según \textcite{tabassum2020}, todo inicia con la ingesta y el preprocesamiento de los datos, donde las técnicas de limpieza y segmentación garantizan 
 que el texto sea utilizable para fases posteriores. Luego se vectoriza mediante embeddings los cuales transforman los fragmentos de texto
 en representaciones numéricas para la recuperación semántica tal como lo expresa \textcite{minaee2021}. Para \textcite{hu2024ragrau}, estos vectores se almacenan en una base de datos vectorial 
