@@ -536,11 +536,71 @@ la búsqueda aproximada. Se implementa mediante enfoques como:
     \item \textbf{PQ (Product Quantization):} divide los vectores en subespacios y los representa de forma comprimida, lo que acelera significativamente el cálculo de distancias en colecciones de gran tamaño \parencite{ma2025vdb}.
 \end{itemize}
 
-\paragraph{Recuperacion} 
+\paragraph{Recuperacion} Esta fase es el punto donde el usuario interactura con el conocimiento almacenado y su eficiencia y eficacia se ve reflejada en la calidad 
+de la respuesta obtenida como señalan \textcite{fan2021pretraining} recuperación en sistemas de IR se centra en estimar la relevancia entre la consulta y los documentos, devolviendo una lista ordenada
+ de resultados que responden a la necesidad de información.
+ De acuerdo con \textcite{hambarde2023ir}, los enfoques de recuperación se dividen en cuatro categorías principales:
+
+\begin{itemize}
+    \item \textbf{Convencional}: se basa en modelos clásicos como el booleano, el de espacio vectorial o BM25, donde la similitud depende de coincidencias exactas de términos y estadísticas de frecuencia. Estos métodos son eficientes para recuperar información en grandes colecciones, aunque limitados ante problemas de sinonimia o polisemia \parencite{hambarde2023ir}.
+    
+    \item \textbf{Dispersa (sparse)}: representa consultas y documentos como vectores escasos. Una línea reciente ha mejorado este enfoque mediante esquemas neuronales que aprenden a ponderar términos o expandir documentos, como DeepCT o Doc2Query, integrando así señales semánticas en modelos léxicos tradicionales \parencite{hambarde2023ir,gao2023rag}. 
+    
+    \item \textbf{Densa (dense)}: emplea \textit{embeddings} generados por modelos preentrenados (p. ej., BERT o variantes de transformers), que permiten medir similitud en espacios vectoriales continuos. Según \textcite{hu2024ragrau}, este enfoque captura relaciones semánticas profundas y resulta más eficaz en tareas de recuperación semántica abierta. Ejemplos destacados son Dense Passage Retrieval (DPR) y ANCE \parencite{hambarde2023ir}. 
+    
+    \item \textbf{Híbrida}: combina la precisión léxica de los enfoques dispersos con la riqueza semántica de los densos. Como indican \textcite{zhai2024llmIR}, este tipo de estrategias incrementa tanto la cobertura como la pertinencia, al integrar coincidencias exactas y relaciones semánticas, lo que resulta fundamental para sistemas RAG modernos.
+\end{itemize}
+
+
+\paragraph{Re-Ranking} Una vez recuperada la informacion requerida, el sistema aplica técnicas de ranking para refinar el orden y priorizar los fragmentos más relevantes.
+Este proceso puede apoyarse en métodos tradicionales como BM25, en algoritmos de learning to rank (LTR) \footnote{Se refiere al uso de algoritmos de aprendizaje supervisado para optimizar el orden de los resultados en un sistema de recuperación de información.}
+Como explican \textcite{bernard2025fate}, LTR permitió combinar múltiples señales de ranking en un modelo unificado, superando las limitaciones de los métodos
+ heurísticos. Entre los algoritmos más representativos se encuentran RankNet, LambdaRank y LambdaMART, que introdujeron redes neuronales y técnicas de gradiente 
+ boosting para mejorar la calidad del ordenamiento. Según \textcite{hambarde2023ir}, el LTR representa un punto de transición entre los métodos tradicionales y los basados en 
+deep learning, abriendo el camino hacia arquitecturas neuronales.
+
+Dentro de los enfoques de deep learning para re-ranking, se distinguen los siguientes componentes principales:
+
+\begin{itemize}
+    \item \textbf{Representación basada en modelos}: codifican la consulta y el documento de manera independiente en un espacio vectorial, y luego miden la similitud entre ambas representaciones. Son eficientes, aunque limitados en capturar interacciones finas entre texto y consulta \parencite{minaee2021}.
+    
+    \item \textbf{Interacción basada en modelos}: en lugar de representaciones independientes, modelan explícitamente las relaciones término a término entre consulta y documento. Esto permite capturar señales de correspondencia más precisas, a costa de mayor costo computacional \parencite{jiang2024textmatching}.
+    
+    \item \textbf{Modelos attention-based}: utilizan mecanismos de atención (como el self-attention de los transformers) para ponderar dinámicamente qué partes del texto y la consulta son más relevantes, mejorando la identificación de dependencias contextuales \parencite{hambarde2023ir}.
+    
+    \item \textbf{Transformers preentrenados}: arquitecturas como BERT, RoBERTa o T5 han revolucionado el re-ranking al permitir un entendimiento contextual profundo. Estos modelos, ajustados con tareas de recuperación, han demostrado superar ampliamente métodos previos.\parencite{zhai2024llmIR}.
+\end{itemize}
+
+
+\paragraph{Construcción de Contexto}  
+En esta etapa, los fragmentos recuperados y reordenados se integran para formar un contexto que será utilizado por el modelo generador. El objetivo es seleccionar 
+fragmentos de texto relevantes, eliminar redundancias y organizar la información de manera que aporte evidencia sólida a la respuesta final. De acuerdo con 
+\textcite{sarthi2024raptor}, este proceso implica técnicas de agregación y filtrado que permiten priorizar el contenido más pertinente, evitando 
+la sobrecarga de información irrelevante.  Asimismo, \textcite{gao2023rag} destacan que la construcción de contexto debe considerar las limitaciones de los modelos 
+de lenguaje, como la longitud máxima de entrada, lo cual obliga a fragmentar, resumir o comprimir la información antes de su uso. Una preparación deficiente puede introducir ruido y
+aumentar el riesgo de alucinaciones.  
+En investigaciones recientes se han propuesto enfoques más avanzados, como la construcción jerárquica de contexto o el uso de resúmenes intermedios, que 
+buscan maximizar la relevancia semántica y mantener la coherencia global en la generación de respuestas \parencite{hambarde2023ir}.
+
+\paragraph{Generación (LLM)}  Durante esta fase, el modelo de lenguaje no solo transforma los fragmentos de texto en un texto general, sino que también decide cómo integrar la información 
+recuperada con su conocimiento preentrenado. En la literatura, este proceso se conceptualiza mediante diferentes estrategias de fusión, que buscan equilibrar el aporte
+externo con las capacidades internas del modelo \parencite{zhao2024rag,hambarde2023ir}. Las técnicas de fusión son:  
+
+\begin{itemize}
+    \item \textbf{Query-based Fusions}: la información recuperada se incorpora desde la etapa de entrada, concatenando la consulta con los pasajes relevantes para que el modelo los procese conjuntamente. Este enfoque, también denominado \textit{early fusion}, es sencillo de implementar y aprovecha la arquitectura del transformador para contextualizar documentos y consulta en un mismo espacio semántico \parencite{gao2023rag}.  
+
+    \item \textbf{Logits-based Fusions}: en este caso, la fusión ocurre en la etapa de salida, combinando las distribuciones de probabilidad (logits) producidas por el modelo generador con las provenientes de la información recuperada. De esta forma, se refuerzan las respuestas que cuentan con evidencia externa, reduciendo la probabilidad de alucinaciones \parencite{zhai2024}.  
+
+    \item \textbf{Latent Fusions}: aquí la integración se realiza en un espacio latente intermedio, donde los embeddings de la consulta y los documentos recuperados se mezclan con las representaciones internas del LLM. Según \textcite{hu2024ragrau}, esto permite un balance más fino entre lo que sabe el LLM y lo que aporta la recuperación externa.  
+\end{itemize}
+
+En conjunto, estas estrategias reflejan que la generación no es un proceso lineal, sino una etapa flexible donde se decide cómo y en qué nivel se integra la 
+recuperación con el modelo. Como señalan \textcite{zhao2024rag}, la elección del mecanismo de fusión es determinante para la fidelidad y coherencia de las respuestas 
+generadas.
 
 
 
-
+\paragraph{Evaluacion}
 
 
 

@@ -481,7 +481,6 @@
       \field{title}{Information Retrieval: Recent Advances and Beyond}
       \field{volume}{11}
       \field{year}{2023}
-      \true{nocite}
       \field{pages}{76581 76620}
       \range{pages}{-1}
       \verb{doi}
@@ -594,7 +593,6 @@
       \field{title}{A Survey of Text-Matching Techniques}
       \field{volume}{15}
       \field{year}{2024}
-      \true{nocite}
       \field{pages}{332}
       \range{pages}{1}
       \verb{doi}
