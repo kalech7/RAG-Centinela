@@ -14,11 +14,11 @@
 \contentsline {subsection}{\numberline {1.7.1}Propósito y objetivos de la revisión}{2}{subsection.1.7.1}%
 \contentsline {subsection}{\numberline {1.7.2}Criterios de inclusión y exclusión}{3}{subsection.1.7.2}%
 \contentsline {subsection}{\numberline {1.7.3}Identificación del estudio semilla y selección de revisiones relevantes}{3}{subsection.1.7.3}%
-\contentsline {subsection}{\numberline {1.7.4}Valoracion de la evidencias y extracion de la infomacion}{4}{subsection.1.7.4}%
+\contentsline {subsection}{\numberline {1.7.4}Valoración de las evidencias y extracción de la información}{4}{subsection.1.7.4}%
 \contentsline {subsection}{\numberline {1.7.5}Síntesis y representación de resultados}{4}{subsection.1.7.5}%
-\contentsline {subsubsection}{Fundamentos}{6}{section*.5}%
+\contentsline {subsubsection}{Fundamentos}{5}{section*.5}%
 \contentsline {paragraph}{Que es un LLM}{6}{section*.7}%
-\contentsline {paragraph}{Que es un RAG}{7}{section*.8}%
+\contentsline {paragraph}{Que es un RAG}{6}{section*.8}%
 \contentsline {subsubsection}{Arquitectura}{7}{section*.9}%
 \contentsline {subsubsection}{Fases de Implementación}{13}{section*.14}%
 \contentsline {paragraph}{Ingesta}{14}{section*.16}%
@@ -31,11 +31,11 @@
 \contentsline {paragraph}{Generación (LLM)}{19}{section*.23}%
 \contentsline {paragraph}{Evaluacion}{19}{section*.24}%
 \contentsline {subsubsection}{Paradigmas}{20}{section*.25}%
-\contentsline {paragraph}{Tipos de Paradigmas}{20}{section*.27}%
-\contentsline {subsubsection}{Evaluacion y Metricas}{21}{section*.28}%
-\contentsline {paragraph}{Categorías de Evaluación}{21}{section*.29}%
-\contentsline {subsubsection}{Futuro de RAG}{23}{section*.30}%
-\contentsline {paragraph}{Desafios Actuales}{23}{section*.31}%
+\contentsline {paragraph}{Tipos de Paradigmas}{21}{section*.27}%
+\contentsline {subsubsection}{Evaluacion y Metricas}{22}{section*.28}%
+\contentsline {paragraph}{Categorías de Evaluación}{22}{section*.29}%
+\contentsline {subsubsection}{Futuro de RAG}{24}{section*.30}%
+\contentsline {paragraph}{Desafios Actuales}{24}{section*.31}%
 \contentsline {paragraph}{Direcciones Potenciales}{24}{section*.32}%
 \contentsline {paragraph}{Perspectivas}{24}{section*.33}%
 \contentsline {chapter}{\numberline {2}Metodología}{25}{chapter.2}%

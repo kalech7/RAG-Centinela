@@ -55,15 +55,15 @@ Se excluyen las revisiones narrativas, los documentos que carezcan de transparen
 directamente relacionadas con el objeto de estudio delimitado.
 
 \subsection{Identificación del estudio semilla y selección de revisiones relevantes}
-El proceso de búsqueda se inicia con la identificación de dos estudios semilla, extraídos de Google Scholar mediante los parámetros “retrieval information” y “retrieval augmented generation”. 
+El proceso de búsqueda se inicia con la identificación de dos estudios semilla, extraídos de Google Scholar mediante los parámetros “Retrieval Information” y “Retrieval Augmented Generation”. 
 Debido al análisis realizado en Lens.org, se estableció el filtro de 2018 a 2025, ya que se observa que a partir de 2018 el término retrieval-augmented generation 
 comenzó a adquirir una relevancia en la literatura científica, mostrando interés de la comunidad investigadora hasta la actualidad.
 
-El primer estudio seleccionado fue Information Retrieval: Recent Advances and Beyond (Hambarde \& Proença, 2023), publicado en IEEE Access. 
+El primer estudio seleccionado fue Information Retrieval: Recent Advances and Beyond \textcite{hambarde2023ir}, publicado en IEEE Access. 
 Este trabajo constituye una revisión exhaustiva de la recuperación de información, abarcando desde los métodos tradicionales hasta los enfoques 
 basados en deep learning y transformers, por lo que resulta un punto de partida principal para explorar la literatura reciente y relevante.
 
-El segundo estudio semilla corresponde al artículo Retrieval-Augmented Generation for Large Language Models (Gao, Xiong, Gao, Jia, Pan, Bi, Dai, Sun \& Wang, 2023), publicado en
+El segundo estudio semilla corresponde al artículo Retrieval-Augmented Generation for Large Language Models \textcite{gao2023rag}, publicado en
 arXiv,
 el cual presenta un marco conceptual y aplicado sobre la integración de recuperación de información y modelos generativos de gran escala. Su incorporación permite 
 establecer una base teórica para contextualizar el análisis de las revisiones seleccionadas.
@@ -74,14 +74,15 @@ Estas revisiones constituyen la base para el análisis y síntesis en el present
 
 
 
-\subsection{Valoracion de la evidencias y extracion de la infomacion}
-De los estudios seleccionados se procede a realizar un análisis, 
-con el fin de excluir aquellos artículos que no cumplen con los criterios establecidos 
-o que presentan un nivel de profundidad insuficiente para los objetivos de la revisión. 
-La selección final de los estudios se realiza en consenso con expertos en el área, 
-garantizando así la pertinencia y relevancia de la evidencia incluida.Para la organización, codificación y síntesis de la 
-información se usa ATLAS.ti \footnote{Scientific Software Development GmbH. Disponible en: \href{https://atlasti.com/es}{Atlas.ti}} que facilitará la estructuración de los hallazgos.
-
+\subsection{Valoración de las evidencias y extracción de la información}  
+De los estudios seleccionados se procede a realizar un análisis,  
+con el fin de excluir aquellos artículos que no cumplen con los criterios establecidos  
+o que presentan un nivel de profundidad insuficiente para los objetivos de la revisión.  
+La selección final de los estudios se realiza en consenso con expertos en el área,  
+garantizando así la pertinencia y relevancia de la evidencia incluida.  
+Para la organización, codificación y síntesis de la  
+información se utiliza ATLAS.ti\footnote{Scientific Software Development GmbH. Disponible en: \href{https://atlasti.com/es}{Atlas.ti}},  
+que facilitará la estructuración de los hallazgos.  
 
 
 
@@ -120,13 +121,14 @@ Con la literatura seleccionada se identificó la hoja de ruta que se presenta a 
 \label{fig:secciones-rag}
 \end{figure}
 
-A partir de esta hoja de ruta se desarrolla un esquema más detallado, en el que se expone primero exploraremos su teoría, 
-características y aplicaciones, como se muestra en la Fig \ref{fig:Fudamentos}. Luego profundizamos en su arquitectura en la cual 
-se describe cada uno de los componentes que lo conforman (retriever, augmented y generation) y las variantes y mejoras que existen de cada uno. 
-Posteriormente, se detalla el proceso de implementación, desde la preparación de datos hasta el componente de generación, incluyendo las técnicas y herramientas más relevantes.
-A continuación en la Fig , se examinan los paradigmas de RAG, dando a conocer los tipos de paradigmas y sus clases, para luego en la Fig , se presentan las métricas y evaluadores automáticos 
-utilizados en la evaluación de sistemas RAG, así como las consideraciones éticas y de equidad que deben tenerse en cuenta.
-Finalmente, se discuten las tendencias emergentes, los desafíos que actualmente se tienen y futuras direcciones que podrían tomar los sistemas RAG.
+A partir de esta hoja de ruta se desarrolla un esquema más detallado, en el que primero se exploran la teoría, 
+las características y las aplicaciones, como se muestra en la Fig. \ref{fig:Fudamentos}. Posteriormente, se profundiza en la arquitectura, Fig. \ref{fig:arquitectura_rag}, 
+donde se describe cada uno de los componentes que la conforman (Retriever, Augmented y Generation), así como las variantes y mejoras que existen en cada uno. 
+Más adelante, se detalla el proceso de implementación vease la Fig. \ref{fig:pipeline-rag}, desde la preparación de los datos hasta el componente de generación, incluyendo las técnicas y herramientas más relevantes.  
+En la Fig. \ref{fig:paradigmas} correspondiente se examinan los paradigmas de RAG, presentando sus tipos y clases; seguidamente, en otra figura, se introducen las métricas y evaluadores automáticos 
+empleados en la evaluación de sistemas RAG, junto con las consideraciones éticas y de equidad que deben tenerse en cuenta.  
+Finalmente, se discuten las tendencias emergentes, los desafíos actuales y las posibles direcciones futuras que podrían orientar la evolución de los sistemas RAG.  
+
 
 
 
@@ -600,12 +602,15 @@ generadas.
 
 
 
-\paragraph{Evaluacion}
-
-
-
-
-
+\paragraph{Evaluacion} La evaluacion en los sitemas RAG es un proceso donde no se centra unicamente en evaluar la calidad de la respuesta generada si no que debe evaluarse a todas las fases de implementacion. 
+Empezando por el retriver donde se verifica que este encontrando evidencia relevante y suficiente para llevar a cabo esta verificacion se utilizan metricas tradicionales como Recall@k, nDCG o MRR que permiten  
+cuantificar qué proporción de los documentos útiles fueron efectivamente recuperados. Es importante verificar que esten recuperando los documentos adecuandamente ya que la etapa de generacion no podra producir respuestas fieles si carece de evidencia adecuada por mas sofisticado que sea el generador.
+En segundo lugar, medimos la generacion mas alla de indicadores como BLEU, ROUGE o F1, introcuduciendo el concepto de de fidelidad o groundedness, que examina si el texto producido está sustentado en las fuentes recuperadas, reduciendo el riesgo de alucinaciones. 
+este criterio debe complementarse con la atribución de citas, es decir, si el sistema enlaza explícitamente sus afirmaciones con los fragmentos de textos extraidos, lo que facilita la trazabilidad \parencite{zhang2025hallucination}.
+Finalmente es una evaluacion general del sistema donde se considera la utilidad practica del sistema en un escenario real. Aquí entran en juego dimensiones como eficiencia (latencia y costo), robustez frente a consultas adversas y adaptabilidad en dominios específicos. \textcite{knollmeyer2024benchmarking} destacan que requiere combinar métricas automáticas con juicios humanos o LLM-as-a-judge calibrados 
+SIn embargo, en los últimos años se ha propuesto integrar criterios de Fairness, Accountability, Transparency and Ethics (FATE) como parte de la evaluación. Segun \textcite{bernard2025fate} la confianza en los sistemas de recuperación y generación depende no solo de su precisión, sino también de que sean justos (sin sesgos desproporcionados hacia ciertos grupos), responsables (documentando el procedimiento 
+de evaluación y anotadores), transparentes (explicando cómo se recuperó y procesó la información) y éticos (respetando la privacidad, la diversidad de fuentes y evitando desinformación)
+Incluir FATE como un parametro de evualicion permite generar confianza social y regulatoria ademas de estar alieando con una calidad tecnica. Como sugiere \textcite{ramdurai2025llm} a evaluación debe ser iterativa y multimodal: incluir tanto experimentos controlados en benchmarks como pruebas de usabilidad en escenarios reales. De esta manera se garantiza que el sitema sea confiable, util , socialemte responsable y no solamente funcione bien en metricas numericas. 
 
 \subsubsection{Paradigmas}
 \begin{figure}[H]
