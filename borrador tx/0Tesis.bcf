@@ -2389,7 +2389,7 @@
     <bcf:citekey order="15" intorder="1">ma2025vector</bcf:citekey>
     <bcf:citekey order="16" intorder="1">ma2025vector</bcf:citekey>
     <bcf:citekey order="17" intorder="1">ma2025vector</bcf:citekey>
-    <bcf:citekey order="18" intorder="1">han2023vector</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">ma2025vector</bcf:citekey>
     <bcf:citekey order="19" intorder="1">zhao2024rag</bcf:citekey>
     <bcf:citekey order="20" intorder="1">zhao2024rag</bcf:citekey>
     <bcf:citekey order="21" intorder="1">fan2024ragllm</bcf:citekey>
@@ -2440,14 +2440,14 @@
     <bcf:citekey order="63" intorder="1">jing2024vecdb</bcf:citekey>
     <bcf:citekey order="64" intorder="1">fan2021pretraining</bcf:citekey>
     <bcf:citekey order="65" intorder="1">fan2021pretraining</bcf:citekey>
-    <bcf:citekey order="66" intorder="1">ma2025vdb</bcf:citekey>
-    <bcf:citekey order="67" intorder="1">ma2025vdb</bcf:citekey>
+    <bcf:citekey order="66" intorder="1">ma2025vector</bcf:citekey>
+    <bcf:citekey order="67" intorder="1">ma2025vector</bcf:citekey>
     <bcf:citekey order="68" intorder="1">jing2024vecdb</bcf:citekey>
     <bcf:citekey order="69" intorder="1">fan2021pretraining</bcf:citekey>
-    <bcf:citekey order="70" intorder="1">ma2025vdb</bcf:citekey>
-    <bcf:citekey order="71" intorder="1">ma2025vdb</bcf:citekey>
-    <bcf:citekey order="72" intorder="1">ma2025vdb</bcf:citekey>
-    <bcf:citekey order="73" intorder="1">ma2025vdb</bcf:citekey>
+    <bcf:citekey order="70" intorder="1">ma2025vector</bcf:citekey>
+    <bcf:citekey order="71" intorder="1">ma2025vector</bcf:citekey>
+    <bcf:citekey order="72" intorder="1">ma2025vector</bcf:citekey>
+    <bcf:citekey order="73" intorder="1">ma2025vector</bcf:citekey>
     <bcf:citekey order="74" intorder="1">fan2021pretraining</bcf:citekey>
     <bcf:citekey order="75" intorder="1">fan2021pretraining</bcf:citekey>
     <bcf:citekey order="76" intorder="1">hambarde2023ir</bcf:citekey>
@@ -2476,7 +2476,7 @@
     <bcf:citekey order="98" intorder="1">zhao2024rag</bcf:citekey>
     <bcf:citekey order="98" intorder="2">hambarde2023ir</bcf:citekey>
     <bcf:citekey order="99" intorder="1">gao2023rag</bcf:citekey>
-    <bcf:citekey order="100" intorder="1">zhai2024</bcf:citekey>
+    <bcf:citekey order="100" intorder="1">zhai2024llmIR</bcf:citekey>
     <bcf:citekey order="101" intorder="1">hu2024ragrau</bcf:citekey>
     <bcf:citekey order="102" intorder="1">hu2024ragrau</bcf:citekey>
     <bcf:citekey order="103" intorder="1">zhao2024rag</bcf:citekey>

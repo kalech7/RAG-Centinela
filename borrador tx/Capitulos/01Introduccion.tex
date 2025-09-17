@@ -204,15 +204,15 @@ Finalmente, se discuten las tendencias emergentes, los desafíos actuales y las 
 \label{fig:Fudamentos}
 \end{figure}
 
-En esta subsección se presentan los fundamentos teóricos de Retrieval Augmented Generation (RAG), 
+En esta subsección se presentan los fundamentos teóricos de Retrieval-Augmented Generation (RAG), 
 comenzando con la definición de los modelos de lenguaje de gran escala (LLMs) y su relación. Se expone 
 también el papel que desempeña RAG, los principales aportes que ha generado en distintos ámbitos y su diferenciación frente al 
-fine tuning. Finalmente, se introduce su aplicación práctica, lo que permite comprender la importancia y el impacto que RAG tiene en 
+\textit{fine-tuning}. Finalmente, se introduce su aplicación práctica, lo que permite comprender la importancia y el impacto que RAG tiene en 
 la actualidad.
 
-\paragraph{Que es un LLM}
-Son modelos de inteligencia artificial (IA) basados en la arquitectura transformer, entrenados con grandes volumnes de datos textuales con el objetivo de aprender representaciones
-contextuales del lenguaje. Según \textcite{casola2022pretrained}, estos modelos utilizan técnicas de pre-entrenamiento no supervisado para captar patrones lingüísticos y semánticos,
+\paragraph{¿Qué es un LLM?}
+Son modelos de inteligencia artificial (IA) basados en la arquitectura \textit{transformer}, entrenados con grandes volúmenes de datos textuales con el objetivo de aprender representaciones
+contextuales del lenguaje. Según \textcite{casola2022pretrained}, estos modelos utilizan técnicas de preentrenamiento no supervisado para captar patrones lingüísticos y semánticos,
 lo que permite que posteriormente puedan ajustarse a tareas específicas como clasificación de texto, análisis de sentimientos, traducción automática, reconocimiento de entidades
 o respuesta a preguntas. Ejemplos destacados son \textit{BERT, RoBERTa, ALBERT, XLNet, DistilBERT y GPT-3}, que han mostrado rendimientos sobresalientes en diversas aplicaciones de procesamiento de lenguaje natural (NLP).
 
@@ -222,14 +222,12 @@ tono emocional y contexto. Entrenados en enormes corpus de datos provenientes de
 traducir, resumir y crear contenido de manera autónoma. Ejemplos recientes incluyen \textit{GPT-4, T5, XLNet y PaLM}, los cuales demuestran su versatilidad en tareas avanzadas
 de NLP y en sistemas aplicados en diferentes industrias. 
 
-\paragraph{Que es un RAG}
+\paragraph{¿Qué es un RAG?}
 Según \textcite{han2024rag}, Retrieval-Augmented Generation (RAG) es una técnica que integra la capacidad generativa de los modelos 
 de lenguaje con la precisión de la recuperación de información en tiempo real. En lugar de basarse únicamente en el conocimiento almacenado en
 los parámetros durante el entrenamiento, RAG permite consultar repositorios externos como bases de datos o motores de búsqueda para obtener
 documentos relevantes y actualizados. Estos se incorporan al prompt del usuario, lo que fundamenta la respuesta en fuentes 
 verificables y disminuye los problemas de errores y alucinaciones que suelen presentarse en los modelos de lenguaje de gran escala.  
-
-
 
 
 \subsubsection{Arquitectura}
@@ -278,13 +276,12 @@ verificables y disminuye los problemas de errores y alucinaciones que suelen pre
 \label{fig:arquitectura_rag}
 \end{figure}
 
-RAG se compone de tres fases: recuperación, augmentation y generación (ver Figura~\ref{fig:arquitectura_rag}). Como lo menciona \textcite{gao2023rag}, primero se 
-localizan documentos relevantes para la consulta; luego, se enriquece la entrada del usuario con esos textos; finalmente, el modelo produce 
+RAG se compone de tres fases: recuperación, \textit{augmentation} y generación (ver Figura~\ref{fig:arquitectura_rag}). Como lo menciona \textcite{gao2023rag}, primero se 
+localizan documentos relevantes para la consulta; luego, se enriquece la entrada del usuario con esos textos; y finalmente, el modelo produce 
 una respuesta basada tanto en su conocimiento interno como en la información recuperada. Gracias a este enfoque, RAG incrementa la exactitud 
 de las respuestas, facilita la actualización del conocimiento sin necesidad de reentrenar el modelo y mejora la transparencia al permitir la 
-cita de fuentes. Es una de las técnicas más relevantes en tareas que requieren gran 
-cantidad de conocimiento, como el ámbito médico, legal o de investigación científica.  
-
+cita de fuentes. Se trata de una de las técnicas más relevantes en tareas que requieren una gran 
+cantidad de conocimiento, como en los ámbitos médico, legal o de investigación científica.  
 
 \begin{table}[H]
 \centering
@@ -311,18 +308,20 @@ Tipos de retrievers & Sparse            & BM25, TF-IDF \\
 \end{table}
 
 
-Indexing es encargado de organizar y representar la informacion de forma eficiente. En este sentido los vector databases (VDBs) han aumentado su popularidad ya que permiten alamacenar 
-vectores de alta dimensionalidad y permiten realizar busquedas por similitud semantica. Como explica \textcite{joshi2025vector} estas bases de datos resultan esenciales para 
-en aplicacion de inteligencia artificial generativa, ya que superan las limitacion de las bases realcionales en el manejo de datos no estructurados.
-Los VDBs integran mecanismos de busqueda aproximada de vecinos mas cercanos (ANNS) lo que posibilita consultas rapidas incluso sobre miles de objetos. Ademas, como lo menciona
-\textcite{ma2025vector} incorporan técnicas de optimización como particionamiento, sharding, cachés y replicación para garantizar escalabilidad y baja latencia en entornos distribuidos
+Indexing se encarga de organizar y representar la información de forma eficiente. En este sentido, los vector databases (VDBs) han aumentado su popularidad, ya que permiten almacenar 
+vectores de alta dimensionalidad y realizar búsquedas por similitud semántica. Como explica \textcite{joshi2025vector}, estas bases de datos resultan esenciales para 
+la aplicación de inteligencia artificial generativa, ya que superan las limitaciones de las bases relacionales en el manejo de datos no estructurados.  
+Los VDBs integran mecanismos de búsqueda aproximada de vecinos más cercanos (ANNS), lo que posibilita consultas rápidas incluso sobre miles de objetos. Además, como lo menciona
+\textcite{ma2025vector}, incorporan técnicas de optimización como particionamiento, sharding, cachés y replicación para garantizar escalabilidad y baja latencia en entornos distribuidos.  
+
 Locality-Sensitive Hashing (LSH) es una técnica de indexación ampliamente utilizada en VDBs para acelerar la búsqueda de vecinos aproximados en espacios de alta 
 dimensionalidad. A diferencia de los esquemas de hashing tradicionales, cuyo objetivo es dispersar uniformemente los datos para minimizar colisiones, LSH está diseñado 
 para maximizar la probabilidad de que vectores similares se asignen al mismo bucket de hash \parencite{ma2025vector}. Según esta técnica, la preservación de la localidad 
-se consigue mediante funciones de hash que reflejan la similitud entre vectores en colisiones más frecuentes dentro del espacio reducido. De esta manera, al realizar una 
+se consigue mediante funciones de hash que reflejan la similitud entre vectores, generando colisiones más frecuentes dentro del espacio reducido. De esta manera, al realizar una 
 consulta, el sistema solo necesita comparar el vector de entrada con aquellos almacenados en el mismo o en buckets cercanos, reduciendo drásticamente la complejidad 
-computacional de la búsqueda \parencite{han2023vector}. Estas características explican por qué los VDBs se han consolidado como una infraestructura fundamental en el soporte
+computacional de la búsqueda \parencite{ma2025vector}. Estas características explican por qué los VDBs se han consolidado como una infraestructura fundamental en el soporte
 de sistemas RAG.
+
 
 \begin{table}[H]
 \centering
@@ -357,16 +356,16 @@ permiten alinear mejor el recuperador y el generador en dominios específicos. F
 RARR (Retrieve-then-Read-then-Revise) refina las respuestas con evidencia recuperada, mientras que la mitigación de Lost in the Middle reorganiza documentos recuperados
 para que el modelo aproveche mejor la ventana de contexto.
 
-Con respecto a los datos, \textcite{fan2024ragllm} detancan tres clases. La información estructurada, como los Knowledge Graphs, es fundamental para tareas de razonamiento 
+Con respecto a los datos, \textcite{fan2024ragllm} destacan tres clases. La información estructurada, como los Knowledge Graphs, es fundamental para tareas de razonamiento 
 factual ya que permite modelar entidades y relaciones explícitas. La información no estructurada, como corpus abiertos (Common Crawl, PubMed, Wikipedia), se ha vuelto estándar en open-domain QA.
 Tal como explican \textcite{gao2023rag} estos corpus aportan amplitud temática, pero también requieren mecanismos de filtrado, chunking y re-ranking 
 para evitar ruido y mitigar el problema de Lost in the Middle. Finalmente, surge la categoría de contenido generado por LLM, donde el propio modelo actúa 
 como fuente en esquemas de self-retrieval, generando y reutilizando conocimiento de manera autónoma. En este caso, los LLMs generan documentos intermedios, 
-hipótesis o representaciones que se utilizan posteriormente como consultas o evidencia emplean un módulo crítico que evalúa si es necesario recuperar información externa o 
-si el propio contenido generado basta para resolver la tarea. Gracias a este enfoque , como subraya \textcite{fan2024ragllm} abre la posibilidad de que los modelos se autocomplementen y 
+hipótesis o representaciones que se utilizan posteriormente como consultas o evidencia, empleando un módulo crítico que evalúa si es necesario recuperar información externa o 
+si el propio contenido generado basta para resolver la tarea. Gracias a este enfoque, como subraya \textcite{fan2024ragllm}, se abre la posibilidad de que los modelos se autocomplementen y 
 reutilicen su conocimiento previo sin depender exclusivamente de bases externas.
 
-Los procesos de \textit{augmentation} se los clasifica en tres modalidades según \textcite{zhao2024rag}. 
+Los procesos de augmentation se los clasifica en tres modalidades según \textcite{zhao2024rag}. 
 Augmentation puede aplicarse una sola vez (Once), como en el caso de la document augmentation, 
 donde se enriquece directamente la entrada con información adicional antes de la generación. 
 Otra modalidad es la iterativa, que emplea técnicas como el pseudo-relevance feedback (PRF), 
@@ -376,6 +375,7 @@ La modalidad adaptativa es cuando el sistema decide dinámicamente si conviene r
 información o no. Un ejemplo de esto es Selective Knowledge Retrieval (SKR), que evita búsquedas 
 innecesarias cuando el modelo ya posee el conocimiento suficiente, reduciendo costes y minimizando la 
 incorporación de ruido.
+
 
 \begin{table}[h]
 \centering
@@ -393,40 +393,37 @@ incorporación de ruido.
   & Decoding Tuning      & Beam search, nucleus sampling, top-k sampling \\ \bottomrule
 \end{tabularx}
 \caption{Componente Generator}
+\label{tab:generator}
 \end{table}
 
-El componente generador es el encargado de producir texto,imagenes u otro tipo de contenido. La capacidad del generador no depende unicamente de su arquitectura sino de un conjunto 
-de estrategias que optmizan su rendimiento y controlan la calidad de las salidas. Estas mejoras incluyen prompt engineering, el fine-tuning especializado en dominios y 
+El componente generador (ver Tabla\ref{tab:generator}) es el encargado de producir texto, imágenes u otro tipo de contenido. La capacidad del generador no depende únicamente de su arquitectura sino de un conjunto 
+de estrategias que optimizan su rendimiento y controlan la calidad de las salidas. Estas mejoras incluyen prompt engineering, el fine-tuning especializado en dominios y 
 ajustes en los métodos de decodificación para equilibrar coherencia y diversidad en la generación. En este sentido, comprender tanto los tipos de modelos como las técnicas de optimización resulta fundamental para evaluar el papel del \textit{Generator} 
 en sistemas avanzados como los de Retrieval-Augmented Generation (RAG), donde la combinación de arquitectura y optimización garantiza la generación de respuestas 
 más fiables, contextualizadas y relevantes 
 \parencite{casola2022pretrained,fan2024ragllm,zhang2025hallucination}
 
-Los transformes son la arquitectura mas influyente en NLP ya que, según lo menciona \textcite{casola2022pretrained}, su capacidad de manejar dependencias a largo plazo 
+Los transformers son la arquitectura más influyente en NLP ya que, según lo menciona \textcite{casola2022pretrained}, su capacidad de manejar dependencias a largo plazo 
 mediante mecanismos de auto-atención ha permitido el desarrollo de modelos como GPT, BART y T5, los cuales han superado ampliamente a enfoques previos y marcado un cambio 
-de paradigma en la generación de lenguaje. os LSTM se empleaban en arquitecturas secuencia a secuencia, resolviendo problemas de memoria en redes recurrentes, 
+de paradigma en la generación de lenguaje. Los LSTM se empleaban en arquitecturas secuencia a secuencia, resolviendo problemas de memoria en redes recurrentes, 
 aunque presentaban limitaciones en el escalamiento y en la captura de dependencias largas \parencite{jing2024vecdb}. Por otro lado, introdujeron un enfoque basado 
-en el enfrentamiento entre un generador y un discriminador, logrando avances en la creación de imágenes y, posteriormente, en la generación de texto. Mas recientemete los Diffusion Models
+en el enfrentamiento entre un generador y un discriminador, logrando avances en la creación de imágenes y, posteriormente, en la generación de texto. Más recientemente los Diffusion Models
 se han consolidado en el ámbito multimodal (imagen, audio y video), gracias a su capacidad de producir datos de alta calidad a partir de procesos de ruido inverso,
 ampliando las fronteras de la generación más allá del texto. 
 
-Con respecto a la mejora, el Prompt Engineering ha demostrado ser una técnica central para guiar los modelos hacia respuestas más precisas y controladas. Segun \textcite{zhang2025hallucination}
-incluye el diseño de instrucciones específicas, así como métodos como chain of thought o step-back prompting, que mejoran la coherencia y reducen alucinaciones en los resultados
-Otra estrategia es el fine tuning que consiste en adaptar un modelo  a un modelo concreto, optimizando su capacidad de manejar informacion especial especializada y aumentando su fiabilidad en tareas críticas,
-por ejemplo en contextos científicos o legales
+Con respecto a la mejora, el Prompt Engineering ha demostrado ser una técnica central para guiar los modelos hacia respuestas más precisas y controladas. Según \textcite{zhang2025hallucination}
+incluye el diseño de instrucciones específicas, así como métodos como chain of thought o step-back prompting, que mejoran la coherencia y reducen alucinaciones en los resultados.
+Otra estrategia es el fine-tuning que consiste en adaptar un modelo a un dominio concreto, optimizando su capacidad de manejar información especializada y aumentando su fiabilidad en tareas críticas,
+por ejemplo en contextos científicos o legales.  
 El Decoding Tuning se refiere al ajuste de los métodos utilizados por un modelo generativo para decidir qué palabra o token producir a continuación. 
 En lugar de limitarse a elegir siempre la opción con mayor probabilidad, lo cual puede generar textos repetitivos y poco naturales, se aplican estrategias 
 que permiten modular el balance entre coherencia y diversidad. Entre ellas, el beam search explora varias rutas posibles de generación en paralelo para seleccionar 
 la más prometedora, garantizando coherencia aunque sacrificando creatividad. Por su parte, el nucleus sampling restringe las opciones a un conjunto dinámico de palabras 
 que concentran la mayor parte de la probabilidad acumulada y selecciona una de ellas de manera aleatoria, lo que produce textos más naturales y variados. Finalmente, 
 el top-k sampling limita las elecciones a las k palabras más probables y elige una de ellas de acuerdo con su distribución de probabilidad, lo que ofrece un equilibrio 
-controlado entre precisión y diversidad. 
+controlado entre precisión y diversidad. Estas estrategias permiten modular el equilibrio entre coherencia y diversidad en la generación de texto, 
+adaptando el comportamiento del modelo sin necesidad de modificar su arquitectura \parencite{hu2024ragrau}.
 
-\begin{quote}
-Estas estrategias permiten modular el equilibrio entre coherencia y diversidad en la generación de texto, 
-adaptando el comportamiento del modelo sin necesidad de modificar su arquitectura 
-\parencite{hu2024ragrau}.
-\end{quote}
 
 
 \subsubsection{Fases de Implementación}
@@ -475,35 +472,36 @@ adaptando el comportamiento del modelo sin necesidad de modificar su arquitectur
 \caption{Pipeline de RAG}
 \label{fig:pipeline-rag}
 \end{figure}
-Las fases de implementacion son una secuencia de pasos diseñados para enriquecer la generación de respuestas con información externa y actualizada. 
+
+Las fases de implementación son una secuencia de pasos diseñados para enriquecer la generación de respuestas con información externa y actualizada. 
 Según \textcite{tabassum2020}, todo inicia con la ingesta y el preprocesamiento de los datos, donde las técnicas de limpieza y segmentación garantizan 
 que el texto sea utilizable para fases posteriores. Luego se vectoriza mediante embeddings los cuales transforman los fragmentos de texto
-en representaciones numericas para la recuperacion semantica tal como lo expresa \textcite{minaee2021}. Para \textcite{hu2024ragrau}, estos vectores  se almacenan en una base de datos vectorial 
+en representaciones numéricas para la recuperación semántica tal como lo expresa \textcite{minaee2021}. Para \textcite{hu2024ragrau}, estos vectores se almacenan en una base de datos vectorial 
 la cual permite realizar búsquedas eficientes por similitud semántica entre la consulta y los fragmentos de texto indexados.
-Ademas, esta VDB permite trabajar en conjunto con indices tradicionales como BM25, dando lugar a la recuperación híbrida.
+Además, esta VDB permite trabajar en conjunto con índices tradicionales como BM25, dando lugar a la recuperación híbrida.
 Con los datos obtenidos, como lo señala \textcite{sarthi2024raptor}, 
-es necesario aplicar procesos de re-ranking y filtrado que permiten priorizar las partes más relevantes dando lugar la construcción de contexto, en la que los fragmentos de texto seleccionados 
-se organizan, se condensan para reducir su extensión y se adaptan al límite de entrada del modelo.para conformar un contexto optimizado y manejable que servirá de entrada
-al modelo generativo. En la fase final, \textcite{knollmeyer2024benchmarking} sostiene que el LLM debe complementarse con mecanismos de evaluación para aegurar la 
+es necesario aplicar procesos de re-ranking y filtrado que permiten priorizar las partes más relevantes dando lugar a la construcción de contexto, en la que los fragmentos de texto seleccionados 
+se organizan, se condensan para reducir su extensión y se adaptan al límite de entrada del modelo para conformar un contexto optimizado y manejable que servirá de entrada
+al modelo generativo. En la fase final, \textcite{knollmeyer2024benchmarking} sostiene que el LLM debe complementarse con mecanismos de evaluación para asegurar la 
 fidelidad y coherencia de las respuestas generadas.
 
-\paragraph{Ingesta} Es el comienzo del pipeline de RAG, su objetivo es recopilar,normalizar y preparar las fuentes de informacion
-que luego seran usadas para los procesos de recuperacion y generacion. La ingesta implica recolectar distintas fuentes  ya sean libros,literatura cientifica,corpus abiertos, etc y convertirlos en un formato manejable por el 
-sistema. De acuerdo con \textcite{gao2023rag} y \textcite{jing2024vecdb} estos datos se almacenan como texto estructurado o semiestructurado o sin estructura, dependiendo de su naturaleza y del tipo de procesamiento requerido.
+\paragraph{Ingesta} Es el comienzo del pipeline de RAG, su objetivo es recopilar, normalizar y preparar las fuentes de información
+que luego serán usadas para los procesos de recuperación y generación. La ingesta implica recolectar distintas fuentes ya sean libros, literatura científica, corpus abiertos, etc., y convertirlos en un formato manejable por el 
+sistema. De acuerdo con \textcite{gao2023rag} y \textcite{jing2024vecdb} estos datos se almacenan como texto estructurado, semiestructurado o sin estructura, dependiendo de su naturaleza y del tipo de procesamiento requerido.
 
 \paragraph{Preprocesamiento} Dentro de la ingesta de datos es necesario limpiar y estructurar el texto en bruto para que sea utilizable en etapas posteriores. De acuerdo con \textcite{tabassum2020} los procesos de tokenización,
- normalización, eliminación de stopwords, lematización y segmentación en oraciones permiten transformar datos no estructurados en unidades coherentes y consistentes, reduciendo así el ruido que podría propagarse en fases posteriores. 
- Este paso es importante ya que el texto procesado debe adaptarse a las limitaciones de los LLM, lo cual implica fragmentar en chunks y generar representaciones vectoriales, siendo así que \textcite{knollmeyer2024benchmarking} 
- afirma que la calidad del preprocesamiento incide directamente en dimensiones de evaluación como la relevancia contextual y la fidelidad de las respuestas. Una preparación deficiente del texto puede introducir ruido en el contexto recuperado 
- y favorecer inconsistencias en la generación, lo cual incrementa el riesgo de alucinaciones; en este sentido, se entiende que el preprocesamiento actua como una primera barrera de mitigación de errores (\textcite{zhang2025hallucination}).
+normalización, eliminación de stopwords, lematización y segmentación en oraciones permiten transformar datos no estructurados en unidades coherentes y consistentes, reduciendo así el ruido que podría propagarse en fases posteriores. 
+Este paso es importante ya que el texto procesado debe adaptarse a las limitaciones de los LLM, lo cual implica fragmentar en chunks y generar representaciones vectoriales, siendo así que \textcite{knollmeyer2024benchmarking} 
+afirma que la calidad del preprocesamiento incide directamente en dimensiones de evaluación como la relevancia contextual y la fidelidad de las respuestas. Una preparación deficiente del texto puede introducir ruido en el contexto recuperado 
+y favorecer inconsistencias en la generación, lo cual incrementa el riesgo de alucinaciones; en este sentido, se entiende que el preprocesamiento actúa como una primera barrera de mitigación de errores (\textcite{zhang2025hallucination}).
 
-\paragraph{Vectorizacion} Los fragmentos de texto una vez preprocesados se transforman en embeddings \footnote{Representacion numerica que codifica el significado del texto en un espacio vectorial} permitiendo capturar la semantica de tal manera que 
-los textos similares esten proximos en el espacio vectorial. De acuerdo con \textcite{hu2024ragrau} existen dos enfoques: la recuperacion dispersa (sparse) como por ejemplo 
-TF-IDF, BM25 y la recuperacion densa, la cual es basada en embeddings generados por modelos preentrenados como BERT. El primer enfoque se basa en su frecuencia estadistica del termino en los documentos \parencite{fan2021pretraining}.
-Posteriormente, metodos como Latent Semantic Analysis (LSA) incorporaron técnicas de reducción dimensional a la matriz termino-documento.mediante descomposición en valores singulares, lo que permitió identificar estructuras semánticas latentes y superar 
-limitaciones de los modelos basados únicamente en frecuencia. Estudios recientes lo consideran el punto de inicio de los embeddings neuronales los cuales ofrecen representaicones mas contextuales y expresivas que permiten clasificar y recuperar el texto adecuadamente.
-\parencite{fan2021pretraining,minaee2021}. Con la popularizacion del deep learning, surgieron represetaciondes densas como Word2Vec y GloVe las cuales son capaces de capturar relaciones semanticas entre palabras en espacios vectoriales continuos. Los transformers son una 
-evolucion del enfoque denso donde segun \textcite{casola2022pretrained} los transformers preentrenados al combinarlose con mecanismos de atencion y un preentrenamiento masivo, producen vectores contextualizados robustos capaces de capturar relaciones de dependencia a largo 
+\paragraph{Vectorización} Los fragmentos de texto una vez preprocesados se transforman en embeddings \footnote{Representación numérica que codifica el significado del texto en un espacio vectorial} permitiendo capturar la semántica de tal manera que 
+los textos similares estén próximos en el espacio vectorial. De acuerdo con \textcite{hu2024ragrau} existen dos enfoques: la recuperación dispersa (sparse) como por ejemplo 
+TF-IDF, BM25 y la recuperación densa, la cual es basada en embeddings generados por modelos preentrenados como BERT. El primer enfoque se basa en la frecuencia estadística del término en los documentos \parencite{fan2021pretraining}.
+Posteriormente, métodos como Latent Semantic Analysis (LSA) incorporaron técnicas de reducción dimensional a la matriz término-documento mediante descomposición en valores singulares, lo que permitió identificar estructuras semánticas latentes y superar 
+limitaciones de los modelos basados únicamente en frecuencia. Estudios recientes lo consideran el punto de inicio de los embeddings neuronales, los cuales ofrecen representaciones más contextuales y expresivas que permiten clasificar y recuperar el texto adecuadamente
+\parencite{fan2021pretraining,minaee2021}. Con la popularización del deep learning, surgieron representaciones densas como Word2Vec y GloVe, las cuales son capaces de capturar relaciones semánticas entre palabras en espacios vectoriales continuos. Los transformers son una 
+evolución del enfoque denso donde, según \textcite{casola2022pretrained}, los transformers preentrenados al combinarse con mecanismos de atención y un preentrenamiento masivo, producen vectores contextualizados robustos capaces de capturar relaciones de dependencia a largo
 plazo entre palabras.
 
 \paragraph{Vector DB} 
@@ -512,13 +510,13 @@ recuperación eficiente. Estos se emplean en lugar de los índices invertidos tr
 de frecuencia, lo cual dificulta la detección de sinónimos y relaciones semánticas. De acuerdo con \textcite{jing2024vecdb}, los VDBs están diseñados para manejar 
 grandes volúmenes de representaciones de alta dimensionalidad y soportar búsquedas por similitud mediante métricas como la distancia euclidiana o el coseno. Además, 
 como menciona \textcite{fan2021pretraining}, el uso de representaciones preentrenadas mejora la calidad de los índices, ya que los embeddings capturan relaciones 
-semánticas profundas entre consultas y documentos. Para optimizar estas búsquedas se incorporan técnicas de indexación, que organizan los embeddings en estructuras preparadas para la búsqueda aproximada de vecinos más cercanos \parencite{ma2025vdb}.  
+semánticas profundas entre consultas y documentos. Para optimizar estas búsquedas se incorporan técnicas de indexación, que organizan los embeddings en estructuras preparadas para la búsqueda aproximada de vecinos más cercanos \parencite{ma2025vector}.  
 
 Para llevar a cabo estas operaciones, los VDBs recurren a diferentes enfoques de búsqueda, tales como:
 
 \begin{itemize}
     \item \textbf{Nearest Neighbor Search (NNS):} compara de manera exhaustiva el vector de consulta con todos los vectores almacenados. Garantiza la máxima precisión,
-     pero resulta poco escalable con colecciones masivas de datos \parencite{ma2025vdb}.
+     pero resulta poco escalable con colecciones masivas de datos \parencite{ma2025vector}.
     
     \item \textbf{Graph-Based Approach:} emplea estructuras de grafos, como HNSW, que permiten navegar de forma eficiente entre vectores y localizar vecinos cercanos 
     en pocas iteraciones, reduciendo considerablemente los tiempos de búsqueda \parencite{jing2024vecdb}.
@@ -527,15 +525,15 @@ Para llevar a cabo estas operaciones, los VDBs recurren a diferentes enfoques de
     en dimensionalidades bajas o medias, pero pierde rendimiento en espacios de muy alta dimensión \parencite{fan2021pretraining}.
     
     \item \textbf{Approximate Nearest Neighbor Search (ANNS):} sacrifica una mínima exactitud para ganar eficiencia y escalabilidad. Métodos como IVF o PQ permiten 
-    realizar búsquedas rápidas en grandes colecciones, siendo muy usados en producción \parencite{ma2025vdb}.
+    realizar búsquedas rápidas en grandes colecciones, siendo muy usados en producción \parencite{ma2025vector}.
 \end{itemize}
 Cuando una consulta es transformada en vector, el sistema no necesita recorrer todo el corpus, sino que localiza la región del espacio donde se ubica y 
 devuelve los vecinos más próximos. Para lograr esta eficiencia se emplean técnicas de indexación que organizan los embeddings en estructuras optimizadas para 
 la búsqueda aproximada. Se implementa mediante enfoques como:
 \begin{itemize}
-    \item \textbf{HNSW (Hierarchical Navigable Small World graphs):} construye un grafo jerárquico navegable que permite acceder rápidamente a los vecinos más cercanos reduciendo la complejidad de la búsqueda.\parencite{ma2025vdb}
-    \item \textbf{IVF (Inverted File Index):} agrupa los vectores en listas invertidas de centroides, de modo que la comparación se restringe a las regiones más prometedoras del espacio.\parencite{ma2025vdb}
-    \item \textbf{PQ (Product Quantization):} divide los vectores en subespacios y los representa de forma comprimida, lo que acelera significativamente el cálculo de distancias en colecciones de gran tamaño \parencite{ma2025vdb}.
+    \item \textbf{HNSW (Hierarchical Navigable Small World graphs):} construye un grafo jerárquico navegable que permite acceder rápidamente a los vecinos más cercanos reduciendo la complejidad de la búsqueda.\parencite{ma2025vector}
+    \item \textbf{IVF (Inverted File Index):} agrupa los vectores en listas invertidas de centroides, de modo que la comparación se restringe a las regiones más prometedoras del espacio.\parencite{ma2025vector}
+    \item \textbf{PQ (Product Quantization):} divide los vectores en subespacios y los representa de forma comprimida, lo que acelera significativamente el cálculo de distancias en colecciones de gran tamaño \parencite{ma2025vector}.
 \end{itemize}
 
 \paragraph{Recuperacion} Esta fase es el punto donde el usuario interactura con el conocimiento almacenado y su eficiencia y eficacia se ve reflejada en la calidad 
@@ -591,7 +589,7 @@ externo con las capacidades internas del modelo \parencite{zhao2024rag,hambarde2
 \begin{itemize}
     \item \textbf{Query-based Fusions}: la información recuperada se incorpora desde la etapa de entrada, concatenando la consulta con los pasajes relevantes para que el modelo los procese conjuntamente. Este enfoque, también denominado \textit{early fusion}, es sencillo de implementar y aprovecha la arquitectura del transformador para contextualizar documentos y consulta en un mismo espacio semántico \parencite{gao2023rag}.  
 
-    \item \textbf{Logits-based Fusions}: en este caso, la fusión ocurre en la etapa de salida, combinando las distribuciones de probabilidad (logits) producidas por el modelo generador con las provenientes de la información recuperada. De esta forma, se refuerzan las respuestas que cuentan con evidencia externa, reduciendo la probabilidad de alucinaciones \parencite{zhai2024}.  
+    \item \textbf{Logits-based Fusions}: en este caso, la fusión ocurre en la etapa de salida, combinando las distribuciones de probabilidad (logits) producidas por el modelo generador con las provenientes de la información recuperada. De esta forma, se refuerzan las respuestas que cuentan con evidencia externa, reduciendo la probabilidad de alucinaciones \parencite{zhai2024llmIR}.  
 
     \item \textbf{Latent Fusions}: aquí la integración se realiza en un espacio latente intermedio, donde los embeddings de la consulta y los documentos recuperados se mezclan con las representaciones internas del LLM. Según \textcite{hu2024ragrau}, esto permite un balance más fino entre lo que sabe el LLM y lo que aporta la recuperación externa.  
 \end{itemize}
