@@ -229,36 +229,38 @@ los parámetros durante el entrenamiento, RAG permite consultar repositorios ext
 documentos relevantes y actualizados. Estos se incorporan al prompt del usuario, lo que fundamenta la respuesta en fuentes 
 verificables y disminuye los problemas de errores y alucinaciones que suelen presentarse en los modelos de lenguaje de gran escala. 
 
-\paragraph{Rol del RAG} El rol de RAG es abordar los 3 limites existentes de los LLM alucinaciones, desactualización del conocimiento y falta de trazabilidad
+\paragraph{Rol del RAG} El rol de RAG es abordar los 3 límites existentes de los LLM: alucinaciones, desactualización del conocimiento y falta de trazabilidad.  
 Como menciona \textcite{zhai2024llmIR} no es realista esperar que los LLM sustituyan al buscador; más bien, los futuros sistemas integrarán LLM + búsqueda/RAG, de modo que el modelo “aprenda a usar” la recuperación como herramienta fiable.
 
-\paragraph{Aportes de RAG}
-El aporte de los modelos RAG no se limita a añadir texto al prompt, también consiste en seleccionar evidencia relevante, integrarla mediante filtros adecuados y exponer las fuentes utilizadas para que el usuario pueda verificar la confiabilidad de la información. 
+\paragraph{Aportes de RAG}  
+El aporte de los modelos RAG no se limita a añadir texto al prompt, también consiste en seleccionar evidencia relevante, integrarla mediante filtros adecuados y exponer las fuentes utilizadas para que el usuario pueda verificar la confiabilidad de la información.  
 De acuerdo con la revisión exhaustiva de la literatura los RAGs aportan:  
 \begin{enumerate}
     \item \textbf{Mejora de la exactitud} en tareas intensivas en conocimiento, al fundamentar las respuestas en documentos recuperados y relevantes \parencite{gao2023rag,zhao2024rag}.
-    \item \textbf{Mitigación de alucinaciones} al condicionar la salida en evidencias recuperadas, exigir consistencia con estas y habilitar la verificación/citación de fuentes por parte del usuario \parencite{zhang2025hallucination,fan2024ragllm}
-    \item \textbf{Reducción de costos y actualización ágil del conocimiento}: en lugar de reentrenar o usar fine-tuning el LLM, basta con actualizar el corpus o el índice, lo que permite incorporar información recientenge manera eficiente \parencite{gao2023rag,zhai2024llmIR}.
-    \item \textbf{Cobertura y ampliación de conocimiento especializado}: los RAG permiten abordar información de long-tail\footnote{Información poco frecuente, rara o muy especializada que casi no aparece en los datos de entrenamiento de un modelo.} que no suele estar bien representada en los datos de entrenamiento de un LLM, al tiempo que extienden su utilidad a campos especializados como derecho, medicina, finanzas y automatización de revisiones 
-    sistemáticas de literatura (SLR), apoyando procesos de búsqueda, filtrado, extracción y síntesis de evidencia \parencite{gao2023rag,hu2024ragrau,zhai2024llmIR}.
-    \item \textbf{Facilitación de contextos largos y composición}: técnicas como RAPTOR organizan documentos extensos en árboles de resúmenes que permiten recuperar a distintos niveles de abstracción, mejorando el rendimiento en QA complejo y multi-hop \footnote{La respuesta a una pregunta no se puede obtener de una única fuente, sino que requiere combinar la evidencia de varias fuentes distintas.} \parencite{sarthi2024raptor}
-    \item \textbf{Aportes en evaluación}: se han desarrollado métricas específicas para auditar la calidad de un pipeline RAG (p.~ej., \textit{context relevance}, \textit{faithfulness}, \textit{answer correctness}, \textit{citation quality}), hoy ya sistematizadas en la literatura \parencite{knollmeyer2024benchmarking}.
+    \item \textbf{Mitigación de alucinaciones} al condicionar la salida en evidencias recuperadas, exigir consistencia con estas y habilitar la verificación/citación de fuentes por parte del usuario \parencite{zhang2025hallucination,fan2024ragllm}.
+    \item \textbf{Reducción de costos y actualización ágil del conocimiento}: en lugar de reentrenar o usar fine-tuning el LLM, basta con actualizar el corpus o el índice, lo que permite incorporar información reciente de manera eficiente \parencite{gao2023rag,zhai2024llmIR}.
+    \item \textbf{Cobertura y ampliación de conocimiento especializado}: los RAG permiten abordar información de long-tail\footnote{Información poco frecuente, rara o muy especializada que casi no aparece en los datos de entrenamiento de un modelo.} que no suele estar bien representada en los datos de entrenamiento de un LLM, al tiempo que extienden su utilidad a campos especializados como derecho, medicina, finanzas y automatización de revisiones sistemáticas de literatura (SLR), apoyando procesos de búsqueda, filtrado, extracción y síntesis de evidencia \parencite{gao2023rag,hu2024ragrau,zhai2024llmIR}.
+    \item \textbf{Manejo de documentos largos}: técnicas como RAPTOR organizan documentos extensos en árboles de resúmenes que permiten recuperar a distintos niveles de abstracción, mejorando el rendimiento en QA complejo y multi-hop \footnote{La respuesta a una pregunta no se puede obtener de una única fuente, sino que requiere combinar la evidencia de varias fuentes distintas.} \parencite{sarthi2024raptor}.
+    \item \textbf{Aportes en evaluación}: se han desarrollado métricas específicas para auditar la calidad de un pipeline RAG (p. ej., context relevance, faithfulness, answer correctness, citation quality), hoy ya sistematizadas en la literatura \parencite{knollmeyer2024benchmarking}.
 \end{enumerate}
 
-\paragraph{RAG vs Fine Tuning} La diferencia entre ambos es en el tipo de problema que resuelven y en la menera que se maneja la informacion. De acuerdo con \textcite{gao2023rag}, RAG añade conocimiento no paramétrico lo que lo hace especialmente útil para datos cambiantes, dominios con documentación extensa y situaciones donde se requiere trazabilidad de las fuentes. Pero Fine-tuning 
-introduce conocimiento paramétrico dentro de los pesos del modelo durante un proceso adicional de entrenamiento. Así, el modelo esta adaptado a generar salidas con el estilo, formato o razonamiento esperado, incluso sin consultar fuentes externas. Esto es muy útil para casos donde se requiere que el modelo siga protocolos internos, produzca salidas con plantillas específicas o razone con un estilo particular.
+\paragraph{RAG vs Fine Tuning}  
+La diferencia entre ambos es en el tipo de problema que resuelven y en la manera en que se maneja la información. De acuerdo con \textcite{gao2023rag}, RAG añade conocimiento no paramétrico, lo que lo hace especialmente útil para datos cambiantes, dominios con documentación extensa y situaciones donde se requiere trazabilidad de las fuentes. Pero fine-tuning introduce conocimiento paramétrico dentro de los pesos del modelo durante un proceso adicional de entrenamiento. Así, el modelo está adaptado a generar salidas con el estilo, formato o razonamiento esperado, incluso sin consultar fuentes externas. Esto es muy útil para casos donde se requiere que el modelo siga protocolos internos, produzca salidas con plantillas específicas o razone con un estilo particular.
 
-\paragraph{Aplicacion}  RAG puede usarse en 4 modalidades: Texto, Código, Imagen y Audio/Video
+\paragraph{Aplicación}  
+RAG puede usarse en 4 modalidades:
 
 \begin{itemize}
     \item \textbf{Texto}: RAG sustenta tareas de QA, asistentes de búsqueda, resúmenes y revisiones sistemáticas de literatura (SLR). Para documentos largos se apoya en estructuras jerárquicas como RAPTOR y en técnicas de text-matching y re-ranking para elevar la pertinencia del contexto \parencite{gao2023rag,han2024rag,jiang2024textmatching,sarthi2024raptor}.  
     
     \item \textbf{Código}: conecta el modelo con documentación, repositorios y bases de conocimiento para explicar fragmentos, ubicar APIs y resolver errores, integrando recuperadores y bases vectoriales en el flujo del desarrollador \parencite{hu2024ragrau}.  
     
-    \item \textbf{Imagen}: mediante el uso de embeddings multimodales y bases vectoriales, permite tareas de descripción asistida, búsqueda cruzada y \textit{grounding} de respuestas, vinculando consultas textuales con representaciones visuales \parencite{jing2024vecdb,ma2025vector}.  
+    \item \textbf{Imagen}: mediante el uso de embeddings multimodales y bases vectoriales, permite tareas de descripción asistida, búsqueda cruzada y grounding de respuestas, vinculando consultas textuales con representaciones visuales \parencite{jing2024vecdb,ma2025vector}.  
     
     \item \textbf{Audio y Video}: generalmente se parte de la transcripción, que luego se indexa en segmentos con marcas de tiempo. De esta manera, RAG posibilita responder, resumir o enlazar afirmaciones con evidencias auditables en el propio material \parencite{jing2024vecdb,zhao2024rag}.  
 \end{itemize}
+
+
 
 
 \subsubsection{Arquitectura}
