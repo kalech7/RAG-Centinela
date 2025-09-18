@@ -41,15 +41,15 @@
 \contentsline {subsubsection}{Futuro de RAG}{26}{section*.34}%
 \contentsline {paragraph}{Desafíos Actuales}{26}{section*.35}%
 \contentsline {paragraph}{Direcciones Potenciales}{26}{section*.36}%
-\contentsline {paragraph}{Perspectivas}{26}{section*.37}%
-\contentsline {chapter}{\numberline {2}Metodología}{27}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Revisión sistemática}{27}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Enfoque Design Science Research (DSR)}{29}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Diseño y desarrollo del artefacto}{33}{section.2.3}%
-\contentsline {chapter}{\numberline {3}Pruebas, Resultados, Conclusiones y Recomendaciones}{34}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Demostración}{34}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Evaluación del desempeño}{34}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Resultados}{34}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Conclusiones}{34}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Recomendaciones}{34}{section.3.5}%
-\contentsline {chapter}{Bibliografía}{35}{chapter*.41}%
+\contentsline {paragraph}{Perspectivas}{27}{section*.37}%
+\contentsline {chapter}{\numberline {2}Metodología}{28}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Revisión sistemática}{28}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Enfoque Design Science Research (DSR)}{30}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Diseño y desarrollo del artefacto}{34}{section.2.3}%
+\contentsline {chapter}{\numberline {3}Pruebas, Resultados, Conclusiones y Recomendaciones}{35}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Demostración}{35}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Evaluación del desempeño}{35}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Resultados}{35}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Conclusiones}{35}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Recomendaciones}{35}{section.3.5}%
+\contentsline {chapter}{Bibliografía}{36}{chapter*.41}%

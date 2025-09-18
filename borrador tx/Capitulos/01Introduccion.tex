@@ -800,17 +800,24 @@ aspectos como coherencia, transparencia y verificabilidad.
 De acuerdo con \textcite{zhai2024llmIR}, uno de los principales desafíos de los sistemas RAG es la generación de alucinaciones, que comprometen la confianza y 
 limitan su uso en aplicaciones críticas. Asimismo, persisten limitaciones en la calidad de la recuperación y en la eficiencia computacional, especialmente 
 en dominios donde se requiere información actualizada y especializada \parencite{hu2024ragrau}. Además, \textcite{ramdurai2025llm} señala que la integración de RAG con otras
-arquitecturas, como redes neuronales convolucionales, enfrenta problemas de escalabilidad y de adaptación a contextos heterogéneos.
+arquitecturas, como redes neuronales convolucionales, enfrenta problemas de escalabilidad y de adaptación a contextos heterogéneos. También es clave subrayar que persisten problemas éticos y de transparencia (FATE) en los sistemas de recuperación y generación.
+En la literatura de \textcite{bernard2025fate} muestra que aún no existen marcos estandarizados para evaluar imparcialidad, transparencia y responsabilidad en IR, lo que limita la confianza social en los sistemas RAG. 
+Otro reto es la reproducibilidad y robustez de los modelos preentrenados, ya que la variabilidad en hiperparámetros y semillas afecta la consistencia de los resultados \parencite{fan2021pretraining}.
 
 \paragraph{Direcciones Potenciales}  
 Las líneas de avance incluyen el desarrollo de retrievers más robustos, la optimización de las interacciones entre modelo y recuperación, 
 así como mecanismos de evaluación que prioricen la relevancia y la coherencia. \textcite{ramdurai2025llm} enfatiza la sinergia con arquitecturas multimodales y con sistemas 
 capaces de combinar información textual, visual y estructurada. Asimismo, enfoques como RAPTOR, que introduce resúmenes recursivos y jerárquicos en la recuperación,
-muestran cómo superar la fragmentación del contexto y mejorar la integración semántica \parencite{sarthi2024raptor}.
+muestran cómo superar la fragmentación del contexto y mejorar la integración semántica \parencite{sarthi2024raptor}. Otra dirección destacada es la incorporación de 
+bases de datos vectoriales como memorias semánticas persistentes, que permiten gestionar grandes volúmenes de embeddings, mitigar el olvido catastrófico de los modelos
+ y ofrecer personalización en la recuperación. \parencite{jing2024vecdb}.
+Finalmente, cabe mencionar que los pre-trained transformers aplicados a IR han abierto el camino hacia modelos más sofisticados para tareas de ranking y matching semántico, 
+aunque todavía requieren diseños de preentrenamiento adaptados a los desafíos específicos de la recuperación de información \parencite{fan2021pretraining}.
 
 \paragraph{Perspectivas}
-A medio plazo, RAG y los LLM convergerán con la IR clásica hacia sistemas de acceso conversacional al conocimiento: motores de búsqueda “con opinión” pero con 
-respaldo documental, capaces de planificar, citar y aprender de la interacción. Incluso si los LLM de contexto largo siguen mejorando, la recuperación seguirá 
-siendo diferencial por costo, frescura, control y gobernanza de la evidencia; veremos stacks donde RAG, herramientas y memoria trabajen de forma coordinada, 
-con evaluación centrada en utilidad y veracidad para tareas compuestas y empresariales.
+A medio plazo, RAG y los LLM convergerán con la IR clásica hacia sistemas de acceso conversacional al conocimiento: motores de búsqueda capaces de generar respuestas enriquecidas con análisis propio,
+pero con respaldo en documentación verificable, capaces de planificar, citar y aprovechar el historial conversacional. Incluso si los LLM siguen mejorando, la recuperación seguirá 
+siendo un componente clave porque permite reducir costos, mantener la información siempre actualizada, control y gobernanza de la evidencia usada y en consecuencia se espera la aparición de arquitecturas integradas donde RAG funcione junto con
+herramientas externas y módulos memoria trabajen de forma coordinada. Esta coordinación hará posible planificar y ejecutar tareas más largas o compuestas. La evaluación de estos sistemas ya no se limitará a medir métricas técnicas como la exactitud, sino que pondrá el énfasis en
+ dos partes clave: la utilidad práctica y la veracidad, especialmente en contextos de alta exigencia.
 

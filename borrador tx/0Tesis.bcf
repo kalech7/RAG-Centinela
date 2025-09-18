@@ -2529,12 +2529,17 @@
     <bcf:citekey order="140" intorder="1">hu2024ragrau</bcf:citekey>
     <bcf:citekey order="141" intorder="1">ramdurai2025llm</bcf:citekey>
     <bcf:citekey order="142" intorder="1">ramdurai2025llm</bcf:citekey>
-    <bcf:citekey order="143" intorder="1">ramdurai2025llm</bcf:citekey>
-    <bcf:citekey order="144" intorder="1">ramdurai2025llm</bcf:citekey>
-    <bcf:citekey order="145" intorder="1">sarthi2024raptor</bcf:citekey>
-    <bcf:citekey order="146" intorder="1">vombrocke2020</bcf:citekey>
-    <bcf:citekey order="147" intorder="1">vombrocke2020</bcf:citekey>
-    <bcf:citekey order="148" intorder="1" nocite="1">*</bcf:citekey>
+    <bcf:citekey order="143" intorder="1">bernard2025fate</bcf:citekey>
+    <bcf:citekey order="144" intorder="1">bernard2025fate</bcf:citekey>
+    <bcf:citekey order="145" intorder="1">fan2021pretraining</bcf:citekey>
+    <bcf:citekey order="146" intorder="1">ramdurai2025llm</bcf:citekey>
+    <bcf:citekey order="147" intorder="1">ramdurai2025llm</bcf:citekey>
+    <bcf:citekey order="148" intorder="1">sarthi2024raptor</bcf:citekey>
+    <bcf:citekey order="149" intorder="1">jing2024vecdb</bcf:citekey>
+    <bcf:citekey order="150" intorder="1">fan2021pretraining</bcf:citekey>
+    <bcf:citekey order="151" intorder="1">vombrocke2020</bcf:citekey>
+    <bcf:citekey order="152" intorder="1">vombrocke2020</bcf:citekey>
+    <bcf:citekey order="153" intorder="1" nocite="1">*</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
