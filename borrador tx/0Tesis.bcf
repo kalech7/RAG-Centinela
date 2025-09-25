@@ -2539,7 +2539,13 @@
     <bcf:citekey order="150" intorder="1">fan2021pretraining</bcf:citekey>
     <bcf:citekey order="151" intorder="1">vombrocke2020</bcf:citekey>
     <bcf:citekey order="152" intorder="1">vombrocke2020</bcf:citekey>
-    <bcf:citekey order="153" intorder="1" nocite="1">*</bcf:citekey>
+    <bcf:citekey order="153" intorder="1">zhai2024llmIR</bcf:citekey>
+    <bcf:citekey order="154" intorder="1">knollmeyer2024benchmarking</bcf:citekey>
+    <bcf:citekey order="155" intorder="1">fan2021pretraining</bcf:citekey>
+    <bcf:citekey order="156" intorder="1">ibrihich2022review</bcf:citekey>
+    <bcf:citekey order="157" intorder="1">bernard2025fate</bcf:citekey>
+    <bcf:citekey order="158" intorder="1">ma2025vector</bcf:citekey>
+    <bcf:citekey order="159" intorder="1" nocite="1">*</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

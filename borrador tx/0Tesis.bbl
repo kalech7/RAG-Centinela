@@ -563,6 +563,54 @@
       \verb https://arxiv.org/abs/2404.19543
       \endverb
     \endentry
+    \entry{ibrihich2022review}{inproceedings}{}{}
+      \name{author}{4}{}{%
+        {{hash=74a2e86a1529b24f45210255e898a2d8}{%
+           family={Ibrihich},
+           familyi={I\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=d1c54d1b2122524a18cae9c43592d2de}{%
+           family={Oussous},
+           familyi={O\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=9b03355243563241709925604c12f555}{%
+           family={Ibrihich},
+           familyi={I\bibinitperiod},
+           given={O.},
+           giveni={O\bibinitperiod}}}%
+        {{hash=bef5f646f6e301b3ad9ed46b1fd934b8}{%
+           family={Esghir},
+           familyi={E\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{08e12fd45bfd2e142ade0643fa5f6ff1}
+      \strng{fullhash}{866aca886b5878746758e0a13addda89}
+      \strng{fullhashraw}{866aca886b5878746758e0a13addda89}
+      \strng{bibnamehash}{08e12fd45bfd2e142ade0643fa5f6ff1}
+      \strng{authorbibnamehash}{08e12fd45bfd2e142ade0643fa5f6ff1}
+      \strng{authornamehash}{08e12fd45bfd2e142ade0643fa5f6ff1}
+      \strng{authorfullhash}{866aca886b5878746758e0a13addda89}
+      \strng{authorfullhashraw}{866aca886b5878746758e0a13addda89}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Procedia Computer Science}
+      \field{title}{A Review on recent research in information retrieval}
+      \field{volume}{201}
+      \field{year}{2022}
+      \field{pages}{777\bibrangedash 782}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1016/j.procs.2022.03.106
+      \endverb
+    \endentry
     \entry{jiang2024textmatching}{article}{}{}
       \name{author}{2}{}{%
         {{hash=a6cd330d65a61e5776df47ea793c79e3}{%
@@ -746,6 +794,49 @@
       \verb{url}
       \verb https://doi.org/10.5220/0013065700003838
       \endverb
+    \endentry
+    \entry{Lin2022SurveyTransformers}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=89ba365fd85fecc4ac8bea6f95c9ff7f}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Tianyang},
+           giveni={T\bibinitperiod}}}%
+        {{hash=cb985339b0ef39a178386dd04b6e9913}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Yuxin},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=52a8f10a78d12d7362765b71ce0de5c5}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Xiangyang},
+           giveni={X\bibinitperiod}}}%
+        {{hash=9057ec1bc6c2faaf12dfb4b37a8d37d0}{%
+           family={Qiu},
+           familyi={Q\bibinitperiod},
+           given={Xipeng},
+           giveni={X\bibinitperiod}}}%
+      }
+      \strng{namehash}{16bc3ac5fbdae4fbcb6ea7a930943ac8}
+      \strng{fullhash}{bda5198ec2b9f0b92c23e2f2c7e60527}
+      \strng{fullhashraw}{bda5198ec2b9f0b92c23e2f2c7e60527}
+      \strng{bibnamehash}{16bc3ac5fbdae4fbcb6ea7a930943ac8}
+      \strng{authorbibnamehash}{16bc3ac5fbdae4fbcb6ea7a930943ac8}
+      \strng{authornamehash}{16bc3ac5fbdae4fbcb6ea7a930943ac8}
+      \strng{authorfullhash}{bda5198ec2b9f0b92c23e2f2c7e60527}
+      \strng{authorfullhashraw}{bda5198ec2b9f0b92c23e2f2c7e60527}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{AI Open}
+      \field{title}{A survey of transformers}
+      \field{volume}{3}
+      \field{year}{2022}
+      \true{nocite}
+      \field{pages}{111\bibrangedash 132}
+      \range{pages}{22}
     \endentry
     \entry{ma2025vector}{article}{}{}
       \name{author}{19}{}{%

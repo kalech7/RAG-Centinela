@@ -211,7 +211,8 @@ también el papel que desempeña RAG, los principales aportes que ha generado en
 la actualidad.
 
 \paragraph{¿Qué es un LLM?}
-Son modelos de inteligencia artificial (IA) basados en la arquitectura \textit{transformer}, entrenados con grandes volúmenes de datos textuales con el objetivo de aprender representaciones
+Son modelos de inteligencia artificial (IA) basados en la arquitectura \textit{transformer}\footnote{es una arquitectura para modelar secuencias que reemplaza la recurrencia y la convolución por auto-atención multi-cabeza y 
+capas feed-forward por posición, con conexiones residuales, normalización y codificaciones posicionales; puede usarse como codificador, decodificador o codificador-decodificador}, entrenados con grandes volúmenes de datos textuales con el objetivo de aprender representaciones
 contextuales del lenguaje. Según \textcite{casola2022pretrained}, estos modelos utilizan técnicas de preentrenamiento no supervisado para captar patrones lingüísticos y semánticos,
 lo que permite que posteriormente puedan ajustarse a tareas específicas como clasificación de texto, análisis de sentimientos, traducción automática, reconocimiento de entidades
 o respuesta a preguntas. Ejemplos destacados son \textit{BERT, RoBERTa, ALBERT, XLNet, DistilBERT y GPT-3}, que han mostrado rendimientos sobresalientes en diversas aplicaciones de procesamiento de lenguaje natural (NLP).
@@ -524,7 +525,7 @@ fidelidad y coherencia de las respuestas generadas.
 que luego serán usadas para los procesos de recuperación y generación. La ingesta implica recolectar distintas fuentes ya sean libros, literatura científica, corpus abiertos, etc., y convertirlos en un formato manejable por el 
 sistema. De acuerdo con \textcite{gao2023rag} y \textcite{jing2024vecdb} estos datos se almacenan como texto estructurado, semiestructurado o sin estructura, dependiendo de su naturaleza y del tipo de procesamiento requerido.
 
-\paragraph{Preprocesamiento} Dentro de la ingesta de datos es necesario limpiar y estructurar el texto en bruto para que sea utilizable en etapas posteriores. De acuerdo con \textcite{tabassum2020} los procesos de tokenización,
+\paragraph{Preprocesamiento} Dentro de la ingesta de datos es necesario limpiar y estructurar el texto en bruto para que sea utilizable en etapas posteriores. De acuerdo con \textcite{tabassum2020} los procesos de tokenización\footnote{Proceso de segmentar el texto en unidades básicas (palabras, signos de puntuación o incluso caracteres), por ejemplo: “NLP”, “is”, “the”, “future”, etc},
 normalización, eliminación de stopwords, lematización y segmentación en oraciones permiten transformar datos no estructurados en unidades coherentes y consistentes, reduciendo así el ruido que podría propagarse en fases posteriores. 
 Este paso es importante ya que el texto procesado debe adaptarse a las limitaciones de los LLM, lo cual implica fragmentar en chunks y generar representaciones vectoriales, siendo así que \textcite{knollmeyer2024benchmarking} 
 afirma que la calidad del preprocesamiento incide directamente en dimensiones de evaluación como la relevancia contextual y la fidelidad de las respuestas. Una preparación deficiente del texto puede introducir ruido en el contexto recuperado 

@@ -207,3 +207,30 @@ at ([yshift=-0.75cm]current bounding box.south) {};
 \end{landscape}
 
 \section{Diseño y desarrollo del artefacto}
+De acuerdo a la literatura, se realiza el desarollo del RAG para Centinela usando las fases expuestas en la Figura \ref{fig:secciones-rag}. 
+
+\subsection{Ingesta} 
+De acuerdo al estudio exhaustiva de la lietratura, el primer paso para la construccion de RAG es la obtencion de los datos. En nuestro caso
+los datos provienen de Scopus donde se extrae los metadatos de los articulos los concentran la representación semántica principal del artículo y son los puntos 
+de entrada más frecuentes para consultas y embeddings\parencite{zhai2024llmIR}. De acuerdo con los autores, se ha saleccionado los sigueintes campos que 
+contienen la información necesaria tanto para representar el contenido del documento e identificarlo.
+
+\begin{itemize}
+    \item \textbf{DOI}: garantiza trazabilidad y verificabilidad de la fuente, elemento crítico frente a problemas de confianza y alucinación en RAG \parencite{knollmeyer2024benchmarking}.
+    \item \textbf{Autores}: son importantes para metadatos y desambiguación, permitiendo analizar impacto y coautorías, aunque no siempre se indexan en la fase de embeddings \parencite{fan2021pretraining}
+    \item \textbf{Afiliaciones}: aportan contexto institucional y geográfico, lo cual resulta útil para filtrar información por región o institución.\parencite{ibrihich2022review}
+    \item \textbf{Número de citaciones}: útil como metadato adicional para priorizar documentos de mayor impacto en la fase de ranking \parencite{bernard2025fate}.
+    \item \textbf{ScopusID}: asegura que cada documento tenga un identificador único, evitando duplicados en la VDB. \parencite{ma2025vector}
+\end{itemize}
+
+
+
+
+\subsection{Preprocesamiento}
+Una vez completada la ingesta de datos provienientes de Scopus, es fundamental preoprocesarlo lo que se busca con este proceso es normalizar y limpiar los datos 
+para reducir el ruido y mejorar la calidad semantica de la representacion.
+
+
+
+\subsection{Vectorizacion}
+tomar la descion justificada
