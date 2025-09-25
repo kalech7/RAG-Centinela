@@ -210,21 +210,24 @@ at ([yshift=-0.75cm]current bounding box.south) {};
 De acuerdo a la literatura, se realiza el desarollo del RAG para Centinela usando las fases expuestas en la Figura \ref{fig:secciones-rag}. 
 
 \subsection{Ingesta} 
-De acuerdo al estudio exhaustiva de la lietratura, el primer paso para la construccion de RAG es la obtencion de los datos. En nuestro caso
-los datos provienen de Scopus donde se extrae los metadatos de los articulos los concentran la representación semántica principal del artículo y son los puntos 
-de entrada más frecuentes para consultas y embeddings\parencite{zhai2024llmIR}. De acuerdo con los autores, se ha saleccionado los sigueintes campos que 
-contienen la información necesaria tanto para representar el contenido del documento e identificarlo.
+De acuerdo al estudio exhaustiva de la literatura, el primer paso para la construccion de RAG es la obtencion de los datos. En nuestro caso
+los datos provienen de Scopus donde se extrae los metadatos de los articulos, en particular título y abstract, los cuales concentran la representación semántica principal del artículo y son los puntos 
+de entrada más frecuentes para consultas y embeddings\parencite{zhai2024llmIR}. De acuerdo con la literatura, se ha saleccionado los siguientes campos que 
+contienen la información necesaria para representar el contenido del documento e identificarlo.
 
 \begin{itemize}
-    \item \textbf{DOI}: garantiza trazabilidad y verificabilidad de la fuente, elemento crítico frente a problemas de confianza y alucinación en RAG \parencite{knollmeyer2024benchmarking}.
-    \item \textbf{Autores}: son importantes para metadatos y desambiguación, permitiendo analizar impacto y coautorías, aunque no siempre se indexan en la fase de embeddings \parencite{fan2021pretraining}
-    \item \textbf{Afiliaciones}: aportan contexto institucional y geográfico, lo cual resulta útil para filtrar información por región o institución.\parencite{ibrihich2022review}
-    \item \textbf{Número de citaciones}: útil como metadato adicional para priorizar documentos de mayor impacto en la fase de ranking \parencite{bernard2025fate}.
+    \item \textbf{Título y abstract}: condensan la información temática central del articulo y son la base principal para la recuperación y la generación de embeddings \parencite{zhai2024llmIR}.
+    \item \textbf{DOI}: garantiza trazabilidad y constata la fuente, enfrenta a los problemas de confianza y alucinación en RAG \parencite{knollmeyer2024benchmarking}.
+    \item \textbf{Autores}: son un metadato clave ya que permite analizar impacto académico y coautorías. \parencite{fan2021pretraining}
+    \item \textbf{Afiliaciones}: aportan contexto institucional y geográfico, lo cual resulta útil para filtrar información por país o institución.\parencite{ibrihich2022review}
+    \item \textbf{Número de citaciones}: es un metadato adicional para priorizar documentos de mayor impacto en la fase de ranking \parencite{bernard2025fate}.
     \item \textbf{ScopusID}: asegura que cada documento tenga un identificador único, evitando duplicados en la VDB. \parencite{ma2025vector}
 \end{itemize}
 
-
-
+De esta forma los campos título y abstract concentran la mayor parte de semántica relevante para crear embeddings y recuperar documentos, por lo que conviene tratarlos como el bloque principal de indexación.
+En cambio, DOI, ScopusID, Autores y Afiliaciones funcionan como metadatos de soporte: ayudan a auditar la procedencia, filtrar por institución o región, destingir entre entidades y evitar duplicados en la base 
+vectorial. Separar título/resumen de metadatos de control (DOI, ScopusID, autores, afiliaciones)  mejora la interpretabilidad del sistema y evita sobrecargar el espacio vectorial 
+con señales que no aportan significado textual directo.
 
 \subsection{Preprocesamiento}
 Una vez completada la ingesta de datos provienientes de Scopus, es fundamental preoprocesarlo lo que se busca con este proceso es normalizar y limpiar los datos 
