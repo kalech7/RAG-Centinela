@@ -11,48 +11,48 @@
 \contentsline {section}{\numberline {1.5}Alcance}{2}{section.1.5}%
 \contentsline {section}{\numberline {1.6}Marco Teórico}{2}{section.1.6}%
 \contentsline {section}{\numberline {1.7}Revisión de literatura}{2}{section.1.7}%
-\contentsline {subsection}{\numberline {1.7.1}Propósito y objetivos de la revisión}{2}{subsection.1.7.1}%
+\contentsline {subsection}{\numberline {1.7.1}Propósito y objetivos de la revisión}{3}{subsection.1.7.1}%
 \contentsline {subsection}{\numberline {1.7.2}Criterios de inclusión y exclusión}{3}{subsection.1.7.2}%
 \contentsline {subsection}{\numberline {1.7.3}Identificación del estudio semilla y selección de revisiones relevantes}{3}{subsection.1.7.3}%
 \contentsline {subsection}{\numberline {1.7.4}Valoración de las evidencias y extracción de la información}{4}{subsection.1.7.4}%
 \contentsline {subsection}{\numberline {1.7.5}Síntesis y representación de resultados}{4}{subsection.1.7.5}%
-\contentsline {subsubsection}{Fundamentos}{5}{section*.5}%
+\contentsline {subsubsection}{Fundamentos de RAG}{6}{section*.5}%
 \contentsline {paragraph}{¿Qué es un LLM?}{6}{section*.7}%
-\contentsline {paragraph}{¿Qué es un RAG?}{6}{section*.8}%
+\contentsline {paragraph}{¿Qué es un RAG?}{7}{section*.8}%
 \contentsline {paragraph}{Rol del RAG}{7}{section*.9}%
 \contentsline {paragraph}{Aportes de RAG}{7}{section*.10}%
 \contentsline {paragraph}{RAG vs Fine Tuning}{8}{section*.11}%
-\contentsline {paragraph}{Aplicación}{8}{section*.12}%
-\contentsline {subsubsection}{Arquitectura}{9}{section*.13}%
+\contentsline {paragraph}{Aplicación}{9}{section*.12}%
+\contentsline {subsubsection}{Arquitectura RAG}{9}{section*.13}%
 \contentsline {subsubsection}{Fases de Implementación}{14}{section*.18}%
-\contentsline {paragraph}{Ingesta}{15}{section*.20}%
-\contentsline {paragraph}{Preprocesamiento}{15}{section*.21}%
-\contentsline {paragraph}{Vectorización}{16}{section*.22}%
-\contentsline {paragraph}{Vector DB}{16}{section*.23}%
-\contentsline {paragraph}{Recuperación}{18}{section*.24}%
+\contentsline {paragraph}{Ingesta}{16}{section*.20}%
+\contentsline {paragraph}{Preprocesamiento}{16}{section*.21}%
+\contentsline {paragraph}{Vectorización}{17}{section*.22}%
+\contentsline {paragraph}{Vector DB}{17}{section*.23}%
+\contentsline {paragraph}{Recuperación}{19}{section*.24}%
 \contentsline {paragraph}{Re-Ranking}{19}{section*.25}%
-\contentsline {paragraph}{Construcción de Contexto}{19}{section*.26}%
-\contentsline {paragraph}{Generación (LLM)}{20}{section*.27}%
-\contentsline {paragraph}{Evaluación}{21}{section*.28}%
-\contentsline {subsubsection}{Paradigmas}{22}{section*.29}%
-\contentsline {paragraph}{Tipos de Paradigmas}{22}{section*.31}%
-\contentsline {subsubsection}{Evaluación y Métricas}{23}{section*.32}%
-\contentsline {paragraph}{Categorías de Evaluación}{23}{section*.33}%
-\contentsline {subsubsection}{Futuro de RAG}{25}{section*.34}%
-\contentsline {paragraph}{Desafíos Actuales}{25}{section*.35}%
-\contentsline {paragraph}{Direcciones Potenciales}{26}{section*.36}%
-\contentsline {paragraph}{Perspectivas}{26}{section*.37}%
-\contentsline {chapter}{\numberline {2}Metodología}{27}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Revisión sistemática}{27}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Enfoque Design Science Research (DSR)}{29}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Diseño y desarrollo del artefacto}{33}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Ingesta}{33}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Preprocesamiento}{34}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Vectorizacion}{34}{subsection.2.3.3}%
-\contentsline {chapter}{\numberline {3}Pruebas, Resultados, Conclusiones y Recomendaciones}{35}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Demostración}{35}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Evaluación del desempeño}{35}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Resultados}{35}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Conclusiones}{35}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Recomendaciones}{35}{section.3.5}%
-\contentsline {chapter}{Bibliografía}{36}{chapter*.41}%
+\contentsline {paragraph}{Construcción de Contexto}{20}{section*.26}%
+\contentsline {paragraph}{Generación (LLM)}{21}{section*.27}%
+\contentsline {paragraph}{Evaluación}{22}{section*.28}%
+\contentsline {subsubsection}{Paradigmas}{23}{section*.29}%
+\contentsline {paragraph}{Tipos de Paradigmas}{23}{section*.31}%
+\contentsline {subsubsection}{Evaluación y Métricas}{24}{section*.32}%
+\contentsline {paragraph}{Categorías de Evaluación}{24}{section*.33}%
+\contentsline {subsubsection}{Futuro de RAG}{26}{section*.34}%
+\contentsline {paragraph}{Desafíos Actuales}{26}{section*.35}%
+\contentsline {paragraph}{Direcciones Potenciales}{27}{section*.36}%
+\contentsline {paragraph}{Perspectivas}{27}{section*.37}%
+\contentsline {chapter}{\numberline {2}Metodología}{28}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Revisión sistemática}{28}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Enfoque Design Science Research (DSR)}{30}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Diseño y desarrollo del artefacto}{34}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Ingesta}{34}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Preprocesamiento}{35}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Vectorizacion}{35}{subsection.2.3.3}%
+\contentsline {chapter}{\numberline {3}Pruebas, Resultados, Conclusiones y Recomendaciones}{36}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Demostración}{36}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Evaluación del desempeño}{36}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Resultados}{36}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Conclusiones}{36}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Recomendaciones}{36}{section.3.5}%
+\contentsline {chapter}{Bibliografía}{37}{chapter*.41}%
