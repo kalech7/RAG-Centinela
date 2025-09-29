@@ -391,9 +391,9 @@ de sistemas RAG.
 \toprule
 \textbf{Categoría} & \textbf{Subcategoría / Tipo} & \textbf{Técnicas / Ejemplos} \\
 \midrule
-Tipos   & Pre-training          & knowledge graph embeddings \\
-        & Fine-tuning           & REPLUG,UPRISE \\
-        & Inference             & Retrieve-then-Read-then-Revise (RARR), Lost in the Middle  \\
+Tipos   & Pre-training          & Knowledge Graph Embeddings \\
+        & Fine-tuning           & SFT (supervised fine-tuning), PEFT (parameter-efficient fine-tuning), ajuste del retriever/reranker  \\
+        & Inference             & Retrieve-then-Read-then-Revise (RARR), mitigación de Lost in the Middle  \\
 \midrule
 Data    & Structured            & Knowledge Graphs \\
         & Unstructured          & open corpus (Common Crawl, PubMed, etc.) \\
@@ -407,6 +407,7 @@ Process & Once                  & document augmentation \\
 \caption{Componente Augmentation}
 \label{tab:augmentation}
 \end{table}
+
 Augmentation es el proceso el cual un modelo de lenguaje incorpora información adicional 
 ya sea externa, como documentos, bases de conocimiento o corpus abiertos, o procesada internamente en diferentes etapas de su funcionamiento.
 Los autores coinciden en que esta integración cumple objetivos clave: mejorar la precisión de las respuestas al aportar evidencia relevante, 
@@ -415,9 +416,30 @@ necesidad de reentrenarlos desde cero, ya que el acceso a información recuperad
 La Tabla~\ref{tab:augmentation} contiene tres ejes del componente augmentation: Tipos, Data y Process. Los cuales enriquecen el contexto disponible y mejoran la pertinencia
 de la recuperación.
 
-Los tipos de augmentation, \textcite{zhao2024rag} señalan que se puede aplicar en tres momentos distintos. Durante el pre-training, se integran representaciones estructuradas 
-como knowledge graph embeddings que dotan al modelo de memoria explícita sobre entidades y relaciones. En la etapa de fine-tuning, técnicas como REPLUG y UPRISE 
-permiten alinear mejor el recuperador y el generador en dominios específicos. Finalmente, en la inferencia, se aplican métodos sin reentrenamiento: por ejemplo, 
+Los tipos de augmentation, \textcite{zhao2024rag} señalan que se puede aplicar en tres momentos distintos. En el pre-training, se integran representaciones estructuradas 
+como knowledge graph embeddings que dotan al modelo de memoria explícita sobre entidades y relaciones. En la fase de fine-tuning, se ajustan los parámetros del modelo 
+(y/o del recuperador) con datos del dominio para alinear formato y criterios de evaluación con la tarea. Para lograr este objetivo, existen estrategias como SFT el cual 
+consiste en volver a entrenar el modelo usando datos etiquetados de la tarea objetivo para alinear el formato y criterios de salida. 
+Este ajuste del modelo es efectivo, sin embargo resulta costoso y sensible a los hiperparámetros~\footnote{%
+Variables de configuración externas al modelo que controlan cómo aprende durante el entrenamiento (e.g., tasa de aprendizaje, batch size, warmup, regularización, scheduler
+y número de épocas), regulando el tamaño y el ritmo de las actualizaciones y la duración del entrenamiento.}%
+e incluso a la semilla inicial (números aleatorios del entorno de entrenamiento , por ejemplo, la inicialización de pesos y el orden de muestreo de los datos), 
+lo que impacta la selección de modelo y la fiabilidad de la evaluación~\textcite{casola2022pretrained}.
+Por otra parte, PEFT modifican muy pocos parámetros usando prompt tunning (soft prompts) donde se aprenden vectores continuos que se anteponen al input para guiar la generación, 
+sin cambiar la base del modelo y prefix tunning es una variante de prompt tunning el cual agrega prefijos de claves o valores en las capas de atención del transformer y a su vez
+puede anteponer vectores al input. Asi, cada capa contiene el contexto que dirige la atención del modelo hacia patrones deseados, manteniendo intactos los pesos base del modelo.
+El ajuste del recuperador/reranker consiste en optimizar, con datos del dominio, el recuperador para maximizar el recall@k sustituyendo el objetivo de alineación por métodos
+ como REPLUG y UPRISE: REPLUG trata al LLM como “caja negra” y ajusta el recuperador para que su distribución sobre documentos recuperados se acerque a la que induce el propio
+  LLM, entrenando con una pérdida de divergencia KL 
+\[
+\mathrm{KL}\!\big(P_{R}(d\mid x)\,\|\,Q_{\mathrm{LM}}(d\mid x,y)\big)
+= \sum_{d\in\mathcal{C}(x)} P_{R}(d\mid x)\,\log\!\frac{P_{R}(d\mid x)}{Q_{\mathrm{LM}}(d\mid x,y)}.
+\]
+UPRISE, por su parte, UPRISE entrena un prompt retriever usando a un LLM congelado como supervisor: el LLM puntúa qué prompts (de un banco de plantillas) 
+ayudan más a producir buenas respuestas para cada entrada; esos puntajes se convierten en señales de entrenamiento para que el retriever aprenda a seleccionar, 
+en inferencia y sin reentrenar el LLM, los prompts más útiles en zero-shot\footnote{Resolver una tarea sin ejemplos etiquetados de esa tarea durante el ajuste}, elevando la calidad del contexto que finalmente consume el generador \textcite{zhao2024rag,fan2024ragllm}.
+
+Finalmente, en la inferencia, se aplican métodos sin reentrenamiento: por ejemplo, 
 RARR (Retrieve-then-Read-then-Revise) refina las respuestas con evidencia recuperada, mientras que la mitigación de Lost in the Middle reorganiza documentos recuperados
 para que el modelo aproveche mejor la ventana de contexto.
 
