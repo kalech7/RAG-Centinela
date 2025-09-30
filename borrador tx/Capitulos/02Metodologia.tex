@@ -218,12 +218,12 @@ de entrada más frecuentes para consultas y embeddings\parencite{zhai2024llmIR}.
 contienen la información necesaria para representar el contenido del documento e identificarlo.
 
 \begin{itemize}
-    \item \textbf{Título y abstract}: condensan la información temática central del articulo y son la base principal para la recuperación y la generación de embeddings \parencite{zhai2024llmIR}.
-    \item \textbf{DOI}: garantiza trazabilidad y constata la fuente, enfrenta a los problemas de confianza y alucinación en RAG \parencite{knollmeyer2024benchmarking}.
-    \item \textbf{Autores}: son un metadato clave ya que permite analizar impacto académico y coautorías. \parencite{fan2021pretraining}
-    \item \textbf{Afiliaciones}: aportan contexto institucional y geográfico, lo cual resulta útil para filtrar información por país o institución.\parencite{ibrihich2022review}
-    \item \textbf{Número de citaciones}: es un metadato adicional para priorizar documentos de mayor impacto en la fase de ranking \parencite{bernard2025fate}.
-    \item \textbf{ScopusID}: asegura que cada documento tenga un identificador único, evitando duplicados en la VDB. \parencite{ma2025vector}
+    \item \textbf{Título y abstract}: condensan la información temática central del articulo y son la base principal para la recuperación y la generación de embeddings~\parencite{zhai2024llmIR}.
+    \item \textbf{DOI}: garantiza trazabilidad y constata la fuente, enfrenta a los problemas de confianza y alucinación en RAG~\parencite{knollmeyer2024benchmarking}.
+    \item \textbf{Autores}: son un metadato clave ya que permite analizar impacto académico y coautorías~\parencite{fan2021pretraining}. 
+    \item \textbf{Afiliaciones}: aportan contexto institucional y geográfico, lo cual resulta útil para filtrar información por país o institución~\parencite{ibrihich2022review}.
+    \item \textbf{Número de citaciones}: es un metadato adicional para priorizar documentos de mayor impacto en la fase de ranking~\parencite{bernard2025fate}.
+    \item \textbf{ScopusID}: asegura que cada documento tenga un identificador único, evitando duplicados en la VDB~\parencite{ma2025vector}. 
 \end{itemize}
 
 De esta forma los campos título y abstract concentran la mayor parte de semántica relevante para crear embeddings y recuperar documentos, por lo que conviene tratarlos como el bloque principal de indexación.
