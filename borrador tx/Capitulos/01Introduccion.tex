@@ -352,14 +352,15 @@ sparse, dense e híbridos.
 \textbf{Categoría} & \textbf{Subcategoría / Tipo} & \textbf{Técnicas} \\
 \midrule
 Indexing     & Vector DB               & FAISS, Annoy, Milvus, Weaviate, Pinecone, Qdrant\\
-             & Algoritmos de búsqueda  & Approximate Nearest Neighbors, Locality-Sensitive Hashing \\
+              & Algoritmos de búsqueda  & Approximate Nearest Neighbors, Locality-Sensitive Hashing \\
 \midrule
 Enhancements & Reranking               & CEDR, DuoBERT, DRMM\\
-             & Retriever Finetuning    & REPLUG, Learning to retrieve ICL, UDAPDR \\
-             & Hybrid Search           & RAP-Gen, BlendedRAG, ReACC\\
-             & Chunk Optimization      & RAPTOR, LlamaIndex  \\
-             & Recursive Retrieval     & ReAct, RATP \\
-             & Query Reformulation     &  HyDE, Multi-query, Query2Doc\\
+              & Retriever Finetuning    & REPLUG, Learning to retrieve ICL, UDAPDR \\
+              & Hybrid Search           & RAP-Gen, BlendedRAG, ReACC\\
+              & Chunk Optimization      & RAPTOR, LlamaIndex  \\
+              & Recursive Retrieval     & ReAct, RATP \\
+              & RAG Pipeline Enhancement  & \textit{Rule-based}, \textit{Model-based} \\
+              & Query Reformulation     &  HyDE, Multi-query, Query2Doc\\
 \midrule
 Tipos de retrievers & Sparse            & BM25, TF-IDF \\
                     & Dense             & Embeddings (ej. BERT, OpenAI, etc.) \\
@@ -370,7 +371,7 @@ Tipos de retrievers & Sparse            & BM25, TF-IDF \\
 \label{tab:retriver}
 \end{table}
 
-Indexing se encarga de organizar y representar la información de forma eficiente. En este sentido, los vector databases (VDBs) han aumentado su popularidad, ya que permiten almacenar 
+\paragraph{Indexing:} Es el encargado de organizar y representar la información de forma eficiente. En este sentido, los vector databases (VDBs) han aumentado su popularidad, ya que permiten almacenar 
 vectores de alta dimensionalidad y realizar búsquedas por similitud semántica. Como explica \textcite{joshi2025vector}, estas bases de datos resultan esenciales para 
 la aplicación de inteligencia artificial generativa, ya que superan las limitaciones de las bases relacionales en el manejo de datos no estructurados.  
 Los VDBs integran mecanismos de búsqueda aproximada de vecinos más cercanos (ANNS), lo que posibilita consultas rápidas incluso sobre miles de objetos. Además, como lo menciona
@@ -386,10 +387,29 @@ consulta, el sistema solo necesita comparar el vector de entrada con aquellos al
 computacional de la búsqueda \parencite{ma2025vector}. Estas características explican por qué los VDBs se han consolidado como una infraestructura fundamental en el soporte
 de sistemas RAG.
 
-Como Enhancements, un reranker es el encargado de reordernar el top-k inicial modelnad de forma conjunta (query, fragmento de texto, documento) para estimar directamente la 
-relevancia del par y refinar la lista producida por el recuperador.  Esto constituye una segunda etapa
-de ranking cuyo fin es elevar la efectividad con modelos de interacción tipo cross-encoder\footnote{Cross-encoder es un modelo de ranking por interacción que recibe consulta y texto juntos} 
-tras una primera etapa satisfactoria (sparse o densa)~\textcite{hambarde2023ir}.
+\paragraph{Enhancements:} Son técnicas complementarias que se añaden antes, durante o después de la recuperación para subir la calidad sin reemplazar al 
+recuperador base.
+\smallskip
+\noindent\textbf{Reranking:} Es la fase de reordenamiento posterior a la recuperación inicial en un sistema multietapa de RI\footnote{Un sistema multietapa es un pipeline 
+donde una primera etapa obtiene un top-k de documentos y una o más etapas posteriores lo reordenan con criterios más finos para mejorar la efectividad del ranking}. 
+Parte de una lista top-k generada por el  recuperador y la vuelve a ordenar aplicando uno o varios reordenadores que estiman con mayor precisión la relevancia 
+consulta–documento.
+
+\begin{table}[htbp]
+\centering
+\begin{tabularx}{\textwidth}{l X}
+\toprule
+\textbf{Técnicas} & \textbf{Descripción} \\
+\midrule
+\multicolumn{2}{l}{\textit{Reranking}}\\
+CEDR & Re-ranker basado en BERT que modela interacciones contexto–término para reordenar los pasajes más relevantes tras una primera recuperación. \\
+DuoBERT & Enfoque de aprendizaje a pares: compara (doc\_positivo, doc\_negativo) para aprender un mejor ordenamiento final. \\
+DRMM & Deep Relevance Matching Model: usa funciones de coincidencia término–término y una red con “term gating” para estimar relevancia y reordenar. \\
+\end{tabularx}
+\caption{Técnicas Reranking}
+\label{tab:enhancementsReranking}
+\end{table}
+
 
 
 
@@ -434,7 +454,7 @@ necesidad de reentrenarlos desde cero, ya que el acceso a información recuperad
 La Tabla~\ref{tab:augmentation} contiene tres ejes del componente augmentation: Tipos, Data y Process. Los cuales enriquecen el contexto disponible y mejoran la pertinencia
 de la recuperación.
 
-Los tipos de augmentation, \textcite{zhao2024rag} señalan que se puede aplicar en tres momentos distintos. En el pre-training, se integran representaciones estructuradas 
+\paragraph{Tipos de augmentation:} \textcite{zhao2024rag} señalan que se puede aplicar en tres momentos distintos. En el pre-training, se integran representaciones estructuradas 
 como knowledge graph embeddings que dotan al modelo de memoria explícita sobre entidades y relaciones. En la fase de fine-tuning, se ajustan los parámetros del modelo 
 (y/o del recuperador) con datos del dominio para alinear formato y criterios de evaluación con la tarea. Para lograr este objetivo, existen estrategias como SFT el cual 
 consiste en volver a entrenar el modelo usando datos etiquetados de la tarea objetivo para alinear el formato y criterios de salida. 
@@ -466,7 +486,7 @@ Finalmente, en la inferencia, se aplican métodos sin reentrenamiento: por ejemp
 RARR (Retrieve-then-Read-then-Revise) refina las respuestas con evidencia recuperada, mientras que la mitigación de Lost in the Middle reorganiza documentos recuperados
 para que el modelo aproveche mejor la ventana de contexto.
 
-Con respecto a los datos, \textcite{fan2024ragllm} destacan tres clases. La información estructurada, como los Knowledge Graphs, es fundamental para tareas de razonamiento 
+\paragraph{Datos:} \textcite{fan2024ragllm} destacan tres clases. La información estructurada, como los Knowledge Graphs, es fundamental para tareas de razonamiento 
 factual ya que permite modelar entidades y relaciones explícitas. La información no estructurada, como corpus abiertos (Common Crawl, PubMed, Wikipedia), se ha vuelto estándar en open-domain QA.
 Tal como explican~\textcite{gao2023rag} estos corpus aportan amplitud temática, pero también requieren mecanismos de filtrado, chunking y re-ranking 
 para evitar ruido y mitigar el problema de Lost in the Middle. Finalmente, surge la categoría de contenido generado por LLM, donde el propio modelo actúa 
@@ -475,7 +495,7 @@ hipótesis o representaciones que se utilizan posteriormente como consultas o ev
 si el propio contenido generado basta para resolver la tarea. Gracias a este enfoque, como subraya~\textcite{fan2024ragllm}, se abre la posibilidad de que los modelos se autocomplementen y 
 reutilicen su conocimiento previo sin depender exclusivamente de bases externas.
 
-Los procesos de augmentation se los clasifica en tres modalidades según~\textcite{zhao2024rag}. 
+\paragraph{Procesos de augmentation:} se clasifican en tres modalidades según~\textcite{zhao2024rag}. 
 Augmentation puede aplicarse una sola vez (Once), como en el caso de la document augmentation, 
 donde se enriquece directamente la entrada con información adicional antes de la generación. 
 Otra modalidad es la iterativa, que emplea técnicas como el pseudo-relevance feedback (PRF), 
@@ -712,7 +732,8 @@ En conjunto, estas estrategias reflejan que la generación no es un proceso line
 recuperación con el modelo. Como señalan \textcite{zhao2024rag}, la elección del mecanismo de fusión es determinante para la fidelidad y coherencia de las respuestas 
 generadas.
 
-\paragraph{Evaluación:} La evaluación en los sistemas RAG es un proceso donde no se centra únicamente en evaluar la calidad de la respuesta generada, sino que debe evaluarse en todas las fases de implementación. 
+\paragraph{Evaluación:} 
+La evaluación en los sistemas RAG es un proceso donde no se centra únicamente en evaluar la calidad de la respuesta generada, sino que debe evaluarse en todas las fases de implementación. 
 Empezando por el retriever, donde se verifica que esté encontrando evidencia relevante y suficiente. Para llevar a cabo esta verificación se utilizan métricas tradicionales como Recall@k, nDCG o MRR que permiten  
 cuantificar qué proporción de los documentos útiles fueron efectivamente recuperados. Es importante verificar que estén recuperando los documentos adecuadamente, ya que la etapa de generación no podrá producir respuestas fieles si carece de evidencia adecuada, por más sofisticado que sea el generador.  
 En segundo lugar, medimos la generación más allá de indicadores como BLEU, ROUGE o F1, introduciendo el concepto de fidelidad o groundedness, que examina si el texto producido está sustentado en las fuentes recuperadas, reduciendo el riesgo de alucinaciones. 
@@ -749,18 +770,46 @@ Incluir FATE como un parámetro de evaluación permite generar confianza social 
   mindarrow/.style={-latex, line width=0.9pt}
 }
 
-% --- Nodo central
+% ================== Parámetros  ==================
+\def\sideW{4.5cm}  % MISMO ancho para ambos hijos de nivel 1
+\def\sideX{4.0}    % desplazamiento horizontal simétrico de hijos
+\def\sideY{2.7}    % desplazamiento vertical de hijos
+\def\suby{-2.0}    % caída vertical de subnodos de RAG
+\def\dx{3.8}       % separación horizontal de subnodos de RAG
+\def\childShift{-1.5}
+
+% --- Nodo central, exactamente en el centro de la figura
 \node[mindcenter] (paradigmas) at (0,0) {Paradigmas};
 
-% --- Nodos conectados
-\node[mindoval, text width=5cm, align=center] 
-  (rag) at (-4,-3) {Retrieval-Augmented Generation (RAG)};
-\node[mindoval, text width=4.2cm, align=center] 
-  (hallucination) at (4,-3) {Hallucination Mitigation};
+% --- Hijos de primer nivel (SIMÉTRICOS respecto del centro)
+\node[mindoval, text width=\sideW, align=center]
+  (rag) at ($ (paradigmas.south) + (-\sideX - \childShift, -\sideY) $)
+  {Retrieval-Augmented Generation (RAG)};
 
-% --- Flechas
-\draw[mindarrow] (paradigmas.south west) -- (rag.north);
-\draw[mindarrow] (paradigmas.south east) -- (hallucination.north);
+% Mover Hallucination a la izquierda (acércalo a RAG)
+\node[mindoval, text width=\sideW, align=center, xshift=-1.2cm] % <-- ajusta -1.2cm a gusto
+  (hallucination) at ($ (paradigmas.south) + (\sideX - \childShift, -\sideY) $)
+  {Hallucination Mitigation};
+
+% --- Flechas desde el centro (salida simétrica)
+\draw[mindarrow] (paradigmas.south) --(rag.north);
+\draw[mindarrow] (paradigmas.south) -- (hallucination.north);
+
+% --- Punto común bajo RAG para los subnodos
+\coordinate (ragout) at ($(rag.south)+(0,-0.05)$);
+
+% --- Subnodos de RAG (compactos y CENTRADOS respecto a RAG)
+\node[mindoval, text width=3.2cm, align=center]
+  (naiverag)    at ($(ragout)+(-\dx,\suby)$) {Naive RAG};
+\node[mindoval, text width=3.2cm, align=center]
+  (advancedrag) at ($(ragout)+(0,\suby)$)    {Advanced RAG};
+\node[mindoval, text width=3.2cm, align=center]
+  (modularrag)  at ($(ragout)+(\dx,\suby)$)  {Modular RAG};
+
+% --- Flechas a subnodos saliendo del mismo punto
+\draw[mindarrow] (ragout) -- (naiverag.north);
+\draw[mindarrow] (ragout) -- (advancedrag.north);
+\draw[mindarrow] (ragout) -- (modularrag.north);
 
 \end{tikzpicture}
 \end{center}
@@ -768,7 +817,7 @@ Incluir FATE como un parámetro de evaluación permite generar confianza social 
 \label{fig:paradigmas}
 \end{figure}
 
-Dentro del área de Retrieval-Augmented Generation (RAG), \textcite{gao2023rag} distinguen los paradigmas Naive RAG, Advanced RAG y Modular RAG, que representan un progreso
+La Figura \ref{fig:paradigmas} muestra el campo de Retrieval-Augmented Generation (RAG) que, según \textcite{gao2023rag} distinguen los paradigmas Naive RAG, Advanced RAG y Modular RAG, que representan un progreso
 desde enfoques básicos de recuperación y generación hasta arquitecturas modulares y flexibles. A su vez, \textcite{zhang2025hallucination} clasifican los problemas en el área de 
 Hallucination Mitigation en dos ejes: retrieval failure (fallos en fuentes, consultas o recuperadores) y generation deficiency 
 (ruido o conflicto contextual y límites de capacidad). Finalmente, 
@@ -876,7 +925,7 @@ aspectos como coherencia, transparencia y verificabilidad.
 
 \subsubsection{Futuro de RAG}
 
-\paragraph{Desafíos Actuales}
+\paragraph{Desafíos Actuales:}
 De acuerdo con~\textcite{zhai2024llmIR}, uno de los principales desafíos de los sistemas RAG es la generación de alucinaciones, que comprometen la confianza y 
 limitan su uso en aplicaciones críticas. Asimismo, persisten limitaciones en la calidad de la recuperación y en la eficiencia computacional, especialmente 
 en dominios donde se requiere información actualizada y especializada~\parencite{hu2024ragrau}. Además, \textcite{ramdurai2025llm} señala que la integración de RAG con otras
@@ -884,7 +933,7 @@ arquitecturas, como redes neuronales convolucionales, enfrenta problemas de esca
 En la literatura de~\textcite{bernard2025fate} muestra que aún no existen marcos estandarizados para evaluar imparcialidad, transparencia y responsabilidad en IR, lo que limita la confianza social en los sistemas RAG. 
 Otro reto es la reproducibilidad y robustez de los modelos preentrenados, ya que la variabilidad en hiperparámetros y semillas afecta la consistencia de los resultados~\parencite{fan2021pretraining}.
 
-\paragraph{Direcciones Potenciales}  
+\paragraph{Direcciones Potenciales:}  
 Las líneas de avance incluyen el desarrollo de retrievers más robustos, la optimización de las interacciones entre modelo y recuperación, 
 así como mecanismos de evaluación que prioricen la relevancia y la coherencia. \textcite{ramdurai2025llm} enfatiza la sinergia con arquitecturas multimodales y con sistemas 
 capaces de combinar información textual, visual y estructurada. Asimismo, enfoques como RAPTOR, que introduce resúmenes recursivos y jerárquicos en la recuperación,
@@ -894,7 +943,7 @@ bases de datos vectoriales como memorias semánticas persistentes, que permiten 
 Finalmente, cabe mencionar que los pre-trained transformers aplicados a IR han abierto el camino hacia modelos más sofisticados para tareas de ranking y matching semántico, 
 aunque todavía requieren diseños de preentrenamiento adaptados a los desafíos específicos de la recuperación de información~\parencite{fan2021pretraining}.
 
-\paragraph{Perspectivas}
+\paragraph{Perspectivas:}
 A medio plazo, RAG y los LLM convergerán con la IR clásica hacia sistemas de acceso conversacional al conocimiento: motores de búsqueda capaces de generar respuestas enriquecidas con análisis propio,
 pero con respaldo en documentación verificable, capaces de planificar, citar y aprovechar el historial conversacional. Incluso si los LLM siguen mejorando, la recuperación seguirá 
 siendo un componente clave porque permite reducir costos, mantener la información siempre actualizada, control y gobernanza de la evidencia usada y en consecuencia se espera la aparición de arquitecturas integradas donde RAG funcione junto con

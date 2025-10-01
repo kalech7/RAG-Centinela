@@ -24,24 +24,29 @@
 \contentsline {paragraph}{RAG vs Fine Tuning}{8}{section*.11}%
 \contentsline {paragraph}{Aplicación}{9}{section*.12}%
 \contentsline {subsubsection}{Arquitectura RAG}{9}{section*.13}%
-\contentsline {subsubsection}{Fases de Implementación}{16}{section*.18}%
-\contentsline {paragraph}{Ingesta:}{18}{section*.20}%
-\contentsline {paragraph}{Preprocesamiento:}{18}{section*.21}%
-\contentsline {paragraph}{Vectorización:}{19}{section*.22}%
-\contentsline {paragraph}{Vector DB:}{19}{section*.23}%
-\contentsline {paragraph}{Recuperación:}{21}{section*.24}%
-\contentsline {paragraph}{Re-Ranking:}{21}{section*.25}%
-\contentsline {paragraph}{Construcción de Contexto:}{22}{section*.26}%
-\contentsline {paragraph}{Generación (LLM):}{23}{section*.27}%
-\contentsline {paragraph}{Evaluación:}{23}{section*.28}%
-\contentsline {subsubsection}{Paradigmas}{25}{section*.29}%
-\contentsline {paragraph}{Tipos de Paradigmas}{25}{section*.31}%
-\contentsline {subsubsection}{Evaluación y Métricas}{26}{section*.32}%
-\contentsline {paragraph}{Categorías de Evaluación}{26}{section*.33}%
-\contentsline {subsubsection}{Futuro de RAG}{28}{section*.34}%
-\contentsline {paragraph}{Desafíos Actuales}{28}{section*.35}%
-\contentsline {paragraph}{Direcciones Potenciales}{29}{section*.36}%
-\contentsline {paragraph}{Perspectivas}{29}{section*.37}%
+\contentsline {paragraph}{Indexing:}{10}{section*.16}%
+\contentsline {paragraph}{Enhancements:}{11}{section*.17}%
+\contentsline {paragraph}{Tipos de augmentation:}{13}{section*.20}%
+\contentsline {paragraph}{Datos:}{14}{section*.21}%
+\contentsline {paragraph}{Procesos de augmentation:}{14}{section*.22}%
+\contentsline {subsubsection}{Fases de Implementación}{17}{section*.24}%
+\contentsline {paragraph}{Ingesta:}{18}{section*.26}%
+\contentsline {paragraph}{Preprocesamiento:}{18}{section*.27}%
+\contentsline {paragraph}{Vectorización:}{18}{section*.28}%
+\contentsline {paragraph}{Vector DB:}{19}{section*.29}%
+\contentsline {paragraph}{Recuperación:}{20}{section*.30}%
+\contentsline {paragraph}{Re-Ranking:}{21}{section*.31}%
+\contentsline {paragraph}{Construcción de Contexto:}{22}{section*.32}%
+\contentsline {paragraph}{Generación (LLM):}{23}{section*.33}%
+\contentsline {paragraph}{Evaluación:}{23}{section*.34}%
+\contentsline {subsubsection}{Paradigmas}{25}{section*.35}%
+\contentsline {paragraph}{Tipos de Paradigmas}{25}{section*.37}%
+\contentsline {subsubsection}{Evaluación y Métricas}{26}{section*.38}%
+\contentsline {paragraph}{Categorías de Evaluación}{27}{section*.39}%
+\contentsline {subsubsection}{Futuro de RAG}{28}{section*.40}%
+\contentsline {paragraph}{Desafíos Actuales:}{28}{section*.41}%
+\contentsline {paragraph}{Direcciones Potenciales:}{29}{section*.42}%
+\contentsline {paragraph}{Perspectivas:}{29}{section*.43}%
 \contentsline {chapter}{\numberline {2}Metodología}{30}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Revisión sistemática}{30}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Enfoque Design Science Research (DSR)}{32}{section.2.2}%
@@ -55,4 +60,4 @@
 \contentsline {section}{\numberline {3.3}Resultados}{38}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Conclusiones}{38}{section.3.4}%
 \contentsline {section}{\numberline {3.5}Recomendaciones}{38}{section.3.5}%
-\contentsline {chapter}{Bibliografía}{39}{chapter*.41}%
+\contentsline {chapter}{Bibliografía}{39}{chapter*.47}%
