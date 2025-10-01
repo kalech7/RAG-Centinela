@@ -393,25 +393,42 @@ recuperador base.
 \noindent\textbf{Reranking:} Es la fase de reordenamiento posterior a la recuperación inicial en un sistema multietapa de RI\footnote{Un sistema multietapa es un pipeline 
 donde una primera etapa obtiene un top-k de documentos y una o más etapas posteriores lo reordenan con criterios más finos para mejorar la efectividad del ranking}. 
 Parte de una lista top-k generada por el  recuperador y la vuelve a ordenar aplicando uno o varios reordenadores que estiman con mayor precisión la relevancia 
-consulta–documento.
+consulta-documento.
 
-\begin{table}[htbp]
+%  compactar un poco
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.10}
+
+% EN EL TEXTO
+\begin{table}[H]
 \centering
-\begin{tabularx}{\textwidth}{l X}
+\begin{tabularx}{\textwidth}{L{0.30\textwidth} X}
 \toprule
 \textbf{Técnicas} & \textbf{Descripción} \\
 \midrule
 \multicolumn{2}{l}{\textit{Reranking}}\\
-CEDR & Re-ranker basado en BERT que modela interacciones contexto–término para reordenar los pasajes más relevantes tras una primera recuperación. \\
-DuoBERT & Enfoque de aprendizaje a pares: compara (doc\_positivo, doc\_negativo) para aprender un mejor ordenamiento final. \\
-DRMM & Deep Relevance Matching Model: usa funciones de coincidencia término–término y una red con “term gating” para estimar relevancia y reordenar. \\
+CEDR (Contextualized Embeddings for Document Ranking) &
+Re-ranker basado en BERT que concatena $q$ y el fragmento $d$ para obtener representaciones contextualizadas y estimar directamente la relevancia del par. \\
+DuoBERT &
+Re-ranker \textit{pairwise} que compara explícitamente la \emph{query}, el candidato positivo y el negativo \((q,\ d^{+},\ d^{-})\) en una sola secuencia para aprender preferencias y producir el ordenamiento final; muy usado en \textit{passage ranking}\footnotemark. \\
+DRMM (Deep Relevance Matching Model) &
+Modelo clásico de interacción que construye histogramas de similitud (consulta-documento) por término y usa \textit{term gating} (softmax) para ponderar la contribución de cada término al puntaje final. \\
+\bottomrule
 \end{tabularx}
-\caption{Técnicas Reranking}
+\caption{Técnicas de Reranking}
 \label{tab:enhancementsReranking}
 \end{table}
+\footnotetext{Passage ranking evalúa fragmentos de textos largos; puntúa pares (consulta-fragmento) con cross-encoders y, si se requiere nivel documento, agrega puntajes (p. ej., maxP/sumP, PARADE).}
+\subparagraph{Definiciones clave:}
+\begin{itemize}
+    \item \textbf{Cross-encoder.} Arquitectura de re-ranking que concatena la consulta $q$ y el pasaje $d$ en una sola secuencia para codificarlos conjuntamente y producir un puntaje directo de relevancia del par $(q,d)$.
+    \item \textbf{Pairwise.} Esquema de entrenamiento para re-rankers que recibe $(q,\ d^{+},\ d^{-})$ y optimiza para que el modelo puntúe $d^{+}$ por encima de $d^{-}$, generando el ordenamiento final.
+    \item \textbf{Term gating.} Mecanismo de ponderación por término (softmax) que modula la contribución de cada término de la consulta al puntaje global de similitud; característico de modelos de interacción.
+\end{itemize}
 
-
-
+\noindent De acuerdo con la Tabla \ref{tab:enhancementsReranking}, el Re-ranking se apoya crecientemente en modelos neuronales y PTMs (pre-trained transformers) por su mayor efectividad;
+ entre los ejemplos recurrentes figuran DRMM (como clásico de interacción) y re-rankers basados en BERT 
+ como CEDR y variantes tipo pairwise (DuoBERT). No obstante, existen otras técnicas y variantes en la literatura que no se detallan aquí.
 
 
 
