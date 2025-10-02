@@ -464,7 +464,7 @@ Convierte la consulta en un pseudo-documento que actúa como proxy para recupera
     \item \textbf{Pairwise.} Esquema de entrenamiento para re-rankers que recibe $(q,\ d^{+},\ d^{-})$ y optimiza para que el modelo puntúe $d^{+}$ por encima de $d^{-}$, generando el ordenamiento final.
     \item \textbf{Term gating.} Mecanismo de ponderación por término (softmax) que modula la contribución de cada término de la consulta al puntaje global de similitud; característico de modelos de interacción.
     \item \textbf{Agregación en \textit{passage ranking}.} 
-    Cuando los documentos largos se segmentan en pasajes \(d=\{p_1,\dots,p_n\}\), el sistema puntúa pares \((q,p_i)\) y luego agrega esos puntajes a nivel documento. 
+    Cuando los documentos largos se segmentan en fragmentos \(d=\{p_1,\dots,p_n\}\), el sistema puntúa pares \((q,p_i)\) y luego agrega esos puntajes a nivel documento. 
     Dos heurísticas comunes son:
       \[
       \mathrm{score}(d)=
@@ -473,7 +473,7 @@ Convierte la consulta en un pseudo-documento que actúa como proxy para recupera
       \sum_{i} s(q,p_i) & \text{(\textit{sumP})}
       \end{cases}
       \]
-    Además, existen modelos de \textit{agregación aprendida} como \textsc{PARADE}, que primero codifican cada pasaje y luego aprenden a combinarlos (p.\,ej., con otra capa/transformer) para producir \(\mathrm{score}(d)\), superando a estas heurísticas en diversos escenarios \parencite{fan2021pretraining}.
+    Además, existen modelos de \textit{agregación aprendida} como \textsc{PARADE}, que primero codifican cada fragmento y luego aprenden a combinarlos (p.\,ej., con otra capa/transformer) para producir \(\mathrm{score}(d)\), superando a estas heurísticas en diversos escenarios \parencite{fan2021pretraining}.
 \end{itemize}
 
 \noindent De acuerdo con la Tabla \ref{tab:enhancementstechnics}, resume un conjunto de técnicas de mejora del pipeline RAG:
@@ -483,13 +483,34 @@ Convierte la consulta en un pseudo-documento que actúa como proxy para recupera
 De acuerdo con la literatura \parencite{hambarde2023ir,fan2021pretraining,han2024rag,wu2025ragSurvey}, estas categorías agrupan las técnicas más empleadas y reportadas en revisiones exhaustivas de la literatura. No obstante,
  existen otras variantes y propuestas que, aunque menos citadas, complementan este panorama.
 
-\paragraph{Tipos de retrievers:} En recuperación de información (IR) y en RAG, los retrievers se agrupan en tres familias: sparse, dense y híbridos/otros.
+\paragraph{Tipos de retrievers:} Los retrievers se agrupan en tres familias: sparse, dense y híbridos/otros.
 Los métodos sparse representan consultas y documentos como vectores dispersos de términos ponderados, son eficientes, interpretables y dependen del matching léxico.
 Los dense usan representaciones continuas aprendidas (embeddings) para medir similitud semántica, capturando sinonimia y paráfrasis con mejor recall semántico, aunque
  con mayor costo de indexación y búsqueda. Los enfoques híbridos/otros combinan señales léxicas y semánticas
-fusionando resultados sparse y dense o usando interacciones tardías  y re-rankers—para equilibrar precisión, cobertura y eficiencia.
+fusionando resultados sparse y dense o usando interacciones tardías  y re-rankers para equilibrar precisión, cobertura y eficiencia.
 
+% Lista de retrievers por categoría (sparse, dense, híbridos/otros)
+\begin{itemize}
+  \item \textbf{Sparse}
+    \begin{itemize}
+      \item \textbf{BM25}: Modelo probabilístico que pondera frecuencia de términos, IDF y normaliza por longitud. A diferencia de otros enfoques dispersos, BM25 introduce una función de saturación que evita que la alta repetición de un término en un documento incremente indefinidamente su peso. Es la línea base más usada como primer filtro eficiente en RAG y RI a gran escala \textcite{hambarde2023ir,han2024rag}.
+      \item \textbf{TF-IDF}: Representación dispersa clásica que pondera términos por frecuencia local y rareza global, es decir, cada vez que un término aparece, su peso crece linealmente. Sin embargo, es ampliamente reportada como recuperador base en RAG \textcite{jiang2024textmatching,zhai2024llmIR}.
+    \end{itemize}
 
+  \item \textbf{Dense}
+    \begin{itemize}
+      \item \textbf{DPR (Dense Passage Retrieval)}: Bi-\textit{encoder} BERT (un codificador para la consulta y otro para fragmentos de texto) que compara embeddings por producto punto; superó a BM25 en open-domain QA\footnote{Open-domain QA (open-domain 
+      question answering) es el planteamiento de preguntas-respuestas donde el sistema debe responder sobre cualquier tema apoyándose
+       en un corpus grande y general} y es referente en dense retrieval \textcite{fan2021pretraining,han2024rag}.
+      \item \textbf{Contriever}: Retriever auto-supervisado con un solo BERT \textit{encoder} para consultas y documentos; entrena con aprendizaje contrastivo y es robusto y adaptable sin grandes datasets etiquetados \textcite{hambarde2023ir}.
+    \end{itemize}
+
+  \item \textbf{Híbridos / Otros}
+    \begin{itemize}
+      \item \textbf{Hybrid Search}: Combinación de señales \textit{sparse} y \textit{dense} para equilibrar precisión léxica y cobertura semántica en el pipeline RAG \textcite{gao2023rag}.
+      \item \textbf{Motores de Internet (Bing/Google)}: Funcionan como recuperadores dinámicos para información actualizada sin mantener índice propio dependiendo de un servicio externo, la variabilidad en la calidad de resultados y el riesgo de inconsistencias en la recuperación. \textcite{hambarde2023ir}.
+    \end{itemize}
+\end{itemize}
 
 
 
