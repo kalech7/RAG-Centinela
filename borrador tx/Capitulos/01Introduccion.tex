@@ -389,47 +389,101 @@ de sistemas RAG.
 
 \paragraph{Enhancements:} Son técnicas complementarias que se añaden antes, durante o después de la recuperación para subir la calidad sin reemplazar al 
 recuperador base.
-\smallskip
-\noindent\textbf{Reranking:} Es la fase de reordenamiento posterior a la recuperación inicial en un sistema multietapa de RI\footnote{Un sistema multietapa es un pipeline 
-donde una primera etapa obtiene un top-k de documentos y una o más etapas posteriores lo reordenan con criterios más finos para mejorar la efectividad del ranking}. 
-Parte de una lista top-k generada por el  recuperador y la vuelve a ordenar aplicando uno o varios reordenadores que estiman con mayor precisión la relevancia 
-consulta-documento.
-
-%  compactar un poco
-\setlength{\tabcolsep}{6pt}
-\renewcommand{\arraystretch}{1.10}
-
-% EN EL TEXTO
-\begin{table}[H]
-\centering
-\begin{tabularx}{\textwidth}{L{0.30\textwidth} X}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.30\textwidth} X}
 \toprule
 \textbf{Técnicas} & \textbf{Descripción} \\
 \midrule
+\endfirsthead
+
+\endhead
+
+\bottomrule
+\caption{Técnicas de Enhancements }\label{tab:enhancementstechnics}\\
+\endlastfoot
+
 \multicolumn{2}{l}{\textit{Reranking}}\\
 CEDR (Contextualized Embeddings for Document Ranking) &
 Re-ranker basado en BERT que concatena $q$ y el fragmento $d$ para obtener representaciones contextualizadas y estimar directamente la relevancia del par. \\
 DuoBERT &
-Re-ranker \textit{pairwise} que compara explícitamente la \emph{query}, el candidato positivo y el negativo \((q,\ d^{+},\ d^{-})\) en una sola secuencia para aprender preferencias y producir el ordenamiento final; muy usado en \textit{passage ranking}\footnotemark. \\
+Re-ranker \textit{pairwise} que compara explícitamente la \emph{query}, el candidato positivo y el negativo \((q,\ d^{+},\ d^{-})\) en una sola secuencia para aprender preferencias y producir el ordenamiento final; muy usado en \textit{passage ranking}. \\
 DRMM (Deep Relevance Matching Model) &
 Modelo clásico de interacción que construye histogramas de similitud (consulta-documento) por término y usa \textit{term gating} (softmax) para ponderar la contribución de cada término al puntaje final. \\
-\bottomrule
+
+\midrule
+\multicolumn{2}{l}{\textit{Retriever Finetuning}}\\
+REPLUG &
+Ajuste que trata al LLM como caja negra y entrena el recuperador para que su distribución de documentos coincida con la inducida por el modelo generador, reduciendo divergencia y mejorando \textit{recall@k}. \\
+Learning to Retrieve ICL &
+Método que entrena un recuperador ligero capaz de seleccionar ejemplos útiles para \textit{in-context learning}, afinando qué documentos se muestran al LLM. \\
+UDAPDR &
+Estrategia de entrenamiento con pseudo-relevancia y expansiones automáticas de consultas, reduciendo dependencia de grandes conjuntos anotados. \\
+
+\midrule
+\multicolumn{2}{l}{\textit{Hybrid Search}}\\
+RAP-Gen &
+Combina recuperación dispersa (BM25) y densa (embeddings neuronales) en pipelines generativos, equilibrando eficiencia y cobertura semántica. \\
+BlendedRAG &
+Integra resultados de varios recuperadores (sparse y dense) y los pondera para mitigar sesgos de un único método. \\
+ReACC &
+Búsqueda híbrida adaptativa que alterna y ajusta dinámicamente el peso entre consultas dispersas y densas según la necesidad de la tarea. \\
+
+\midrule
+\multicolumn{2}{l}{\textit{Chunk Optimization}}\\
+RAPTOR &
+Técnica jerárquica–recursiva que organiza documentos largos en niveles de representación (chunks y resúmenes) para optimizar recuperación y ranking. \\
+LlamaIndex &
+Framework flexible que segmenta y organiza documentos en chunks ajustables, permitiendo índices eficientes y contextos más ricos para RAG. \\
+
+\midrule
+\multicolumn{2}{l}{\textit{Recursive Retrieval}}\\
+ReAct &
+Algoritmo que alterna pasos de razonamiento (\textit{thoughts}) y acciones de búsqueda (\textit{actions}), refinando la recuperación de forma iterativa. \\
+RATP &
+Método recursivo que planifica múltiples rondas de recuperación, integrando razonamiento y búsqueda para preguntas complejas de varios saltos. \\
+
+\midrule
+\multicolumn{2}{l}{\textit{RAG Pipeline Enhancement}}\\
+Rule-based &
+Mejoras basadas en reglas predefinidas: filtrado por metadatos, deduplicación, control de fechas o tipos de documentos. \\
+Model-based &
+Módulos aprendidos que deciden qué recuperar, cómo fusionar y qué citar, optimizando el pipeline extremo a extremo mediante aprendizaje. \\
+
+\midrule
+\multicolumn{2}{l}{\textit{Query Reformulation}}\\
+HyDE (Hypothetical Document Embeddings) &
+Genera un documento hipotético a partir de la consulta y lo proyecta en el espacio de embeddings, mejorando la recuperación semántica. \\
+Multi-query &
+Expande la consulta en varias variantes equivalentes, aumentando la cobertura del recuperador frente a sinonimia y polisemia. \\
+Query2Doc &
+Convierte la consulta en un pseudo-documento que actúa como proxy para recuperar pasajes más relevantes y completos. \\
 \end{tabularx}
-\caption{Técnicas de Reranking}
-\label{tab:enhancementsReranking}
-\end{table}
-\footnotetext{Passage ranking evalúa fragmentos de textos largos; puntúa pares (consulta-fragmento) con cross-encoders y, si se requiere nivel documento, agrega puntajes (p. ej., maxP/sumP, PARADE).}
+
 \subparagraph{Definiciones clave:}
 \begin{itemize}
     \item \textbf{Cross-encoder.} Arquitectura de re-ranking que concatena la consulta $q$ y el pasaje $d$ en una sola secuencia para codificarlos conjuntamente y producir un puntaje directo de relevancia del par $(q,d)$.
     \item \textbf{Pairwise.} Esquema de entrenamiento para re-rankers que recibe $(q,\ d^{+},\ d^{-})$ y optimiza para que el modelo puntúe $d^{+}$ por encima de $d^{-}$, generando el ordenamiento final.
     \item \textbf{Term gating.} Mecanismo de ponderación por término (softmax) que modula la contribución de cada término de la consulta al puntaje global de similitud; característico de modelos de interacción.
+    \item \textbf{Agregación en \textit{passage ranking}.} 
+    Cuando los documentos largos se segmentan en pasajes \(d=\{p_1,\dots,p_n\}\), el sistema puntúa pares \((q,p_i)\) y luego agrega esos puntajes a nivel documento. 
+    Dos heurísticas comunes son:
+      \[
+      \mathrm{score}(d)=
+      \begin{cases}
+      \max_{i} s(q,p_i) & \text{(\textit{maxP})}\\
+      \sum_{i} s(q,p_i) & \text{(\textit{sumP})}
+      \end{cases}
+      \]
+    Además, existen modelos de \textit{agregación aprendida} como \textsc{PARADE}, que primero codifican cada pasaje y luego aprenden a combinarlos (p.\,ej., con otra capa/transformer) para producir \(\mathrm{score}(d)\), superando a estas heurísticas en diversos escenarios \parencite{fan2021pretraining}.
 \end{itemize}
 
-\noindent De acuerdo con la Tabla \ref{tab:enhancementsReranking}, el Re-ranking se apoya crecientemente en modelos neuronales y PTMs (pre-trained transformers) por su mayor efectividad;
- entre los ejemplos recurrentes figuran DRMM (como clásico de interacción) y re-rankers basados en BERT 
- como CEDR y variantes tipo pairwise (DuoBERT). No obstante, existen otras técnicas y variantes en la literatura que no se detallan aquí.
+\noindent De acuerdo con la Tabla \ref{tab:enhancementstechnics}, resume un conjunto de técnicas de mejora del pipeline RAG:
+ \textit{Reranking} (segunda etapa de ordenamiento), \textit{Retriever finetuning} (ajuste del recuperador), \textit{Hybrid search} (combinación dispersa-densa), 
+ \textit{Chunk optimization} (segmentación/jerarquización de documentos largos), \textit{Recursive retrieval} (búsqueda iterativa con razonamiento), 
+ \textit{RAG pipeline enhancement} (módulos basados en reglas y en modelos) y \textit{Query reformulation} (reescritura/expansión de consultas). 
+De acuerdo con la literatura \parencite{hambarde2023ir,fan2021pretraining,han2024rag,wu2025ragSurvey}, estas categorías agrupan las técnicas más empleadas y reportadas en revisiones exhaustivas de la literatura. No obstante,
+ existen otras variantes y propuestas que, aunque menos citadas, complementan este panorama.
 
+\paragraph{Tipos de retrievers:} fd
 
 
 

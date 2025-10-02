@@ -1238,6 +1238,80 @@
       \verb https://www.irjet.net/archives/V7/i6/IRJET-V7I6872.pdf
       \endverb
     \endentry
+    \entry{wu2025ragSurvey}{article}{}{}
+      \name{author}{11}{}{%
+        {{hash=422727706ff0a4052e5a534314528707}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Shangyu},
+           giveni={S\bibinitperiod}}}%
+        {{hash=593ea7f82dd02f3b0882caa018aef158}{%
+           family={Xiong},
+           familyi={X\bibinitperiod},
+           given={Ying},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=035006c84307a0639294ac9ba8c6559c}{%
+           family={Cui},
+           familyi={C\bibinitperiod},
+           given={Yufei},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=c347e0eecd498d36471f2eab3f6eefae}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Haolun},
+           giveni={H\bibinitperiod}}}%
+        {{hash=986423a4ec2949fd8d89c96382923767}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Can},
+           giveni={C\bibinitperiod}}}%
+        {{hash=b3c38717dc1be8193594d3b0948ca51a}{%
+           family={Yuan},
+           familyi={Y\bibinitperiod},
+           given={Ye},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=bc888236dd8bc75c00cdf2fa4e8b9d54}{%
+           family={Huang},
+           familyi={H\bibinitperiod},
+           given={Lianming},
+           giveni={L\bibinitperiod}}}%
+        {{hash=0c308e80c2f3d35fdabad2956a9c14e9}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Xue},
+           giveni={X\bibinitperiod}}}%
+        {{hash=edbbad7c28c43e98957a46ecc2bf0814}{%
+           family={Kuo},
+           familyi={K\bibinitperiod},
+           given={Tei-Wei},
+           giveni={T\bibinithyphendelim W\bibinitperiod}}}%
+        {{hash=b929c919a803b964237249baf2db4ad2}{%
+           family={Guan},
+           familyi={G\bibinitperiod},
+           given={Nan},
+           giveni={N\bibinitperiod}}}%
+        {{hash=4d63e6c4b2ac3293886d8722d9237085}{%
+           family={Xue},
+           familyi={X\bibinitperiod},
+           given={Chun\bibnamedelima Jason},
+           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{4831e780b96b9588c977ae948deeeb78}
+      \strng{fullhash}{492bb6c406d9938dcda37480c9ed96aa}
+      \strng{fullhashraw}{492bb6c406d9938dcda37480c9ed96aa}
+      \strng{bibnamehash}{4831e780b96b9588c977ae948deeeb78}
+      \strng{authorbibnamehash}{4831e780b96b9588c977ae948deeeb78}
+      \strng{authornamehash}{4831e780b96b9588c977ae948deeeb78}
+      \strng{authorfullhash}{492bb6c406d9938dcda37480c9ed96aa}
+      \strng{authorfullhashraw}{492bb6c406d9938dcda37480c9ed96aa}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2407.13193}
+      \field{title}{Retrieval-Augmented Generation for Natural Language Processing: A Survey}
+      \field{year}{2025}
+    \endentry
     \entry{yao2023react}{inproceedings}{}{}
       \name{author}{7}{}{%
         {{hash=5c1b62cbd4e181d818b927549813cf73}{%
