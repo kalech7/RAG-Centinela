@@ -364,7 +364,7 @@ Enhancements & Reranking               & CEDR, DuoBERT, DRMM\\
 \midrule
 Tipos de retrievers & Sparse            & BM25, TF-IDF \\
                     & Dense             & Embeddings (ej. BERT, OpenAI, etc.) \\
-                    & Others            & Modelos híbridos u otros \\
+                    & Híbridos/otros            & Modelos híbridos u otros \\
 \bottomrule
 \end{tabularx}
 \caption{Componente Retriever}
@@ -483,8 +483,11 @@ Convierte la consulta en un pseudo-documento que actúa como proxy para recupera
 De acuerdo con la literatura \parencite{hambarde2023ir,fan2021pretraining,han2024rag,wu2025ragSurvey}, estas categorías agrupan las técnicas más empleadas y reportadas en revisiones exhaustivas de la literatura. No obstante,
  existen otras variantes y propuestas que, aunque menos citadas, complementan este panorama.
 
-\paragraph{Tipos de retrievers:} fd
-
+\paragraph{Tipos de retrievers:} En recuperación de información (IR) y en RAG, los retrievers se agrupan en tres familias: sparse, dense y híbridos/otros.
+Los métodos sparse representan consultas y documentos como vectores dispersos de términos ponderados, son eficientes, interpretables y dependen del matching léxico.
+Los dense usan representaciones continuas aprendidas (embeddings) para medir similitud semántica, capturando sinonimia y paráfrasis con mejor recall semántico, aunque
+ con mayor costo de indexación y búsqueda. Los enfoques híbridos/otros combinan señales léxicas y semánticas
+fusionando resultados sparse y dense o usando interacciones tardías  y re-rankers—para equilibrar precisión, cobertura y eficiencia.
 
 
 
