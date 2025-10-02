@@ -232,10 +232,40 @@ vectorial. Separar título/resumen de metadatos de control (DOI, ScopusID, autor
 con señales que no aportan significado textual directo.
 
 \subsection{Preprocesamiento}
-Una vez completada la ingesta de datos provienientes de Scopus, es fundamental preoprocesarlo lo que se busca con este proceso es normalizar y limpiar los datos 
-para reducir el ruido y mejorar la calidad semantica de la representacion.
+Una vez completada la ingesta de datos provienientes de Scopus, es fundamental preprocesarlos para normalizar y limpiar el texto, reducir ruido y mejorar la calidad semántica de las representaciones.
+En esta etapa aplicare el siguiente flujo reproducible compuesto por estos pasos:
+\begin{enumerate}
+    \item \textbf{Normalización}. Consiste en estandarizar la forma del texto mediante 
+    UTF-8/Unicode, la corrección de caracteres extraños, la conversión a minúsculas, la eliminación de puntuación no informativa, 
+    símbolos y números aislados, así como la normalización de espacios. Además, se busca mantener 
+    un mismo idioma y formatos a lo largo del corpus para garantizar la coherencia. Cuando corresponde, se desduplican registros o resúmenes 
+    (comparación por DOI o por título+autor+año) con el fin de homogeneizar el vocabulario y reducir sesgos por repeticiones.
 
+    \item \textbf{Segmentación en oraciones}. Dividir el texto en oraciones completas utilizando delimitadores válidos (puntos, signos de cierre), con el fin de estructurar unidades coherentes para el análisis posterior. 
 
+    \item \textbf{Tokenización}. Segmentar cada oración en unidades mínimas (tokens), como palabras o subpalabras, lo que constituye la base de la extracción de rasgos y representaciones.
+
+    \item \textbf{Eliminación de \textit{stop words}}. Remover términos de alta frecuencia y escaso valor semántico; 
+    si aparecen términos de dominio frecuentes pero informativos, mantener una “lista blanca”.
+
+    \item \textbf{Lematización (o \textit{stemming}, si procede)}. Preferir lematización sobre \textit{stemming} para conservar la forma canónica y reducir la varianza léxica sin pérdida de significado (Tabassum \& Patil, 2020).
+
+    \item \textbf{\textit{Chunking} para LLM/RAG}. Dividir documentos largos en pasajes (\(\sim 200\text{--}400\) tokens) con solape (15–30\,\%) para respetar límites de contexto de los transformadores y mejorar la recuperación a nivel de pasaje (Hambarde \& Proença, 2023).
+
+    \item \textbf{Construcción de representaciones}.
+    \begin{enumerate}
+        \item \textit{Línea base dispersa}: BOW/TF--IDF a nivel de documento/pasaje.
+        \item \textit{Representaciones densas}: \textit{embeddings} a nivel de pasaje para recuperación semántica (Tabassum \& Patil, 2020; Hambarde \& Proença, 2023).
+    \end{enumerate}
+
+    \item \textbf{Estructuración para indexación}. Serializar cada pasaje con metadatos (doc\_id, chunk\_id, título, autores, año, revista, DOI, secciones, idioma, \textit{offsets}) y persistir en la base de datos (vectorial y/o invertida).
+
+    \item \textbf{Validación ligera del preprocesamiento}. Reportar métricas tamaño medio de pasaje (tokens), \% de \textit{stopwords} removidas, vocabulario tras lematización, proporción de duplicados eliminados.
+\end{enumerate}
+
+Este \textit{pipeline} no solo mejora la recuperación (recall/precisión) sino que también disminuye el “ruido de contexto” suministrado al LLM en RAG, 
+lo que reduce inconsistencias y riesgo de alucinaciones en la generación (Gao et al., 2025). En términos de evaluación, una mejor normalización y segmentación
+ favorecen la relevancia contextual del material recuperado y la fidelidad de las respuestas, al entregar pasajes más coherentes y comparables (Hambarde \& Proença, 2023).
 
 \subsection{Vectorizacion}
 tomar la descion justificada

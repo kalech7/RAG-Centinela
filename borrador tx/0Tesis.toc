@@ -55,11 +55,11 @@
 \contentsline {section}{\numberline {2.3}Diseño y desarrollo del artefacto}{40}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Ingesta}{40}{subsection.2.3.1}%
 \contentsline {subsection}{\numberline {2.3.2}Preprocesamiento}{41}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Vectorizacion}{41}{subsection.2.3.3}%
-\contentsline {chapter}{\numberline {3}Pruebas, Resultados, Conclusiones y Recomendaciones}{42}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Demostración}{42}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Evaluación del desempeño}{42}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Resultados}{42}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Conclusiones}{42}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Recomendaciones}{42}{section.3.5}%
-\contentsline {chapter}{Bibliografía}{43}{chapter*.48}%
+\contentsline {subsection}{\numberline {2.3.3}Vectorizacion}{42}{subsection.2.3.3}%
+\contentsline {chapter}{\numberline {3}Pruebas, Resultados, Conclusiones y Recomendaciones}{43}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Demostración}{43}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Evaluación del desempeño}{43}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Resultados}{43}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Conclusiones}{43}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Recomendaciones}{43}{section.3.5}%
+\contentsline {chapter}{Bibliografía}{44}{chapter*.48}%
