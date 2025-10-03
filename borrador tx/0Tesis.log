@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2025.9.29)  2 OCT 2025 17:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2025.9.14)  2 OCT 2025 21:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/home/alech/Documents/Github/tesis/borrador tx/0Tesis"
-(/home/alech/Documents/Github/tesis/borrador tx/0Tesis.tex
+**"/run/media/alech/backup/Github/tesis/borrador tx/0Tesis"
+(/run/media/alech/backup/Github/tesis/borrador tx/0Tesis.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-02-22> (/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2022/07/02 v1.4n Standard LaTeX document class
@@ -44,9 +44,9 @@ Language: english 2017/06/06 v3.3r English support from the babel system
 Package babel Info: Hyphen rules for 'canadian' set to \l@english
 (babel)             (\language0). Reported on input line 102.
 Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
-(babel)             (\language21). Reported on input line 105.
+(babel)             (\language26). Reported on input line 105.
 Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
-(babel)             (\language21). Reported on input line 108.
+(babel)             (\language26). Reported on input line 108.
 ) (/usr/share/texlive/texmf-dist/tex/generic/babel-spanish/spanish.ldf
 Language: spanish.ldf 2021/05/27 v5.0q Spanish support from the babel system
 \es@quottoks=\toks18
@@ -1210,7 +1210,12 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
  [39] [40
 
 
-] [41]) [42]
+]
+Underfull \hbox (badness 2591) in paragraph at lines 255--257
+[]\T1/ppl/b/it/12 (+20) Chunking \T1/ppl/b/n/12 (+20) pa-ra LLM/RAG\T1/ppl/m/n/12 (+20) . Di-vi-dir do-cu-men-tos lar-gos en frag-men-tos
+ []
+
+[41]) [42]
 \openout2 = `Capitulos/03Pruebas.aux'.
 
  (./Capitulos/03Pruebas.tex
@@ -1234,7 +1239,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 
 
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] [45] [46] [47] (./0Tesis.aux
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] [45] [46] (./0Tesis.aux
 LaTeX Info: Redefining \sptext on input line 24.
 LaTeX Info: Redefining \. on input line 24.
 LaTeX Info: Redefining \% on input line 24.
@@ -1244,18 +1249,18 @@ Package logreq Info: Writing requests to '0Tesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 37640 strings out of 476041
- 707949 string characters out of 5793174
+ 37623 strings out of 476041
+ 707832 string characters out of 5793174
  1880388 words of memory out of 6000000
- 56707 multiletter control sequences out of 15000+600000
- 596403 words of font info for 493 fonts, out of 8000000 for 9000
+ 56713 multiletter control sequences out of 15000+600000
+ 595113 words of font info for 477 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
- 90i,12n,90p,1500b,2342s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,12n,90p,1502b,2342s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on 0Tesis.pdf (56 pages, 272178 bytes).
+Output written on 0Tesis.pdf (55 pages, 269275 bytes).
 PDF statistics:
- 835 PDF objects out of 1000 (max. 8388607)
- 751 compressed objects within 8 object streams
+ 837 PDF objects out of 1000 (max. 8388607)
+ 754 compressed objects within 8 object streams
  206 named destinations out of 1000 (max. 500000)
- 109829 words of extra memory for PDF output out of 128383 (max. 10000000)
+ 109877 words of extra memory for PDF output out of 128383 (max. 10000000)
 

@@ -2577,7 +2577,9 @@
     <bcf:citekey order="180" intorder="1">ibrihich2022review</bcf:citekey>
     <bcf:citekey order="181" intorder="1">bernard2025fate</bcf:citekey>
     <bcf:citekey order="182" intorder="1">ma2025vector</bcf:citekey>
-    <bcf:citekey order="183" intorder="1" nocite="1">*</bcf:citekey>
+    <bcf:citekey order="183" intorder="1">tabassum2020</bcf:citekey>
+    <bcf:citekey order="184" intorder="1">joshi2025vector</bcf:citekey>
+    <bcf:citekey order="185" intorder="1" nocite="1">*</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
