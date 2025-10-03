@@ -1,0 +1,26 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{export\PYGZus{}articles\PYGZus{}to\PYGZus{}csv}\PYG{p}{():}
+    \PYG{n}{query} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+s2}{    MATCH (a)}
+\PYG{l+s+s2}{    WHERE a.scopus\PYGZus{}id IS NOT NULL}
+\PYG{l+s+s2}{      AND a.title IS NOT NULL}
+\PYG{l+s+s2}{      AND a.abstract IS NOT NULL}
+\PYG{l+s+s2}{    RETURN}
+\PYG{l+s+s2}{      a.scopus\PYGZus{}id as scopus\PYGZus{}id,}
+\PYG{l+s+s2}{      a.title as title,}
+\PYG{l+s+s2}{      a.abstract as abstract}
+\PYG{l+s+s2}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{c+c1}{\PYGZsh{} Ejecutar la consulta dentro de una sesión}
+    \PYG{k}{with} \PYG{n}{driver}\PYG{o}{.}\PYG{n}{session}\PYG{p}{()} \PYG{k}{as} \PYG{n}{session}\PYG{p}{:}
+        \PYG{n}{result} \PYG{o}{=} \PYG{n}{session}\PYG{o}{.}\PYG{n}{run}\PYG{p}{(}\PYG{n}{query}\PYG{p}{)}
+        \PYG{n}{df} \PYG{o}{=} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{DataFrame}\PYG{p}{([}
+            \PYG{p}{\PYGZob{}}
+                \PYG{l+s+s1}{\PYGZsq{}scopus\PYGZus{}id\PYGZsq{}}\PYG{p}{:} \PYG{n}{record}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}scopus\PYGZus{}id\PYGZsq{}}\PYG{p}{],}
+                \PYG{l+s+s1}{\PYGZsq{}title\PYGZsq{}}\PYG{p}{:} \PYG{n}{record}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}title\PYGZsq{}}\PYG{p}{],}
+                \PYG{l+s+s1}{\PYGZsq{}abstract\PYGZsq{}}\PYG{p}{:} \PYG{n}{record}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}abstract\PYGZsq{}}\PYG{p}{]}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{k}{for} \PYG{n}{record} \PYG{o+ow}{in} \PYG{n}{result} \PYG{p}{])}
+    \PYG{c+c1}{\PYGZsh{} Guardar en CSV}
+    \PYG{n}{df}\PYG{o}{.}\PYG{n}{to\PYGZus{}csv}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}articles\PYGZus{}scopus.csv\PYGZdq{}}\PYG{p}{,} \PYG{n}{index}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{,} \PYG{n}{encoding}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}utf\PYGZhy{}8\PYGZdq{}}\PYG{p}{)}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Exportación completada: articles\PYGZus{}scopus.csv\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

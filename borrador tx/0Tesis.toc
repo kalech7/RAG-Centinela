@@ -40,7 +40,7 @@
 \contentsline {paragraph}{Re-Ranking:}{25}{section*.32}%
 \contentsline {paragraph}{Construcción de Contexto:}{26}{section*.33}%
 \contentsline {paragraph}{Generación (LLM):}{27}{section*.34}%
-\contentsline {paragraph}{Evaluación:}{27}{section*.35}%
+\contentsline {paragraph}{Evaluación:}{28}{section*.35}%
 \contentsline {subsubsection}{Paradigmas}{29}{section*.36}%
 \contentsline {paragraph}{Tipos de Paradigmas}{29}{section*.38}%
 \contentsline {subsubsection}{Evaluación y Métricas}{30}{section*.39}%
@@ -56,16 +56,16 @@
 \contentsline {subsection}{\numberline {2.3.1}Ingesta}{40}{subsection.2.3.1}%
 \contentsline {subsection}{\numberline {2.3.2}Preprocesamiento}{41}{subsection.2.3.2}%
 \contentsline {subsection}{\numberline {2.3.3}Vectorizacion}{42}{subsection.2.3.3}%
-\contentsline {subsection}{\numberline {2.3.4}Vector DB}{42}{subsection.2.3.4}%
-\contentsline {subsection}{\numberline {2.3.5}Recuperación}{42}{subsection.2.3.5}%
-\contentsline {subsection}{\numberline {2.3.6}Re-ranking}{42}{subsection.2.3.6}%
-\contentsline {subsection}{\numberline {2.3.7}Construcción de Contexto}{42}{subsection.2.3.7}%
-\contentsline {subsection}{\numberline {2.3.8}Generación (LLM)}{42}{subsection.2.3.8}%
-\contentsline {subsection}{\numberline {2.3.9}Evaluación}{42}{subsection.2.3.9}%
-\contentsline {chapter}{\numberline {3}Pruebas, Resultados, Conclusiones y Recomendaciones}{43}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Demostración}{43}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Evaluación del desempeño}{43}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Resultados}{43}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Conclusiones}{43}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Recomendaciones}{43}{section.3.5}%
-\contentsline {chapter}{Bibliografía}{44}{chapter*.48}%
+\contentsline {subsection}{\numberline {2.3.4}Vector DB}{43}{subsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.3.5}Recuperación}{43}{subsection.2.3.5}%
+\contentsline {subsection}{\numberline {2.3.6}Re-ranking}{43}{subsection.2.3.6}%
+\contentsline {subsection}{\numberline {2.3.7}Construcción de Contexto}{43}{subsection.2.3.7}%
+\contentsline {subsection}{\numberline {2.3.8}Generación (LLM)}{43}{subsection.2.3.8}%
+\contentsline {subsection}{\numberline {2.3.9}Evaluación}{43}{subsection.2.3.9}%
+\contentsline {chapter}{\numberline {3}Pruebas, Resultados, Conclusiones y Recomendaciones}{44}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Demostración}{44}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Evaluación del desempeño}{44}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Resultados}{44}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Conclusiones}{44}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Recomendaciones}{44}{section.3.5}%
+\contentsline {chapter}{Bibliografía}{45}{chapter*.48}%

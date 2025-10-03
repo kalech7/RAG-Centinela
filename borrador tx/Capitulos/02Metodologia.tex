@@ -231,6 +231,34 @@ En cambio, DOI, ScopusID, Autores y Afiliaciones funcionan como metadatos de sop
 vectorial. Separar título/resumen de metadatos de control (DOI, ScopusID, autores, afiliaciones)  mejora la interpretabilidad del sistema y evita sobrecargar el espacio vectorial 
 con señales que no aportan significado textual directo.
 
+Con la siguiente función se extraen los campos con carga semántica del documento (title, abstract) junto al identificador scopusid y se guardan en un CSV (UTF-8) para su procesamiento en fases posteriores.
+\begin{minted}[linenos, frame=single]{python}
+def export_articles_to_csv():
+    query = """
+    MATCH (a)
+    WHERE a.scopus_id IS NOT NULL
+      AND a.title IS NOT NULL
+      AND a.abstract IS NOT NULL
+    RETURN
+      a.scopus_id as scopus_id,
+      a.title as title,
+      a.abstract as abstract
+    """
+    # Ejecutar la consulta dentro de una sesión
+    with driver.session() as session:
+        result = session.run(query)
+        df = pd.DataFrame([
+            {
+                'scopus_id': record['scopus_id'],
+                'title': record['title'],
+                'abstract': record['abstract']
+            }
+            for record in result ])
+    # Guardar en CSV
+    df.to_csv("articles_scopus.csv", index=False, encoding="utf-8")
+    print("Exportación completada: articles_scopus.csv")
+\end{minted}
+
 \subsection{Preprocesamiento}
 Una vez completada la ingesta de datos provienientes de Scopus, es fundamental preprocesarlos para normalizar y limpiar el texto, reducir ruido y mejorar la calidad semántica de las representaciones.
 En esta etapa aplicare el siguiente flujo reproducible compuesto por estos pasos:
@@ -261,6 +289,7 @@ Con el uso de este pipeline se disminuye el ruido de contexto suministrado al LL
 lo que reduce inconsistencias y riesgo de alucinaciones en la generación. En términos de evaluación, una mejor normalización y segmentación
  favorecen la relevancia contextual del material recuperado y la fidelidad de las respuestas, al entregar fragementos más coherentes, comparables y medibles permitiendo
  calcular su similitud y una mejor relevancia contextual del material recuperado.
+
 
 \subsection{Vectorizacion}
 Para el diseño de este sistema se usa un retriever denso de arquitectura bi-encoder tipo BERT para la generación de embeddings, ya que permite codificar por separado la 

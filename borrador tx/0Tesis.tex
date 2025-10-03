@@ -1,61 +1,65 @@
 \documentclass[12pt,oneside]{book}
 
-% -- Paquetes
+% Plantilla/estilo EPN
 \usepackage{tesis-epn}
 
-%\usepackage{showlabels}
-    % muestra etiquetas
-\usepackage{mathpazo}
-    % cambia el tipo de letra
-\usepackage{enumitem}
-    % personaliza enumeración
+% ====== Fuentes (XeLaTeX) ======
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Pagella}   % Palatino compatible con Unicode
+\setsansfont{TeX Gyre Heros}
+\setmonofont{TeX Gyre Cursor} 
+
+% ====== Idioma y codificación ======
+\usepackage[spanish]{babel}      % con XeLaTeX funciona bien
+\usepackage{csquotes}            % comillas correctas para el idioma
+
+% ====== Matemáticas y listas ======
 \usepackage{amsmath,amssymb,amsthm}
-    % paquetes matemáticos básicos
-% Codificación y español moderno (babel actual + T1)
-\usepackage[utf8]{inputenc}  % entrada en UTF-8
-\usepackage[T1]{fontenc}     % salida correcta (acentos)
-\usepackage[spanish]{babel} 
+\usepackage{enumitem}
+
+% ====== Tablas y captions ======
+\usepackage{array}
 \usepackage{ltablex}
 \captionsetup[longtable]{position=bottom}
 \keepXColumns
-\usepackage{array}
-\addto\captionsspanish{%
-  \renewcommand{\tablename}{Tabla}%
-}
-
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
 \usepackage{booktabs}
 \usepackage{multirow}
+\usepackage{tabularx}
 
-\usepackage{bookmark}
+% ====== Código (minted) ======
+\usepackage{xcolor}
+\usepackage{minted}
+\usemintedstyle{vs}           
+\setminted{breaklines,breakanywhere=false,fontsize=\small,tabsize=2}
 
-% idioma
-\usepackage{float}
-% Gráficos y diagramas
+% ====== Gráficos y utilidades ======
 \usepackage{graphicx}
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric, positioning, fit, backgrounds,calc}
+\usetikzlibrary{shapes.geometric,positioning,fit,backgrounds,calc}
 \usepackage{pdflscape}
-\usepackage{hyperref} 
-\usepackage{xurl}  
-\usepackage{csquotes}
-\urlstyle{same}
-\usepackage[final]{microtype}
-\usepackage{tabularx}
-\emergencystretch=2em
-% \usepackage[natbibapa]{apacite} 
+\usepackage{float}
 
-\usepackage[backend=biber,
-            style=numeric,
-            sorting=nty,        % Name → Title → Year
-            defernumbers=true, % asigna números después de ordenar
-            language=spanish]{biblatex}
+% ====== Enlaces ======
+\usepackage{xurl}                 % URLs largas
+\usepackage{hyperref}             % SIEMPRE antes de bookmark
+\usepackage{bookmark}
+
+% ====== Microtipografía ======
+\usepackage[final]{microtype}
+\emergencystretch=2em
+
+% ====== Bibliografía ======
+\usepackage[
+  backend=biber,
+  style=numeric,
+  sorting=nty,
+  defernumbers=true,
+  language=spanish
+]{biblatex}
 \addbibresource{bibTesis.bib}
 
-
-
-
-% -- Comandos extra
-\input{comandos.tex}
+% ====== Colores y estilos TikZ ======
 \definecolor{softyellow}{RGB}{255,245,200}
 \definecolor{softpink}{RGB}{255,220,220}
 \definecolor{softblue}{RGB}{215,230,245}
@@ -67,94 +71,65 @@
 \definecolor{softrose}{RGB}{245,225,235}
 \definecolor{softmint}{RGB}{215,245,225}
 
-
-\setcounter{biburlnumpenalty}{9000}
-\setcounter{biburlucpenalty}{9000}
-\setcounter{biburllcpenalty}{9000}
-\AtBeginBibliography{\normalsize\sloppy}
-% Estilo base para cada bloque
 \tikzset{
   pill/.style={
-    rounded corners=6pt,
-    draw=black!65,
-    line width=0.5pt,
-    minimum width=12.5cm,    % ancho de la pastilla
-    minimum height=1.2cm,    % alto de la pastilla
-    inner sep=0pt
+    rounded corners=6pt, draw=black!65, line width=0.5pt,
+    minimum width=12.5cm, minimum height=1.2cm, inner sep=0pt
   },
   roman/.style={
-    fill=black!6,
-    draw=black!65,
-    line width=0.5pt,
-    rounded corners=4pt,
-    minimum width=1.1cm,
-    minimum height=0.8cm,
-    font=\bfseries\small
+    fill=black!6, draw=black!65, line width=0.5pt, rounded corners=4pt,
+    minimum width=1.1cm, minimum height=0.8cm, font=\bfseries\small
   },
-  titletext/.style={
-    font=\bfseries\small
-  }
+  titletext/.style={font=\bfseries\small}
 }
 
-% -- Información
+% ====== Comandos y metadatos ======
+\input{comandos.tex}
 \titulo{Integración de Modelos Generativos para la Recuperación Académica}
 \carrera{Ingeniero de ciencias de la computacion}
 \autor{Alejandro Sebastian Chavez Vega}
 \correoautor{\url{chavezalejo85@gmail.com}}
 \director{Dra. Gabriela Suntaxi}
 \correodirector{\url{gabriela.suntaxi@epn.edu.ec}}
-%\codirector{Dr. Rolando Sáenz Andrade}
-%\correocodirector{\url{rolando.saenz@epn.edu.ec}}
 \fecha{Julio 2025}
-\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % col. izquierda con ajuste de línea
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 
+\setcounter{biburlnumpenalty}{9000}
+\setcounter{biburlucpenalty}{9000}
+\setcounter{biburllcpenalty}{9000}
+\AtBeginBibliography{\normalsize\sloppy}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ====== Documento ======
 \begin{document}
-
 
 \frontmatter
 \portadilla
 \declaracion
 \certificacion
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{agradecimiento}
     A todos.
 \end{agradecimiento}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{dedicatoria}
     A Georg Ferdinand Ludwig Philipp Cantor,\\
     pues nadie nos expulsará del paraíso que creó para nosotros.
 \end{dedicatoria}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \tableofcontents
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{Capitulos/00Resumen}
 
 \mainmatter
 \addtolength{\abovedisplayskip}{-1mm}
 \addtolength{\belowdisplayskip}{-1mm}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{Capitulos/01Introduccion}
 \include{Capitulos/02Metodologia}
 \include{Capitulos/03Pruebas}
 
-
-
-
-% -- estilo por defecto español
-% \bibliographystyle{apacite}
-% -- estilo apalike español (paquete natbib)
-% \bibliographystyle{apalike-es}
 \cleardoublepage
 \phantomsection
 \nocite{*}
 \printbibliography[heading=bibintoc,title={Bibliografía}]
-\end{document} 
+\end{document}
