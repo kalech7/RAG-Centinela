@@ -280,8 +280,13 @@ FUN etiquetar_idioma():
     df["lang"] ← map(detect_lang_safe, df[src])
     guardar_parquet(df,"processed_lbl.parquet", prefer fastparquet(gzip) → pyarrow/CSV)
 \end{minted}
+Se lee el CSV (separador “|”) y se generan title-norm y abstract-norm corrigiendo codificación, pasando a 
+minúsculas y limpiando caracteres no informativos; luego se guarda todo en formato Parquet (columna-orientado y 
+comprimido) que conserva el esquema, reduce tamaño y acelera lecturas/filtrado frente a CSV. A continuación se 
+carga el Parquet procesado, se detecta el idioma de abstract-norm con langdetect (columna lang, usando “und” si
+es indeterminado) y se guarda un nuevo Parquet. La detección de idioma permite tratar corpus multilingües de forma óptima (stopwords/tokenización por lengua y elección del modelo de embeddings multilingüe).
 
-    \item \textbf{Segmentación en oraciones}. Dividir el texto en oraciones completas utilizando delimitadores válidos (puntos, signos de cierre), con el fin de 
+ \item \textbf{Segmentación en oraciones}. Dividir el texto en oraciones completas utilizando delimitadores válidos (puntos, signos de cierre), con el fin de 
     estructurar unidades coherentes para el análisis posterior. 
 
 \begin{minted}[frame=single,fontsize=\small]{text}
@@ -301,6 +306,9 @@ FUN segmentar_oraciones():
 
   guardar_parquet(out, OUT, prefer fastparquet(gzip) → pyarrow → CSV)
 \end{minted}
+Se lee el Parquet de entrada, elige la columna abstract-norm y segmenta sus textos en oraciones usando pysbd según el idioma que se detecto previamente.
+Devuelve una lista de oraciones por fila; luego crea una fila por oración, conserva metadatos útiles 
+añadiendo el índice de oración sentence-idx dentro de cada documento y escribe el resultado en processed-sentences.parquet.
 
     \item \textbf{Tokenización}. Segmentar cada oración en tokens (palabras o subpalabras) preservando frases clave frecuentes (p.\,ej.,\textit{aprendizaje automático}), a fin de mantener unidades semánticas estables.
 \begin{minted}[frame=single,fontsize=\small]{text}
@@ -323,9 +331,9 @@ Aplicar y métricas
 
 Guardar y mostrar
   guardar_parquet(df, OUT, prefer fastparquet(gzip) → pyarrow → CSV)
-  print primeras 8 de [sentence, tokens_csv]
 \end{minted}
-
+Carga el parquet y tokeniza con una expresión regular y entrena detectores de bigramas y trigramas con Gensim usando mincount=5 y threshold=10. 
+Luego aplica ambos phrasers para unir collocations frecuentes en un solo token el cual a su vez genera tokens. Los tokens son unidos por comas y se guardan en el nuevo parquet.
 
     \item \textbf{Eliminación de stop words}. Remover términos de alta frecuencia y escaso valor semántico.
 \begin{minted}[frame=single,fontsize=\small]{text}
@@ -345,7 +353,9 @@ Entrada: df con df["tokens"]; Salida: corpus_token_nostop.parquet
 
   guardar df en "corpus_token_nostop.parquet"
 \end{minted}
-
+Una vez tokenizado eliminamos las stop words asegura las listas, normaliza a minúsculas y quita tildes.
+La función is-stop considera tokens compuestos (espacios/guiones) y solo los descarta si todas sus partes 
+son stopwords; además, filter-tokens aplica filtros básicos (longitud mínima, quitar numéricos)
 
     \item \textbf{Aplicación de Lematización o stemming}. Preferir lematización sobre \textit{stemming} para conservar la forma canónica y reducir 
     la varianza léxica sin pérdida de significado \parencite{tabassum2020}.
@@ -365,8 +375,10 @@ FUN lematizar_spacy():
 
   guardar df en "corpus_token_nostop_lemma.parquet" (fastparquet→pyarrow→CSV)
 \end{minted}
+Iniciamos leyendo el parquet de entrada de la fase anterior y y lematiza en lote con spaCy usando dos modelos (ES/EN) dependiendo de la etiqueta que habiamos usado agregado anteriormente.
+Genera  tokens lematizados en minúsculas, separados por espacios y guarda el resultado en el nuevo parquet.
 
-    \item \textbf{\textit{Chunking} para LLM/RAG}. Dividir documentos largos en fragmentos (\(\sim 200\text{--}400\) tokens) con solape (15–30\,\%) para respetar 
+\item \textbf{\textit{Chunking} para LLM/RAG}. Dividir documentos largos en fragmentos (\(\sim 200\text{--}400\) tokens) con solape (15–30\,\%) para respetar 
     límites de contexto de los transformadores y mejorar la recuperación a nivel de pasaje (Hambarde \& Proença, 2023).
     \begin{minted}[frame=single,fontsize=\small]{text}
 FUN chunkear_por_tokens():
@@ -393,12 +405,11 @@ FUN chunkear_por_tokens():
                         token_count, text_chunk}
 
   chunks_df ← DataFrame(rows)
-  guardar_parquet(chunks_df, OUT)   # pyarrow/fastparquet
+  guardar_parquet(chunks_df, OUT)   
 \end{minted}
-
-
+Finalmente, para fragmentar el texto tomamos el Parquet lematizado, consolidamos un solo documento por artículo 
+y, con el tokenizer E5 (bi-encoder basado en transformer), lo separamos por conteo de tokens (tamaño = 300) con un solapamiento de 0.2.
 \end{enumerate}
-
 Con el uso de este pipeline se disminuye el ruido de contexto suministrado al LLM en RAG, 
 lo que reduce inconsistencias y riesgo de alucinaciones en la generación. En términos de evaluación, una mejor normalización y segmentación
  favorecen la relevancia contextual del material recuperado y la fidelidad de las respuestas, al entregar fragementos más coherentes, comparables y medibles permitiendo
@@ -413,7 +424,8 @@ Además, estos embeddings se indexan en bases de datos vectoriales con búsqueda
 \begin{minted}[frame=single,fontsize=\small]{text}
 Cargar y validar
 df = leer_parquet(PARQUET_PATH)
-verificar(df, cols=["doc_id","chunk_id","start_token","end_token","text_chunk"])
+verificar(df, cols=["doc_id","chunk_id","start_token","end_token",
+"text_chunk"])
 limpiar_tipos(df); limpiar_texto(df)
 
 IDs + textos
@@ -433,19 +445,17 @@ meta = df[["vec_id","chunk_uid","doc_id","chunk_id",
         "start_token","end_token", "scopus_id?"]]
 guardar_pkl(OUT_META_PKL, { "model": EMB_MODEL, "device_used": "cpu", "dim": dim, "ntotal": N, "meta_min": meta })
 \end{minted}
+Toma los textos del archivo parquet, los limpia y les asigna identificadores (vec-id, chunk-uid), luego usa un modelo SentenceTransformer (E5) en CPU para convertir cada fragmento en un vector numérico normalizado (embedding).
+Procesa los textos por lotes (reduce el tamaño si hay errores de memoria), junta todos los embeddings en una matriz (N, dim) y finalmente guarda en dos archivos .npy (donde estan los vectores) y .pkl con la información mínima (modelo, dimensiones e índices que vinculan cada vector con su texto original).
 
 
 \subsection{Vector DB}
 \begin{minted}[frame=single,fontsize=\small]{text}
-
 E    = cargar_npy(IN_EMB_PATH)      
 meta = cargar_pkl(IN_META_PKL)       
-
 assert cols(E)==meta.dim and filas(E)==meta.ntotal
-
-idx = FAISS.IndexFlatIP(meta.dim)    # índice por producto interno
+idx = FAISS.IndexFlatIP(meta.dim) 
 idx.add(E)
-
 guardar_faiss(idx, FAISS_PATH)
 guardar_pkl(INFO_PKL_PATH, {"model": meta.model, "dim": meta.dim,
                             "ntotal": idx.ntotal,
@@ -453,7 +463,7 @@ guardar_pkl(INFO_PKL_PATH, {"model": meta.model, "dim": meta.dim,
                             "meta_min_path": IN_META_PKL,
                             "faiss_path": FAISS_PATH})
 \end{minted}
-
+Carga los embeddings normalizados verifica que las dimensiones coincidan, construye un índice FAISS y  el resultado se guarda en disco (.bin)
 
 \subsection{Recuperación}
 \begin{minted}[frame=single,fontsize=\small]{text}
@@ -473,7 +483,8 @@ Unir con CSV por scopus_id
 sc = read_csv(SCOPUS_CSV, sep=SCOPUS_SEP); sc["scopus_id"]=str
 hits = merge_left(hits, sc, on="scopus_id")
 \end{minted}
-
+Primero cargamos la vector DB, luego vectorizamos  la consulta (query) y normaliza el embedding con ese vector hace búsqueda k-NN en FAISS y obtiene scores e ids.
+Para obtener un contexto mejorado se une el resultado con el CSV de Scopus por scopus-id para agregar la demas metadata que contiene el csv.
 \subsection{Re-ranking}
 
 \subsection{Construcción de Contexto}

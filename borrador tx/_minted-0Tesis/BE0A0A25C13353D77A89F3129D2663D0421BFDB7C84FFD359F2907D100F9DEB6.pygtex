@@ -18,5 +18,4 @@ Aplicar y métricas
 
 Guardar y mostrar
   guardar\PYGZus{}parquet(df, OUT, prefer fastparquet(gzip) → pyarrow → CSV)
-  print primeras 8 de [sentence, tokens\PYGZus{}csv]
 \end{Verbatim}

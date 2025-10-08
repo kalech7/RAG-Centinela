@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2025.9.14)  8 OCT 2025 00:53
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2025.9.14)  8 OCT 2025 10:33
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -3517,13 +3517,13 @@ Missing character: There is no ∈ (U+2208) in font TeX Gyre Cursor/OT:script=la
 )
 \openout3 = `0Tesis.pyg'.
 
- (./_minted-0Tesis/33DD340CD9364D2E08E48788EAB18997421BFDB7C84FFD359F2907D100F9DEB6.pygtex [42])
+ (./_minted-0Tesis/33DD340CD9364D2E08E48788EAB18997421BFDB7C84FFD359F2907D100F9DEB6.pygtex [42]) [43]
 \openout3 = `0Tesis.pyg'.
 
- (./_minted-0Tesis/E5BE683B7F7D11263B0A54864308EBE5421BFDB7C84FFD359F2907D100F9DEB6.pygtex [43])
+ (./_minted-0Tesis/E5BE683B7F7D11263B0A54864308EBE5421BFDB7C84FFD359F2907D100F9DEB6.pygtex)
 \openout3 = `0Tesis.pyg'.
 
- (./_minted-0Tesis/0468F4FCC5D8A3B31A64E3E04E517835421BFDB7C84FFD359F2907D100F9DEB6.pygtex [44])
+ (./_minted-0Tesis/BE0A0A25C13353D77A89F3129D2663D0421BFDB7C84FFD359F2907D100F9DEB6.pygtex [44])
 \openout3 = `0Tesis.pyg'.
 
  (./_minted-0Tesis/64E4333F4122F58AEE8E95BE4483B065421BFDB7C84FFD359F2907D100F9DEB6.pygtex
@@ -3533,39 +3533,34 @@ Missing character: There is no ∈ (U+2208) in font TeX Gyre Cursor/OT:script=la
 Missing character: There is no ∈ (U+2208) in font TeX Gyre Cursor/OT:script=latn;language=dflt;!
 Missing character: There is no ∈ (U+2208) in font TeX Gyre Cursor/OT:script=latn;language=dflt;!
 Missing character: There is no ∈ (U+2208) in font TeX Gyre Cursor/OT:script=latn;language=dflt;!
-)
+[45])
 \openout3 = `0Tesis.pyg'.
 
- (./_minted-0Tesis/318A7626917F06EF0E0DC8B8B0EED615421BFDB7C84FFD359F2907D100F9DEB6.pygtex [45])
+ (./_minted-0Tesis/318A7626917F06EF0E0DC8B8B0EED615421BFDB7C84FFD359F2907D100F9DEB6.pygtex [46])
 \openout3 = `0Tesis.pyg'.
 
- (./_minted-0Tesis/A15E2742FED8E81F5288CCBCAD1B1E3D421BFDB7C84FFD359F2907D100F9DEB6.pygtex
-Underfull \hbox (badness 6445) in paragraph at lines 369--1
+ (./_minted-0Tesis/176F3E7C13987299F62233E796D92031421BFDB7C84FFD359F2907D100F9DEB6.pygtex
+Underfull \hbox (badness 6445) in paragraph at lines 381--1
 []\TU/TeXGyrePagella(0)/b/it/12 Chunking \TU/TeXGyrePagella(0)/b/n/12 para LLM/RAG\TU/TeXGyrePagella(0)/m/n/12 . Dividir documentos largos en fragmentos
  []
 
 Missing character: There is no ∀ (U+2200) in font TeX Gyre Cursor/OT:script=latn;language=dflt;!
 Missing character: There is no ∀ (U+2200) in font TeX Gyre Cursor/OT:script=latn;language=dflt;!
-[46])
-\openout3 = `0Tesis.pyg'.
-
- (./_minted-0Tesis/D64EBADA17BB3F48858EDB5248BFB63E421BFDB7C84FFD359F2907D100F9DEB6.pygtex
-Overfull \hbox (25.68214pt too wide) in paragraph at lines 4--4
-\TU/TeXGyreCursor(0)/m/n/10.95 cols=["doc_id","chunk_id","start_token","end_token","text_chunk"])|  
- []
-
 [47])
 \openout3 = `0Tesis.pyg'.
 
- (./_minted-0Tesis/1A92EA20A07D6D17FF4BF20CED117551421BFDB7C84FFD359F2907D100F9DEB6.pygtex)
+ (./_minted-0Tesis/47520C8F7A0E88A97A7EC506FCAA8958421BFDB7C84FFD359F2907D100F9DEB6.pygtex [48])
 \openout3 = `0Tesis.pyg'.
 
- (./_minted-0Tesis/EA26C0B98C2998688C8692B7723A3F74421BFDB7C84FFD359F2907D100F9DEB6.pygtex [48])) [49]
+ (./_minted-0Tesis/299C44184FC1EA9F1775D23E0883F80D421BFDB7C84FFD359F2907D100F9DEB6.pygtex)
+\openout3 = `0Tesis.pyg'.
+
+ (./_minted-0Tesis/EA26C0B98C2998688C8692B7723A3F74421BFDB7C84FFD359F2907D100F9DEB6.pygtex [49])) [50]
 \openout2 = `Capitulos/03Pruebas.aux'.
 
  (./Capitulos/03Pruebas.tex
 Capítulo 3.
-) [50
+) [51
 
 
 
@@ -3575,7 +3570,7 @@ Underfull \hbox (badness 2326) in paragraph at lines 134--134
 \TU/TeXGyrePagella(0)/m/n/12 Augmented Large Language Models». En: \TU/TeXGyrePagella(0)/m/it/12 Proceedings of the 30th ACM
  []
 
-[51
+[52
 
 
 
@@ -3585,7 +3580,7 @@ Underfull \hbox (badness 1448) in paragraph at lines 134--134
 []\TU/TeXGyrePagella(0)/m/n/12 Tianyang Lin et al. «  A survey of transformers». En: \TU/TeXGyrePagella(0)/m/it/12 AI Open \TU/TeXGyrePagella(0)/m/n/12 3 (2022),
  []
 
-[52]
+[53]
 Underfull \hbox (badness 10000) in paragraph at lines 134--134
 []\TU/TeXGyrePagella(0)/m/n/12 Balagopal Ramdurai. «  Large Language Models (LLMs), Retrieval-
  []
@@ -3600,7 +3595,7 @@ Underfull \hbox (badness 1221) in paragraph at lines 134--134
 []\TU/TeXGyrePagella(0)/m/n/12 Parth Sarthi et al. «  RAPTOR: Recursive Abstractive Processing for Tree-
  []
 
-[53] (./0Tesis.aux
+[54] (./0Tesis.aux
 LaTeX Info: Redefining \sptext on input line 23.
 LaTeX Info: Redefining \. on input line 23.
 LaTeX Info: Redefining \% on input line 23.
@@ -3620,4 +3615,4 @@ Here is how much of TeX's memory you used:
  1348 hyphenation exceptions out of 8191
  87i,12n,90p,1502b,5475s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on 0Tesis.pdf (62 pages).
+Output written on 0Tesis.pdf (63 pages).

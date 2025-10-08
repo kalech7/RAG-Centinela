@@ -1,7 +1,8 @@
 \begin{Verbatim}[commandchars=\\\{\}]
 Cargar y validar
 df = leer\PYGZus{}parquet(PARQUET\PYGZus{}PATH)
-verificar(df, cols=[\PYGZdq{}doc\PYGZus{}id\PYGZdq{},\PYGZdq{}chunk\PYGZus{}id\PYGZdq{},\PYGZdq{}start\PYGZus{}token\PYGZdq{},\PYGZdq{}end\PYGZus{}token\PYGZdq{},\PYGZdq{}text\PYGZus{}chunk\PYGZdq{}])
+verificar(df, cols=[\PYGZdq{}doc\PYGZus{}id\PYGZdq{},\PYGZdq{}chunk\PYGZus{}id\PYGZdq{},\PYGZdq{}start\PYGZus{}token\PYGZdq{},\PYGZdq{}end\PYGZus{}token\PYGZdq{},
+\PYGZdq{}text\PYGZus{}chunk\PYGZdq{}])
 limpiar\PYGZus{}tipos(df); limpiar\PYGZus{}texto(df)
 
 IDs + textos

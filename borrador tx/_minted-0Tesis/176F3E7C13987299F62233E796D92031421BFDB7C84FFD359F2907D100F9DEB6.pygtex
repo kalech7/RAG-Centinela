@@ -23,5 +23,5 @@ FUN chunkear\PYGZus{}por\PYGZus{}tokens():
                         token\PYGZus{}count, text\PYGZus{}chunk\PYGZcb{}
 
   chunks\PYGZus{}df ← DataFrame(rows)
-  guardar\PYGZus{}parquet(chunks\PYGZus{}df, OUT)   \PYGZsh{} pyarrow/fastparquet
+  guardar\PYGZus{}parquet(chunks\PYGZus{}df, OUT)
 \end{Verbatim}
