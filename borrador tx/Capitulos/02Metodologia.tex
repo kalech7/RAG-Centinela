@@ -231,33 +231,28 @@ En cambio, DOI, ScopusID, Autores y Afiliaciones funcionan como metadatos de sop
 vectorial. Separar título/resumen de metadatos de control (DOI, ScopusID, autores, afiliaciones)  mejora la interpretabilidad del sistema y evita sobrecargar el espacio vectorial 
 con señales que no aportan significado textual directo.
 
-Con la siguiente función se extraen los campos con carga semántica del documento (title, abstract) junto al identificador scopusid y se guardan en un CSV (UTF-8) para su procesamiento en fases posteriores.
-\begin{minted}[linenos, frame=single]{python}
-def export_articles_to_csv():
-    query = """
-    MATCH (a)
-    WHERE a.scopus_id IS NOT NULL
-      AND a.title IS NOT NULL
-      AND a.abstract IS NOT NULL
-    RETURN
-      a.scopus_id as scopus_id,
-      a.title as title,
-      a.abstract as abstract
-    """
-    # Ejecutar la consulta dentro de una sesión
-    with driver.session() as session:
-        result = session.run(query)
-        df = pd.DataFrame([
-            {
-                'scopus_id': record['scopus_id'],
-                'title': record['title'],
-                'abstract': record['abstract']
-            }
-            for record in result ])
-    # Guardar en CSV
-    df.to_csv("articles_scopus.csv", index=False, encoding="utf-8")
-    print("Exportación completada: articles_scopus.csv")
+Con la siguiente función se extrae el corpus y se guardan en un CSV (UTF-8) para su procesamiento en fases posteriores.
+\begin{minted}[linenos,frame=single,fontsize=\small]{text}
+FUN exportar_articulos_a_csv():
+ Consultar Neo4j (filtra Article con scopus_id/title/abstract/doi,
+   colecta autores/afiliaciones; ORDER BY scopus_id)
+  filas ← ejecutar_cypher(consulta)
+  df ← DataFrame(filas)
+
+Aplanar listas → string
+  join_list(x): si lista → ", ".join(x) ; si no → x
+  para c en [authors, affiliations, affiliation_cities, affiliation_countries]:
+    si c ∈ df → df[c] ← map(join_list, df[c])
+
+ Orden final de columnas
+  df ← df[[title, abstract, doi, authors,
+           affiliations, affiliation_cities, affiliation_countries,
+           citation_count, scopus_id]]
+
+Exportar CSV (utf-8, sin índice, sep="|")
+  escribir_csv(df, "scopusdata.csv", sep="|", encoding="utf-8", index=False)
 \end{minted}
+
 
 \subsection{Preprocesamiento}
 Una vez completada la ingesta de datos provienientes de Scopus, es fundamental preprocesarlos para normalizar y limpiar el texto, reducir ruido y mejorar la calidad semántica de las representaciones.
@@ -265,23 +260,142 @@ En esta etapa aplicare el siguiente flujo reproducible compuesto por estos pasos
 \begin{enumerate}
     \item \textbf{Normalización}. Consiste en estandarizar la forma del texto mediante 
     UTF-8, la corrección de caracteres extraños, la conversión a minúsculas, la eliminación de puntuación no informativa, 
-    símbolos y números aislados, así como la normalización de espacios. Además, se busca mantener 
-    un mismo idioma y formatos a lo largo del corpus para garantizar la coherencia. Cuando corresponde, se desduplican registros o resúmenes 
+    símbolos y números aislados, así como la normalización de espacios y se etiqueta el idioma de cada documento; no se fuerza la traducción, preservando la variación lingüística para análisis por idioma.
+    para garantizar la coherencia. Cuando corresponde, se desduplican registros o resúmenes 
     (comparación por DOI o por título+autor+año) con el fin de homogeneizar el vocabulario y reducir sesgos por repeticiones.
+Con el siguiente pseudocodigo se procedera a normalizar las columnas que contienen toda la semantica:
+\begin{minted}[linenos,frame=single,fontsize=\small]{text}
+FUN procesar_csv_a_parquet():
+    df ← leer_csv("scopusdata.csv","|")
+    normalizar(s): s←fix_text(s or ""); s←unicode_NFC(lower(s)); s←limpiar_simbolos(s); s←colapsar(s); return s
+    df["title_norm"]←map(normalizar, df["title"]); df["abstract_norm"]←map(normalizar, df["abstract"])
+    df ← dtypes_seguros(df) → objetos_a_json(df)
+    guardar_parquet(df,"processed.parquet", prefer fastparquet(gzip) → pyarrow/CSV)
+
+FUN etiquetar_idioma():
+    set_langdetect_seed(0)
+    df ← cargar_parquet("processed.parquet")
+    src ← "abstract_norm" (crear si falta)
+    detect_lang_safe(t): si vacío→"und"; si error→"und"; si no→detect(t)
+    df["lang"] ← map(detect_lang_safe, df[src])
+    guardar_parquet(df,"processed_lbl.parquet", prefer fastparquet(gzip) → pyarrow/CSV)
+\end{minted}
 
     \item \textbf{Segmentación en oraciones}. Dividir el texto en oraciones completas utilizando delimitadores válidos (puntos, signos de cierre), con el fin de 
     estructurar unidades coherentes para el análisis posterior. 
 
-    \item \textbf{Tokenización}. Segmentar cada oración en unidades mínimas (tokens), como palabras o subpalabras, lo que constituye la base de la extracción de rasgos
-     y representaciones.
+\begin{minted}[frame=single,fontsize=\small]{text}
+FUN segmentar_oraciones():
+  IN="processed_lbl.parquet"; OUT="processed_sentences.parquet"; COL="abstract_norm"
+
+  df ← leer_parquet(IN, prefer fastparquet → pyarrow)
+  lang ← df["lang"] si existe; si no → "es"
+
+  seg_es←pysbd(es); seg_en←pysbd(en)
+  split(text, lg): si vacío→[]; usar seg_en si lg inicia "en", sino seg_es; si error→[text]
+
+  df["sentences"] ← map(split, df[COL], lang)
+  out ← explode(df,"sentences"); renombrar a "sentence"
+  out ← add row_id_original (índice) y sentence_idx (cumcount por row_id)
+  out ← columnas [scopus_id?, title?, abstract?, abstract_norm?, lang?, row_id_original, sentence_idx, sentence]
+
+  guardar_parquet(out, OUT, prefer fastparquet(gzip) → pyarrow → CSV)
+\end{minted}
+
+    \item \textbf{Tokenización}. Segmentar cada oración en tokens (palabras o subpalabras) preservando frases clave frecuentes (p.\,ej.,\textit{aprendizaje automático}), a fin de mantener unidades semánticas estables.
+\begin{minted}[frame=single,fontsize=\small]{text}
+FUN extraer_frases_y_tokenizar():
+  IN="processed_sentences.parquet"; OUT="corpus_token"; COL="sentence"
+
+Cargar y tokenizar
+  df ← leer_parquet(IN)                     
+  df["tokens_base"] ← map(simple_tokenize, df[COL])
+
+Frases (Gensim)
+  S ← lista(df["tokens_base"])
+  bigF ← Phraser(Phrases(S, min_count=5, threshold=10.0, delimiter=" "))
+  triF ← Phraser(Phrases(bigF[S], min_count=5, threshold=10.0, delimiter=" "))
+
+Aplicar y métricas
+  df["tokens"]     ← [triF[bigF(t)] para t en df["tokens_base"]]
+  df["tokens_csv"] ← join_por_comas(df["tokens"])
+  df["n_tokens"]   ← len_por_fila(df["tokens"])
+
+Guardar y mostrar
+  guardar_parquet(df, OUT, prefer fastparquet(gzip) → pyarrow → CSV)
+  print primeras 8 de [sentence, tokens_csv]
+\end{minted}
+
 
     \item \textbf{Eliminación de stop words}. Remover términos de alta frecuencia y escaso valor semántico.
+\begin{minted}[frame=single,fontsize=\small]{text}
+FUN filtrar_stopwords():
+Entrada: df con df["tokens"]; Salida: corpus_token_nostop.parquet
+  asegurar NLTK stopwords (ES/EN)
+  STOP ← set(stopwords_es ∪ stopwords_en) normalizadas (lower+sin acentos)
+  PROTECT ← {"in south america", ...}
+
+  is_stop(t):
+    si vacío→True; si t∈PROTECT→False
+    parts ← split(t normalizado por espacios/guiones)
+    return all(p∈STOP)  
+
+  df["tokens_nostop"] ← map( filtra cada t: descarta numéricos/cortos/stop; conserva resto )
+  df["text_for_embed"] ← join_espacios(df["tokens_nostop"])
+
+  guardar df en "corpus_token_nostop.parquet"
+\end{minted}
+
 
     \item \textbf{Aplicación de Lematización o stemming}. Preferir lematización sobre \textit{stemming} para conservar la forma canónica y reducir 
     la varianza léxica sin pérdida de significado \parencite{tabassum2020}.
+\begin{minted}[frame=single,fontsize=\small]{text}
+FUN lematizar_spacy():
+  df ← cargar "corpus_token_nostop.parquet"; assert "text_for_embed"
+
+  cargar nlp_es (es_core_news_sm) y nlp_en (en_core_web_sm) sin parser/ner/textcat
+  is_es(txt): True si tiene acentos o palabras {de, la, el, y, en, ...}
+
+  idx_es ← filas donde is_es(text_for_embed); idx_en ← resto
+  lema(doc): join(lemma_.lower() si ≠ "-PRON-" else text.lower())
+
+  text_lemma[idx_es] ← map_pipe(nlp_es, df[idx_es].text_for_embed, batch=512)
+  text_lemma[idx_en] ← map_pipe(nlp_en, df[idx_en].text_for_embed, batch=512)
+  df["text_lemma"] ← text_lemma.fillna("")
+
+  guardar df en "corpus_token_nostop_lemma.parquet" (fastparquet→pyarrow→CSV)
+\end{minted}
 
     \item \textbf{\textit{Chunking} para LLM/RAG}. Dividir documentos largos en fragmentos (\(\sim 200\text{--}400\) tokens) con solape (15–30\,\%) para respetar 
     límites de contexto de los transformadores y mejorar la recuperación a nivel de pasaje (Hambarde \& Proença, 2023).
+    \begin{minted}[frame=single,fontsize=\small]{text}
+FUN chunkear_por_tokens():
+    IN="corpus_token_nostop_lemma.parquet"; OUT="corpus_chunks.parquet"
+    MAX=300; OVERLAP=0.2; STRIDE=MAX*(1-OVERLAP)
+    tok ← AutoTokenizer("intfloat/multilingual-e5-base")
+
+    df ← leer_parquet(IN)
+    ordenar por scopus_id y (sentence_idx | row_id_original)
+    doc_df ← groupby(scopus_id).join_espacios(text_lemma) → text_for_chunk
+    doc_df ← asignar doc_id secuencial
+
+    chunk(text):
+    ids ← tok.encode(text, sin_special)
+    para s = 0..len(ids) paso STRIDE:
+        e ← min(s+MAX, len(ids))
+        emitir {start_token:s, end_token:e, token_count:e-s,
+                text_chunk: tok.decode(ids[s:e])}
+        si e == len(ids) → break
+
+  rows ← ∀ doc en doc_df, j, ch en enumerate(chunk(doc.text_for_chunk)):
+            guardar {doc_id, chunk_id:j, chunk_uid:"doc_id-j",
+                        scopus_id:doc.scopus_id, start_token, end_token,
+                        token_count, text_chunk}
+
+  chunks_df ← DataFrame(rows)
+  guardar_parquet(chunks_df, OUT)   # pyarrow/fastparquet
+\end{minted}
+
 
 \end{enumerate}
 
@@ -296,11 +410,69 @@ Para el diseño de este sistema se usa un retriever denso de arquitectura bi-enc
 consulta y los fragmentos en un espacio vectorial de baja dimensión (vector corto y continuo de tamaño fijo) y comparar por similitud, 
 capturando relaciones semánticas más allá de coincidencias léxicas y mejorando la recuperación en escenarios RAG y open-domain QA.
 Además, estos embeddings se indexan en bases de datos vectoriales con búsqueda aproximada de vecinos cercanos (ANN), lo que viabiliza el escalamiento eficiente del sistema\parencite{joshi2025vector}.
+\begin{minted}[frame=single,fontsize=\small]{text}
+Cargar y validar
+df = leer_parquet(PARQUET_PATH)
+verificar(df, cols=["doc_id","chunk_id","start_token","end_token","text_chunk"])
+limpiar_tipos(df); limpiar_texto(df)
+
+IDs + textos
+df["vec_id"] = 0..N-1
+df["chunk_uid"] = f"{doc_id}-{chunk_id}"
+textos = "passage: " + df["text_chunk"]
+
+Modelo y vectorización (con backoff)
+modelo = cargar_ST(EMB_MODEL, cpu, max_len=EMB_MAX_SEQLEN)
+E = []
+for lote in partir(textos, tam=BATCH_SIZE, backoff=÷2):
+    E += [ modelo.encode(lote, normalizar=True) ]
+E = apilar_float32(E); dim = cols(E)
+
+guardar_npy(OUT_EMB_PATH, E)
+meta = df[["vec_id","chunk_uid","doc_id","chunk_id",
+        "start_token","end_token", "scopus_id?"]]
+guardar_pkl(OUT_META_PKL, { "model": EMB_MODEL, "device_used": "cpu", "dim": dim, "ntotal": N, "meta_min": meta })
+\end{minted}
 
 
 \subsection{Vector DB}
+\begin{minted}[frame=single,fontsize=\small]{text}
+
+E    = cargar_npy(IN_EMB_PATH)      
+meta = cargar_pkl(IN_META_PKL)       
+
+assert cols(E)==meta.dim and filas(E)==meta.ntotal
+
+idx = FAISS.IndexFlatIP(meta.dim)    # índice por producto interno
+idx.add(E)
+
+guardar_faiss(idx, FAISS_PATH)
+guardar_pkl(INFO_PKL_PATH, {"model": meta.model, "dim": meta.dim,
+                            "ntotal": idx.ntotal,
+                            "embeddings_path": IN_EMB_PATH,
+                            "meta_min_path": IN_META_PKL,
+                            "faiss_path": FAISS_PATH})
+\end{minted}
+
 
 \subsection{Recuperación}
+\begin{minted}[frame=single,fontsize=\small]{text}
+Cargar artefactos
+meta = leer_pkl(PKL_MIN_PATH)["meta_min"]         
+idx  = faiss_read(FAISS_PATH)
+mdl  = ST(leer_pkl(PKL_MIN_PATH)["model"], cpu)   
+Encode consulta y buscar
+q_emb = mdl.encode(["query: "+Q], normalize=True, to_numpy=True).astype("float32")
+scores, ids = idx.search(q_emb, k)
+
+Armar TOP-K mínimo
+hits = meta.loc[ids[0]].reset_index(drop=True)
+hits.insert(1, "score", scores[0])
+
+Unir con CSV por scopus_id
+sc = read_csv(SCOPUS_CSV, sep=SCOPUS_SEP); sc["scopus_id"]=str
+hits = merge_left(hits, sc, on="scopus_id")
+\end{minted}
 
 \subsection{Re-ranking}
 

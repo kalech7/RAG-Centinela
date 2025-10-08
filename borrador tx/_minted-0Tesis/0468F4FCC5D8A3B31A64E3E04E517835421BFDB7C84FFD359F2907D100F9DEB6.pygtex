@@ -1,0 +1,22 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+FUN extraer\PYGZus{}frases\PYGZus{}y\PYGZus{}tokenizar():
+  IN=\PYGZdq{}processed\PYGZus{}sentences.parquet\PYGZdq{}; OUT=\PYGZdq{}corpus\PYGZus{}token\PYGZdq{}; COL=\PYGZdq{}sentence\PYGZdq{}
+
+Cargar y tokenizar
+  df ← leer\PYGZus{}parquet(IN)
+  df[\PYGZdq{}tokens\PYGZus{}base\PYGZdq{}] ← map(simple\PYGZus{}tokenize, df[COL])
+
+Frases (Gensim)
+  S ← lista(df[\PYGZdq{}tokens\PYGZus{}base\PYGZdq{}])
+  bigF ← Phraser(Phrases(S, min\PYGZus{}count=5, threshold=10.0, delimiter=\PYGZdq{} \PYGZdq{}))
+  triF ← Phraser(Phrases(bigF[S], min\PYGZus{}count=5, threshold=10.0, delimiter=\PYGZdq{} \PYGZdq{}))
+
+Aplicar y métricas
+  df[\PYGZdq{}tokens\PYGZdq{}]     ← [triF[bigF(t)] para t en df[\PYGZdq{}tokens\PYGZus{}base\PYGZdq{}]]
+  df[\PYGZdq{}tokens\PYGZus{}csv\PYGZdq{}] ← join\PYGZus{}por\PYGZus{}comas(df[\PYGZdq{}tokens\PYGZdq{}])
+  df[\PYGZdq{}n\PYGZus{}tokens\PYGZdq{}]   ← len\PYGZus{}por\PYGZus{}fila(df[\PYGZdq{}tokens\PYGZdq{}])
+
+Guardar y mostrar
+  guardar\PYGZus{}parquet(df, OUT, prefer fastparquet(gzip) → pyarrow → CSV)
+  print primeras 8 de [sentence, tokens\PYGZus{}csv]
+\end{Verbatim}

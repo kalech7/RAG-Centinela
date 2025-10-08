@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+Cargar artefactos
+meta = leer\PYGZus{}pkl(PKL\PYGZus{}MIN\PYGZus{}PATH)[\PYGZdq{}meta\PYGZus{}min\PYGZdq{}]
+idx  = faiss\PYGZus{}read(FAISS\PYGZus{}PATH)
+mdl  = ST(leer\PYGZus{}pkl(PKL\PYGZus{}MIN\PYGZus{}PATH)[\PYGZdq{}model\PYGZdq{}], cpu)
+Encode consulta y buscar
+q\PYGZus{}emb = mdl.encode([\PYGZdq{}query: \PYGZdq{}+Q], normalize=True, to\PYGZus{}numpy=True).astype(\PYGZdq{}float32\PYGZdq{})
+scores, ids = idx.search(q\PYGZus{}emb, k)
+
+Armar TOP\PYGZhy{}K mínimo
+hits = meta.loc[ids[0]].reset\PYGZus{}index(drop=True)
+hits.insert(1, \PYGZdq{}score\PYGZdq{}, scores[0])
+
+Unir con CSV por scopus\PYGZus{}id
+sc = read\PYGZus{}csv(SCOPUS\PYGZus{}CSV, sep=SCOPUS\PYGZus{}SEP); sc[\PYGZdq{}scopus\PYGZus{}id\PYGZdq{}]=str
+hits = merge\PYGZus{}left(hits, sc, on=\PYGZdq{}scopus\PYGZus{}id\PYGZdq{})
+\end{Verbatim}

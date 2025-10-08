@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+
+E    = cargar\PYGZus{}npy(IN\PYGZus{}EMB\PYGZus{}PATH)
+meta = cargar\PYGZus{}pkl(IN\PYGZus{}META\PYGZus{}PKL)
+
+assert cols(E)==meta.dim and filas(E)==meta.ntotal
+
+idx = FAISS.IndexFlatIP(meta.dim)    \PYGZsh{} índice por producto interno
+idx.add(E)
+
+guardar\PYGZus{}faiss(idx, FAISS\PYGZus{}PATH)
+guardar\PYGZus{}pkl(INFO\PYGZus{}PKL\PYGZus{}PATH, \PYGZob{}\PYGZdq{}model\PYGZdq{}: meta.model, \PYGZdq{}dim\PYGZdq{}: meta.dim,
+                            \PYGZdq{}ntotal\PYGZdq{}: idx.ntotal,
+                            \PYGZdq{}embeddings\PYGZus{}path\PYGZdq{}: IN\PYGZus{}EMB\PYGZus{}PATH,
+                            \PYGZdq{}meta\PYGZus{}min\PYGZus{}path\PYGZdq{}: IN\PYGZus{}META\PYGZus{}PKL,
+                            \PYGZdq{}faiss\PYGZus{}path\PYGZdq{}: FAISS\PYGZus{}PATH\PYGZcb{})
+\end{Verbatim}

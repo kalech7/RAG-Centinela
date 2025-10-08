@@ -1,0 +1,27 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+FUN chunkear\PYGZus{}por\PYGZus{}tokens():
+    IN=\PYGZdq{}corpus\PYGZus{}token\PYGZus{}nostop\PYGZus{}lemma.parquet\PYGZdq{}; OUT=\PYGZdq{}corpus\PYGZus{}chunks.parquet\PYGZdq{}
+    MAX=300; OVERLAP=0.2; STRIDE=MAX*(1\PYGZhy{}OVERLAP)
+    tok ← AutoTokenizer(\PYGZdq{}intfloat/multilingual\PYGZhy{}e5\PYGZhy{}base\PYGZdq{})
+
+    df ← leer\PYGZus{}parquet(IN)
+    ordenar por scopus\PYGZus{}id y (sentence\PYGZus{}idx | row\PYGZus{}id\PYGZus{}original)
+    doc\PYGZus{}df ← groupby(scopus\PYGZus{}id).join\PYGZus{}espacios(text\PYGZus{}lemma) → text\PYGZus{}for\PYGZus{}chunk
+    doc\PYGZus{}df ← asignar doc\PYGZus{}id secuencial
+
+    chunk(text):
+    ids ← tok.encode(text, sin\PYGZus{}special)
+    para s = 0..len(ids) paso STRIDE:
+        e ← min(s+MAX, len(ids))
+        emitir \PYGZob{}start\PYGZus{}token:s, end\PYGZus{}token:e, token\PYGZus{}count:e\PYGZhy{}s,
+                text\PYGZus{}chunk: tok.decode(ids[s:e])\PYGZcb{}
+        si e == len(ids) → break
+
+  rows ← ∀ doc en doc\PYGZus{}df, j, ch en enumerate(chunk(doc.text\PYGZus{}for\PYGZus{}chunk)):
+            guardar \PYGZob{}doc\PYGZus{}id, chunk\PYGZus{}id:j, chunk\PYGZus{}uid:\PYGZdq{}doc\PYGZus{}id\PYGZhy{}j\PYGZdq{},
+                        scopus\PYGZus{}id:doc.scopus\PYGZus{}id, start\PYGZus{}token, end\PYGZus{}token,
+                        token\PYGZus{}count, text\PYGZus{}chunk\PYGZcb{}
+
+  chunks\PYGZus{}df ← DataFrame(rows)
+  guardar\PYGZus{}parquet(chunks\PYGZus{}df, OUT)   \PYGZsh{} pyarrow/fastparquet
+\end{Verbatim}

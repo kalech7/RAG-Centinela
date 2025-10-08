@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+FUN procesar\PYGZus{}csv\PYGZus{}a\PYGZus{}parquet():
+    df ← leer\PYGZus{}csv(\PYGZdq{}scopusdata.csv\PYGZdq{},\PYGZdq{}|\PYGZdq{})
+    normalizar(s): s←fix\PYGZus{}text(s or \PYGZdq{}\PYGZdq{}); s←unicode\PYGZus{}NFC(lower(s)); s←limpiar\PYGZus{}simbolos(s); s←colapsar(s); return s
+    df[\PYGZdq{}title\PYGZus{}norm\PYGZdq{}]←map(normalizar, df[\PYGZdq{}title\PYGZdq{}]); df[\PYGZdq{}abstract\PYGZus{}norm\PYGZdq{}]←map(normalizar, df[\PYGZdq{}abstract\PYGZdq{}])
+    df ← dtypes\PYGZus{}seguros(df) → objetos\PYGZus{}a\PYGZus{}json(df)
+    guardar\PYGZus{}parquet(df,\PYGZdq{}processed.parquet\PYGZdq{}, prefer fastparquet(gzip) → pyarrow/CSV)
+
+FUN etiquetar\PYGZus{}idioma():
+    set\PYGZus{}langdetect\PYGZus{}seed(0)
+    df ← cargar\PYGZus{}parquet(\PYGZdq{}processed.parquet\PYGZdq{})
+    src ← \PYGZdq{}abstract\PYGZus{}norm\PYGZdq{} (crear si falta)
+    detect\PYGZus{}lang\PYGZus{}safe(t): si vacío→\PYGZdq{}und\PYGZdq{}; si error→\PYGZdq{}und\PYGZdq{}; si no→detect(t)
+    df[\PYGZdq{}lang\PYGZdq{}] ← map(detect\PYGZus{}lang\PYGZus{}safe, df[src])
+    guardar\PYGZus{}parquet(df,\PYGZdq{}processed\PYGZus{}lbl.parquet\PYGZdq{}, prefer fastparquet(gzip) → pyarrow/CSV)
+\end{Verbatim}

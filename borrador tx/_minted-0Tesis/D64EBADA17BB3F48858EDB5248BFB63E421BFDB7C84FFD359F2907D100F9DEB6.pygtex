@@ -1,0 +1,23 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+Cargar y validar
+df = leer\PYGZus{}parquet(PARQUET\PYGZus{}PATH)
+verificar(df, cols=[\PYGZdq{}doc\PYGZus{}id\PYGZdq{},\PYGZdq{}chunk\PYGZus{}id\PYGZdq{},\PYGZdq{}start\PYGZus{}token\PYGZdq{},\PYGZdq{}end\PYGZus{}token\PYGZdq{},\PYGZdq{}text\PYGZus{}chunk\PYGZdq{}])
+limpiar\PYGZus{}tipos(df); limpiar\PYGZus{}texto(df)
+
+IDs + textos
+df[\PYGZdq{}vec\PYGZus{}id\PYGZdq{}] = 0..N\PYGZhy{}1
+df[\PYGZdq{}chunk\PYGZus{}uid\PYGZdq{}] = f\PYGZdq{}\PYGZob{}doc\PYGZus{}id\PYGZcb{}\PYGZhy{}\PYGZob{}chunk\PYGZus{}id\PYGZcb{}\PYGZdq{}
+textos = \PYGZdq{}passage: \PYGZdq{} + df[\PYGZdq{}text\PYGZus{}chunk\PYGZdq{}]
+
+Modelo y vectorización (con backoff)
+modelo = cargar\PYGZus{}ST(EMB\PYGZus{}MODEL, cpu, max\PYGZus{}len=EMB\PYGZus{}MAX\PYGZus{}SEQLEN)
+E = []
+for lote in partir(textos, tam=BATCH\PYGZus{}SIZE, backoff=÷2):
+    E += [ modelo.encode(lote, normalizar=True) ]
+E = apilar\PYGZus{}float32(E); dim = cols(E)
+
+guardar\PYGZus{}npy(OUT\PYGZus{}EMB\PYGZus{}PATH, E)
+meta = df[[\PYGZdq{}vec\PYGZus{}id\PYGZdq{},\PYGZdq{}chunk\PYGZus{}uid\PYGZdq{},\PYGZdq{}doc\PYGZus{}id\PYGZdq{},\PYGZdq{}chunk\PYGZus{}id\PYGZdq{},
+        \PYGZdq{}start\PYGZus{}token\PYGZdq{},\PYGZdq{}end\PYGZus{}token\PYGZdq{}, \PYGZdq{}scopus\PYGZus{}id?\PYGZdq{}]]
+guardar\PYGZus{}pkl(OUT\PYGZus{}META\PYGZus{}PKL, \PYGZob{} \PYGZdq{}model\PYGZdq{}: EMB\PYGZus{}MODEL, \PYGZdq{}device\PYGZus{}used\PYGZdq{}: \PYGZdq{}cpu\PYGZdq{}, \PYGZdq{}dim\PYGZdq{}: dim, \PYGZdq{}ntotal\PYGZdq{}: N, \PYGZdq{}meta\PYGZus{}min\PYGZdq{}: meta \PYGZcb{})
+\end{Verbatim}

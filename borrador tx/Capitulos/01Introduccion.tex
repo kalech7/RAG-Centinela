@@ -719,9 +719,29 @@ fidelidad y coherencia de las respuestas generadas.
 que luego serán usadas para los procesos de recuperación y generación. La ingesta implica recolectar distintas fuentes ya sean libros, literatura científica, corpus abiertos, etc., y convertirlos en un formato manejable por el 
 sistema. De acuerdo con \textcite{gao2023rag}, \textcite{ibrihich2022review} y \textcite{jing2024vecdb} estos datos se almacenan como texto estructurado, semiestructurado, sin estructura o heterogéneos, dependiendo de su naturaleza y del tipo de procesamiento requerido.
 
-\paragraph{Preprocesamiento:} Dentro de la ingesta de datos es necesario limpiar y estructurar el texto en bruto para que sea utilizable en etapas posteriores. De acuerdo con \textcite{tabassum2020} los procesos de tokenización\footnote{Proceso de segmentar el texto en unidades básicas (palabras, signos de puntuación o incluso caracteres), por ejemplo: “NLP”, “is”, “the”, “future”, etc},
-normalización, eliminación de stopwords, lematización y segmentación en oraciones permiten transformar datos no estructurados en unidades coherentes y consistentes, reduciendo así el ruido que podría propagarse en fases posteriores. 
-Este paso es importante ya que el texto procesado debe adaptarse a las limitaciones de los LLM, lo cual implica fragmentar en chunks y generar representaciones vectoriales, siendo así que \textcite{knollmeyer2024benchmarking} 
+\paragraph{Preprocesamiento:} Dentro de la ingesta de datos es necesario limpiar y estructurar el texto en bruto para que sea utilizable en etapas posteriores. De acuerdo con \textcite{tabassum2020} los pasos a seguir son los siguientes:
+
+\begin{enumerate}
+    \item \textbf{Normalización:} Estandarizar la forma del texto (codificación, idioma, minúsculas, puntuación no informativa, espacios, símbolos y números aislados) para 
+    asegurar consistencia a lo largo del corpus.
+    \item \textbf{Segmentación en oraciones:} Delimitar correctamente las oraciones.
+    \item \textbf{Tokenización:}\footnote{Proceso de segmentar el texto en unidades básicas (palabras, signos de puntuación o incluso caracteres), 
+    por ejemplo: “NLP”, “is”, “the”, “future”, etc}. 
+    Perrmite transformar datos no estructurados en unidades coherentes y consistentes, reduciendo el ruido que podría propagarse en fases posteriores.
+    \item \textbf{Eliminación de \textit{stopwords} :} Retirar términos funcionales poco informativos cuando no aportan al objetivo de la tarea.
+    \item \textbf{Stemming o Lematización:} Ambas técnicas buscan reducir la variabilidad morfológica de las palabras para unificar formas derivadas y mejorar la coherencia del corpus. 
+      El \emph{stemming} consiste en reducir las palabras a una raíz mediante reglas que recortan sufijos, agrupando variantes flexivas como 
+      (\emph{compute, computing, computed} $\rightarrow$ \emph{comput}). Es un método rápido y agresivo que puede generar formas no canónicas, pero resulta útil cuando
+       la pérdida morfológica 
+      no afecta el rendimiento, como en clasificación o búsqueda léxica a gran escala.  
+      Por su parte, la \emph{lematización} mapea cada término a su forma canónica del diccionario (p.\,ej., \emph{caring} $\rightarrow$ \emph{care}), preservando el 
+      significado y la información gramatical. 
+      Suele preferirse cuando la morfología y el contexto sintáctico influyen en la efectividad del modelo.
+     \item \textbf{Fragmentación en \textit{chunks} :} Adaptar el texto procesado a las limitaciones de contexto de los LLM mediante partición en segmentos manejables.
+\end{enumerate}
+
+Este paso es importante ya que el texto procesado debe adaptarse a las limitaciones de los LLM, lo cual implica fragmentar en chunks y generar representaciones 
+vectoriales, siendo así que \textcite{knollmeyer2024benchmarking} 
 afirma que la calidad del preprocesamiento incide directamente en dimensiones de evaluación como la relevancia contextual y la fidelidad de las respuestas. Una preparación deficiente del texto puede introducir ruido en el contexto recuperado 
 y favorecer inconsistencias en la generación, lo cual incrementa el riesgo de alucinaciones; en este sentido, se entiende que el preprocesamiento actúa como una primera barrera de mitigación de errores (\textcite{zhang2025hallucination}).
 
