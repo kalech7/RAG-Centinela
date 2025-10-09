@@ -10,7 +10,7 @@
 \setmonofont{TeX Gyre Cursor} 
 
 % ====== Idioma y codificación ======
-\usepackage[spanish]{babel}      % con XeLaTeX funciona bien
+\usepackage[spanish,english]{babel}     % con XeLaTeX funciona bien
 \usepackage{csquotes}            % comillas correctas para el idioma
 
 % ====== Matemáticas y listas ======
@@ -32,6 +32,17 @@
 \usepackage{minted}
 \usemintedstyle{vs}           
 \setminted{breaklines,breakanywhere=false,fontsize=\small,tabsize=2}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\newcommand{\Assign}{\ensuremath{\leftarrow}}
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}
+\algrenewcommand\algorithmicensure{\textbf{Output:}}
+\algrenewcommand\algorithmicfunction{\textbf{Function}}
+\addto\captionsenglish{\renewcommand{\algorithmname}{Algorithm}}
+\newenvironment{algorithmEN}
+  {\begin{otherlanguage*}{english}\begin{algorithm}}
+  {\end{algorithm}\end{otherlanguage*}}
+
 
 % ====== Gráficos y utilidades ======
 \usepackage{graphicx}

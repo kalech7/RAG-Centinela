@@ -232,26 +232,40 @@ vectorial. Separar título/resumen de metadatos de control (DOI, ScopusID, autor
 con señales que no aportan significado textual directo.
 
 Con la siguiente función se extrae el corpus y se guardan en un CSV (UTF-8) para su procesamiento en fases posteriores.
-\begin{minted}[linenos,frame=single,fontsize=\small]{text}
-FUN exportar_articulos_a_csv():
- Consultar Neo4j (filtra Article con scopus_id/title/abstract/doi,
-   colecta autores/afiliaciones; ORDER BY scopus_id)
-  filas ← ejecutar_cypher(consulta)
-  df ← DataFrame(filas)
+\begin{algorithmEN}
+\caption{Export\_Articles\_to\_CSV}
+\begin{algorithmic}[1]
+\Require NEO4J\_URI,\ NEO4J\_AUTH,\ OUT\_CSV=\texttt{scopusdata.csv}
+\Ensure  CSV (UTF-8, \texttt{sep="|"}, no index) with flattened metadata
 
-Aplanar listas → string
-  join_list(x): si lista → ", ".join(x) ; si no → x
-  para c en [authors, affiliations, affiliation_cities, affiliation_countries]:
-    si c ∈ df → df[c] ← map(join_list, df[c])
+\State \textbf{Query Neo4j (filtered + ordered).}
+\State $query \Assign$ \textsc{CypherForArticles} \Comment{filter by non-empty \texttt{scopus\_id}, \texttt{title}, ...}
+\State $rows \Assign \textsc{RunCypher}(NEO4J\_URI,\ NEO4J\_AUTH,\ query)$
+\State $df \Assign \textsc{DataFrame}(rows)$ \Comment{tabularize query results}
 
- Orden final de columnas
-  df ← df[[title, abstract, doi, authors,
-           affiliations, affiliation_cities, affiliation_countries,
-           citation_count, scopus_id]]
+\Statex \textbf{Join list-valued columns}
+\Function{JoinList}{x}
+  \State \Return $\textsc{IsList}(x) \ ?\ \textsc{Join}(x,\ \texttt{", "})\ :\ x$
+\EndFunction
+\ForAll{$c \in \textsc{Cols}(df)$} \Comment{for all c in columns}
+    \ForAll{$r \in \textsc{Rows}(df)$}
+      \If{\textsc{IsList}(df[c][r])}
+        \State $df[c][r] \Assign \textsc{Join}(df[c][r],\ \texttt{", "})$
+      \EndIf
+    \EndFor
+\EndFor
 
-Exportar CSV (utf-8, sin índice, sep="|")
-  escribir_csv(df, "scopusdata.csv", sep="|", encoding="utf-8", index=False)
-\end{minted}
+
+\Statex \textbf{Set final column order.}
+\State $cols \Assign [\texttt{title},\ \texttt{abstract},\ \texttt{doi},\ \texttt{authors},...]$
+\State $df \Assign \textsc{ReindexColumns}(df,\ cols)$
+
+\Statex \textbf{Export CSV.}
+\State \textsc{WriteCSV}(df,\ OUT\_CSV,\ sep=\texttt{"|"},\ encoding=\texttt{utf-8},\ index=\texttt{False})
+\end{algorithmic}
+\label{alg:export-articles-csv}
+\end{algorithmEN}
+
 
 
 \subsection{Preprocesamiento}
@@ -264,22 +278,43 @@ En esta etapa aplicare el siguiente flujo reproducible compuesto por estos pasos
     para garantizar la coherencia. Cuando corresponde, se desduplican registros o resúmenes 
     (comparación por DOI o por título+autor+año) con el fin de homogeneizar el vocabulario y reducir sesgos por repeticiones.
 Con el siguiente pseudocodigo se procedera a normalizar las columnas que contienen toda la semantica:
-\begin{minted}[linenos,frame=single,fontsize=\small]{text}
-FUN procesar_csv_a_parquet():
-    df ← leer_csv("scopusdata.csv","|")
-    normalizar(s): s←fix_text(s or ""); s←unicode_NFC(lower(s)); s←limpiar_simbolos(s); s←colapsar(s); return s
-    df["title_norm"]←map(normalizar, df["title"]); df["abstract_norm"]←map(normalizar, df["abstract"])
-    df ← dtypes_seguros(df) → objetos_a_json(df)
-    guardar_parquet(df,"processed.parquet", prefer fastparquet(gzip) → pyarrow/CSV)
+\begin{algorithmEN}
+\caption{Process and Label\_Language}
+\begin{algorithmic}[1]
+\Require IN\_CSV=\texttt{scopusdata.csv}
+\Require PARQ\_1=\texttt{processed.parquet}
+\Require SRC=\texttt{abstract\_norm}
+\Ensure   \texttt{processed\_lbl.parquet} (con \texttt{lang})
 
-FUN etiquetar_idioma():
-    set_langdetect_seed(0)
-    df ← cargar_parquet("processed.parquet")
-    src ← "abstract_norm" (crear si falta)
-    detect_lang_safe(t): si vacío→"und"; si error→"und"; si no→detect(t)
-    df["lang"] ← map(detect_lang_safe, df[src])
-    guardar_parquet(df,"processed_lbl.parquet", prefer fastparquet(gzip) → pyarrow/CSV)
-\end{minted}
+\Statex \textbf{Load CSV}
+\State $df \Assign \textsc{ReadCSV}(IN\_CSV,\ sep="|")$
+
+\Statex \textbf{Normalize text fields}
+\Function{Normalize}{s}
+  \State $s \Assign \textsc{FixText}(s)$ 
+  \State $s \Assign \textsc{Lower}(s)$;\ $s \Assign \textsc{UnicodeNFC}(s)$ \Comment{lowercase and canonical Unicode}
+  \State $s \Assign \textsc{CleanSymbols}(s)$;\ $s \Assign \textsc{CollapseWhitespace}(s)$ \Comment{punctuation; spaces}
+  \State \Return $s$
+\EndFunction
+\State $df[\texttt{title\_norm}] \Assign \textsc{Map}(\textsc{Normalize},\ df[\texttt{title}])$
+\State $df[\texttt{abstract\_norm}] \Assign \textsc{Map}(\textsc{Normalize},\ df[\texttt{abstract}])$
+
+\Statex \textbf{Label language from abstract\_norm}
+\State \textsc{SetLangDetectSeed}(0)
+
+\Function{DetectLangSafe}{t}
+  \If{$\neg \textsc{IsString}(t)\ \lor\ \textsc{IsBlank}(t)$} \State \Return \texttt{und} \EndIf
+  \State \textbf{try} \State \Return $\textsc{DetectLang}(t)$
+  \State \textbf{catch} \State \Return \texttt{und}
+\EndFunction
+\State $df[\texttt{lang}] \Assign \textsc{Map}(\textsc{DetectLangSafe},\ df[SRC])$
+
+\Statex \textbf{Save labeled table}
+\State \textsc{SaveParquet}(df,\ OUT,\ compression=\texttt{gzip})
+\end{algorithmic}
+\label{alg:process-and-label}
+\end{algorithmEN}
+
 Se lee el CSV (separador “|”) y se generan title-norm y abstract-norm corrigiendo codificación, pasando a 
 minúsculas y limpiando caracteres no informativos; luego se guarda todo en formato Parquet (columna-orientado y 
 comprimido) que conserva el esquema, reduce tamaño y acelera lecturas/filtrado frente a CSV. A continuación se 
@@ -289,70 +324,65 @@ es indeterminado) y se guarda un nuevo Parquet. La detección de idioma permite 
  \item \textbf{Segmentación en oraciones}. Dividir el texto en oraciones completas utilizando delimitadores válidos (puntos, signos de cierre), con el fin de 
     estructurar unidades coherentes para el análisis posterior. 
 
-\begin{minted}[frame=single,fontsize=\small]{text}
-FUN segmentar_oraciones():
-  IN="processed_lbl.parquet"; OUT="processed_sentences.parquet"; COL="abstract_norm"
+\begin{algorithmEN}
+\caption{Segment Text }
+\begin{algorithmic}[1]
+\Require IN(parquet),OUT(parquet-out),COL=\texttt{abstract\_norm},LANG\_COL=\texttt{lang}
+\Ensure  Table with a sentence segmentation derived from \texttt{COL} using \texttt{LANG\_COL}
 
-  df ← leer_parquet(IN, prefer fastparquet → pyarrow)
-  lang ← df["lang"] si existe; si no → "es"
+\State $df \Assign \textsc{ReadParquet}(IN)$ \Comment{load table}
+\State $segs \Assign \{\,\texttt{en}\mapsto \textsc{PySBD}(en),\ \texttt{es}\mapsto \textsc{PySBD}(es)\,\}$ \Comment{load language segmenters}
 
-  seg_es←pysbd(es); seg_en←pysbd(en)
-  split(text, lg): si vacío→[]; usar seg_en si lg inicia "en", sino seg_es; si error→[text]
+\Function{SegmentByLang}{text, lg}
+  \State $k \Assign \textsc{LowerPrefix}(lg)$ \Comment{e.g., "en", "es"}
+  \State $seg \Assign \textsc{Get}(segs,\ k)$
+  \State \Return $seg.\textsc{Segment}(text)$
+\EndFunction
 
-  df["sentences"] ← map(split, df[COL], lang)
-  out ← explode(df,"sentences"); renombrar a "sentence"
-  out ← add row_id_original (índice) y sentence_idx (cumcount por row_id)
-  out ← columnas [scopus_id?, title?, abstract?, abstract_norm?, lang?, row_id_original, sentence_idx, sentence]
+\ForAll{$r \in \textsc{Rows}(df)$} \Comment{iterate over rows}
+  \State $text \Assign df[COL][r]$
+  \State $lg \Assign df[LANG\_COL][r]$
+  \State $df[\texttt{sentences}][r] \Assign \textsc{SegmentByLang}(text,\ lg)$ \Comment{segment in its language}
+\EndFor
 
-  guardar_parquet(out, OUT, prefer fastparquet(gzip) → pyarrow → CSV)
-\end{minted}
+\Statex \textbf{One row per sentence:}
+\State $out \Assign \textsc{ExplodeRename}(df,\ \texttt{sentences}\rightarrow\texttt{sentence})$
+\State $\textsc{SaveParquet}(out,\ OUT)$
+\end{algorithmic}
+\label{alg:segment-text-lang-aware}
+\end{algorithmEN}
+
+
 Se lee el Parquet de entrada, elige la columna abstract-norm y segmenta sus textos en oraciones usando pysbd según el idioma que se detecto previamente.
 Devuelve una lista de oraciones por fila; luego crea una fila por oración, conserva metadatos útiles 
 añadiendo el índice de oración sentence-idx dentro de cada documento y escribe el resultado en processed-sentences.parquet.
 
     \item \textbf{Tokenización}. Segmentar cada oración en tokens (palabras o subpalabras) preservando frases clave frecuentes (p.\,ej.,\textit{aprendizaje automático}), a fin de mantener unidades semánticas estables.
-\begin{minted}[frame=single,fontsize=\small]{text}
-FUN extraer_frases_y_tokenizar():
-  IN="processed_sentences.parquet"; OUT="corpus_token"; COL="sentence"
+\begin{algorithmEN} 
+  \caption{Tokenize} 
+  \begin{algorithmic}[1] 
+    \Require IN = Parquet path, COL = \texttt{sentence} 
+    \Ensure Table with column \texttt{tokens\_gram} 
+    \State $df \Assign \textsc{ReadParquet}(\texttt{IN})$ \Comment{load} 
+    \State $df[\texttt{tokens\_base}] \Assign \textsc{SimpleTokenizeColumn}(df,\ \texttt{COL})$ \Comment{create} 
+    \State \textbf{Load Gensim phrase models.} \State $S \Assign \textsc{ToList}(df[\texttt{tokens\_base}])$ \Comment{prepare list of token sequences} \State $bigP \Assign \textsc{Phrases}(S,\ \textit{min\_count}=5,\ \textit{threshold}=10.0)$ \Comment{train bigram model} \State $bigF \Assign \textsc{Phraser}(bigP)$ \Comment{wrap bigram} 
+    \State $S\_bi \Assign \textsc{TransformAll}(bigF,\ S)$ \Comment{apply bigram} 
+    \State $triP \Assign \textsc{Phrases}(S\_bi,\ \textit{min\_count}=5,\ \textit{threshold}=10.0)$ \Comment{train trigram model} 
+    \State $triF \Assign \textsc{Phraser}(triP)$ \Comment{wrap trigram} 
+    \State $df[\texttt{tokens}] \Assign \textsc{TransformAllChain}([bigF,\,triF],\ df[\texttt{tokens\_base}])$ \Comment{apply} 
+    \State $df[\texttt{tokens\_gram}] \Assign \textsc{JoinTokensByComma}(df[\texttt{tokens}])$ \Comment{create} 
+    \State \textsc{SaveParquet}(df,\ \texttt{OUT},\ \textit{engine}=\texttt{fastparquet},\ \textit{comp}=\texttt{gzip}) \Comment{save} 
+  \end{algorithmic}
+  \label{alg:tokenize} 
+  \end{algorithmEN}
 
-Cargar y tokenizar
-  df ← leer_parquet(IN)                     
-  df["tokens_base"] ← map(simple_tokenize, df[COL])
 
-Frases (Gensim)
-  S ← lista(df["tokens_base"])
-  bigF ← Phraser(Phrases(S, min_count=5, threshold=10.0, delimiter=" "))
-  triF ← Phraser(Phrases(bigF[S], min_count=5, threshold=10.0, delimiter=" "))
 
-Aplicar y métricas
-  df["tokens"]     ← [triF[bigF(t)] para t en df["tokens_base"]]
-  df["tokens_csv"] ← join_por_comas(df["tokens"])
-  df["n_tokens"]   ← len_por_fila(df["tokens"])
-
-Guardar y mostrar
-  guardar_parquet(df, OUT, prefer fastparquet(gzip) → pyarrow → CSV)
-\end{minted}
 Carga el parquet y tokeniza con una expresión regular y entrena detectores de bigramas y trigramas con Gensim usando mincount=5 y threshold=10. 
 Luego aplica ambos phrasers para unir collocations frecuentes en un solo token el cual a su vez genera tokens. Los tokens son unidos por comas y se guardan en el nuevo parquet.
 
     \item \textbf{Eliminación de stop words}. Remover términos de alta frecuencia y escaso valor semántico.
-\begin{minted}[frame=single,fontsize=\small]{text}
-FUN filtrar_stopwords():
-Entrada: df con df["tokens"]; Salida: corpus_token_nostop.parquet
-  asegurar NLTK stopwords (ES/EN)
-  STOP ← set(stopwords_es ∪ stopwords_en) normalizadas (lower+sin acentos)
-  PROTECT ← {"in south america", ...}
 
-  is_stop(t):
-    si vacío→True; si t∈PROTECT→False
-    parts ← split(t normalizado por espacios/guiones)
-    return all(p∈STOP)  
-
-  df["tokens_nostop"] ← map( filtra cada t: descarta numéricos/cortos/stop; conserva resto )
-  df["text_for_embed"] ← join_espacios(df["tokens_nostop"])
-
-  guardar df en "corpus_token_nostop.parquet"
-\end{minted}
 Una vez tokenizado eliminamos las stop words asegura las listas, normaliza a minúsculas y quita tildes.
 La función is-stop considera tokens compuestos (espacios/guiones) y solo los descarta si todas sus partes 
 son stopwords; además, filter-tokens aplica filtros básicos (longitud mínima, quitar numéricos)
