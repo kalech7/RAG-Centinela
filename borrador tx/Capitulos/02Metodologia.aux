@@ -7,6 +7,7 @@
 \newlabel{sec:revision-sistematica}{{2.1}{35}{Revisión sistemática}{section.2.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.2}Enfoque Design Science Research (DSR)}{37}{section.2.2}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Proceso de Diseño de Investigación para el desarrollo de RAG en Centinela\relax }}{40}{figure.caption.46}\protected@file@percent }
+\newlabel{fig: DSR}{{2.1}{40}{Proceso de Diseño de Investigación para el desarrollo de RAG en Centinela\relax }{figure.caption.46}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.3}Diseño y desarrollo del artefacto}{41}{section.2.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Ingesta}{41}{subsection.2.3.1}\protected@file@percent }
 \@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Export\_Articles\_to\_CSV\relax }}{42}{algorithm.1}\protected@file@percent }
@@ -18,15 +19,25 @@
 \newlabel{alg:segment-text-lang-aware}{{3}{44}{Segment Text \relax }{algorithm.3}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {4}{\ignorespaces Tokenize\relax }}{45}{algorithm.4}\protected@file@percent }
 \newlabel{alg:tokenize}{{4}{45}{Tokenize\relax }{algorithm.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.3}Vectorizacion}{47}{subsection.2.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.4}Vector DB}{48}{subsection.2.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.5}Recuperación}{49}{subsection.2.3.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.6}Re-ranking}{49}{subsection.2.3.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.7}Construcción de Contexto}{49}{subsection.2.3.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.8}Generación (LLM)}{49}{subsection.2.3.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.9}Evaluación}{49}{subsection.2.3.9}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {5}{\ignorespaces Remove Stopwords by Language\relax }}{46}{algorithm.5}\protected@file@percent }
+\newlabel{alg:remove_stopwords_lang}{{5}{46}{Remove Stopwords by Language\relax }{algorithm.5}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {6}{\ignorespaces Lemmatize\_spaCy\relax }}{47}{algorithm.6}\protected@file@percent }
+\newlabel{alg:lemmatize-spacy}{{6}{47}{Lemmatize\_spaCy\relax }{algorithm.6}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {7}{\ignorespaces Chunking \texttt  {text\_lemma} \relax }}{48}{algorithm.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.3}Vectorizacion}{49}{subsection.2.3.3}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {8}{\ignorespaces Vectorizacion \relax }}{49}{algorithm.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.4}Vector DB}{50}{subsection.2.3.4}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {9}{\ignorespaces Build Vector Index from Embedding Matrix\relax }}{50}{algorithm.9}\protected@file@percent }
+\newlabel{alg:build_vector_index}{{9}{50}{Build Vector Index from Embedding Matrix\relax }{algorithm.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.5}Recuperación}{51}{subsection.2.3.5}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {10}{\ignorespaces Query Search over Vector Index\relax }}{51}{algorithm.10}\protected@file@percent }
+\newlabel{alg:search_vector_index}{{10}{51}{Query Search over Vector Index\relax }{algorithm.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.6}Re-ranking}{51}{subsection.2.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.7}Construcción de Contexto}{51}{subsection.2.3.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.8}Generación (LLM)}{51}{subsection.2.3.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.9}Evaluación}{51}{subsection.2.3.9}\protected@file@percent }
 \@setckpt{Capitulos/02Metodologia}{
-\setcounter{page}{50}
+\setcounter{page}{52}
 \setcounter{equation}{0}
 \setcounter{enumi}{6}
 \setcounter{enumii}{0}
@@ -53,21 +64,21 @@
 \setcounter{parentequation}{0}
 \setcounter{LT@tables}{4}
 \setcounter{LT@chunks}{1}
-\setcounter{FancyVerbLine}{15}
+\setcounter{FancyVerbLine}{0}
 \setcounter{linenumber}{1}
-\setcounter{LN@truepage}{58}
+\setcounter{LN@truepage}{60}
 \setcounter{FV@TrueTabGroupLevel}{0}
 \setcounter{FV@TrueTabCounter}{0}
 \setcounter{FV@HighlightLinesStart}{0}
 \setcounter{FV@HighlightLinesStop}{0}
-\setcounter{FancyVerbLineBreakLast}{2}
+\setcounter{FancyVerbLineBreakLast}{0}
 \setcounter{FV@BreakBufferDepth}{0}
 \setcounter{float@type}{16}
-\setcounter{minted@FancyVerbLineTemp}{11}
-\setcounter{minted@pygmentizecounter}{5}
+\setcounter{minted@FancyVerbLineTemp}{0}
+\setcounter{minted@pygmentizecounter}{0}
 \setcounter{listing}{0}
-\setcounter{algorithm}{4}
-\setcounter{ALG@line}{12}
+\setcounter{algorithm}{10}
+\setcounter{ALG@line}{10}
 \setcounter{ALG@rem}{0}
 \setcounter{ALG@nested}{0}
 \setcounter{ALG@Lnr}{2}

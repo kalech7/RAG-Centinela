@@ -115,7 +115,10 @@ formativa que permita ciclos iterativos de rediseño y mejora a lo largo del pro
 Finalmente, esta etapa consiste en difundir de forma clara los resultados del diseño y de la investigación realizada.
 \end{itemize}
 
-Estos pasos están basados en el modelo clásico de DSR de Peffers (2008), que vom Brocke adapta y expande en su guía.\\
+Estos pasos están basados en el modelo clásico de DSR de Peffers (2008), que vom Brocke adapta y expande en su guía. En la Figura \ref{fig: DSR} muestra el ciclo de DSR  dedicado a Centinela. La fila superior muestra las 6 fases 
+y los recuadros inferiores brindan mayor informacion acerca de cada fase. Además, el contenedor inferior resume tres puntos de entrada de investigación que guían las
+ decisiones de diseño y delimitan el alcance. En conjunto, conectan el marco teórico con las decisiones técnicas y la evaluación, 
+ asegurando coherencia a lo largo del proyecto.
 \begin{landscape}
 \begin{figure}[ht]
     \centering
@@ -205,6 +208,7 @@ at ([yshift=-0.75cm]current bounding box.south) {};
     \end{tikzpicture}
     }
     \caption{Proceso de Diseño de Investigación para el desarrollo de RAG en Centinela}
+    \label{fig: DSR}
 \end{figure}
 \end{landscape}
 
@@ -237,12 +241,10 @@ Con la siguiente función se extrae el corpus y se guardan en un CSV (UTF-8) par
 \begin{algorithmic}[1]
 \Require NEO4J\_URI,\ NEO4J\_AUTH,\ OUT\_CSV=\texttt{scopusdata.csv}
 \Ensure  CSV (UTF-8, \texttt{sep="|"}, no index) with flattened metadata
-
 \State \textbf{Query Neo4j (filtered + ordered).}
 \State $query \Assign$ \textsc{CypherForArticles} \Comment{filter by non-empty \texttt{scopus\_id}, \texttt{title}, ...}
 \State $rows \Assign \textsc{RunCypher}(NEO4J\_URI,\ NEO4J\_AUTH,\ query)$
 \State $df \Assign \textsc{DataFrame}(rows)$ \Comment{tabularize query results}
-
 \Statex \textbf{Join list-valued columns}
 \Function{JoinList}{x}
   \State \Return $\textsc{IsList}(x) \ ?\ \textsc{Join}(x,\ \texttt{", "})\ :\ x$
@@ -254,20 +256,14 @@ Con la siguiente función se extrae el corpus y se guardan en un CSV (UTF-8) par
       \EndIf
     \EndFor
 \EndFor
-
-
 \Statex \textbf{Set final column order.}
 \State $cols \Assign [\texttt{title},\ \texttt{abstract},\ \texttt{doi},\ \texttt{authors},...]$
 \State $df \Assign \textsc{ReindexColumns}(df,\ cols)$
-
 \Statex \textbf{Export CSV.}
 \State \textsc{WriteCSV}(df,\ OUT\_CSV,\ sep=\texttt{"|"},\ encoding=\texttt{utf-8},\ index=\texttt{False})
 \end{algorithmic}
 \label{alg:export-articles-csv}
 \end{algorithmEN}
-
-
-
 \subsection{Preprocesamiento}
 Una vez completada la ingesta de datos provienientes de Scopus, es fundamental preprocesarlos para normalizar y limpiar el texto, reducir ruido y mejorar la calidad semántica de las representaciones.
 En esta etapa aplicare el siguiente flujo reproducible compuesto por estos pasos:
@@ -285,10 +281,8 @@ Con el siguiente pseudocodigo se procedera a normalizar las columnas que contien
 \Require PARQ\_1=\texttt{processed.parquet}
 \Require SRC=\texttt{abstract\_norm}
 \Ensure   \texttt{processed\_lbl.parquet} (con \texttt{lang})
-
 \Statex \textbf{Load CSV}
 \State $df \Assign \textsc{ReadCSV}(IN\_CSV,\ sep="|")$
-
 \Statex \textbf{Normalize text fields}
 \Function{Normalize}{s}
   \State $s \Assign \textsc{FixText}(s)$ 
@@ -323,7 +317,6 @@ es indeterminado) y se guarda un nuevo Parquet. La detección de idioma permite 
 
  \item \textbf{Segmentación en oraciones}. Dividir el texto en oraciones completas utilizando delimitadores válidos (puntos, signos de cierre), con el fin de 
     estructurar unidades coherentes para el análisis posterior. 
-
 \begin{algorithmEN}
 \caption{Segment Text }
 \begin{algorithmic}[1]
@@ -352,13 +345,13 @@ es indeterminado) y se guarda un nuevo Parquet. La detección de idioma permite 
 \label{alg:segment-text-lang-aware}
 \end{algorithmEN}
 
-
 Se lee el Parquet de entrada, elige la columna abstract-norm y segmenta sus textos en oraciones usando pysbd según el idioma que se detecto previamente.
 Devuelve una lista de oraciones por fila; luego crea una fila por oración, conserva metadatos útiles 
 añadiendo el índice de oración sentence-idx dentro de cada documento y escribe el resultado en processed-sentences.parquet.
 
     \item \textbf{Tokenización}. Segmentar cada oración en tokens (palabras o subpalabras) preservando frases clave frecuentes (p.\,ej.,\textit{aprendizaje automático}), a fin de mantener unidades semánticas estables.
-\begin{algorithmEN} 
+
+  \begin{algorithmEN}[H]
   \caption{Tokenize} 
   \begin{algorithmic}[1] 
     \Require IN = Parquet path, COL = \texttt{sentence} 
@@ -376,67 +369,117 @@ añadiendo el índice de oración sentence-idx dentro de cada documento y escrib
   \label{alg:tokenize} 
   \end{algorithmEN}
 
-
-
 Carga el parquet y tokeniza con una expresión regular y entrena detectores de bigramas y trigramas con Gensim usando mincount=5 y threshold=10. 
 Luego aplica ambos phrasers para unir collocations frecuentes en un solo token el cual a su vez genera tokens. Los tokens son unidos por comas y se guardan en el nuevo parquet.
 
     \item \textbf{Eliminación de stop words}. Remover términos de alta frecuencia y escaso valor semántico.
 
+\begin{algorithmEN}[H]
+  \caption{Remove Stopwords by Language}
+  \begin{algorithmic}[1]
+    \Require IN = Parquet path,\; COL = \texttt{tokens},\; LANGCOL = \texttt{lang} (\texttt{"es"} or \texttt{"en"})
+    \Ensure Table with \texttt{tokens\_nostop} and \texttt{text\_for\_embed}
+    \State $df \Assign \textsc{ReadParquet}(\texttt{IN})$ \Comment{load input}
+    \State $LANGMAP \Assign \{\texttt{"es"}\!\to\!\texttt{"spanish"},\ \texttt{"en"}\!\to\!\texttt{"english"}\}$
+    \Statex \textbf{Stopword sets}
+    \State $S_{\mathrm{es}} \Assign \textsc{NLTK.Stopwords}(\texttt{spanish})$
+    \State $S_{\mathrm{en}} \Assign \textsc{NLTK.Stopwords}(\texttt{english})$
+    \State $\textsc{norm}(s) \Assign \textsc{Lower}(\textsc{StripDiacritics}(s))$
+    \State \textbf{Define} $\textsc{IsStop}(t,\ c)$:
+      \Statex \quad $S \Assign \textsc{LangStop}(c)$;\; $u \Assign \textsc{norm}(t)$
+      \Statex \quad \textbf{return} $(u \in S)$
+    \State \textbf{Define} $\textsc{FilterTokens}(xs,\ c,\ \textit{min\_len}=2)$:
+    \Statex \quad \textbf{return} $[\, t\in xs \mid \textsc{Len}(t)\ge \textit{min\_len} \land \neg\textsc{IsNum}(t) \land \neg\textsc{IsStop}(t,c)\,]$ 
+    \State $df[\texttt{tokens\_nostop}] \Assign \textsc{Map}(\textsc{FilterTokens},\ df[\texttt{COL}],\ df[\texttt{LANGCOL}])$
+    \State $df[\texttt{text\_for\_embed}] \Assign \textsc{JoinWithSpace}(df[\texttt{tokens\_nostop}])$
+    \Statex \textsc{SaveParquet}(df,\ \textit{comp}=\texttt{gzip})
+  \end{algorithmic}
+  \label{alg:remove_stopwords_lang}
+\end{algorithmEN}
+
 Una vez tokenizado eliminamos las stop words asegura las listas, normaliza a minúsculas y quita tildes.
 La función is-stop considera tokens compuestos (espacios/guiones) y solo los descarta si todas sus partes 
 son stopwords; además, filter-tokens aplica filtros básicos (longitud mínima, quitar numéricos)
 
-    \item \textbf{Aplicación de Lematización o stemming}. Preferir lematización sobre \textit{stemming} para conservar la forma canónica y reducir 
+\item \textbf{Aplicación de Lematización o stemming}. Preferir lematización sobre \textit{stemming} para conservar la forma canónica y reducir 
     la varianza léxica sin pérdida de significado \parencite{tabassum2020}.
-\begin{minted}[frame=single,fontsize=\small]{text}
-FUN lematizar_spacy():
-  df ← cargar "corpus_token_nostop.parquet"; assert "text_for_embed"
+\begin{algorithmEN}[H]
+\caption{Lemmatize\_spaCy}
+\begin{algorithmic}[1]
+\Require IN=\texttt{corpus\_stop.parquet}, TEXT\_COL=\texttt{text\_for\_embed}
+\Ensure  Parquet with \texttt{text\_lemma}
+\Statex \textbf{Load table}
+\State $df \Assign \textsc{ReadParquet}(IN)$;
+\Statex \textbf{Load spaCy pipelines}
+\State $nlp\_es \Assign \textsc{LoadSpacy}(\texttt{es\_core\_news\_sm})$
+\State $nlp\_en \Assign \textsc{LoadSpacy}(\texttt{en\_core\_web\_sm})$
+\Statex \textbf{Build language masks from \texttt{lang} column}
+\State $idx\_es \Assign [\,\textsc{LowerPrefix}(lg)=\texttt{es}\ \textbf{for}\ lg \in df[\texttt{LANG\_COL}]\,]$
+\State $idx\_en \Assign [\,\textsc{LowerPrefix}(lg)=\texttt{en}\ \textbf{for}\ lg \in df[\texttt{LANG\_COL}]\,]$
+\State \textbf{Function to lemmatize a string}: return space-separated lowercase lemmas
+\Statex \textbf{Process ES batch}
+\State $stream\_es \Assign nlp\_es.\textsc{Pipe}(\dots)$ \Comment{batched iterator of Docs}
+\State $lem\_es \Assign [\ \textsc{LemmaJoin}(d)\ \textbf{for}\ d \in stream\_es\ ]$
 
-  cargar nlp_es (es_core_news_sm) y nlp_en (en_core_web_sm) sin parser/ner/textcat
-  is_es(txt): True si tiene acentos o palabras {de, la, el, y, en, ...}
+\Statex \textbf{Process EN batch}
+\State $docs\_en \Assign nlp\_en.\textsc{Pipe}(df[\texttt{TEXT\_COL}][idx\_en],\ batch\_size{=}512)$
+\State $lem\_en \Assign [\ \textsc{LemmaJoin}(d)\ \textbf{for}\ d \in docs\_en\ ]$
 
-  idx_es ← filas donde is_es(text_for_embed); idx_en ← resto
-  lema(doc): join(lemma_.lower() si ≠ "-PRON-" else text.lower())
+\Statex \textbf{Assemble output column}
+\State $text\_lemma[idx\_es] \Assign lem\_es$;\quad $text\_lemma[idx\_en] \Assign lem\_en$
+\State $df[\texttt{text\_lemma}] \Assign \textsc{FillNA}(text\_lemma,\ \texttt{""})$ \Comment{replace nulls with empty string}
 
-  text_lemma[idx_es] ← map_pipe(nlp_es, df[idx_es].text_for_embed, batch=512)
-  text_lemma[idx_en] ← map_pipe(nlp_en, df[idx_en].text_for_embed, batch=512)
-  df["text_lemma"] ← text_lemma.fillna("")
+\Statex \textbf{Save}
+\State \textsc{SaveParquet}(df,\ OUT,\ compression=\texttt{gzip}) 
+\end{algorithmic}
+\label{alg:lemmatize-spacy}
+\end{algorithmEN}
 
-  guardar df en "corpus_token_nostop_lemma.parquet" (fastparquet→pyarrow→CSV)
-\end{minted}
 Iniciamos leyendo el parquet de entrada de la fase anterior y y lematiza en lote con spaCy usando dos modelos (ES/EN) dependiendo de la etiqueta que habiamos usado agregado anteriormente.
 Genera  tokens lematizados en minúsculas, separados por espacios y guarda el resultado en el nuevo parquet.
 
 \item \textbf{\textit{Chunking} para LLM/RAG}. Dividir documentos largos en fragmentos (\(\sim 200\text{--}400\) tokens) con solape (15–30\,\%) para respetar 
     límites de contexto de los transformadores y mejorar la recuperación a nivel de pasaje (Hambarde \& Proença, 2023).
-    \begin{minted}[frame=single,fontsize=\small]{text}
-FUN chunkear_por_tokens():
-    IN="corpus_token_nostop_lemma.parquet"; OUT="corpus_chunks.parquet"
-    MAX=300; OVERLAP=0.2; STRIDE=MAX*(1-OVERLAP)
-    tok ← AutoTokenizer("intfloat/multilingual-e5-base")
+\begin{algorithmEN}[H]
+\caption{Chunking \texttt{text\_lemma} }
+\begin{algorithmic}[1]
+\Require Parquet $IN\_PARQUET$ with \texttt{scopus\_id}, \texttt{text\_lemma}
+\State Load \textit{tokenizer} E5 (\textit{multilingual-e5-base}) 
+\State $df \gets \textsc{ReadParquet}(IN\_PARQUET)$
 
-    df ← leer_parquet(IN)
-    ordenar por scopus_id y (sentence_idx | row_id_original)
-    doc_df ← groupby(scopus_id).join_espacios(text_lemma) → text_for_chunk
-    doc_df ← asignar doc_id secuencial
+\Statex \textbf{Group and clean text}
+\State $agg\_text \gets \textsc{GroupByJoin}(df,\ key=\texttt{scopus\_id},\ col=\texttt{text\_lemma},\ sep=" ")$
+\State $doc\_df \gets \textsc{ResetIndex}(agg\_text)$;\quad asignar \texttt{doc\_id} consecutivo
+\State $doc\_df.\texttt{text\_for\_chunk} \gets \textsc{NormalizeSpaces}(doc\_df.\texttt{text\_lemma})$
 
-    chunk(text):
-    ids ← tok.encode(text, sin_special)
-    para s = 0..len(ids) paso STRIDE:
-        e ← min(s+MAX, len(ids))
-        emitir {start_token:s, end_token:e, token_count:e-s,
-                text_chunk: tok.decode(ids[s:e])}
-        si e == len(ids) → break
+\Statex \textbf{Chunking por tokens}
+\Function{ChunkByTokens}{$text,\ MAX\_TOKENS,\ STRIDE$}
+  \State $ids \gets \textsc{TokEncode}(text)$;\quad $n \gets |ids|$;\quad $chunks \gets [\ ]$ \Comment{map text $\to$ token IDs}
+  \For{$start \gets 0$ \textbf{step} $STRIDE$ \textbf{to} $n$}
+    \State $end \gets \min(start{+}MAX\_TOKENS,\ n)$
+\State $chunks.\textsc{Append}\big(\langle start,\ end,\ \textsc{TokDecode}(ids[start{:}end])\rangle\big)$ \Comment{decode token slice $\to$ text}
 
-  rows ← ∀ doc en doc_df, j, ch en enumerate(chunk(doc.text_for_chunk)):
-            guardar {doc_id, chunk_id:j, chunk_uid:"doc_id-j",
-                        scopus_id:doc.scopus_id, start_token, end_token,
-                        token_count, text_chunk}
+    \If{$end = n$} \State \textbf{break} \EndIf
+  \EndFor
+  \State \Return $chunks$
+\EndFunction
 
-  chunks_df ← DataFrame(rows)
-  guardar_parquet(chunks_df, OUT)   
-\end{minted}
+\Statex \textbf{Build chunk table}
+\State $rows \gets [\ ]$
+\ForAll{document $d$ in $doc\_df$}
+  \State $chunks \gets \textsc{ChunkByTokens}(d.\texttt{text\_for\_chunk},\ MAX\_TOKENS,\ STRIDE)$
+  \For{each chunk $c$ with index $j$ in $chunks$}
+    \State \textsc{AppendColumns}($rows$, \{\texttt{doc\_id}, \texttt{chunk\_id}, \ldots, \texttt{text\_chunk}\})
+  \EndFor
+\EndFor
+\State $CHUNKS \gets \textsc{ToDataFrame}(rows)$
+\Statex \textbf{Save}
+\State $save\_cols \gets [\texttt{doc\_id},\texttt{chunk\_id},\texttt{chunk\_uid},\texttt{scopus\_id},...]$
+\State $out \gets chunks[save\_cols]$
+\State \textsc{ToParquet}$(out,\ \texttt{pyarrow})$ 
+\end{algorithmic}
+\end{algorithmEN}
+
 Finalmente, para fragmentar el texto tomamos el Parquet lematizado, consolidamos un solo documento por artículo 
 y, con el tokenizer E5 (bi-encoder basado en transformer), lo separamos por conteo de tokens (tamaño = 300) con un solapamiento de 0.2.
 \end{enumerate}
@@ -451,68 +494,80 @@ Para el diseño de este sistema se usa un retriever denso de arquitectura bi-enc
 consulta y los fragmentos en un espacio vectorial de baja dimensión (vector corto y continuo de tamaño fijo) y comparar por similitud, 
 capturando relaciones semánticas más allá de coincidencias léxicas y mejorando la recuperación en escenarios RAG y open-domain QA.
 Además, estos embeddings se indexan en bases de datos vectoriales con búsqueda aproximada de vecinos cercanos (ANN), lo que viabiliza el escalamiento eficiente del sistema\parencite{joshi2025vector}.
-\begin{minted}[frame=single,fontsize=\small]{text}
-Cargar y validar
-df = leer_parquet(PARQUET_PATH)
-verificar(df, cols=["doc_id","chunk_id","start_token","end_token",
-"text_chunk"])
-limpiar_tipos(df); limpiar_texto(df)
+\begin{algorithmEN}[H]
+  \caption{Vectorizacion }
+  \begin{algorithmic}[1]
+    \Require \texttt{chunks\_df[text\_chunk]}, \texttt{EMB\_MODEL}, \texttt{FAISS\_PATH}, \texttt{PKL\_PATH}, \texttt{INIT\_BATCH}, \texttt{EMB\_MAX\_SEQ\_LEN}
+    \State $model \gets \textsc{LoadModel}(\texttt{EMB\_MODEL}, cpu)$ \Comment{Load E5 on CPU}
+    \State $\textsc{SetMaxSeqLen}(model,\ \min(\texttt{EMB\_MAX\_SEQ\_LEN},512))$ \Comment{Bound to 512}
+    \State $P \gets \textsc{Prefix}(\texttt{chunks\_df.text\_chunk},\ "passage:\ ")$ \Comment{E5 passage prefix}
+    \State $index \gets \varnothing$ \Comment{Will hold IndexFlatIP}
+    \For{$batch \in \textsc{Batches}(P,\ \texttt{INIT\_BATCH})$} \Comment{Encode in mini-batches}
+      \State $E \gets \textsc{Encode}(model,\ batch,\ \textit{normalize}=True)$ 
+      \If{$index=\varnothing$} \State $index \gets \textsc{NewIndexFlatIP}(d)$ \EndIf
+      \State $\textsc{Add}(index,\ E)$ \Comment{Append vectors to FAISS}
+    \EndFor
+    \State $\textsc{WriteFAISS}(index,\ \texttt{FAISS\_PATH})$ \Comment{Persist FAISS}
+    \State $\textsc{EnsureVecID}(\texttt{chunks\_df},\ 0..|P|-1)$ \Comment{0-based contiguous ids}
+  \State $cols \gets [\texttt{vec\_id},\ \texttt{chunk\_uid},\ \texttt{doc\_id},\ \texttt{chunk\_id},...,\ \texttt{scopus\_id}]$
+  \State $meta\_min \gets \textsc{Select}(\texttt{chunks\_df},\ cols)$
+    \State $\textsc{WritePKL}(\{\texttt{model},\ \texttt{device},\ \texttt{dim},\ \texttt{meta\_min}\},\ \texttt{PKL\_PATH})$
 
-IDs + textos
-df["vec_id"] = 0..N-1
-df["chunk_uid"] = f"{doc_id}-{chunk_id}"
-textos = "passage: " + df["text_chunk"]
+  \end{algorithmic}
+\end{algorithmEN}
 
-Modelo y vectorización (con backoff)
-modelo = cargar_ST(EMB_MODEL, cpu, max_len=EMB_MAX_SEQLEN)
-E = []
-for lote in partir(textos, tam=BATCH_SIZE, backoff=÷2):
-    E += [ modelo.encode(lote, normalizar=True) ]
-E = apilar_float32(E); dim = cols(E)
 
-guardar_npy(OUT_EMB_PATH, E)
-meta = df[["vec_id","chunk_uid","doc_id","chunk_id",
-        "start_token","end_token", "scopus_id?"]]
-guardar_pkl(OUT_META_PKL, { "model": EMB_MODEL, "device_used": "cpu", "dim": dim, "ntotal": N, "meta_min": meta })
-\end{minted}
 Toma los textos del archivo parquet, los limpia y les asigna identificadores (vec-id, chunk-uid), luego usa un modelo SentenceTransformer (E5) en CPU para convertir cada fragmento en un vector numérico normalizado (embedding).
 Procesa los textos por lotes (reduce el tamaño si hay errores de memoria), junta todos los embeddings en una matriz (N, dim) y finalmente guarda en dos archivos .npy (donde estan los vectores) y .pkl con la información mínima (modelo, dimensiones e índices que vinculan cada vector con su texto original).
 
-
 \subsection{Vector DB}
-\begin{minted}[frame=single,fontsize=\small]{text}
-E    = cargar_npy(IN_EMB_PATH)      
-meta = cargar_pkl(IN_META_PKL)       
-assert cols(E)==meta.dim and filas(E)==meta.ntotal
-idx = FAISS.IndexFlatIP(meta.dim) 
-idx.add(E)
-guardar_faiss(idx, FAISS_PATH)
-guardar_pkl(INFO_PKL_PATH, {"model": meta.model, "dim": meta.dim,
-                            "ntotal": idx.ntotal,
-                            "embeddings_path": IN_EMB_PATH,
-                            "meta_min_path": IN_META_PKL,
-                            "faiss_path": FAISS_PATH})
-\end{minted}
+\begin{algorithmEN}[H]
+  \caption{Build Vector Index from Embedding Matrix}
+  \begin{algorithmic}[1]
+    \Require Paths: \texttt{IN\_EMB}, \texttt{IN\_META}, \texttt{OUT\_INDEX}, \texttt{OUT\_INFO}
+    \Ensure Serialized vector index and metadata file
+
+    \State $X \gets \textsc{LoadArray}(\texttt{IN\_EMB})$ \Comment{embedding matrix}
+    \State $meta \gets \textsc{LoadObject}(\texttt{IN\_META})$ \Comment{load metadata info}
+    \State $index \gets \textsc{InitIndex}(\textit{dim}=meta.dim,\ \textit{metric}=\texttt{inner\_product})$
+    \State $\textsc{AddVectors}(index,\ X)$
+    \State $\textsc{SaveIndex}(index,\ \texttt{OUT\_INDEX})$
+    \State $info \gets \textsc{BuildRecord}(model,\ dim,\ count,\ paths)$
+    \State $\textsc{SaveObject}(\texttt{OUT\_INFO},\ info)$
+  \end{algorithmic}
+  \label{alg:build_vector_index}
+\end{algorithmEN}
+
 Carga los embeddings normalizados verifica que las dimensiones coincidan, construye un índice FAISS y  el resultado se guarda en disco (.bin)
 
 \subsection{Recuperación}
-\begin{minted}[frame=single,fontsize=\small]{text}
-Cargar artefactos
-meta = leer_pkl(PKL_MIN_PATH)["meta_min"]         
-idx  = faiss_read(FAISS_PATH)
-mdl  = ST(leer_pkl(PKL_MIN_PATH)["model"], cpu)   
-Encode consulta y buscar
-q_emb = mdl.encode(["query: "+Q], normalize=True, to_numpy=True).astype("float32")
-scores, ids = idx.search(q_emb, k)
+\begin{algorithmEN}[H]
+  \caption{Query Search over Vector Index}
+  \begin{algorithmic}[1]
+    \Require Paths: \texttt{PKL\_MIN\_PATH}, \texttt{FAISS\_PATH}, \texttt{SCOPUS\_CSV}
+    \Ensure Table of top-$k$ retrieved documents with metadata
 
-Armar TOP-K mínimo
-hits = meta.loc[ids[0]].reset_index(drop=True)
-hits.insert(1, "score", scores[0])
+    \Statex \textbf{load artifacts:}
+    \State \quad $meta \gets \textsc{LoadPKL}(\texttt{PKL\_MIN\_PATH})[\texttt{"meta\_min"}]$
+    \State \quad $index \gets \textsc{ReadFAISS}(\texttt{FAISS\_PATH})$
+    \State \quad $model \gets \textsc{LoadModel}(\textsc{LoadPKL}(\texttt{PKL\_MIN\_PATH})[\texttt{"model"}],\ \textit{device}=\texttt{cpu})$
 
-Unir con CSV por scopus_id
-sc = read_csv(SCOPUS_CSV, sep=SCOPUS_SEP); sc["scopus_id"]=str
-hits = merge_left(hits, sc, on="scopus_id")
-\end{minted}
+    \Statex \textbf{encode query and search:}
+    \State \quad $q\_emb \gets \textsc{Encode}(model,\ ["query: "+Q],\ \textit{normalize}=\texttt{True})$
+    \State \quad $(scores,\ ids) \gets \textsc{Search}(index,\ q\_emb,\ k)$ \Comment{retrieve top-$k$ similar vectors}
+
+    \Statex \textbf{assemble top-$k$ results:}
+    \State \quad $hits \gets \textsc{SelectRows}(meta,\ ids[0])$
+    \State \quad $\textsc{AddColumn}(hits,\ \texttt{"score"},\ scores[0])$
+
+    \Statex \textbf{merge with external CSV:}
+    \State \quad $sc \gets \textsc{ReadCSV}(\texttt{SCOPUS\_CSV},\ \textit{sep}=\texttt{"|"})$ \Comment{load full Scopus metadata}
+    \State \quad $\textsc{EnsureType}(sc[\texttt{"scopus\_id"}],\ \texttt{str})$
+    \State \quad $hits \gets \textsc{MergeLeft}(hits,\ sc,\ \textit{on}=\texttt{"scopus\_id"})$
+  \end{algorithmic}
+  \label{alg:search_vector_index}
+\end{algorithmEN}
+
 Primero cargamos la vector DB, luego vectorizamos  la consulta (query) y normaliza el embedding con ese vector hace búsqueda k-NN en FAISS y obtiene scores e ids.
 Para obtener un contexto mejorado se une el resultado con el CSV de Scopus por scopus-id para agregar la demas metadata que contiene el csv.
 \subsection{Re-ranking}
