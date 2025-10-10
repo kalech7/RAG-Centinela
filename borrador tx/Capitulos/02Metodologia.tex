@@ -213,21 +213,22 @@ at ([yshift=-0.75cm]current bounding box.south) {};
 \end{landscape}
 
 \section{Diseño y desarrollo del artefacto}
-De acuerdo a la literatura, se realiza el desarollo del RAG para Centinela usando las fases expuestas en la Figura \ref{fig:secciones-rag}. 
+De acuerdo con a la literatura, el desarrollo de RAG para Centinela se realiza usando las fases expuestas en la Figura~\ref{fig:secciones-rag}. La implementación,
+en \texttt{Jupyter Notebook}, está disponible en el repositorio de GitHub \href{https://github.com/kalech7/RAG-Centinela}{kalech7/RAG-Centinela}.
 
 \subsection{Ingesta} 
 De acuerdo al estudio exhaustiva de la literatura, el primer paso para la construccion de RAG es la obtencion de los datos. En nuestro caso
 los datos provienen de Scopus donde se extrae los metadatos de los articulos, en particular título y abstract, los cuales concentran la representación semántica principal del artículo y son los puntos 
-de entrada más frecuentes para consultas y embeddings\parencite{zhai2024llmIR}. De acuerdo con la literatura, se ha saleccionado los siguientes campos que 
+de entrada más frecuentes para consultas y embeddings\parencite{zhai2024llmIR}. De acuerdo con la literatura~\parencite{zhai2024llmIR,knollmeyer2024benchmarking,fan2021pretraining,ibrihich2022review,bernard2025fate,ma2025vector}, se han saleccionado los siguientes campos que 
 contienen la información necesaria para representar el contenido del documento e identificarlo.
 
 \begin{itemize}
-    \item \textbf{Título y abstract}: condensan la información temática central del articulo y son la base principal para la recuperación y la generación de embeddings~\parencite{zhai2024llmIR}.
-    \item \textbf{DOI}: garantiza trazabilidad y constata la fuente, enfrenta a los problemas de confianza y alucinación en RAG~\parencite{knollmeyer2024benchmarking}.
-    \item \textbf{Autores}: son un metadato clave ya que permite analizar impacto académico y coautorías~\parencite{fan2021pretraining}. 
-    \item \textbf{Afiliaciones}: aportan contexto institucional y geográfico, lo cual resulta útil para filtrar información por país o institución~\parencite{ibrihich2022review}.
-    \item \textbf{Número de citaciones}: es un metadato adicional para priorizar documentos de mayor impacto en la fase de ranking~\parencite{bernard2025fate}.
-    \item \textbf{ScopusID}: asegura que cada documento tenga un identificador único, evitando duplicados en la VDB~\parencite{ma2025vector}. 
+    \item \textbf{Título y abstract}: condensan la información temática central del articulo y son la base principal para la recuperación y la generación de embeddings.
+    \item \textbf{DOI}: garantiza trazabilidad y constata la fuente, enfrenta a los problemas de confianza y alucinación en RAG.
+    \item \textbf{Autores}: son un metadato clave ya que permite analizar impacto académico y coautorías. 
+    \item \textbf{Afiliaciones}: aportan contexto institucional y geográfico, lo cual resulta útil para filtrar información por país o institución.
+    \item \textbf{Número de citaciones}: es un metadato adicional para priorizar documentos de mayor impacto en la fase de ranking.
+    \item \textbf{ScopusID}: asegura que cada documento tenga un identificador único, evitando duplicados en la VDB. 
 \end{itemize}
 
 De esta forma los campos título y abstract concentran la mayor parte de semántica relevante para crear embeddings y recuperar documentos, por lo que conviene tratarlos como el bloque principal de indexación.
