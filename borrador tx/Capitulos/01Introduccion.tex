@@ -9,7 +9,12 @@ es una plataforma web para la comunidad académica ecuatoriana que permite busca
   RAG, Centinela se alineará con las tendencias actuales, comprenderá mejor el contexto que el usuario desea y ofrecerá resultados más precisos con resúmenes útiles y 
   evidencia trazable.
 \section{Justificación}
-
+La mejora del buscador de Centinela se fundamenta en ofrecer una experiencia de usuario más fluida y confiable al entender mejor el contexto de consultas largas 
+y producir respuestas trazables que disminuyen alucinaciones a diferencia de
+ los enfoques tradicionales, que sufren desajustes de vocabulario (polisemia, sinonimia y brechas léxicas) afectando el recall y el ranking, 
+ especialmente en varios idiomas.
+Adicionalmente, Centinela puede escalar el volumen de documentos y concurrencia de usuarios mediante bases de datos vectoriales que almacenan embeddings y permiten búsqueda semántica en alta dimensión 
+  con baja latencia y buenas propiedades de costo-desempeño, un pilar técnico probado para aplicaciones RAG.
 \section{Justificación Metodológica}
 
 \section{Objetivos}
@@ -25,6 +30,14 @@ de valor para el usuario.
 \end{itemize}
 
 \section{Alcance}
+El alcance del componente de mejora del buscador abarca la investigación, selección, validación e implementación de un buscador avanzado orientado a
+ optimizar la precisión y la relevancia de los resultados para investigadores ecuatorianos, garantizando además trazabilidad de la evidencia y mitigación
+  de alucinaciones mediante un esquema RAG. Primero, se realizará una revisión del estado actual de Centinela para establecer la línea base, documentando 
+  las limitaciones de los enfoques léxicos (polisemia, sinonimia y brechas léxicas) y reforzando prácticas de normalización del texto para reducir ruido.
+Luego, se analizarán enfoques recientes de IR y RAG para definir criterios técnicos de adopción, integración de evidencia 
+y flujo clásico de RAG (recuperación de fragmentos top-k y generación) con énfasis en faithfulness y uso de citas.
+Finalmente, se implementará e integrará el modelo seleccionado en Centinela con indexación semántica en una base de datos vectorial (índices ANN y 
+filtrado por metadatos) manteniendo latencia baja y trazabilidad de los fragmentos citados.
 
 \section{Marco Teórico}
 
@@ -662,7 +675,7 @@ adaptando el comportamiento del modelo sin necesidad de modificar su arquitectur
 
 
 \subsubsection{Fases de Implementación}
-\begin{figure}[htbp]
+\begin{figure}[H]
 \begin{center}
 \begin{tikzpicture}[x=1cm,y=1cm]
   \def\step{-1.5}
@@ -751,14 +764,12 @@ vectoriales, siendo así que \textcite{knollmeyer2024benchmarking}
 afirma que la calidad del preprocesamiento incide directamente en dimensiones de evaluación como la relevancia contextual y la fidelidad de las respuestas. Una preparación deficiente del texto puede introducir ruido en el contexto recuperado 
 y favorecer inconsistencias en la generación, lo cual incrementa el riesgo de alucinaciones; en este sentido, se entiende que el preprocesamiento actúa como una primera barrera de mitigación de errores (\textcite{zhang2025hallucination}).
 
-\paragraph{Vectorización:} Los fragmentos de texto una vez preprocesados se transforman en embeddings \footnote{Representación numérica que codifica el significado del texto en un espacio vectorial} permitiendo capturar la semántica de tal manera que 
-los textos similares estén próximos en el espacio vectorial. De acuerdo con \textcite{hu2024ragrau} existen dos enfoques: la recuperación dispersa (sparse) como por ejemplo 
-TF-IDF, BM25 y la recuperación densa, la cual es basada en embeddings generados por modelos preentrenados como BERT. El primer enfoque se basa en la frecuencia estadística del término en los documentos \parencite{fan2021pretraining}.
-Posteriormente, métodos como Latent Semantic Analysis (LSA) incorporaron técnicas de reducción dimensional a la matriz término-documento mediante descomposición en valores singulares, lo que permitió identificar estructuras semánticas latentes y superar 
-limitaciones de los modelos basados únicamente en frecuencia. Estudios recientes lo consideran el punto de inicio de los embeddings neuronales, los cuales ofrecen representaciones más contextuales y expresivas que permiten clasificar y recuperar el texto adecuadamente
-\parencite{fan2021pretraining,minaee2021}. Con la popularización del deep learning, surgieron representaciones densas como Word2Vec y GloVe, las cuales son capaces de capturar relaciones semánticas entre palabras en espacios vectoriales continuos. Los transformers son una 
-evolución del enfoque denso donde, según \textcite{casola2022pretrained}, los transformers preentrenados al combinarse con mecanismos de atención y un preentrenamiento masivo, producen vectores contextualizados robustos capaces de capturar relaciones de dependencia a largo
-plazo entre palabras.
+\paragraph{Vectorización:} Los fragmentos de texto una vez preprocesados se transforman en \emph{embeddings}\footnote{Representación numérica que codifica el significado del texto en un espacio vectorial}, permitiendo capturar la semántica de tal manera que los textos similares estén próximos en el espacio vectorial. De acuerdo con \textcite{hu2024ragrau}, existen dos enfoques principales:
+
+\begin{itemize}
+\item \textbf{Recuperación dispersa (sparse).} Métodos como TF-IDF y BM25 modelan la relevancia a partir de la frecuencia estadística de términos en los documentos~\parencite{fan2021pretraining}. Posteriormente, técnicas como \emph{Latent Semantic Analysis} (LSA) introducen reducción dimensional (SVD) sobre la matriz término–documento para identificar estructuras semánticas latentes, superando limitaciones basadas únicamente en frecuencias; varios trabajos la consideran un punto de partida hacia los embeddings neuronales \parencite{fan2021pretraining,minaee2021}.
+\item \textbf{Recuperación densa.} Basada modelos preentrenados, como BERT, que ofrecen representaciones más contextuales y expresivas. Con el auge del \emph{deep learning} surgieron representaciones densas como Word2Vec y GloVe, capaces de capturar relaciones semánticas en espacios continuos; los \emph{transformers} preentrenados, al combinar atención y preentrenamiento masivo, producen vectores contextualizados robustos que capturan dependencias de largo alcance \parencite{casola2022pretrained}.
+\end{itemize}
 
 \paragraph{Vector DB:}
 Los VDBs son importantes dentro del desarrollo de sistemas RAG, pues permiten almacenar y organizar representaciones densas de texto para su posterior
@@ -827,15 +838,32 @@ Dentro de los enfoques de deep learning para re-ranking, se distinguen los sigui
     \item \textbf{Transformers preentrenados}: arquitecturas como BERT, RoBERTa o T5 han revolucionado el re-ranking al permitir un entendimiento contextual profundo. Estos modelos, ajustados con tareas de recuperación, han demostrado superar ampliamente métodos previos \parencite{zhai2024llmIR}.
 \end{itemize}
 
-\paragraph{Construcción de Contexto:} 
-En esta etapa, los fragmentos recuperados y reordenados se integran para formar un contexto que será utilizado por el modelo generador. El objetivo es seleccionar 
-fragmentos de texto relevantes, eliminar redundancias y organizar la información de manera que aporte evidencia sólida a la respuesta final. De acuerdo con 
-\textcite{sarthi2024raptor}, este proceso implica técnicas de agregación y filtrado que permiten priorizar el contenido más pertinente, evitando 
-la sobrecarga de información irrelevante. Asimismo, \textcite{gao2023rag} destacan que la construcción de contexto debe considerar las limitaciones de los modelos 
-de lenguaje, como la longitud máxima de entrada, lo cual obliga a fragmentar, resumir o comprimir la información antes de su uso. Una preparación deficiente puede introducir ruido y
-aumentar el riesgo de alucinaciones.  
-En investigaciones recientes se han propuesto enfoques más avanzados, como la construcción jerárquica de contexto o el uso de resúmenes intermedios, que 
-buscan maximizar la relevancia semántica y mantener la coherencia global en la generación de respuestas \parencite{hambarde2023ir}.
+\paragraph{Construcción de Contexto:}
+La Tabla~\ref{tab:construccion-contexto} resume los componentes de la construcción de contexto en RAG junto con su respectiva referencia.
+\begin{table}[H]
+\centering
+\begin{tabularx}{\linewidth}{@{}lXl@{}}
+\toprule
+\textbf{Aspecto} & \textbf{Descripción breve} & \textbf{Referencia} \\
+\midrule
+Integración del contexto &
+Unir fragmentos reordenados; elegir lo relevante, quitar redundancias y dejar evidencia lista para el generador. & \textcite{gao2023rag} \\
+\addlinespace[2pt]
+Agregación y filtrado &
+Priorizar con re-rank/umbrales y deduplicar para evitar sobrecarga y reducir ruido. & \textcite{sarthi2024raptor} \\
+\addlinespace[2pt]
+Restricciones del LLM &
+Respetar la ventana: fragmentar, resumir o comprimir; mala preparación aumenta alucinaciones. & \textcite{gao2023rag} \\
+\addlinespace[2pt]
+Enfoques avanzados &
+Usar jerarquías y resúmenes intermedios para maximizar relevancia y coherencia global. & \textcite{sarthi2024raptor} \\
+\bottomrule
+\end{tabularx}
+\caption{Construcción de contexto en RAG}
+\label{tab:construccion-contexto}
+\end{table}
+
+
 
 \paragraph{Generación (LLM):} Durante esta fase, el modelo de lenguaje no solo transforma los fragmentos de texto en un texto general, sino que también decide cómo integrar la información 
 recuperada con su conocimiento preentrenado. En la literatura, este proceso se conceptualiza mediante diferentes estrategias de fusión, que buscan equilibrar el aporte
@@ -854,15 +882,26 @@ recuperación con el modelo. Como señalan \textcite{zhao2024rag}, la elección 
 generadas.
 
 \paragraph{Evaluación:} 
-La evaluación en los sistemas RAG es un proceso donde no se centra únicamente en evaluar la calidad de la respuesta generada, sino que debe evaluarse en todas las fases de implementación. 
-Empezando por el retriever, donde se verifica que esté encontrando evidencia relevante y suficiente. Para llevar a cabo esta verificación se utilizan métricas tradicionales como Recall@k, nDCG o MRR que permiten  
-cuantificar qué proporción de los documentos útiles fueron efectivamente recuperados. Es importante verificar que estén recuperando los documentos adecuadamente, ya que la etapa de generación no podrá producir respuestas fieles si carece de evidencia adecuada, por más sofisticado que sea el generador.  
-En segundo lugar, medimos la generación más allá de indicadores como BLEU, ROUGE o F1, introduciendo el concepto de fidelidad o groundedness, que examina si el texto producido está sustentado en las fuentes recuperadas, reduciendo el riesgo de alucinaciones. 
-Este criterio debe complementarse con la atribución de citas, es decir, si el sistema enlaza explícitamente sus afirmaciones con los fragmentos de textos extraídos, lo que facilita la trazabilidad \parencite{zhang2025hallucination}.  
-Finalmente, es necesaria una evaluación general del sistema donde se considere la utilidad práctica en un escenario real. Aquí entran en juego dimensiones como eficiencia (latencia y costo), robustez frente a consultas adversas y adaptabilidad en dominios específicos. \textcite{knollmeyer2024benchmarking} destacan que requiere combinar métricas automáticas con juicios humanos o LLM-as-a-judge calibrados.  
-Sin embargo, en los últimos años se ha propuesto integrar criterios de Fairness, Accountability, Transparency and Ethics (FATE) como parte de la evaluación. Según \textcite{bernard2025fate}, la confianza en los sistemas de recuperación y generación depende no solo de su precisión, sino también de que sean justos (sin sesgos desproporcionados hacia ciertos grupos), responsables (documentando el procedimiento 
-de evaluación y anotadores), transparentes (explicando cómo se recuperó y procesó la información) y éticos (respetando la privacidad, la diversidad de fuentes y evitando desinformación).  
-Incluir FATE como un parámetro de evaluación permite generar confianza social y regulatoria, además de estar alineado con la calidad técnica. Como sugiere \textcite{ramdurai2025llm}, la evaluación debe ser iterativa y multimodal: incluir tanto experimentos controlados en benchmarks como pruebas de usabilidad en escenarios reales. De esta manera se garantiza que el sistema sea confiable, útil, socialmente responsable y no solamente funcione bien en métricas numéricas.  
+La evaluación en sistemas RAG debe abordarse de forma multifásica, verificando tanto la recuperación (calidad y suficiencia del contexto) como la generación
+ (fidelidad y atribución), ya que el desempeño global depende de ambas etapas del pipeline~\textcite{knollmeyer2024benchmarking}.
+\mbox{}\\
+\noindent\textbf{Enfoque por fases.} La evaluación en los sistemas RAG es un proceso donde no se centra únicamente en evaluar la calidad de la respuesta generada, sino que debe evaluarse en todas las fases de implementación. 
+\mbox{}\\
+\noindent\textbf{Verificación del \textit{retriever}.} Empezando por el retriever, donde se verifica que esté encontrando evidencia relevante y suficiente. 
+\mbox{}\\
+\noindent\textbf{Métricas de recuperación.} Para llevar a cabo esta verificación se utilizan métricas tradicionales como Recall@k, nDCG o MRR que permiten cuantificar qué proporción de los documentos útiles fueron efectivamente recuperados. 
+\mbox{}\\
+\noindent\textbf{Impacto sobre la fidelidad.} Es importante verificar que estén recuperando los documentos adecuadamente, ya que la etapa de generación no podrá producir respuestas fieles si carece de evidencia adecuada, por más sofisticado que sea el generador.  
+\mbox{}\\
+\noindent\textbf{Generación y \textit{groundedness}.} En segundo lugar, medimos la generación más allá de indicadores como BLEU, ROUGE o F1, introduciendo el concepto de fidelidad o groundedness, que examina si el texto producido está sustentado en las fuentes recuperadas, reduciendo el riesgo de alucinaciones. 
+\mbox{}\\
+\noindent\textbf{Atribución y trazabilidad.} Este criterio debe complementarse con la atribución de citas, es decir, si el sistema enlaza explícitamente sus afirmaciones con los fragmentos de textos extraídos, lo que facilita la trazabilidad \parencite{zhang2025hallucination}.  
+\mbox{}\\
+\noindent\textbf{Evaluación general del sistema.} Finalmente, es necesaria una evaluación general del sistema donde se considere la utilidad práctica en un escenario real. Aquí entran en juego dimensiones como eficiencia (latencia y costo), robustez frente a consultas adversas y adaptabilidad en dominios específicos. \textcite{knollmeyer2024benchmarking} destacan que requiere combinar métricas automáticas con juicios humanos o LLM-as-a-judge calibrados.  
+\mbox{}\\
+\noindent\textbf{Criterios FATE.} Sin embargo, en los últimos años se ha propuesto integrar criterios de Fairness, Accountability, Transparency and Ethics (FATE) como parte de la evaluación. Según \textcite{bernard2025fate}, la confianza en los sistemas de recuperación y generación depende no solo de su precisión, sino también de que sean justos (sin sesgos desproporcionados hacia ciertos grupos), responsables (documentando el procedimiento de evaluación y anotadores), transparentes (explicando cómo se recuperó y procesó la información) y éticos (respetando la privacidad, la diversidad de fuentes y evitando desinformación).  
+\mbox{}\\
+\noindent\textbf{Iteración y multimodalidad.} Incluir FATE como un parámetro de evaluación permite generar confianza social y regulatoria, además de estar alineado con la calidad técnica. Como sugiere \textcite{ramdurai2025llm}, la evaluación debe ser iterativa y multimodal: incluir tanto experimentos controlados en benchmarks como pruebas de usabilidad en escenarios reales. De esta manera se garantiza que el sistema sea confiable, útil, socialmente responsable y no solamente funcione bien en métricas numéricas.  
 
 \subsubsection{Paradigmas}
 \begin{figure}[H]
