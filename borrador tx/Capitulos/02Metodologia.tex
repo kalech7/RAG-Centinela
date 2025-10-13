@@ -572,9 +572,135 @@ Carga los embeddings normalizados verifica que las dimensiones coincidan, constr
 Primero cargamos la vector DB, luego vectorizamos  la consulta (query) y normaliza el embedding con ese vector hace búsqueda k-NN en FAISS y obtiene scores e ids.
 Para obtener un contexto mejorado se une el resultado con el CSV de Scopus por scopus-id para agregar la demas metadata que contiene el csv.
 \subsection{Re-ranking}
+Se implementa un cross encoder entrenado de segunda capa que re-ordena los candidatos recuperados en la primera etapa densa. El puntaje final se obtiene por fusión lineal (min-max + suma ponderada)
+entre el score denso de la recuperación inicial y el score del cross-encoder. 
+Esta estrategia equilibra eficacia (precisión en el top-k) y eficiencia (coste computacional), y se ejecuta en CPU con MiniLM por ser un modelo compacto (menor latencia y memoria).
+\begin{algorithmEN}[H]
+  \caption{CE Re-Ranking (concise, with brief comments)}
+  \begin{algorithmic}[1]
+    \Require query $q$, table $D$, text cols $\texttt{text\_cols}$, model $\texttt{CE\_MODEL}$, device, batch $B$, weights $(w_{ce},w_d)$
+    \Ensure $D'$ sorted by $\texttt{score\_final}$
+
+    \Function{SelectText}{$r,\ C$}                  \Comment{pick first non-empty text field}
+      \For{$c\in C$}
+        \If{$\textsc{NonEmpty}(r[c])$} \Return $r[c]$ \EndIf
+      \EndFor
+      \State \textsc{Error}                         \Comment{no valid text}
+    \EndFunction
+
+    \Function{MinMax}{$x$}                          \Comment{normalize to [0,1] per query}
+      \State $m\gets\min(x),\ M\gets\max(x)$
+      \If{$M\le m$} \State \textsc{Error}           \Comment{constant vector}
+      \EndIf
+      \State \Return $(x-m)/(M-m)$
+    \EndFunction
+
+    \Function{Fuse}{$z_{ce},z_d,w_{ce},w_d$}        \Comment{simple convex fusion}
+      \State \Return $w_{ce}z_{ce}+w_d z_d$
+    \EndFunction
+
+    \State \textsc{Assert}($|D|>0 \land |\texttt{text\_cols}|>0$) \Comment{basic checks}
+    \State $CE\gets\textsc{CrossEncoder}(\texttt{CE\_MODEL},\ \texttt{device})$ \Comment{load CE (once)}
+    \State $P,I\gets[\ ],[\ ]$                       \Comment{(q,doc) pairs and index map}
+    \For{row $r$ at idx $i$ in $D$}
+      \State append $(q,\ \Call{SelectText}{r,\texttt{text\_cols}})$ to $P$ \Comment{build CE input}
+      \State append $i$ to $I$                       \Comment{keep original index}
+    \EndFor
+
+    \State $S_{ce}\gets \textsc{BatchedPredict}(CE,P,B)$ \Comment{batched CE inference}
+    \State $D'\gets D$                               \Comment{work on a copy}
+    \For{$j$} $D'[\texttt{score\_ce}]_{I[j]}\gets S_{ce}[j]$ \EndFor \Comment{write CE scores}
+
+    \State $z_{ce}\gets \Call{MinMax}{D'[\texttt{score\_ce}]}$ \Comment{normalize CE}
+    \If{$\texttt{score\_dense}\in \textsc{Cols}(D')$}
+      \State $z_d\gets \Call{MinMax}{D'[\texttt{score\_dense}]}$ \Comment{normalize dense}
+      \State $D'[\texttt{score\_final}]\gets \Call{Fuse}{z_{ce},z_d,w_{ce},w_d}$ \Comment{fuse signals}
+    \Else
+      \State $D'[\texttt{score\_final}]\gets z_{ce}$ \Comment{no dense: CE only}
+    \EndIf
+
+    \State \Return $\textsc{SortBy}(D',\ \texttt{score\_final},\ \textit{desc}=True)$ \Comment{final ranking}
+  \end{algorithmic}
+\end{algorithmEN}
+
+Primero toma una lista de candidatos recuperadaos para una consulta y los reordena usando un cross encoder.
+Construye pares (consulta, texto) a partir de las columnas de texto prioritarias, infiere puntajes del CE por lotes, normaliza esos puntajes (y, si existe, 
+el puntaje denso del recuperador) con min-max y luego los fusiona mediante una suma ponderada convexa.
+
 
 \subsection{Construcción de Contexto}
+La evidencia recolectada en el paso anterior se convierte en un bloque de evidencia utilizable por el LLM, equilibrando cobertura semántica y límite de longitud. 
+Proporcionar cada texto en chunks manejables (longitud fija), preservando su trazabilidad (título, autores, año, DOI); y ensamblar un “paquete” de contexto con instrucciones de uso para el modelo
+\begin{algorithmEN}[H]
+\caption{BuildContextBlocks}
+\begin{algorithmic}[1]
+\Require reranked table $D$; top-$k$; character limit $L$; flag $trim$
+\Ensure list $blocks$ with fields \texttt{cite\_id}, \texttt{title}, \texttt{text}, \texttt{authors\_mention}, \texttt{authors\_raw}, \texttt{year}, \texttt{doi\_raw}
+
+\State $T \gets$ first column present in \texttt{[title, chunk\_title]} \Comment pick title source
+\State $B \gets$ first column present in \texttt{[abstract, chunk\_text, summary]} \Comment pick body source
+\State $n \gets \min(k, |D|)$;\quad $blocks \gets [\ ]$ \Comment cap $k$ and init output
+
+\For{$i \gets 0..n-1$} \Comment iterate top-$n$ rows
+  \State $r \gets D[i]$ \Comment current row
+  \State $title \gets \textsc{FirstNonEmpty}(r,[T])$ \textbf{or} ``\!Untitled!'' \Comment get title
+  \State $body \gets \textsc{FirstNonEmpty}(r,[B])$ \Comment get body text
+  \If{$trim$} \Comment optional clipping
+    \State $body \gets \textsc{Shorten}(body, L)$ \Comment enforce char limit
+  \EndIf
+  \State $auth\_raw \gets r[\texttt{authors}]$ \textbf{or} ``'' \Comment raw authors
+  \State $mention \gets \textsc{FormatAuthorsForMention}(auth\_raw)$ \Comment short citation string
+  \State $year \gets \textsc{ExtractYear}(r)$ \Comment publication year
+  \State $doi \gets r[\texttt{doi}]$ \textbf{or} ``'' \Comment DOI if present
+  \State $cid \gets \textsc{RowId}(r)$ \Comment prefer scopus\_id"
+
+  \State \textbf{append} \{
+    \texttt{cite\_id}: $cid$,\,
+    \texttt{title}: $title$,\,
+    \texttt{text}: $body$,\,
+    \texttt{authors\_mention}: $mention$,\,
+    \texttt{authors\_raw}: $auth\_raw$,\,
+    \texttt{year}: $year$,\,
+    \texttt{doi\_raw}: $doi$
+  \} to $blocks$ 
+\EndFor
+
+\State \Return $blocks$ \Comment final list
+\end{algorithmic}
+\end{algorithmEN}
+
+A partir de la tabla reranqueada, se eligen las columnas para título (title/chunk title) y cuerpo (abstract/chunktext/summary), se limita el número de filas a top-k y se crea la lista blocks. Para las 
+n primeras filas se obtienen el título y el texto; si trim está activo, el cuerpo se recorta hasta L
+ caracteres. Se capturan los autores completos y se genera una mención abreviada, se extraen el año, el DOI y el identificador (scopusid). Con estos campos se arma cada bloque y devuelve blocks, listo para alimentar el prompt.
 
 \subsection{Generación (LLM)}
+En esta penultima etapa el LLM produce una respuesta dependiendo de la evidencia externa extraida previamente. recivbe un prompt estruturado que incluye la instruccion de estilo y formato
+la pregunta del usuario y los fragmentos selecionados tras la recuperacion y reraking el llm cita explícitamente las fuentes dentro de cada párrafo para asegurar trazabilidad y verificabilidad
+\begin{algorithmEN}[H]
+\caption{LLMGenerateViaHTTP}
+\begin{algorithmic}[1]
+\Require query $q$; list $blocks$; \texttt{MODEL}; \texttt{BASE\_URL}; \texttt{TEMPERATURE}; \texttt{MAX\_NEW\_TOKENS}; \texttt{TIMEOUT}; \texttt{MAX\_INPUT\_CHARS}
+\Ensure text $\textit{answer\_text}$
+\State $prompt \gets \textsc{ComposePrompt}(q,\ blocks,\ \texttt{MAX\_INPUT\_CHARS})$
+\State $prompt \gets \textsc{SafeStr}(prompt)$ \Comment  Max input chars
+\State $url \gets \texttt{BASE\_URL}\ \Vert\ \texttt{"/api/chat"}$ \Comment chat endpoint
+\State $payload \gets \{$
+\Statex \quad \texttt{"model"}:\ \texttt{MODEL},
+\Statex \quad \texttt{"messages"}:\ \big[\{\texttt{role}:\texttt{"system"},\ \texttt{content}:\ ``You are an academic assistant. Answer only using the provided context.''\},\ \{\texttt{role}:\texttt{"user"},\ \texttt{content}:\ prompt\}\big],
+\Statex \quad \texttt{"options"}:\ \{\texttt{temperature}:\ \texttt{TEMPERATURE},\ \texttt{num\_predict}:\ \texttt{MAX\_NEW\_TOKENS}\},
+\Statex \quad \texttt{"stream"}:\ \texttt{false}
+\Statex \ \}
+\State $\textit{resp} \gets \textsc{HTTP\_POST}(url,\ \textit{json}=payload,\ \textit{timeout}=\texttt{TIMEOUT})$ \Comment call to the LLM backend
+\State $data \gets \textsc{ParseJSON}(\textit{resp})$
+\State $\textit{answer\_text} \gets \textsc{SafeStr}(data[\texttt{"message"}][\texttt{"content"}])$ 
+\State \Return $\textit{answer\_text}$
+\end{algorithmic}
+\end{algorithmEN}
+
+Para iniciar la generación, se construye el prompt a partir de la consulta y de los bloques de contexto, ajustándolos a un tope de caracteres y limpiandolos con SafeStr. 
+Ese prompt se envía como payload al endpoint de Ollama\footnote{Ollama es un servidor para ejecutar modelos de lenguaje localmente (CPU o GPU).} 
+(api/chat) junto con las opciones del modelo. Luego, se parsea el JSON de respuesta, se extrae message.content, se limpia nuevamente con SafeStr para asegurar texto válido 
+y, finalmente, devuelve la respuesta.
+
 
 \subsection{Evaluación}

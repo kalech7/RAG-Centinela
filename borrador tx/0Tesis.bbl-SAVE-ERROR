@@ -70,7 +70,6 @@
       \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Disponible en Research Online de la University of Wollongong}
       \field{title}{Methodology for JBI Umbrella Reviews}
       \field{year}{2014}
       \true{nocite}
@@ -225,15 +224,11 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Machine Learning with Applications}
-      \field{note}{Acceso abierto, CC BY 4.0}
       \field{title}{Pre-trained transformers: An empirical comparison}
       \field{volume}{9}
       \field{year}{2022}
       \field{pages}{100334}
       \range{pages}{1}
-      \verb{doi}
-      \verb 10.1016/j.mlwa.2022.100334
-      \endverb
     \endentry
     \entry{fan2024ragllm}{inproceedings}{}{}
       \name{author}{8}{}{%
@@ -305,12 +300,6 @@
       \verb{doi}
       \verb 10.1145/3637528.3671470
       \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.1145/3637528.3671470
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1145/3637528.3671470
-      \endverb
     \endentry
     \entry{fan2021pretraining}{article}{}{}
       \name{author}{8}{}{%
@@ -371,12 +360,6 @@
       \field{journaltitle}{arXiv preprint arXiv:2111.13853}
       \field{title}{Pre-training Methods in Information Retrieval}
       \field{year}{2021}
-      \verb{urlraw}
-      \verb https://arxiv.org/abs/2111.13853
-      \endverb
-      \verb{url}
-      \verb https://arxiv.org/abs/2111.13853
-      \endverb
     \endentry
     \entry{gao2023rag}{misc}{}{}
       \name{author}{9}{}{%
@@ -444,12 +427,6 @@
       \field{year}{2023}
       \verb{eprint}
       \verb 2312.10997
-      \endverb
-      \verb{urlraw}
-      \verb https://arxiv.org/abs/2312.10997
-      \endverb
-      \verb{url}
-      \verb https://arxiv.org/abs/2312.10997
       \endverb
     \endentry
     \entry{hambarde2023ir}{article}{}{}
@@ -556,12 +533,6 @@
       \field{journaltitle}{arXiv preprint arXiv:2404.19543}
       \field{title}{RAG and RAU: A Survey on Retrieval-Augmented Language Models in Natural Language Processing}
       \field{year}{2024}
-      \verb{urlraw}
-      \verb https://arxiv.org/abs/2404.19543
-      \endverb
-      \verb{url}
-      \verb https://arxiv.org/abs/2404.19543
-      \endverb
     \endentry
     \entry{ibrihich2022review}{inproceedings}{}{}
       \name{author}{4}{}{%
@@ -680,12 +651,6 @@
       \field{journaltitle}{arXiv preprint arXiv:2402.01763}
       \field{title}{When Large Language Models Meet Vector Databases: A Survey}
       \field{year}{2024}
-      \verb{urlraw}
-      \verb https://arxiv.org/abs/2402.01763
-      \endverb
-      \verb{url}
-      \verb https://arxiv.org/abs/2402.01763
-      \endverb
     \endentry
     \entry{joshi2025vector}{article}{}{}
       \name{author}{1}{}{%
@@ -716,12 +681,6 @@
       \range{pages}{11}
       \verb{doi}
       \verb 10.17148/IARJSET.2025.12210
-      \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.17148/IARJSET.2025.12210
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.17148/IARJSET.2025.12210
       \endverb
     \endentry
     \entry{knollmeyer2024benchmarking}{inproceedings}{}{}
@@ -787,12 +746,6 @@
       \range{pages}{12}
       \verb{doi}
       \verb 10.5220/0013065700003838
-      \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.5220/0013065700003838
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.5220/0013065700003838
       \endverb
     \endentry
     \entry{Lin2022SurveyTransformers}{article}{}{}
@@ -951,12 +904,6 @@
       \field{journaltitle}{arXiv preprint arXiv:2310.11703}
       \field{title}{A Comprehensive Survey on Vector Database: Storage and Retrieval Technique, Challenge}
       \field{year}{2025}
-      \verb{urlraw}
-      \verb https://arxiv.org/abs/2310.11703v2
-      \endverb
-      \verb{url}
-      \verb https://arxiv.org/abs/2310.11703v2
-      \endverb
     \endentry
     \entry{minaee2021}{article}{}{}
       \name{author}{6}{}{%
@@ -1099,12 +1046,6 @@
       \verb{doi}
       \verb 10.2753/MIS0742-1222240302
       \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.2753/MIS0742-1222240302
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.2753/MIS0742-1222240302
-      \endverb
     \endentry
     \entry{ramdurai2025llm}{article}{}{}
       \name{author}{1}{}{%
@@ -1127,7 +1068,6 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{International Journal of Marketing and Technology}
-      \field{note}{Disponible en acceso abierto en ResearchGate}
       \field{number}{01}
       \field{title}{Large Language Models (LLMs), Retrieval-Augmented Generation (RAG) systems, and Convolutional Neural Networks (CNNs) in Application systems}
       \field{volume}{15}
@@ -1188,15 +1128,8 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of the International Conference on Learning Representations (ICLR)}
-      \field{note}{Published as a conference paper at ICLR 2024}
       \field{title}{RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval}
       \field{year}{2024}
-      \verb{urlraw}
-      \verb https://openreview.net/forum?id=raptor2024
-      \endverb
-      \verb{url}
-      \verb https://openreview.net/forum?id=raptor2024
-      \endverb
     \endentry
     \entry{tabassum2020}{article}{}{}
       \name{author}{2}{}{%
@@ -1231,12 +1164,6 @@
       \field{year}{2020}
       \field{pages}{4864\bibrangedash 4870}
       \range{pages}{7}
-      \verb{urlraw}
-      \verb https://www.irjet.net/archives/V7/i6/IRJET-V7I6872.pdf
-      \endverb
-      \verb{url}
-      \verb https://www.irjet.net/archives/V7/i6/IRJET-V7I6872.pdf
-      \endverb
     \endentry
     \entry{wu2025ragSurvey}{article}{}{}
       \name{author}{11}{}{%
@@ -1407,12 +1334,6 @@
       \verb{doi}
       \verb 10.1145/3626772.3657848
       \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.1145/3626772.3657848
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1145/3626772.3657848
-      \endverb
     \endentry
     \entry{zhang2025hallucination}{article}{}{}
       \name{author}{2}{}{%
@@ -1451,12 +1372,6 @@
       \range{pages}{1}
       \verb{doi}
       \verb 10.3390/math13050856
-      \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.3390/math13050856
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.3390/math13050856
       \endverb
     \endentry
     \entry{zhao2024rag}{article}{}{}
@@ -1528,18 +1443,10 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{arXiv}
-      \field{note}{APA style: Zhao, P., Zhang, H., Yu, Q., Wang, Z., Geng, Y., Fu, F., Yang, L., Zhang, W., Jiang, J., \& Cui, B. (2024). Retrieval-augmented generation for AI-generated content: A survey. \textit{arXiv.} https://doi.org/10.48550/arXiv.2402.19473}
       \field{title}{Retrieval-Augmented Generation for AI-Generated Content: A Survey}
-      \field{volume}{abs/2402.19473}
       \field{year}{2024}
       \verb{doi}
       \verb 10.48550/arXiv.2402.19473
-      \endverb
-      \verb{urlraw}
-      \verb https://arxiv.org/abs/2402.19473
-      \endverb
-      \verb{url}
-      \verb https://arxiv.org/abs/2402.19473
       \endverb
     \endentry
   \enddatalist
