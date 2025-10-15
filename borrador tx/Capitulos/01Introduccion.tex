@@ -804,6 +804,39 @@ la búsqueda aproximada. Se implementa mediante enfoques como:
     \item \textbf{PQ (Product Quantization):} divide los vectores en subespacios y los representa de forma comprimida, lo que acelera significativamente el cálculo de distancias en colecciones de gran tamaño \parencite{ma2025vector}.
 \end{itemize}
 
+De acuerdo con las referencias \textcite{ma2025vector,Wang2021Milvus}, la Tabla~\ref{tab:vdb_ann_corpus} muestra las herramientas y sistemas para recuperación vectorial en RAG, separando ANN (implementación de índices) de VDBs (servicios de almacenamiento/consulta y capacidades de producción).
+Las librerías ANN aportan el motor algorítmico que calcula vecinos cercanos en espacios vectoriales usando métodos y estructuras de indexación para búsqueda por similitud (IVF, PQ, HNSW).
+En general no resuleven tareas de gestion datos como esquemas y metadatos, control de concurrencia, replicación , etc. Por lo que son considerados componentes de bajo nivel que se agregan en sistemas mayores.
+Por otro lado, las bases de datos vectoriales (VDBs) integran esos mismos índices como motores internos y añaden la capa de gestión necesaria para operar a escala 
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{p{2.6cm} p{3.2cm} p{9.8cm}}
+\toprule
+\textbf{Tipo} & \textbf{Nombre} & \textbf{Descripción breve} \\
+\midrule
+\multicolumn{3}{@{}l}{\textbf{Librería ANN}}\\
+\addlinespace[2pt]
+ & FAISS & Librería de Facebook/Meta para búsqueda de vecinos más cercanos con soportes clásicos (IVF, PQ) y aceleración CPU/GPU; ampliamente usada como backend en VDBs. \\
+ & ANNOY & Índices basados en árboles para ANN, común en escenarios de baja/mediana dimensionalidad; frecuentemente referenciada junto a FAISS. \\
+ & SPTAG & Librería de Microsoft para ANN, mencionada junto a FAISS como “librería”, no como sistema de base de datos completo.\\
+\addlinespace[4pt]
+\multicolumn{3}{@{}l}{\textbf{VDB (Sistema)}}\\
+\addlinespace[2pt]
+ & Milvus & VDB distribuido; soporta múltiples índices (IVF, PQ, HNSW, RNSG), CPU/GPU, y arquitectura de almacenamiento/consulta escalable. \\
+ & Weaviate & VDB gestionado con soporte de índices ANN y consultas híbridas; aparece en tablas comparativas de características/distancias. \\
+ & Qdrant & VDB orientado a ANN (HNSW), filtrado por metadatos y despliegue gestionado; listado en comparativas de VDBs. \\
+\addlinespace[2pt]
+VDB (Servicio) & Pinecone & Servicio gestionado de VDB; foco en operación/escala y latencia, citado en comparativas de mercado.  \\
+Extensión DB relacional & pgvector & Extensión de PostgreSQL para vectores; habilita ANN/NNS dentro de un RDBMS, citada en tablas de funciones/distancias.  \\
+Motor de búsqueda & Elasticsearch & Motor con capacidades vectoriales (denso/esparso) en ediciones recientes; citado como comparativo frente a VDBs dedicadas.\\
+\bottomrule
+\end{tabular}
+\caption{Librerías ANN y bases de datos vectoriales (VDBs)}
+\label{tab:vdb_ann_corpus}
+\end{table}
+
+
 \paragraph{Recuperación:} Esta fase es el punto donde el usuario interactúa con el conocimiento almacenado y su eficiencia y eficacia se reflejan en la calidad 
 de la respuesta obtenida. Como señalan \textcite{fan2021pretraining}, la recuperación en sistemas de IR se centra en estimar la relevancia entre la consulta y los documentos, devolviendo una lista ordenada
 de resultados que responden a la necesidad de información.  
