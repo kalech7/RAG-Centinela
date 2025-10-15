@@ -806,7 +806,7 @@ la búsqueda aproximada. Se implementa mediante enfoques como:
 
 De acuerdo con las referencias \textcite{ma2025vector,Wang2021Milvus}, la Tabla~\ref{tab:vdb_ann_corpus} muestra las herramientas y sistemas para recuperación vectorial en RAG, separando ANN (implementación de índices) de VDBs (servicios de almacenamiento/consulta y capacidades de producción).
 Las librerías ANN aportan el motor algorítmico que calcula vecinos cercanos en espacios vectoriales usando métodos y estructuras de indexación para búsqueda por similitud (IVF, PQ, HNSW).
-En general no resuleven tareas de gestion datos como esquemas y metadatos, control de concurrencia, replicación , etc. Por lo que son considerados componentes de bajo nivel que se agregan en sistemas mayores.
+En general no resuleven tareas de gestion datos, control de concurrencia, replicación , etc. Por lo que son considerados componentes de bajo nivel que se agregan en sistemas mayores.
 Por otro lado, las bases de datos vectoriales (VDBs) integran esos mismos índices como motores internos y añaden la capa de gestión necesaria para operar a escala 
 \begin{table}[H]
 \centering
@@ -817,19 +817,19 @@ Por otro lado, las bases de datos vectoriales (VDBs) integran esos mismos índic
 \midrule
 \multicolumn{3}{@{}l}{\textbf{Librería ANN}}\\
 \addlinespace[2pt]
- & FAISS & Librería de Facebook/Meta para búsqueda de vecinos más cercanos con soportes clásicos (IVF, PQ) y aceleración CPU/GPU; ampliamente usada como backend en VDBs. \\
- & ANNOY & Índices basados en árboles para ANN, común en escenarios de baja/mediana dimensionalidad; frecuentemente referenciada junto a FAISS. \\
- & SPTAG & Librería de Microsoft para ANN, mencionada junto a FAISS como “librería”, no como sistema de base de datos completo.\\
+ & FAISS & Librería de Meta para búsqueda de vecinos más cercanos con soportes clásicos (IVF, PQ) y aceleración CPU/GPU; ampliamente usada como backend en VDBs. \\
+ & ANNOY & Índices basados en árboles para ANN, común en escenarios de baja/mediana dimensionalidad y escenarios con índices mayormente inmutables. Prioriza bajo uso de memoria y latencias de lectura estables \\
+ & SPTAG & Librería de Microsoft para ANN orientada a colecciones extensas combinando estructuras basadas en particionamiento y grafos para mejorar el recupero por similitud y la escalabilidad.\\
 \addlinespace[4pt]
 \multicolumn{3}{@{}l}{\textbf{VDB (Sistema)}}\\
 \addlinespace[2pt]
  & Milvus & VDB distribuido; soporta múltiples índices (IVF, PQ, HNSW, RNSG), CPU/GPU, y arquitectura de almacenamiento/consulta escalable. \\
- & Weaviate & VDB gestionado con soporte de índices ANN y consultas híbridas; aparece en tablas comparativas de características/distancias. \\
- & Qdrant & VDB orientado a ANN (HNSW), filtrado por metadatos y despliegue gestionado; listado en comparativas de VDBs. \\
+ & Weaviate & VDB gestionado con índices ANN y consultas híbridas (atributos + semántica). \\
+ & Qdrant & VDB orientado a ANN (HNSW), filtrado por metadatos y despliegue gestionado. \\
 \addlinespace[2pt]
-VDB (Servicio) & Pinecone & Servicio gestionado de VDB; foco en operación/escala y latencia, citado en comparativas de mercado.  \\
-Extensión DB relacional & pgvector & Extensión de PostgreSQL para vectores; habilita ANN/NNS dentro de un RDBMS, citada en tablas de funciones/distancias.  \\
-Motor de búsqueda & Elasticsearch & Motor con capacidades vectoriales (denso/esparso) en ediciones recientes; citado como comparativo frente a VDBs dedicadas.\\
+Softwate as a Service & Pinecone & VDB gestionado orientado a baja latencia y operación a gran escala. Soporta escalado horizontal y vertical y tres funciones de distancia soportadas (inner product, cosine, euclidean). \\
+Extensión DB relacional & pgvector & Extensión de PostgreSQL para vectores; habilita ANN/NNS dentro de un RDBMS(Relational DataBase Management System).\\
+Motor de búsqueda & Elasticsearch & Motor de búsqueda generalista que opera con un índice invertido, en versiones recientes cuenta con capacidades vectoriales(dense/sparse). Carece de algunas funciones propias de VDB especializadas.(p. ej., GPU y multi-vector query nativas) \\
 \bottomrule
 \end{tabular}
 \caption{Librerías ANN y bases de datos vectoriales (VDBs)}

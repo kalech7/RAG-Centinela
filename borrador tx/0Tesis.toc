@@ -36,7 +36,7 @@
 \contentsline {paragraph}{Preprocesamiento:}{23}{section*.28}%
 \contentsline {paragraph}{Vectorización:}{24}{section*.29}%
 \contentsline {paragraph}{Vector DB:}{25}{section*.30}%
-\contentsline {paragraph}{Recuperación:}{27}{section*.32}%
+\contentsline {paragraph}{Recuperación:}{28}{section*.32}%
 \contentsline {paragraph}{Re-Ranking:}{28}{section*.33}%
 \contentsline {paragraph}{Construcción de Contexto:}{29}{section*.34}%
 \contentsline {paragraph}{Generación (LLM):}{30}{section*.36}%
