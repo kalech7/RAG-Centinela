@@ -15,5 +15,8 @@ $bibtex = 'biber %O %B';
 # Ejecuta las pasadas necesarias automáticamente
 $max_repeat = 5;
 
+# No abrir visor automáticamente
+$pdf_previewer = 'none';
+
 # Limpia salida un poco
 $silent = 1;
