@@ -1,0 +1,19 @@
+# ==== latexmkrc para XeLaTeX + biblatex/biber + minted ====
+$pdf_mode = 1;
+
+# Motor: XeLaTeX
+$xelatex = 'xelatex -synctex=1 -interaction=nonstopmode -file-line-error -shell-escape %O %S';
+$pdflatex = $xelatex;     # Por si TeXiFy llama pdflatex, forzamos xelatex
+$lualatex = $xelatex;
+
+# Usa XeLaTeX por defecto
+$latex  = 'xelatex';
+
+# Biblatex -> biber
+$bibtex = 'biber %O %B';
+
+# Ejecuta las pasadas necesarias automáticamente
+$max_repeat = 5;
+
+# Limpia salida un poco
+$silent = 1;

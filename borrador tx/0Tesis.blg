@@ -1,14 +1,14 @@
 [0] Config.pm:308> INFO - This is Biber 2.20
 [0] Config.pm:311> INFO - Logfile is '0Tesis.blg'
-[38] biber:340> INFO - === Wed Oct 15, 2025, 13:27:22
-[47] Biber.pm:420> INFO - Reading '0Tesis.bcf'
-[95] Biber.pm:991> INFO - Using all citekeys in bib section 0
-[101] Biber.pm:4463> INFO - Processing section 0
-[107] Biber.pm:4654> INFO - Looking for bibtex file 'bibTesis.bib' for section 0
-[108] bibtex.pm:1713> INFO - LaTeX decoding ...
-[120] bibtex.pm:1519> INFO - Found BibTeX data source 'bibTesis.bib'
-[309] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
-[309] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[309] Biber.pm:4283> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'es-ES'
-[326] bbl.pm:676> INFO - Writing '0Tesis.bbl' with encoding 'UTF-8'
-[335] bbl.pm:779> INFO - Output to 0Tesis.bbl
+[55] biber:340> INFO - === Fri Oct 17, 2025, 08:39:41
+[68] Biber.pm:420> INFO - Reading '0Tesis.bcf'
+[130] Biber.pm:991> INFO - Using all citekeys in bib section 0
+[140] Biber.pm:4463> INFO - Processing section 0
+[147] Biber.pm:4654> INFO - Looking for bibtex file 'bibTesis.bib' for section 0
+[149] bibtex.pm:1713> INFO - LaTeX decoding ...
+[165] bibtex.pm:1519> INFO - Found BibTeX data source 'bibTesis.bib'
+[443] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
+[443] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[443] Biber.pm:4283> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'es-ES'
+[471] bbl.pm:676> INFO - Writing '0Tesis.bbl' with encoding 'UTF-8'
+[486] bbl.pm:779> INFO - Output to 0Tesis.bbl
