@@ -27,7 +27,12 @@
 \addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
 
 \usepackage{multirow}
-\usepackage{tabularx}
+\usepackage{tabularx,ragged2e}
+\renewcommand{\arraystretch}{1.12}   % aire vertical
+\setlength{\tabcolsep}{5pt}          % separación horizontal
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}        % X alineada a la izq.
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}   % columna centrada verticalmente
+
 
 % ====== Código (minted) ======
 \usepackage{xcolor}
@@ -109,6 +114,7 @@
 \correodirector{\url{gabriela.suntaxi@epn.edu.ec}}
 \fecha{Julio 2025}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
 
 \setcounter{biburlnumpenalty}{9000}
 \setcounter{biburlucpenalty}{9000}
