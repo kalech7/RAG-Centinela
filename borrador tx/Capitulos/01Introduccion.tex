@@ -1114,7 +1114,8 @@ aspectos como coherencia, transparencia y verificabilidad.
     \end{itemize}
     
 \end{itemize}
-
+De acuerdo con~\textcite{knollmeyer2024benchmarking,hambarde2023ir,han2024rag,minaee2021}, se han extraído
+las siguientes métricas representativas para medir los sistemas RAG a lo largo de sus etapas.
 
 \begin{tabularx}{\textwidth}{L{0.22\textwidth} Y C{0.34\textwidth}}
     \toprule
@@ -1145,13 +1146,13 @@ aspectos como coherencia, transparencia y verificabilidad.
     Exact Match (EM) & Porcentaje de respuestas que coinciden exactamente con alguna referencia en QA. &
     $\displaystyle \frac{1}{N}\sum_{i=1}^{N}\mathbf{1}\{\hat{y}_i\in Y_i^{\star}\}$ \\[4pt]
 
-    Latencia (P95) & Tiempo de respuesta del sistema en el percentil 95 (recuperación + re-ranking + generación). &
-    $\displaystyle \inf\{t:\Pr(T\le t)\ge 0.95\}$ \\[4pt]
+    Latencia (Response Time)  & Tiempo requerido para cada consulta desde su envío hasta la respuesta del sistema &
+    $\displaystyle T_j \;=\; t^{(\text{cliente})}_{\text{fin},j}\;-\;t^{(\text{cliente})}_{\text{inicio},j}$\\[4pt]
 
     Throughput (QPS) & Consultas servidas por segundo bajo carga estable. &
     $\displaystyle \frac{\#\,\text{consultas}}{\text{segundos}}$ \\[4pt]
 
-    Costo por consulta & Costo monetario unitario (recuperación + re-ranking + tokens de generación). &
+    Costo por consulta & Costo monetario unitario de servir una consulta (recuperación + re-ranking + generación). &
     $\displaystyle \mathrm{Cost}_{\text{retriever}}+\mathrm{Cost}_{\text{rerank}}+\mathrm{Cost}_{\text{LLM}}$ \\[4pt]
 
     Cobertura de citas & Porcentaje de afirmaciones de la respuesta sustentadas con pasajes citados del contexto. &
@@ -1160,17 +1161,15 @@ aspectos como coherencia, transparencia y verificabilidad.
     Fidelidad (faithfulness) & Proporción de afirmaciones consistentes con las fuentes recuperadas. &
     $\displaystyle \frac{\#\,\text{afirmaciones consistentes}}{\#\,\text{afirmaciones evaluadas}}$ \\[4pt]
 
-    nDCG@k & Ganancia acumulada con descuento normalizada; valora más alto lo que aparece antes y permite comparar consultas. &
-    $\displaystyle
-    \begin{aligned}[t]
-        \mathrm{DCG}@k &= \sum_{i=1}^{k}\frac{2^{\mathrm{rel}_i}-1}{\log_2(i+1)}\\
-        \mathrm{nDCG}@k &= \frac{\mathrm{DCG}@k}{\mathrm{IDCG}@k}
-    \end{aligned}
-    $\\
     \bottomrule
+    \caption{Métricas para evaluar sistemas RAG}
+    \label{tab:metrics}
 \end{tabularx}
 
-
+La Tabla~\ref{tab:metrics} muestra las métricas para evaluar los sitemas RAG a lo largo de todo el proceso: desde la
+eficacia del recuperador (Recall@k, Precision, Recall y F1), pasando por la calidad del ranking y de la respuesta en QA
+(MRR y Exact Match), el desempeño operativo y económico (latencia, throughput y costo por consulta), hasta la calidad de
+la generación condicionada al contexto (cobertura de citas y fidelidad/faithfulness).
 
 
 
