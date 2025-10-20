@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2025.9.14)  19 OCT 2025 02:32
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2025.9.14)  20 OCT 2025 00:17
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -4071,12 +4071,12 @@ Package logreq Info: Writing requests to '0Tesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 44131 strings out of 476696
- 914216 string characters out of 5806955
+ 44132 strings out of 476696
+ 914229 string characters out of 5806955
  1880018 words of memory out of 6000000
- 63615 multiletter control sequences out of 15000+600000
+ 63616 multiletter control sequences out of 15000+600000
  524066 words of font info for 132 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 99i,18n,104p,1455b,5475s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,13n,104p,1455b,5475s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on 0Tesis.pdf (74 pages).
