@@ -706,17 +706,16 @@ y, finalmente, devuelve la respuesta.
 \subsection{Evaluación}
 Para la evaluación del sistema RAG se toma un enfoque multinivel que  considera:
 \begin{itemize}
-    \item \textbf{Eficacia de la recuperación (1ª etapa):} se cuantifica con métricas estándar de IR Recall@k,
-    nDCG@k, MRR y latencia.
-    Recall y Precision son las nociones clásicas de efectividad y se emplean para
+    \item \textbf{Eficacia de la recuperación:} se cuantifica con métricas estándar de IR Recall@k,
+    MRR, Recall y Precision las cuales son las nociones clásicas de efectividad y se emplean para
     verificar que el recuperador sitúa evidencia relevante en el top-$k$.
 
     \item \textbf{Calidad y adecuación del contexto inyectado:} se valora mediante juicios explícitos de relevancia
-    de los pasajes recuperados (“context relevance”), verificando que la evidencia sea pertinente y suficiente
+    de los fragmentos de texto recuperados (“context relevance”), verificando que la evidencia sea pertinente y suficiente
     para responder la consulta
 
     \item \textbf{Fidelidad y calidad de la atribución:} se comprueba que las afirmaciones estén sustentadas en los
-    pasajes citados (fidelidad/groundedness) y que la citación sea adecuada y completa (calidad de cita)
+    fragmentos citados y que la citación sea adecuada y completa (calidad de cita)
 
     \item \textbf{Detección y clasificación de alucinaciones:} se identifican y clasifican por su origen—fallos de
     recuperación (fuente, consulta, recuperador, estrategia) o deficiencias de generación (ruido/conflicto de
