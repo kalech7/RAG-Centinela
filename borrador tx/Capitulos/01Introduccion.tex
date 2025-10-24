@@ -1116,7 +1116,11 @@ aspectos como coherencia, transparencia y verificabilidad.
 \end{itemize}
 De acuerdo con~\textcite{knollmeyer2024benchmarking,hambarde2023ir,han2024rag,minaee2021}, se han extraído
 las siguientes métricas representativas para medir los sistemas RAG a lo largo de sus etapas.
-
+La Tabla~\ref{tab:metrics} muestra las métricas para evaluar los sitemas RAG a lo largo de todo el proceso: desde la
+eficacia del recuperador (Recall@k, Precision, Recall y F1), pasando por la calidad del ranking y de la respuesta en QA
+(MRR y Exact Match), el desempeño operativo y económico (latencia, throughput y costo por consulta), hasta la calidad de
+la generación condicionada al contexto (cobertura de citas y fidelidad/faithfulness).
+se utilizan las abreviaciones o notaciones
 \begin{tabularx}{\textwidth}{L{0.22\textwidth} Y C{0.34\textwidth}}
     \toprule
     \textbf{Métrica} & \textbf{Descripción} & \textbf{Fórmula} \\
@@ -1165,11 +1169,6 @@ las siguientes métricas representativas para medir los sistemas RAG a lo largo 
     \caption{Métricas para evaluar sistemas RAG}
     \label{tab:metrics}
 \end{tabularx}
-
-La Tabla~\ref{tab:metrics} muestra las métricas para evaluar los sitemas RAG a lo largo de todo el proceso: desde la
-eficacia del recuperador (Recall@k, Precision, Recall y F1), pasando por la calidad del ranking y de la respuesta en QA
-(MRR y Exact Match), el desempeño operativo y económico (latencia, throughput y costo por consulta), hasta la calidad de
-la generación condicionada al contexto (cobertura de citas y fidelidad/faithfulness).
 
 
 
