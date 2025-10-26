@@ -1114,63 +1114,116 @@ aspectos como coherencia, transparencia y verificabilidad.
     \end{itemize}
     
 \end{itemize}
+A continuación en la Tabla~\ref{tab:glosariometricas} se presenta un glosario que detalla el significado de las principales
+siglas utilizados en las fórmulas de las métricas descritas en la Tabla~\ref{tab:metrics}.
+Este glosario permite una interpretación clara y la comprensión de los conceptos evaluados y los cálculos asociados
+a cada métrica.
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{S M}
+        \toprule
+        \textbf{Sigla} & \textbf{Significado} \\
+        \midrule
+        TP & Verdaderos positivos (\textit{True Positives}) \\
+        FP & Falsos positivos (\textit{False Positives}) \\
+        FN & Falsos negativos (\textit{False Negatives}) \\
+        TN & Verdaderos negativos (\textit{True Negatives}) \\
+        N & Número total de instancias evaluadas \\
+        Q & Conjunto de preguntas o consultas \\
+        rank & Posición del primer relevante en el ranking \\
+        Rel & Conjunto de documentos relevantes \\
+        Top-$k$ & Los $k$ documentos mejor clasificados/recuperados \\
+        $\displaystyle \mathcal{M}$ & Métrica evaluada (ej. exactitud, F1, etc.) \\
+        \# & Número de elementos (afirmaciones o consultas) \\
+        $t$ & Tiempo (inicio, fin) \\
+        Cost & Costo de cada componente (retriever, rerank, LLM) \\
+        $\displaystyle \hat{y}_i$ & Respuesta generada por el modelo para el ejemplo $i$ \\
+        $\displaystyle Y_i^{\star}$ & Conjunto de respuestas de referencia (“ground truth”) para el ejemplo $i$ \\
+        $\displaystyle \mathbf{1}\{\cdot\}$ & Función indicadora: vale 1 si la condición se cumple, 0 si no \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Glosario de siglas usados en las métricas}
+    \label{tab:glosariometricas}
+\end{table}
+
 De acuerdo con~\textcite{knollmeyer2024benchmarking,hambarde2023ir,han2024rag,minaee2021}, se han extraído
 las siguientes métricas representativas para medir los sistemas RAG a lo largo de sus etapas.
-La Tabla~\ref{tab:metrics} muestra las métricas para evaluar los sitemas RAG a lo largo de todo el proceso: desde la
+La Tabla~\ref{tab:metrics} resume mencionadas métricas para evaluar los sistemas RAG a lo largo de todo el proceso: desde la
 eficacia del recuperador (Recall@k, Precision, Recall y F1), pasando por la calidad del ranking y de la respuesta en QA
 (MRR y Exact Match), el desempeño operativo y económico (latencia, throughput y costo por consulta), hasta la calidad de
 la generación condicionada al contexto (cobertura de citas y fidelidad/faithfulness).
 se utilizan las abreviaciones o notaciones
-\begin{tabularx}{\textwidth}{L{0.22\textwidth} Y C{0.34\textwidth}}
+
+\begin{tabularx}{\textwidth}{L{0.22\textwidth} Y C{0.30\textwidth} C{0.16\textwidth}}
     \toprule
-    \textbf{Métrica} & \textbf{Descripción} & \textbf{Fórmula} \\
+    \textbf{Métrica} & \textbf{Descripción} & \textbf{Fórmula} & \textbf{Propósito} \\
     \midrule
 
+    %%%%%%%%%%%%%%%%%%%%% Recuperación
+    \multicolumn{4}{l}{\textbf{Recuperación}}\\
+    \cmidrule(lr){1-4}
     Recall@k & Proporción de documentos relevantes capturados dentro del top-$k$ en la fase de recuperación. &
-    $\displaystyle \frac{\lvert \mathrm{Rel}\cap \mathrm{Top}\!-\!k\rvert}{\lvert \mathrm{Rel}\rvert}$ \\[4pt]
+    $\displaystyle \frac{\lvert \mathrm{Rel}\cap \mathrm{Top}\!-\!k\rvert}{\lvert \mathrm{Rel}\rvert}$ & eficacia \\[4pt]
 
     Precision & Fracción de ítems recuperados que son relevantes; complemento clásico del \textit{recall}. &
-    $\displaystyle \frac{TP}{TP+FP}$ \\[4pt]
+    $\displaystyle \frac{TP}{TP+FP}$ & precisión \\[4pt]
 
     Recall & Cobertura de instancias relevantes entre las recuperadas. &
-    $\displaystyle \frac{TP}{TP+FN}$ \\[4pt]
+    $\displaystyle \frac{TP}{TP+FN}$ & cobertura \\[4pt]
 
     F1 & Media armónica entre \textit{precision} y \textit{recall}; útil con clases desbalanceadas. &
-    $\displaystyle \frac{2\,\mathrm{Precision}\cdot \mathrm{Recall}}{\mathrm{Precision}+\mathrm{Recall}}$ \\[4pt]
+    $\displaystyle \frac{2\,\mathrm{Precision}\cdot \mathrm{Recall}}{\mathrm{Precision}+\mathrm{Recall}}$ & equilibrio \\[4pt]
 
+    %%%%%%%%%%%%%%%%%%%%% Augmentación
+    \addlinespace[2pt]
+    \multicolumn{4}{l}{\textbf{Augmentation}}\\
+    \cmidrule(lr){1-4}
+    Ganancia de augmentation & Efecto marginal de inyectar contexto recuperado frente a usar el LLM sin recuperación. &
+    $\displaystyle \mathcal{M}(\text{RAG})\;-\;\mathcal{M}(\text{LLM}_{\text{sin retriever}})$ & mejora \\[4pt]
+
+    %%%%%%%%%%%%%%%%%%%%% Ranking
+    \addlinespace[2pt]
+    \multicolumn{4}{l}{\textbf{Ranking}}\\
+    \cmidrule(lr){1-4}
+    MRR (Mean Reciprocal Rank) & Evalúa rankings por la posición del primer relevante; habitual en QA y ranking para RAG. &
+    $\displaystyle \frac{1}{\lvert Q\rvert}\sum_{i=1}^{\lvert Q\rvert}\frac{1}{\mathrm{rank}_i}$ & ranking \\[4pt]
+
+    %%%%%%%%%%%%%%%%%%%%% Generación
+    \addlinespace[2pt]
+    \multicolumn{4}{l}{\textbf{Generación}}\\
+    \cmidrule(lr){1-4}
     Accuracy & Proporción total de aciertos en clasificación/verificación binaria. &
-    $\displaystyle \frac{TP+TN}{N}$ \\[4pt]
+    $\displaystyle \frac{TP+TN}{N}$ & exactitud \\[4pt]
 
     Error rate & Tasa de error como complemento de \textit{accuracy}. &
-    $\displaystyle \frac{FP+FN}{N}$ \\[4pt]
-
-    MRR (Mean Reciprocal Rank) & Evalúa rankings por la posición del primer relevante; habitual en QA y ranking para RAG. &
-    $\displaystyle \frac{1}{\lvert Q\rvert}\sum_{i=1}^{\lvert Q\rvert}\frac{1}{\mathrm{rank}_i}$ \\[4pt]
+    $\displaystyle \frac{FP+FN}{N}$ & error \\[4pt]
 
     Exact Match (EM) & Porcentaje de respuestas que coinciden exactamente con alguna referencia en QA. &
-    $\displaystyle \frac{1}{N}\sum_{i=1}^{N}\mathbf{1}\{\hat{y}_i\in Y_i^{\star}\}$ \\[4pt]
-
-    Latencia (Response Time)  & Tiempo requerido para cada consulta desde su envío hasta la respuesta del sistema &
-    $\displaystyle T_j \;=\; t^{(\text{cliente})}_{\text{fin},j}\;-\;t^{(\text{cliente})}_{\text{inicio},j}$\\[4pt]
-
-    Throughput (QPS) & Consultas servidas por segundo bajo carga estable. &
-    $\displaystyle \frac{\#\,\text{consultas}}{\text{segundos}}$ \\[4pt]
-
-    Costo por consulta & Costo monetario unitario de servir una consulta (recuperación + re-ranking + generación). &
-    $\displaystyle \mathrm{Cost}_{\text{retriever}}+\mathrm{Cost}_{\text{rerank}}+\mathrm{Cost}_{\text{LLM}}$ \\[4pt]
+    $\displaystyle \frac{1}{N}\sum_{i=1}^{N}\mathbf{1}\{\hat{y}_i\in Y_i^{\star}\}$ & coincidencia \\[4pt]
 
     Cobertura de citas & Porcentaje de afirmaciones de la respuesta sustentadas con pasajes citados del contexto. &
-    $\displaystyle \frac{\#\,\text{afirmaciones sustentadas}}{\#\,\text{afirmaciones totales}}$ \\[4pt]
+    $\displaystyle \frac{\#\,\text{afirmaciones sustentadas}}{\#\,\text{afirmaciones totales}}$ & atribución \\[4pt]
 
     Fidelidad (faithfulness) & Proporción de afirmaciones consistentes con las fuentes recuperadas. &
-    $\displaystyle \frac{\#\,\text{afirmaciones consistentes}}{\#\,\text{afirmaciones evaluadas}}$ \\[4pt]
+    $\displaystyle \frac{\#\,\text{afirmaciones consistentes}}{\#\,\text{afirmaciones evaluadas}}$ & fidelidad \\[4pt]
+
+    %%%%%%%%%%%%%%%%%%%%% Operación
+    \addlinespace[2pt]
+    \multicolumn{4}{l}{\textbf{Operación}}\\
+    \cmidrule(lr){1-4}
+    Latencia (Response Time) & Tiempo requerido para cada consulta desde su envío hasta la respuesta del sistema. &
+    $\displaystyle T_j \;=\; t^{(\text{cliente})}_{\text{fin},j}\;-\;t^{(\text{cliente})}_{\text{inicio},j}$ & rapidez \\[4pt]
+
+    Throughput (QPS) & Consultas servidas por segundo bajo carga estable. &
+    $\displaystyle \frac{\#\,\text{consultas}}{\text{segundos}}$ & capacidad \\[4pt]
+
+    Costo por consulta & Costo monetario unitario de servir una consulta (recuperación + re-ranking + generación). &
+    $\displaystyle \mathrm{Cost}_{\text{retriever}}+\mathrm{Cost}_{\text{rerank}}+\mathrm{Cost}_{\text{LLM}}$ & costo \\[4pt]
 
     \bottomrule
     \caption{Métricas para evaluar sistemas RAG}
     \label{tab:metrics}
 \end{tabularx}
-
-
 
 \subsubsection{Futuro de RAG}
 
