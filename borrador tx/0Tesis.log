@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2025.9.14)  26 OCT 2025 20:00
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2025.9.14)  27 OCT 2025 14:36
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1093,7 +1093,19 @@ e.tex
 \pgfdecorationsegmentlength=\dimen328
 )
 \tikz@lib@dec@box=\box93
-)) (/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryshadows.code.tex
+File: tikzlibraryshadows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryfadings.code.tex
+File: tikzlibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code
+.tex
+File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
 (/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
 Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PD
@@ -1374,33 +1386,33 @@ LaTeX Info: Redefining \% on input line 23.
 odologia.aux) (./Capitulos/03Pruebas.aux))
 \openout1 = `0Tesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 129.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 181.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 181.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 181.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 181.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 181.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-29.
+81.
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Info: Redefining \. on input line 129.
-LaTeX Info: Redefining \% on input line 129.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 181.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 181.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 181.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 181.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 181.
+LaTeX Font Info:    ... okay on input line 181.
+LaTeX Info: Redefining \. on input line 181.
+LaTeX Info: Redefining \% on input line 181.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
@@ -1409,7 +1421,7 @@ Package caption Info: longtable package is loaded.
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 129.
+Package hyperref Info: Link coloring ON on input line 181.
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -1450,74 +1462,74 @@ Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
 
 \symlegacymaths=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 129.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 129.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 129.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 129.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 129.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 129.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 129.
-LaTeX Font Info:    Redeclaring math accent \check on input line 129.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 129.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 129.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 129.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 129.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 129.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 129.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 129.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 129.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 129.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 129.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 129.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 129.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 129.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 129.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 129.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 129.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 181.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 181.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 181.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 181.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 181.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 181.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 181.
+LaTeX Font Info:    Redeclaring math accent \check on input line 181.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 181.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 181.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 181.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 181.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 181.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 181.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 181.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 181.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 181.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 181.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 181.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 181.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 181.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 181.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 181.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 181.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 129.
+(Font)              `operators' in the math version `normal' on input line 181.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> TU/TeXGyrePagella(0)/m/n on input line 
-129.
+181.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 129.
+(Font)              `operators' in the math version `bold' on input line 181.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/cmr/bx/n --> TU/TeXGyrePagella(0)/m/n on input line
- 129.
+ 181.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  TU/TeXGyrePagella(0)/m/n --> TU/TeXGyrePagella(0)/m/n o
-n input line 129.
+n input line 181.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 (Font)                  OT1/cmr/m/it --> TU/TeXGyrePagella(0)/m/it on input lin
-e 129.
+e 181.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
 (Font)                  OT1/cmr/bx/n --> TU/TeXGyrePagella(0)/b/n on input line
- 129.
+ 181.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
 (Font)                  OT1/cmss/m/n --> TU/TeXGyreHeros(0)/m/n on input line 1
-29.
+81.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
 (Font)                  OT1/cmtt/m/n --> TU/TeXGyreCursor(0)/m/n on input line 
-129.
+181.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  TU/TeXGyrePagella(0)/m/n --> TU/TeXGyrePagella(0)/b/n o
-n input line 129.
+n input line 181.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> TU/TeXGyrePagella(0)/b/it on input li
-ne 129.
+ne 181.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  OT1/cmss/bx/n --> TU/TeXGyreHeros(0)/b/n on input line 
-129.
+181.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/TeXGyreCursor(0)/b/n on input line 
-129.
-LaTeX Info: Redefining \microtypecontext on input line 129.
-Package microtype Info: Applying patch `item' on input line 129.
-Package microtype Info: Applying patch `toc' on input line 129.
-Package microtype Info: Applying patch `eqnum' on input line 129.
-Package microtype Info: Applying patch `footnote' on input line 129.
-Package microtype Info: Applying patch `verbatim' on input line 129.
+181.
+LaTeX Info: Redefining \microtypecontext on input line 181.
+Package microtype Info: Applying patch `item' on input line 181.
+Package microtype Info: Applying patch `toc' on input line 181.
+Package microtype Info: Applying patch `eqnum' on input line 181.
+Package microtype Info: Applying patch `footnote' on input line 181.
+Package microtype Info: Applying patch `verbatim' on input line 181.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: No adjustment of tracking.
@@ -2080,8 +2092,8 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file '0Tesis.bbl' found.
 (./0Tesis.bbl)
-Package biblatex Info: Reference section=0 on input line 129.
-Package biblatex Info: Reference segment=0 on input line 129.
+Package biblatex Info: Reference section=0 on input line 181.
+Package biblatex Info: Reference segment=0 on input line 181.
 Package microtype Info: Character `ﬆ' is missing
 (microtype)             in font `\TU/TeXGyrePagella(0)/m/n/20.74'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -2536,14 +2548,14 @@ Package microtype Info: Character `⁺' is missing
 Package microtype Info: Character `⁻' is missing
 (microtype)             in font `\TU/TeXGyrePagella(0)/m/n/6'.
 (microtype)             Ignoring protrusion settings for this character.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 132
+LaTeX Font Info:    Trying to load font information for U+msa on input line 184
 .
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 132
+LaTeX Font Info:    Trying to load font information for U+msb on input line 184
 .
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -2632,17 +2644,17 @@ Package microtype Info: Character `⁻' is missing
 (microtype)             in font `\TU/TeXGyrePagella(0)/b/n/12'.
 (microtype)             Ignoring protrusion settings for this character.
 
-Underfull \hbox (badness 10000) in paragraph at lines 133--133
+Underfull \hbox (badness 10000) in paragraph at lines 185--185
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 133--133
+Underfull \hbox (badness 10000) in paragraph at lines 185--185
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 134--134
+Underfull \hbox (badness 10000) in paragraph at lines 186--186
 
  []
 
@@ -3612,23 +3624,23 @@ Package microtype Info: Character `⁻' is missing
 (microtype)             in font `\TU/TeXGyrePagella(0)/b/it/12'.
 (microtype)             Ignoring protrusion settings for this character.
 [15]
-Underfull \hbox (badness 2512) in paragraph at lines 523--523
+Underfull \hbox (badness 2512) in paragraph at lines 525--525
 [][][]\TU/TeXGyrePagella(0)/m/n/10 Open-domain QA (open-domain question answeri
 ng) es el planteamiento de preguntas-
  []
 
 [16] [17] [18]
-Underfull \hbox (badness 1515) in paragraph at lines 638--638
+Underfull \hbox (badness 1515) in paragraph at lines 640--640
 []|\TU/TeXGyrePagella(0)/m/n/12 Generación adversarial en imágenes y
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 638--638
+Underfull \hbox (badness 10000) in paragraph at lines 640--640
 []|\TU/TeXGyrePagella(0)/m/n/12 Diseño de instrucciones, chain of
  []
 
 
-Underfull \hbox (badness 1688) in paragraph at lines 638--638
+Underfull \hbox (badness 1688) in paragraph at lines 640--640
 []|\TU/TeXGyrePagella(0)/m/n/12 Beam search, nucleus sampling, top-k
  []
 
@@ -3709,69 +3721,227 @@ Package microtype Info: Character `⁻' is missing
 (microtype)             in font `\TU/TeXGyrePagella(0)/m/n/10.95'.
 (microtype)             Ignoring protrusion settings for this character.
 
-Underfull \hbox (badness 2875) in paragraph at lines 826--827
+Underfull \hbox (badness 2875) in paragraph at lines 828--829
 []|\TU/TeXGyrePagella(0)/m/n/10.95 VDB distribuido; soporta múltiples índices (
 IVF, PQ,
  []
 
 
-Underfull \hbox (badness 4872) in paragraph at lines 830--830
+Underfull \hbox (badness 4872) in paragraph at lines 832--832
 []|\TU/TeXGyrePagella(0)/m/n/10.95 Software as a
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 831--831
+Underfull \hbox (badness 10000) in paragraph at lines 833--833
 []|\TU/TeXGyrePagella(0)/m/n/10.95 Extensión DB
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 831--832
+Underfull \hbox (badness 10000) in paragraph at lines 833--834
 []|\TU/TeXGyrePagella(0)/m/n/10.95 Extensión de PostgreSQL para vectores; habil
 ita
  []
 
 
-Underfull \hbox (badness 3884) in paragraph at lines 831--832
+Underfull \hbox (badness 3884) in paragraph at lines 833--834
 \TU/TeXGyrePagella(0)/m/n/10.95 ANN/NNS dentro de un RDBMS(Relational DataBa-
  []
 
 
-Underfull \hbox (badness 2050) in paragraph at lines 832--832
+Underfull \hbox (badness 2050) in paragraph at lines 834--834
 []|\TU/TeXGyrePagella(0)/m/n/10.95 Motor de bús-
  []
 
 
-Overfull \hbox (32.8454pt too wide) in paragraph at lines 814--835
+Overfull \hbox (32.8454pt too wide) in paragraph at lines 816--837
  [][] 
  []
 
 [26] [27] [28]
-Underfull \hbox (badness 1642) in paragraph at lines 869--870
+Underfull \hbox (badness 1642) in paragraph at lines 871--872
 \TU/TeXGyrePagella(0)/m/n/12 attention de los transformers) para ponderar dinám
 icamente qué partes
  []
 
-[29] [30] [31] [32] [33] [34] [35] [36]
-Overfull \hbox (11.16132pt too wide) in paragraph at lines 1226--1226
+[29] [30] [31] [32] [33]
+Package microtype Info: Character `ﬆ' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `ﬅ' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `‥' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `‼' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `⁰' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `⁴' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `⁵' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `⁶' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `⁷' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `⁸' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `⁹' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₀' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₁' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₂' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₃' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₄' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₅' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₆' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₇' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₈' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₉' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₊' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₋' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `⁺' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `⁻' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `‥' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `⁰' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `⁴' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `⁵' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `⁶' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `⁷' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `⁸' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `⁹' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₀' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₁' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₂' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₃' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₄' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₅' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₆' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₇' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₈' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₉' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₊' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `₋' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `⁺' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `⁻' is missing
+(microtype)             in font `\TU/TeXGyrePagella(0)/m/it/10'.
+(microtype)             Ignoring protrusion settings for this character.
+[34] [35]
+Underfull \hbox (badness 4024) in paragraph at lines 1159--1159
+[]|\TU/TeXGyrePagella(0)/m/n/12 Conjunto de los $\OML/cmm/m/it/12 k$ \TU/TeXGyr
+ePagella(0)/m/n/12 documentos mejor clasifica- 
+ []
+
+[36] [37]
+Overfull \hbox (11.16132pt too wide) in paragraph at lines 1241--1241
  []|$[]$| 
  []
 
 
-Overfull \hbox (12.6493pt too wide) in paragraph at lines 1226--1226
+Overfull \hbox (12.6493pt too wide) in paragraph at lines 1241--1241
  []|$[]$| 
  []
 
-[37] [38] [39] [40]) [41]
+[38] [39] [40]
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `TeXGyreHeros' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1266--1283
+
+ []
+
+[41]) [42]
 \openout2 = `Capitulos/02Metodologia.aux'.
 
 (./Capitulos/02Metodologia.tex
 Capítulo 2.
-[42
+[43
 
 
 
 
-] [43] [44] [45] [46]
+] [44] [45] [46] [47]
 Package microtype Info: Character `ﬆ' is missing
 (microtype)             in font `\TU/TeXGyrePagella(0)/b/n/5'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -3847,20 +4017,20 @@ Package microtype Info: Character `⁺' is missing
 Package microtype Info: Character `⁻' is missing
 (microtype)             in font `\TU/TeXGyrePagella(0)/b/n/5'.
 (microtype)             Ignoring protrusion settings for this character.
-[47] [48
+[48] [49
 
 
 ]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 241.
-[49]
+[50]
 Overfull \hbox (5.7423pt too wide) in paragraph at lines 324--325
 []\TU/TeXGyrePagella(0)/m/n/12 IN(parquet),OUT(parquet-out),COL=\TU/TeXGyreCurs
 or(0)/m/n/12 abstract_norm\TU/TeXGyrePagella(0)/m/n/12 ,LANG_COL=\TU/TeXGyreCur
 sor(0)/m/n/12 lang 
  []
 
-[50] [51] [52] [53]
+[51] [52] [53] [54]
 Overfull \hbox (19.03821pt too wide) in paragraph at lines 471--472
 [] $\OML/cmm/m/it/12 chunks \OMS/cmsy/m/n/12   []\OT1/cmr/m/n/12 (\OML/cmm/m/it
 /12 d:[];  MAX[]TOKENS;  STRIDE\OT1/cmr/m/n/12 )$ 
@@ -3872,7 +4042,7 @@ Underfull \hbox (badness 6445) in paragraph at lines 442--482
 RAG\TU/TeXGyrePagella(0)/m/n/12 . Dividir documentos largos en fragmentos
  []
 
-[54] [55]
+[55] [56]
 Underfull \hbox (badness 10000) in paragraph at lines 501--502
 []\TU/TeXGyreCursor(0)/m/n/12 chunks_df[text_chunk]\TU/TeXGyrePagella(0)/m/n/12
  , \TU/TeXGyreCursor(0)/m/n/12 EMB_MODEL\TU/TeXGyrePagella(0)/m/n/12 , \TU/TeXG
@@ -3880,7 +4050,7 @@ yreCursor(0)/m/n/12 FAISS_PATH\TU/TeXGyrePagella(0)/m/n/12 , \TU/TeXGyreCursor(
 0)/m/n/12 PKL_PATH\TU/TeXGyrePagella(0)/m/n/12 ,
  []
 
-[56] [57] [58] [59]
+[57] [58] [59] [60]
 Underfull \hbox (badness 3068) in paragraph at lines 638--639
 []\TU/TeXGyrePagella(0)/m/n/12 list $\OML/cmm/m/it/12 blocks$ \TU/TeXGyrePagell
 a(0)/m/n/12 with fields \TU/TeXGyreCursor(0)/m/n/12 cite_id\TU/TeXGyrePagella(0
@@ -3889,7 +4059,7 @@ TeXGyreCursor(0)/m/n/12 text\TU/TeXGyrePagella(0)/m/n/12 , \TU/TeXGyreCursor(0)
 /m/n/12 authors_mention\TU/TeXGyrePagella(0)/m/n/12 ,
  []
 
-[60]
+[61]
 Underfull \hbox (badness 10000) in paragraph at lines 690--691
 [] \TU/TeXGyreCursor(0)/m/n/12 "options"\TU/TeXGyrePagella(0)/m/n/12 : {\TU/TeX
 GyreCursor(0)/m/n/12 temperature\TU/TeXGyrePagella(0)/m/n/12 : \TU/TeXGyreCurso
@@ -3898,81 +4068,6 @@ r(0)/m/n/12 TEMPERATURE\TU/TeXGyrePagella(0)/m/n/12 , \TU/TeXGyreCursor(0)/m/n/
  []
 
 Package microtype Info: Character `ﬆ' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `ﬅ' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `‥' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `‼' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `⁰' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `⁴' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `⁵' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `⁶' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `⁷' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `⁸' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `⁹' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `₀' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `₁' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `₂' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `₃' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `₄' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `₅' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `₆' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `₇' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `₈' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `₉' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `₊' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `₋' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `⁺' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `⁻' is missing
-(microtype)             in font `\TU/TeXGyrePagella(0)/b/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `ﬆ' is missing
 (microtype)             in font `\TU/TeXGyrePagella(0)/b/n/7'.
 (microtype)             Ignoring protrusion settings for this character.
 Package microtype Info: Character `ﬅ' is missing
@@ -4047,53 +4142,53 @@ Package microtype Info: Character `⁺' is missing
 Package microtype Info: Character `⁻' is missing
 (microtype)             in font `\TU/TeXGyrePagella(0)/b/n/7'.
 (microtype)             Ignoring protrusion settings for this character.
-[61] [62]) [63]
+[62] [63]) [64]
 \openout2 = `Capitulos/03Pruebas.aux'.
 
 (./Capitulos/03Pruebas.tex
 Capítulo 3.
-) [64
+) [65
 
 
 
 
 ]
-Underfull \hbox (badness 2326) in paragraph at lines 160--160
+Underfull \hbox (badness 2326) in paragraph at lines 212--212
 \TU/TeXGyrePagella(0)/m/n/12 Augmented Large Language Models». En: \TU/TeXGyreP
 agella(0)/m/it/12 Proceedings of the 30th ACM
  []
 
-[65
+[66
 
 
 
 
 ]
-Underfull \hbox (badness 1448) in paragraph at lines 160--160
+Underfull \hbox (badness 1448) in paragraph at lines 212--212
 []\TU/TeXGyrePagella(0)/m/n/12 Tianyang Lin et al. «  A survey of transformers»
 . En: \TU/TeXGyrePagella(0)/m/it/12 AI Open \TU/TeXGyrePagella(0)/m/n/12 3 (202
 2),
  []
 
-[66]
-Underfull \hbox (badness 10000) in paragraph at lines 160--160
+[67]
+Underfull \hbox (badness 10000) in paragraph at lines 212--212
 []\TU/TeXGyrePagella(0)/m/n/12 Balagopal Ramdurai. «  Large Language Models (LL
 Ms), Retrieval-
  []
 
 
-Underfull \hbox (badness 3098) in paragraph at lines 160--160
+Underfull \hbox (badness 3098) in paragraph at lines 212--212
 \TU/TeXGyrePagella(0)/m/n/12 (CNNs) in Application systems». En: \TU/TeXGyrePag
 ella(0)/m/it/12 International Journal of Marketing
  []
 
 
-Underfull \hbox (badness 1221) in paragraph at lines 160--160
+Underfull \hbox (badness 1221) in paragraph at lines 212--212
 []\TU/TeXGyrePagella(0)/m/n/12 Parth Sarthi et al. «  RAPTOR: Recursive Abstrac
 tive Processing for Tree-
  []
 
-[67] [68] (./0Tesis.aux
+[68] [69] (./0Tesis.aux
 LaTeX Info: Redefining \sptext on input line 23.
 LaTeX Info: Redefining \. on input line 23.
 LaTeX Info: Redefining \% on input line 23.
@@ -4104,12 +4199,12 @@ Package logreq Info: Writing requests to '0Tesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 44640 strings out of 476696
- 930838 string characters out of 5806955
- 1884018 words of memory out of 6000000
- 64112 multiletter control sequences out of 15000+600000
- 524066 words of font info for 132 fonts, out of 8000000 for 9000
+ 44929 strings out of 476696
+ 939464 string characters out of 5806955
+ 1892018 words of memory out of 6000000
+ 64386 multiletter control sequences out of 15000+600000
+ 524106 words of font info for 137 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 99i,14n,104p,1455b,5475s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,16n,104p,1455b,5475s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on 0Tesis.pdf (77 pages).
+Output written on 0Tesis.pdf (78 pages).

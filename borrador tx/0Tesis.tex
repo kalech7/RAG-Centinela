@@ -54,7 +54,7 @@
 % ====== Gráficos y utilidades ======
 \usepackage{graphicx}
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric,positioning,fit,backgrounds,calc,mindmap,trees}
+\usetikzlibrary{shapes.geometric,positioning,fit,backgrounds,calc,mindmap,trees,shadows}
 \usepackage{pdflscape}
 \usepackage{float}
 
@@ -93,6 +93,8 @@
 \definecolor{softmint}{RGB}{215,245,225}
 \definecolor{brandBlue}{RGB}{30,90,160}
 \definecolor{blueSoft}{RGB}{210,230,250}
+\definecolor{ink}{RGB}{20,28,38}
+\definecolor{accent}{RGB}{255,140,105}
 
 \tikzset{
   pill/.style={
@@ -106,6 +108,56 @@
   titletext/.style={font=\bfseries\small}
 }
 
+\tikzset{
+    mm/base/.style={
+        mindmap,
+        grow cyclic,
+        every node/.style={concept, align=center, font=\sffamily\footnotesize},
+    },
+    mm/level1/.style={
+        level distance=3.9cm,
+        sibling angle=72,
+    },
+    mm/root/.style={
+        concept,
+        font=\sffamily\bfseries\large,
+        minimum size=2.3cm,
+        text=white, % <-- SOLO NODO CENTRAL BLANCO
+        fill=brandBlue!90!white,
+        draw=brandBlue!90,
+        line width=1.1pt,
+    },
+    mm/child/.style={
+        concept,
+        font=\sffamily\footnotesize,
+        minimum size=1.7cm,
+        text=black, % <-- HIJOS NEGRO
+        fill=blueSoft!80!white,
+        draw=brandBlue!80,
+        line width=0.8pt,
+        text width=2.15cm,
+    },
+    mm/childAlt/.style={
+        mm/child,
+        fill=blueSoft!60!white,
+        draw=brandBlue!70,
+        text=black, % <-- HIJOS NEGRO
+    },
+    root concept/.append style={
+        fill=brandBlue!90!white,
+        draw=brandBlue!90,
+        text=white, % <-- SOLO NODO CENTRAL BLANCO
+        concept color=brandBlue,
+        minimum size=2.3cm,
+        line width=1.1pt,
+    },
+    every child connection/.append style={
+        draw=brandBlue!80,
+        line width=0.9pt,
+        fill=none,
+        opacity=1,
+    },
+}
 
 % ====== Comandos y metadatos ======
 \input{comandos.tex}

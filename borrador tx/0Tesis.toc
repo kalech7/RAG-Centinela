@@ -45,30 +45,30 @@
 \contentsline {paragraph}{Tipos de Paradigmas}{33}{section*.40}%
 \contentsline {subsubsection}{Evaluación y Métricas}{34}{section*.41}%
 \contentsline {paragraph}{Categorías de Evaluación}{34}{section*.42}%
-\contentsline {subsubsection}{Futuro de RAG}{39}{section*.44}%
-\contentsline {paragraph}{Desafíos Actuales:}{39}{section*.45}%
-\contentsline {paragraph}{Direcciones Potenciales:}{40}{section*.46}%
-\contentsline {paragraph}{Perspectivas:}{40}{section*.47}%
-\contentsline {chapter}{\numberline {2}Metodología}{42}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Revisión sistemática}{42}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Enfoque Design Science Research (DSR)}{44}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Diseño y desarrollo del artefacto}{48}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Ingesta}{48}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Preprocesamiento}{49}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Vectorizacion}{56}{subsection.2.3.3}%
-\contentsline {subsection}{\numberline {2.3.4}Vector DB}{57}{subsection.2.3.4}%
-\contentsline {subsection}{\numberline {2.3.5}Recuperación}{58}{subsection.2.3.5}%
-\contentsline {subsection}{\numberline {2.3.6}Re-ranking}{58}{subsection.2.3.6}%
-\contentsline {subsection}{\numberline {2.3.7}Construcción de Contexto}{60}{subsection.2.3.7}%
-\contentsline {subsection}{\numberline {2.3.8}Generación (LLM)}{61}{subsection.2.3.8}%
-\contentsline {subsection}{\numberline {2.3.9}Evaluación}{62}{subsection.2.3.9}%
-\contentsline {paragraph}{Características del equipo:}{62}{section*.50}%
-\contentsline {paragraph}{Dataset}{62}{section*.51}%
-\contentsline {paragraph}{Diseño del experimento}{62}{section*.52}%
-\contentsline {chapter}{\numberline {3}Pruebas, Resultados, Conclusiones y Recomendaciones}{64}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Demostración}{64}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Evaluación del desempeño}{64}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Resultados}{64}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Conclusiones}{64}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Recomendaciones}{64}{section.3.5}%
-\contentsline {chapter}{Bibliografía}{65}{chapter*.54}%
+\contentsline {subsubsection}{Futuro de RAG}{40}{section*.44}%
+\contentsline {paragraph}{Desafíos Actuales:}{40}{section*.45}%
+\contentsline {paragraph}{Direcciones Potenciales:}{41}{section*.46}%
+\contentsline {paragraph}{Perspectivas:}{42}{section*.48}%
+\contentsline {chapter}{\numberline {2}Metodología}{43}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Revisión sistemática}{43}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Enfoque Design Science Research (DSR)}{45}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Diseño y desarrollo del artefacto}{49}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Ingesta}{49}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Preprocesamiento}{50}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Vectorizacion}{57}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Vector DB}{58}{subsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.3.5}Recuperación}{59}{subsection.2.3.5}%
+\contentsline {subsection}{\numberline {2.3.6}Re-ranking}{59}{subsection.2.3.6}%
+\contentsline {subsection}{\numberline {2.3.7}Construcción de Contexto}{61}{subsection.2.3.7}%
+\contentsline {subsection}{\numberline {2.3.8}Generación (LLM)}{62}{subsection.2.3.8}%
+\contentsline {subsection}{\numberline {2.3.9}Evaluación}{63}{subsection.2.3.9}%
+\contentsline {paragraph}{Características del equipo:}{63}{section*.51}%
+\contentsline {paragraph}{Dataset:}{63}{section*.52}%
+\contentsline {paragraph}{Diseño del experimento}{63}{section*.53}%
+\contentsline {chapter}{\numberline {3}Pruebas, Resultados, Conclusiones y Recomendaciones}{65}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Demostración}{65}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Evaluación del desempeño}{65}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Resultados}{65}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Conclusiones}{65}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Recomendaciones}{65}{section.3.5}%
+\contentsline {chapter}{Bibliografía}{66}{chapter*.55}%

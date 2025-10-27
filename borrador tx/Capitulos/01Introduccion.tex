@@ -499,7 +499,8 @@ Convierte la consulta en un pseudo-documento que actúa como proxy para recupera
  \textit{Reranking} (segunda etapa de ordenamiento), \textit{Retriever finetuning} (ajuste del recuperador), \textit{Hybrid search} (combinación dispersa-densa), 
  \textit{Chunk optimization} (segmentación/jerarquización de documentos largos), \textit{Recursive retrieval} (búsqueda iterativa con razonamiento), 
  \textit{RAG pipeline enhancement} (módulos basados en reglas y en modelos) y \textit{Query reformulation} (reescritura/expansión de consultas). 
-De acuerdo con la literatura \parencite{hambarde2023ir,fan2021pretraining,han2024rag,wu2025ragSurvey}, estas categorías agrupan las técnicas más empleadas y reportadas en revisiones exhaustivas de la literatura. No obstante,
+De acuerdo con la literatura \parencite{hambarde2023ir,fan2021pretraining,han2024rag,wu2025ragSurvey}, estas categorías agrupan las técnicas más empleadas y reportadas en revisiones exhaustivas de la literatura.
+No obstante,
  existen otras variantes y propuestas que, aunque menos citadas, complementan este panorama.
 
 \paragraph{Tipos de retrievers:} Los retrievers se agrupan en tres familias: sparse, dense y híbridos/otros.
@@ -512,7 +513,8 @@ fusionando resultados sparse y dense o usando interacciones tardías  y re-ranke
 \begin{itemize}
   \item \textbf{Sparse}
     \begin{itemize}
-      \item \textbf{BM25}: Modelo probabilístico que pondera frecuencia de términos, IDF y normaliza por longitud. A diferencia de otros enfoques dispersos, BM25 introduce una función de saturación que evita que la alta repetición de un término en un documento incremente indefinidamente su peso. Es la línea base más usada como primer filtro eficiente en RAG y RI a gran escala \textcite{hambarde2023ir,han2024rag}.
+      \item \textbf{BM25}: Modelo probabilístico que pondera frecuencia de términos, IDF y normaliza por longitud.
+      A diferencia de otros enfoques dispersos, BM25 introduce una función de saturación que evita que la alta repetición de un término en un documento incremente indefinidamente su peso. Es la línea base más usada como primer filtro eficiente en RAG y RI a gran escala \textcite{hambarde2023ir,han2024rag}.
       \item \textbf{TF-IDF}: Representación dispersa clásica que pondera términos por frecuencia local y rareza global, es decir, cada vez que un término aparece, su peso crece linealmente. Sin embargo, es ampliamente reportada como recuperador base en RAG \textcite{jiang2024textmatching,zhai2024llmIR}.
     \end{itemize}
 
@@ -1052,23 +1054,31 @@ se mide mayormente con métricas automáticas, la \textit{transparency} y la \te
 la dimensión ética carece de métricas claras y se asocia más a aspectos como privacidad y seguridad.  
 
 En el área de RAG, \textcite{knollmeyer2024benchmarking} identifican cinco dimensiones clave de evaluación: relevancia del contexto, fidelidad (\textit{faithfulness}), relevancia 
-de la respuesta, corrección y calidad de las citas. Estas dimensiones permiten evaluar de manera más integral los sistemas que combinan recuperación y generación. Asimismo, 
+de la respuesta, corrección y calidad de las citas.
+Estas dimensiones permiten evaluar de manera más integral los sistemas que combinan recuperación y generación.
+Asimismo,
 \textcite{gao2023rag} señalan que, además de las métricas automáticas tradicionales de IR (precisión, recall, nDCG), resulta fundamental incluir evaluaciones humanas que capten 
 aspectos como coherencia, transparencia y verificabilidad.  
 
 \paragraph{Categorías de Evaluación}
 \begin{itemize}
-  \item \textbf{Enfoques de Evaluación — Gao et al. (2023)}
+  \item \textbf{Enfoques de Evaluación}
         \begin{itemize}
           \item Evaluación independiente por etapas: análisis separado de retrieval, augmentation y generation, con métricas específicas en cada módulo.
           \item Evaluación End-to-End: valoración directa de la salida final del sistema RAG, con dos variantes:
           \begin{itemize}
-              \item Evaluación End-to-End automática: frameworks que miden habilidades clave como exactitud, fidelidad (\textit{faithfulness}), atribución de fuentes, reducción de alucinaciones y transparencia.
+              \item Evaluación End-to-End automática: consiste en medir la calidad final de un sistema RAG sobre su salida
+              completa y verificándolas automáticamente frente al contexto recuperado y/o Ground Truth~\footnote{\textbf{Ground Truth:} Es el conjunto
+              de respuestas correctas ya establecidas normalmente creadas por personas expertas o tomadas de fuentes verificadas,
+                  se usa para comparar y medir qué tan bien acierta un sistema} mediante evaluadores como NLI
+              (\textit{entailment})~\footnote{\textbf{Entailment (NLI):} significa que una una afirmación/claim de la respuesta se sigue o está sostenida
+              por un fragmento de texto recuperado sin contradicciones. Cuando no hay soporte es \emph{neutral} y cuando la niega es \emph{contradiction}}
+              o \textit{LLM-as-judge} (un LLM que actúa como evaluador automático de la respuesta)
               \item Evaluación End-to-End con juicio humano: juicios expertos que valoran coherencia, verificabilidad, utilidad práctica y confianza.
           \end{itemize}
           \item Combinación de métricas: integración de métricas clásicas de recuperación (precisión, recall, nDCG), métricas de generación (coherencia, verificabilidad, calidad narrativa) y evaluación humana.
       \end{itemize}
-    \item \textbf{Evaluación en IR con FATE — Bernard \& Balog (2025)}
+    \item \textbf{Evaluación en IR con FATE}
     \begin{itemize}
         \item Fairness: métricas automáticas como \textit{top-k}, \textit{exposure} y \textit{pairwise metrics}.
         \item Transparency y Accountability: auditorías y estudios de usuarios, centrados en interpretabilidad y trazabilidad.
@@ -1076,7 +1086,7 @@ aspectos como coherencia, transparencia y verificabilidad.
         \item Tensiones: conflictos entre fairness individual vs. grupal y entre transparencia excesiva vs. carga cognitiva.
     \end{itemize}
 
-    \item \textbf{Evaluación Clásica en IR — Hambarde \& Proença (2023)}
+    \item \textbf{Evaluación Clásica en IR}
     \begin{itemize}
         \item Métricas de recuperación: precisión, recall, F1, MAP (Mean Average Precision), MRR (Mean Reciprocal Rank).
         \item Métricas de ranking: nDCG (Normalized Discounted Cumulative Gain) y calidad del ordenamiento.
@@ -1084,7 +1094,7 @@ aspectos como coherencia, transparencia y verificabilidad.
         \item Dimensión multimodal: evaluación de IR en escenarios que integran texto, imágenes y audio.
     \end{itemize}
 
-    \item \textbf{Evaluación en RAG — Knollmeyer et al. (2024); Gao et al. (2023)}
+    \item \textbf{Evaluación en RAG}
     \begin{itemize}
         \item \textit{Fase de Recuperación}: 
         \begin{itemize}
@@ -1116,33 +1126,38 @@ aspectos como coherencia, transparencia y verificabilidad.
 \end{itemize}
 A continuación en la Tabla~\ref{tab:glosariometricas} se presenta un glosario que detalla el significado de las principales
 siglas utilizados en las fórmulas de las métricas descritas en la Tabla~\ref{tab:metrics}.
-Este glosario permite una interpretación clara y la comprensión de los conceptos evaluados y los cálculos asociados
-a cada métrica.
+Este glosario permite la comprensión de los conceptos evaluados, la notación usada y los cálculos asociados a cada
+métrica.
 \begin{table}[H]
     \centering
-    \begin{tabularx}{\textwidth}{S M}
+    \begin{tabularx}{\textwidth}{L{0.22\textwidth} Y}
         \toprule
-        \textbf{Sigla} & \textbf{Significado} \\
+        \textbf{Símbolo/Sigla} & \textbf{Significado} \\
         \midrule
-        TP & Verdaderos positivos (\textit{True Positives}) \\
-        FP & Falsos positivos (\textit{False Positives}) \\
-        FN & Falsos negativos (\textit{False Negatives}) \\
-        TN & Verdaderos negativos (\textit{True Negatives}) \\
-        N & Número total de instancias evaluadas \\
-        Q & Conjunto de preguntas o consultas \\
-        rank & Posición del primer relevante en el ranking \\
-        Rel & Conjunto de documentos relevantes \\
-        Top-$k$ & Los $k$ documentos mejor clasificados/recuperados \\
-        $\displaystyle \mathcal{M}$ & Métrica evaluada (ej. exactitud, F1, etc.) \\
-        \# & Número de elementos (afirmaciones o consultas) \\
-        $t$ & Tiempo (inicio, fin) \\
-        Cost & Costo de cada componente (retriever, rerank, LLM) \\
-        $\displaystyle \hat{y}_i$ & Respuesta generada por el modelo para el ejemplo $i$ \\
-        $\displaystyle Y_i^{\star}$ & Conjunto de respuestas de referencia (“ground truth”) para el ejemplo $i$ \\
-        $\displaystyle \mathbf{1}\{\cdot\}$ & Función indicadora: vale 1 si la condición se cumple, 0 si no \\
+        TP, FP, FN, TN & Verdaderos/Falsos positivos y negativos. \\
+        $\displaystyle N$ & Número total de ejemplos/instancias evaluadas. \\
+        $\displaystyle Q$ & Conjunto de preguntas o consultas; $\lvert Q\rvert$ su cardinalidad. \\
+        $\displaystyle \lvert A\rvert$ & Cardinalidad del conjunto $A$. \\
+        $\displaystyle \mathrm{Rel}$ & Conjunto de documentos relevantes (ground truth de relevancia). \\
+        $\displaystyle \mathrm{Top}\!-\!k$ & Conjunto de los $k$ documentos mejor clasificados/recuperados. \\
+        $\displaystyle k$ & Tamaño del corte en \emph{Top-$k$}. \\
+        $\displaystyle \mathrm{rank}_i$ & Posición del primer documento relevante para la consulta $i$. \\
+        $\displaystyle \mathcal{M}(\cdot)$ & Métrica evaluada (p.\,ej., \textit{Accuracy}, F1, EM, etc.). \\
+        $\displaystyle \hat{y}_i$ & Respuesta generada por el modelo para el ejemplo $i$. \\
+        $\displaystyle Y_i^{\star}$ & Conjunto de respuestas de referencia (\textit{ground truth}) para el ejemplo $i$. \\
+        $\displaystyle \mathbf{1}\{\cdot\}$ & Función indicadora (vale 1 si la condición se cumple, 0 si no). \\
+        $\displaystyle \mathrm{score}_i$ & Puntuación (p.\,ej., de fidelidad/consistencia) asignada a la respuesta $i$ por un juez (LLM o clasificador). \\
+        $t^{(\text{cliente})}_{\text{inicio},j}$, $t^{(\text{cliente})}_{\text{fin},j}$ & Tiempos de inicio y fin (en el cliente) de la consulta $j$. \\
+        $T_j$ & Latencia de la consulta $j$: $T_j = t^{(\text{cliente})}_{\text{fin},j}-t^{(\text{cliente})}_{\text{inicio},j}$. \\
+        $j$ & Índice de la consulta en la evaluación operacional. \\
+        \#\,X & Número de elementos de $X$ (p.\,ej., \#\,\textit{claims}, \#\,\textit{chunks}). \\
+        \textit{chunk} & Fragmento/segmento de documento recuperado. \\
+        \textit{claim} & Afirmación atómica evaluable dentro de una respuesta. \\
+        $\mathrm{QPS}$ & \textit{Queries per second} (throughput). \\
+        $\mathrm{Cost}$ & Costo monetario por componente del pipeline. \\
         \bottomrule
     \end{tabularx}
-    \caption{Glosario de siglas usados en las métricas}
+    \caption{Glosario de notación}
     \label{tab:glosariometricas}
 \end{table}
 
@@ -1152,71 +1167,71 @@ La Tabla~\ref{tab:metrics} resume mencionadas métricas para evaluar los sistema
 eficacia del recuperador (Recall@k, Precision, Recall y F1), pasando por la calidad del ranking y de la respuesta en QA
 (MRR y Exact Match), el desempeño operativo y económico (latencia, throughput y costo por consulta), hasta la calidad de
 la generación condicionada al contexto (cobertura de citas y fidelidad/faithfulness).
-se utilizan las abreviaciones o notaciones
 
 \begin{tabularx}{\textwidth}{L{0.22\textwidth} Y C{0.30\textwidth} C{0.16\textwidth}}
     \toprule
     \textbf{Métrica} & \textbf{Descripción} & \textbf{Fórmula} & \textbf{Propósito} \\
     \midrule
 
-    %%%%%%%%%%%%%%%%%%%%% Recuperación
+    % --- Recuperación
     \multicolumn{4}{l}{\textbf{Recuperación}}\\
     \cmidrule(lr){1-4}
-    Recall@k & Proporción de documentos relevantes capturados dentro del top-$k$ en la fase de recuperación. &
+    Recall@k & Proporción de documentos relevantes capturados dentro del top-$k$. &
     $\displaystyle \frac{\lvert \mathrm{Rel}\cap \mathrm{Top}\!-\!k\rvert}{\lvert \mathrm{Rel}\rvert}$ & eficacia \\[4pt]
-
-    Precision & Fracción de ítems recuperados que son relevantes; complemento clásico del \textit{recall}. &
+    Precision & Fracción de ítems recuperados que son relevantes. &
     $\displaystyle \frac{TP}{TP+FP}$ & precisión \\[4pt]
-
     Recall & Cobertura de instancias relevantes entre las recuperadas. &
     $\displaystyle \frac{TP}{TP+FN}$ & cobertura \\[4pt]
-
-    F1 & Media armónica entre \textit{precision} y \textit{recall}; útil con clases desbalanceadas. &
+    F1 & Media armónica entre \textit{precision} y \textit{recall}. &
     $\displaystyle \frac{2\,\mathrm{Precision}\cdot \mathrm{Recall}}{\mathrm{Precision}+\mathrm{Recall}}$ & equilibrio \\[4pt]
+    Relevancia de contexto (clasificador/reranker) & \% de fragmentos recuperados juzgados relevantes automáticamente. &
+    $\displaystyle \frac{\#\,\text{chunks relevantes}}{\#\,\text{chunks evaluados}}$ & pertinencia \\[4pt]
 
-    %%%%%%%%%%%%%%%%%%%%% Augmentación
+% --- Augmentation
     \addlinespace[2pt]
     \multicolumn{4}{l}{\textbf{Augmentation}}\\
     \cmidrule(lr){1-4}
-    Ganancia de augmentation & Efecto marginal de inyectar contexto recuperado frente a usar el LLM sin recuperación. &
-    $\displaystyle \mathcal{M}(\text{RAG})\;-\;\mathcal{M}(\text{LLM}_{\text{sin retriever}})$ & mejora \\[4pt]
+    Ganancia de augmentation & Efecto marginal de inyectar contexto frente a usar el LLM sin recuperación. &
+    $\displaystyle \mathcal{M}(\text{RAG}) - \mathcal{M}(\text{LLM}_{\text{sin retriever}})$ & mejora \\[4pt]
 
-    %%%%%%%%%%%%%%%%%%%%% Ranking
+% --- Ranking
     \addlinespace[2pt]
     \multicolumn{4}{l}{\textbf{Ranking}}\\
     \cmidrule(lr){1-4}
-    MRR (Mean Reciprocal Rank) & Evalúa rankings por la posición del primer relevante; habitual en QA y ranking para RAG. &
+    MRR (Mean Reciprocal Rank) & Evalúa la posición del primer relevante en el ranking. &
     $\displaystyle \frac{1}{\lvert Q\rvert}\sum_{i=1}^{\lvert Q\rvert}\frac{1}{\mathrm{rank}_i}$ & ranking \\[4pt]
 
-    %%%%%%%%%%%%%%%%%%%%% Generación
+% --- Generación
     \addlinespace[2pt]
     \multicolumn{4}{l}{\textbf{Generación}}\\
     \cmidrule(lr){1-4}
-    Accuracy & Proporción total de aciertos en clasificación/verificación binaria. &
+    Accuracy & Proporción total de aciertos en verificación binaria. &
     $\displaystyle \frac{TP+TN}{N}$ & exactitud \\[4pt]
-
-    Error rate & Tasa de error como complemento de \textit{accuracy}. &
+    Error rate & Complemento de \textit{accuracy}. &
     $\displaystyle \frac{FP+FN}{N}$ & error \\[4pt]
-
-    Exact Match (EM) & Porcentaje de respuestas que coinciden exactamente con alguna referencia en QA. &
+    Exact Match (EM) &  de respuestas que coinciden exactamente con la referencia. &
     $\displaystyle \frac{1}{N}\sum_{i=1}^{N}\mathbf{1}\{\hat{y}_i\in Y_i^{\star}\}$ & coincidencia \\[4pt]
-
-    Cobertura de citas & Porcentaje de afirmaciones de la respuesta sustentadas con pasajes citados del contexto. &
+    Cobertura de citas &  de afirmaciones sustentadas con pasajes citados. &
     $\displaystyle \frac{\#\,\text{afirmaciones sustentadas}}{\#\,\text{afirmaciones totales}}$ & atribución \\[4pt]
-
-    Fidelidad (faithfulness) & Proporción de afirmaciones consistentes con las fuentes recuperadas. &
+    Fidelidad (faithfulness) &  de afirmaciones consistentes con las fuentes recuperadas. &
     $\displaystyle \frac{\#\,\text{afirmaciones consistentes}}{\#\,\text{afirmaciones evaluadas}}$ & fidelidad \\[4pt]
+    LLM-as-judge (fidelidad) & Puntuación de consistencia afirmación–evidencia; promedio por respuesta. &
+    $\displaystyle \frac{1}{N}\sum_{i=1}^{N}\mathrm{score}_i$ & fidelidad \\[4pt]
+    NLI (entailment a nivel de afirmación) & Porcentaje de afirmaciones \emph{entailed} por los pasajes recuperados. &
+    $\displaystyle \frac{\#\,\text{claims entailed}}{\#\,\text{claims totales}}$ & veracidad \\[4pt]
+    Auto-consistency & Acuerdo entre múltiples generaciones sobre hechos clave. &
+    $\displaystyle \frac{\#\,\text{acuerdos}}{\#\,\text{comparaciones}}$ & robustez \\[4pt]
+    Tasa de alucinación & Porcentaje de afirmaciones sin soporte en el contexto recuperado. &
+    $\displaystyle 1 - \text{fidelidad}$ & riesgo \\[4pt]
 
-    %%%%%%%%%%%%%%%%%%%%% Operación
+% --- Operación
     \addlinespace[2pt]
     \multicolumn{4}{l}{\textbf{Operación}}\\
     \cmidrule(lr){1-4}
-    Latencia (Response Time) & Tiempo requerido para cada consulta desde su envío hasta la respuesta del sistema. &
-    $\displaystyle T_j \;=\; t^{(\text{cliente})}_{\text{fin},j}\;-\;t^{(\text{cliente})}_{\text{inicio},j}$ & rapidez \\[4pt]
-
-    Throughput (QPS) & Consultas servidas por segundo bajo carga estable. &
+    Latencia (Response Time) & Tiempo por consulta (cliente: fin − inicio). &
+    $\displaystyle T_j = t^{(\text{cliente})}_{\text{fin},j}-t^{(\text{cliente})}_{\text{inicio},j}$ & rapidez \\[4pt]
+    Throughput (QPS) & Consultas servidas por segundo. &
     $\displaystyle \frac{\#\,\text{consultas}}{\text{segundos}}$ & capacidad \\[4pt]
-
     Costo por consulta & Costo monetario unitario de servir una consulta. &
     $\displaystyle \mathrm{Cost}_{\text{retriever}}+\mathrm{Cost}_{\text{rerank}}+\mathrm{Cost}_{\text{LLM}}$ & costo \\[4pt]
 
@@ -1249,21 +1264,42 @@ escenarios sensibles y de alto impacto.
 
 \paragraph{Direcciones Potenciales:}  
 \mbox{}\\
-Las líneas de avance incluyen el desarrollo de retrievers más robustos, la optimización de las interacciones entre modelo y recuperación, 
-así como mecanismos de evaluación que prioricen la relevancia y la coherencia. \textcite{ramdurai2025llm} enfatiza la sinergia con arquitecturas multimodales y con sistemas 
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \path[
+            mm/base,
+            level 1/.append style=mm/level1
+        ]
+        node[mm/root] {Direcciones}
+        child { node[mm/child]     {Retrievers\\\& bucle modelo--RI} }
+        child { node[mm/childAlt]  {Multimodal\\} }
+        child { node[mm/child]     {RAPTOR\\} }
+        child { node[mm/childAlt]  {VDB\\memoria\\} }
+        child { node[mm/child]     {Transformers\\en IR\\} };
+    \end{tikzpicture}
+    \caption{Principales direcciones}
+    \label{fig:mindmap-direcciones}
+\end{figure}
+Como se muestra en la Figura~\ref{fig:mindmap-direcciones}, las líneas de avance incluyen el desarrollo de retrievers más robustos, la optimización de las interacciones entre modelo y recuperación,
+así como mecanismos de evaluación que prioricen la relevancia y la coherencia. \textcite{ramdurai2025llm} enfatiza la sinergia con arquitecturas multimodales y con sistemas
 capaces de combinar información textual, visual y estructurada.
 Asimismo, enfoques como RAPTOR, que introduce resúmenes recursivos y jerárquicos en la recuperación,
-muestran cómo superar la fragmentación del contexto y mejorar la integración semántica \parencite{sarthi2024raptor}. Otra dirección destacada es la incorporación de 
+muestran cómo superar la fragmentación del contexto y mejorar la integración semántica~\parencite{sarthi2024raptor}.
+Otra dirección destacada es la incorporación de
 bases de datos vectoriales como memorias semánticas persistentes, que permiten gestionar grandes volúmenes de embeddings, mitigar el olvido catastrófico de los modelos
  y ofrecer personalización en la recuperación~\parencite{jing2024vecdb}.
-Finalmente, cabe mencionar que los pre-trained transformers aplicados a IR han abierto el camino hacia modelos más sofisticados para tareas de ranking y matching semántico, 
-aunque todavía requieren diseños de preentrenamiento adaptados a los desafíos específicos de la recuperación de información~\parencite{fan2021pretraining}.
+Finalmente, cabe mencionar que los pre-trained transformers aplicados a IR han abierto el camino hacia modelos más sofisticados para tareas de ranking y matching semántico,
+aunque todavía requieren diseños de pre entrenamiento adaptados a los desafíos específicos de la recuperación de información~\parencite{fan2021pretraining}.
 
 \paragraph{Perspectivas:} 
 \mbox{}\\
 A medio plazo, RAG y los LLM convergerán con la IR clásica hacia sistemas de acceso conversacional al conocimiento: motores de búsqueda capaces de generar respuestas enriquecidas con análisis propio,
-pero con respaldo en documentación verificable, capaces de planificar, citar y aprovechar el historial conversacional. Incluso si los LLM siguen mejorando, la recuperación seguirá 
+pero con respaldo en documentación verificable, capaces de planificar, citar y aprovechar el historial conversacional.
+Incluso si los LLM siguen mejorando, la recuperación seguirá
 siendo un componente clave porque permite reducir costos, mantener la información siempre actualizada, control y gobernanza de la evidencia usada y en consecuencia se espera la aparición de arquitecturas integradas donde RAG funcione junto con
-herramientas externas y módulos memoria trabajen de forma coordinada. Esta coordinación hará posible planificar y ejecutar tareas más largas o compuestas. La evaluación de estos sistemas ya no se limitará a medir métricas técnicas como la exactitud, sino que pondrá el énfasis en
+herramientas externas y módulos memoria trabajen de forma coordinada.
+Esta coordinación hará posible planificar y ejecutar tareas más largas o compuestas.
+La evaluación de estos sistemas ya no se limitará a medir métricas técnicas como la exactitud, sino que pondrá el énfasis en
  dos partes clave: la utilidad práctica y la veracidad, especialmente en contextos de alta exigencia.
 
