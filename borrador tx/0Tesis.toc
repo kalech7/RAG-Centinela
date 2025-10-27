@@ -64,7 +64,7 @@
 \contentsline {subsection}{\numberline {2.3.9}Evaluación}{63}{subsection.2.3.9}%
 \contentsline {paragraph}{Características del equipo:}{63}{section*.51}%
 \contentsline {paragraph}{Dataset:}{63}{section*.52}%
-\contentsline {paragraph}{Diseño del experimento}{63}{section*.53}%
+\contentsline {paragraph}{Diseño del experimento.}{63}{section*.53}%
 \contentsline {chapter}{\numberline {3}Pruebas, Resultados, Conclusiones y Recomendaciones}{65}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Demostración}{65}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Evaluación del desempeño}{65}{section.3.2}%

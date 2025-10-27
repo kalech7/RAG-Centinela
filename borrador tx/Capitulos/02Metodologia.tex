@@ -730,24 +730,26 @@ el sistema por etapas:
     \item \textit{Generation}: Corrección, fidelidad a las evidencias y calidad de la citación.
 \end{itemize}
 
-\paragraph{Diseño del experimento} para ejecutar los experiments n palabras clave en áreas para que sean validadas por
-expertos
+\paragraph{Diseño del experimento.}
+Se eligen tres áreas temáticas del corpus y, en cada una, se ejecutan 50 consultas.
+Las consultas se organizan en tres tipos: \emph{single-hop} (la respuesta está en un solo fragmento), \emph{multi-hop}
+(requiere fusionar 2--3 evidencias) y \emph{no answer} (no existe respuesta en el corpus).
+Las respuestas generadas se validan con apoyo de expertos.
+\begin{enumerate}[label=\textbf{(\roman*)},leftmargin=*,itemsep=0.35em]
+    \item \textit{Retriever}: usamos \textbf{Recall@k} (con \(k=20\)) para medir cuánta evidencia relevante entra
+    efectivamente en el top-\(k\) (cobertura), y \textbf{MRR} para reflejar \emph{qué tan arriba} aparece el primer
+    relevante en el ranking (sensibilidad a la posición).
+    Ambas se reportan como promedios macro sobre las consultas.
+    \item \textit{Augmentation}: reportamos la \textbf{Ganancia de augmentation}, definida como la mejora de la métrica
+    objetivo al inyectar contexto frente a usar el LLM solo,
+    \(\mathcal{M}(\text{RAG})-\mathcal{M}(\text{LLM}_{\text{sin retriever}})\).
+    Esto indica el valor añadido por la construcción de contexto.
+    \item \textit{Generation}: para respuestas cortas usamos \textbf{Exact Match (EM)}; en respuestas abiertas evaluamos
+    \textbf{Fidelidad} con un juez (\emph{LLM-as-judge}) condicionada al contexto recuperado y la
+    \textbf{Cobertura de citas} (porcentaje de afirmaciones sustentadas).
+    Además, reportamos la \textbf{Tasa de alucinación} como \(1-\)fidelidad.
+    \item \textit{Operación}: medimos \textbf{Latencia (Response Time)} por consulta.
+\end{enumerate}
 
-\begin{itemize}
-    \item \textbf{Eficacia de la recuperación:} se cuantifica con métricas estándar de IR Recall@k,
-    MRR, Recall y Precision las cuales son las nociones clásicas de efectividad y se emplean para
-    verificar que el recuperador sitúa evidencia relevante en el top-$k$.
-
-    \item \textbf{Calidad y adecuación del contexto inyectado:} se valora mediante juicios explícitos de relevancia
-    de los fragmentos de texto recuperados (“context relevance”), verificando que la evidencia sea pertinente y suficiente
-    para responder la consulta
-
-    \item \textbf{Fidelidad y calidad de la atribución:} se comprueba que las afirmaciones estén sustentadas en los
-    fragmentos citados y que la citación sea adecuada y completa (calidad de cita)
-
-    \item \textbf{Detección y clasificación de alucinaciones:} se identifican y clasifican por su origen—fallos de
-    recuperación (fuente, consulta, recuperador, estrategia) o deficiencias de generación (ruido/conflicto de
-    contexto,“middle curse”, problemas de alineamiento y límites de capacidad)—para orientar acciones de mitigación.
-\end{itemize}
 
 
