@@ -1217,7 +1217,7 @@ se utilizan las abreviaciones o notaciones
     Throughput (QPS) & Consultas servidas por segundo bajo carga estable. &
     $\displaystyle \frac{\#\,\text{consultas}}{\text{segundos}}$ & capacidad \\[4pt]
 
-    Costo por consulta & Costo monetario unitario de servir una consulta (recuperación + re-ranking + generación). &
+    Costo por consulta & Costo monetario unitario de servir una consulta. &
     $\displaystyle \mathrm{Cost}_{\text{retriever}}+\mathrm{Cost}_{\text{rerank}}+\mathrm{Cost}_{\text{LLM}}$ & costo \\[4pt]
 
     \bottomrule
@@ -1228,24 +1228,31 @@ se utilizan las abreviaciones o notaciones
 \subsubsection{Futuro de RAG}
 
 Debido al poder de otorgar documentos como evidencia, aportando contexto y trazabilidad de las fuentes, RAG se consolidará como una capa estructural de acceso conversacional
- al conocimiento, donde LLM e IR cooperan para entregar respuestas verificables y reducir alucinaciones. De esta forma, avances como la recuperación jerárquica y el uso de bases de datos vectoriales 
-  fortalecen la integración de contexto y la gobernanza de la evidencia, habilitando sistemas que citan, planifican y mantienen 
+ al conocimiento, donde LLM e IR cooperan para entregar respuestas verificables y reducir alucinaciones.
+ De esta forma, avances como la recuperación jerárquica y el uso de bases de datos vectoriales
+fortalecen la integración de contexto y la gobernanza de la evidencia, habilitando sistemas que citan, planifican y mantienen
  conocimiento actualizado~\parencite{zhai2024llmIR}. 
 
 \paragraph{Desafíos Actuales:} 
 \mbox{}\\
-De acuerdo con~\textcite{zhai2024llmIR}, uno de los principales desafíos de los sistemas RAG es la generación de alucinaciones, que comprometen la confianza y 
-limitan su uso en aplicaciones críticas. Asimismo, persisten limitaciones en la calidad de la recuperación y en la eficiencia computacional, especialmente 
-en dominios donde se requiere información actualizada y especializada~\parencite{hu2024ragrau}. Además, \textcite{ramdurai2025llm} señala que la integración de RAG con otras
-arquitecturas, como redes neuronales convolucionales, enfrenta problemas de escalabilidad y de adaptación a contextos heterogéneos. También es clave subrayar que persisten problemas éticos y de transparencia (FATE) en los sistemas de recuperación y generación.
-En la literatura de~\textcite{bernard2025fate} muestra que aún no existen marcos estandarizados para evaluar imparcialidad, transparencia y responsabilidad en IR, lo que limita la confianza social en los sistemas RAG. 
-Otro reto es la reproducibilidad y robustez de los modelos preentrenados, ya que la variabilidad en hiperparámetros y semillas afecta la consistencia de los resultados~\parencite{fan2021pretraining}.
+Los sistemas RAG enfrentan varios retos clave que afectan su adopción y desempeño en contextos críticos:
+\begin{itemize}
+    \item Generación de alucinaciones, comprometiendo la confianza en los resultados~\textcite{zhai2024llmIR}.
+    \item Limitaciones en la calidad de la recuperación y la eficiencia computacional, sobre todo en dominios especializados~\parencite{hu2024ragrau}.
+    \item Dificultades de escalabilidad y adaptación al integrar RAG con otras arquitecturas~\textcite{ramdurai2025llm}.
+    \item Problemas persistentes de ética y transparencia (FATE).
+    \item Ausencia de marcos estandarizados para evaluar imparcialidad y responsabilidad, lo que restringe la confianza social~\textcite{bernard2025fate}.
+    \item Reto de reproducibilidad y robustez debido a la variabilidad en hiperparámetros y semillas~\parencite{fan2021pretraining}.
+\end{itemize}
+Abordar estos desafíos es permitirán avanzar en la fiabilidad, equidad y aplicabilidad de los sistemas RAG en
+escenarios sensibles y de alto impacto.
 
 \paragraph{Direcciones Potenciales:}  
 \mbox{}\\
 Las líneas de avance incluyen el desarrollo de retrievers más robustos, la optimización de las interacciones entre modelo y recuperación, 
 así como mecanismos de evaluación que prioricen la relevancia y la coherencia. \textcite{ramdurai2025llm} enfatiza la sinergia con arquitecturas multimodales y con sistemas 
-capaces de combinar información textual, visual y estructurada. Asimismo, enfoques como RAPTOR, que introduce resúmenes recursivos y jerárquicos en la recuperación,
+capaces de combinar información textual, visual y estructurada.
+Asimismo, enfoques como RAPTOR, que introduce resúmenes recursivos y jerárquicos en la recuperación,
 muestran cómo superar la fragmentación del contexto y mejorar la integración semántica \parencite{sarthi2024raptor}. Otra dirección destacada es la incorporación de 
 bases de datos vectoriales como memorias semánticas persistentes, que permiten gestionar grandes volúmenes de embeddings, mitigar el olvido catastrófico de los modelos
  y ofrecer personalización en la recuperación~\parencite{jing2024vecdb}.
