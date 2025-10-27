@@ -490,7 +490,7 @@ lo que reduce inconsistencias y riesgo de alucinaciones en la generación. En t�
  calcular su similitud y una mejor relevancia contextual del material recuperado.
 
 
-\subsection{Vectorizacion}
+\subsection{Vectorización}\label{subsec:vectorizacion}
 Para el diseño de este sistema se usa un retriever denso de arquitectura bi-encoder tipo BERT para la generación de embeddings, ya que permite codificar por separado la 
 consulta y los fragmentos en un espacio vectorial de baja dimensión (vector corto y continuo de tamaño fijo) y comparar por similitud, 
 capturando relaciones semánticas más allá de coincidencias léxicas y mejorando la recuperación en escenarios RAG y open-domain QA.
@@ -521,7 +521,7 @@ Además, estos embeddings se indexan en bases de datos vectoriales con búsqueda
 Toma los textos del archivo parquet, los limpia y les asigna identificadores (vec-id, chunk-uid), luego usa un modelo SentenceTransformer (E5) en CPU para convertir cada fragmento en un vector numérico normalizado (embedding).
 Procesa los textos por lotes (reduce el tamaño si hay errores de memoria), junta todos los embeddings en una matriz (N, dim) y finalmente guarda en dos archivos .npy (donde estan los vectores) y .pkl con la información mínima (modelo, dimensiones e índices que vinculan cada vector con su texto original).
 
-\subsection{Vector DB}
+\subsection{Vector DB}\label{subsec:vector-db}
 \begin{algorithmEN}[H]
   \caption{Build Vector Index from Embedding Matrix}
   \begin{algorithmic}[1]
@@ -541,7 +541,7 @@ Procesa los textos por lotes (reduce el tamaño si hay errores de memoria), junt
 
 Carga los embeddings normalizados verifica que las dimensiones coincidan, construye un índice FAISS y  el resultado se guarda en disco (.bin)
 
-\subsection{Recuperación}
+\subsection{Recuperación}\label{subsec:recuperacion}
 \begin{algorithmEN}[H]
   \caption{Query Search over Vector Index}
   \begin{algorithmic}[1]
@@ -569,10 +569,10 @@ Carga los embeddings normalizados verifica que las dimensiones coincidan, constr
   \label{alg:search_vector_index}
 \end{algorithmEN}
 
-Primero cargamos la vector DB, luego vectorizamos  la consulta (query) y normaliza el embedding con ese vector hace búsqueda k-NN en FAISS y obtiene scores e ids.
+Primero cargamos el vector DB, luego vectorizamos  la consulta (query) y normaliza el embedding con ese vector hace búsqueda k-NN en FAISS y obtiene scores e ids.
 Para obtener un contexto mejorado se une el resultado con el CSV de Scopus por scopus-id para agregar la demas metadata que contiene el csv.
-\subsection{Re-ranking}
-Se implementa un cross encoder entrenado de segunda capa que re-ordena los candidatos recuperados en la primera etapa densa. El puntaje final se obtiene por fusión lineal (min-max + suma ponderada)
+\subsection{Re-ranking}\label{subsec:re-ranking}
+Se implementa un cross encoder entrenado de segunda capa que reordena los candidatos recuperados en la primera etapa densa. El puntaje final se obtiene por fusión lineal (min-max + suma ponderada)
 entre el score denso de la recuperación inicial y el score del cross-encoder. 
 Esta estrategia equilibra eficacia (precisión en el top-k) y eficiencia (coste computacional), y se ejecuta en CPU con MiniLM por ser un modelo compacto (menor latencia y memoria).
 \begin{algorithmEN}[H]
@@ -628,7 +628,7 @@ Construye pares (consulta, texto) a partir de las columnas de texto prioritarias
 el puntaje denso del recuperador) con min-max y luego los fusiona mediante una suma ponderada convexa.
 
 
-\subsection{Construcción de Contexto}
+\subsection{Construcción de Contexto}\label{subsec:construccion-de-contexto}
 La evidencia recolectada en el paso anterior se convierte en un bloque de evidencia utilizable por el LLM, equilibrando cobertura semántica y límite de longitud. 
 Proporcionar cada texto en chunks manejables (longitud fija), preservando su trazabilidad (título, autores, año, DOI); y ensamblar un “paquete” de contexto con instrucciones de uso para el modelo
 \begin{algorithmEN}[H]
@@ -669,13 +669,15 @@ Proporcionar cada texto en chunks manejables (longitud fija), preservando su tra
 \end{algorithmic}
 \end{algorithmEN}
 
-A partir de la tabla reranqueada, se eligen las columnas para título (title/chunk title) y cuerpo (abstract/chunktext/summary), se limita el número de filas a top-k y se crea la lista blocks. Para las 
-n primeras filas se obtienen el título y el texto; si trim está activo, el cuerpo se recorta hasta L
- caracteres. Se capturan los autores completos y se genera una mención abreviada, se extraen el año, el DOI y el identificador (scopusid). Con estos campos se arma cada bloque y devuelve blocks, listo para alimentar el prompt.
+A partir de la tabla reranqueada, se eligen las columnas para título (title/chunk title) y cuerpo (abstract/chunktext/summary), se limita el número de filas a top-k y se crea la lista blocks.
+Para las n primeras filas se obtienen el título y el texto; si trim está activo, el cuerpo se recorta hasta L caracteres.
+ Se capturan los autores completos y se genera una mención abreviada, se extraen el año, el DOI y el identificador (scopusid).
+ Con estos campos se arma cada bloque y devuelve blocks, listo para alimentar el prompt.
 
-\subsection{Generación (LLM)}
-En esta penultima etapa el LLM produce una respuesta dependiendo de la evidencia externa extraida previamente. recivbe un prompt estruturado que incluye la instruccion de estilo y formato
-la pregunta del usuario y los fragmentos selecionados tras la recuperacion y reraking el llm cita explícitamente las fuentes dentro de cada párrafo para asegurar trazabilidad y verificabilidad
+\subsection{Generación (LLM)}\label{subsec:generacion-(llm)}
+En esta penultima etapa el LLM produce una respuesta dependiendo de la evidencia externa extraída previamente.
+Recibe un prompt estructurado que incluye la instrucción de estilo y formato
+la pregunta del usuario y los fragmentos seleccionados tras la recuperación y reraking el llm cita explícitamente las fuentes dentro de cada párrafo para asegurar trazabilidad y verificabilidad
 \begin{algorithmEN}[H]
 \caption{LLMGenerateViaHTTP}
 \begin{algorithmic}[1]
@@ -699,11 +701,12 @@ la pregunta del usuario y los fragmentos selecionados tras la recuperacion y rer
 
 Para iniciar la generación, se construye el prompt a partir de la consulta y de los bloques de contexto, ajustándolos a un tope de caracteres y limpiandolos con SafeStr. 
 Ese prompt se envía como payload al endpoint de Ollama\footnote{Ollama es un servidor para ejecutar modelos de lenguaje localmente (CPU o GPU).} 
-(api/chat) junto con las opciones del modelo. Luego, se parsea el JSON de respuesta, se extrae message.content, se limpia nuevamente con SafeStr para asegurar texto válido 
+(api/chat) junto con las opciones del modelo.
+Luego, se parsea el JSON de respuesta, se extrae message.content, se limpia nuevamente con SafeStr para asegurar texto válido
 y, finalmente, devuelve la respuesta.
 
 
-\subsection{Evaluación}
+\subsection{Evaluación}\label{subsec:evaluacion}
 Para realizar la evaluación del sistema RAG desarrollado, se utilizarán las métricas presentadas en la Tabla~\ref{tab:metrics},
 las cuales han sido identificadas y clasificadas según su propósito y etapa de desarrollo.
 El plan de evaluación iniciará detallando las \textit{características del equipo} (hardware) empleado para ejecutar
@@ -717,9 +720,17 @@ de relevancia.
 con procesador AMD Ryzen 7 (serie 6000), GPU NVIDIA GeForce RTX 3050 Ti con 4 GB de VRAM, 32 GB de memoria
 RAM, unidad de estado sólido de 500 GB y sistema operativo Fedora 42.
 
-\paragraph{Dataset:} El dataset se construye a partir de la base de datos de Scopus, por lo que se tiene un total de
-27.754 artículos.
-\paragraph{Diseño del experimento} para ejecutar los experiments n palabras clave en areas para que sean validadas por
+\paragraph{Dataset:} El dataset se construye a partir de la base de datos Scopus y reúne 27\,754 artículos.
+Dichos artículos fueron procesados para su indexación y posterior uso en un esquema RAG. A partir de este corpus se
+formularon conjuntos de preguntas \textit{single-hop}, \textit{multi-hop} y no respondibles, con el objetivo de evaluar
+el sistema por etapas:
+\begin{itemize}[leftmargin=*, itemsep=0.25em]
+    \item \textit{Retriever}: Cobertura y ranking.
+    \item \textit{Augmentation}: Relevancia y suficiencia del contexto inyectado.
+    \item \textit{Generation}: Corrección, fidelidad a las evidencias y calidad de la citación.
+\end{itemize}
+
+\paragraph{Diseño del experimento} para ejecutar los experiments n palabras clave en áreas para que sean validadas por
 expertos
 
 \begin{itemize}

@@ -55,7 +55,7 @@
 \contentsline {section}{\numberline {2.3}Diseño y desarrollo del artefacto}{49}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Ingesta}{49}{subsection.2.3.1}%
 \contentsline {subsection}{\numberline {2.3.2}Preprocesamiento}{50}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Vectorizacion}{57}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.3}Vectorización}{57}{subsection.2.3.3}%
 \contentsline {subsection}{\numberline {2.3.4}Vector DB}{58}{subsection.2.3.4}%
 \contentsline {subsection}{\numberline {2.3.5}Recuperación}{59}{subsection.2.3.5}%
 \contentsline {subsection}{\numberline {2.3.6}Re-ranking}{59}{subsection.2.3.6}%
