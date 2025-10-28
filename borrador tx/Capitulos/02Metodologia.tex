@@ -784,10 +784,15 @@ builder.
     objetivo al inyectar contexto frente a usar el LLM solo,
     \(\mathcal{M}(\text{RAG})-\mathcal{M}(\text{LLM}_{\text{sin retriever}})\).
     Esto indica el valor añadido por la construcción de contexto.
-    \item \textit{Generation}: para respuestas cortas usamos \textbf{Exact Match (EM)}; en respuestas abiertas evaluamos
-    \textbf{Fidelidad} con un juez (\emph{LLM-as-judge}) condicionada al contexto recuperado y la
-    \textbf{Cobertura de citas} (porcentaje de afirmaciones sustentadas), donde se usa GPT~4.1 por medio de la API de OpenAI.
-    Además, reportamos la \textbf{Tasa de alucinación} como \(1-\)fidelidad.
+    \item \textit{Generation}: para respuestas cortas empleamos \textbf{Exact Match (EM)}.
+    Para preguntas abiertas, evaluamos con un juez (\emph{LLM-as-judge} usando GPT~4.1) los siguientes criterios:
+    \begin{itemize}[leftmargin=*,itemsep=0.2em]
+        \item \textbf{Fidelidad (Faithfulness):} cada afirmación de la respuesta está lógicamente derivada del contexto recuperado, sin contradicciones ni invenciones.
+        \item \textbf{Cobertura de citas (Citation Coverage):} porcentaje de afirmaciones de la respuesta correctamente sustentadas con una cita al contexto.
+    \end{itemize}
+    Reportamos la \textbf{Tasa de alucinación} como \(1 - \text{Fidelidad}\).
+    El prompt exacto utilizado por el juez se detalla en el Anexo~\ref{ch:prompt_juez}.
+
 
     \item \textit{Operación}: medimos \textbf{Latencia (Response Time)} por consulta con cronometraje de \emph{end-to-end}
     (retrieve + rerank + construcción de contexto + generación).

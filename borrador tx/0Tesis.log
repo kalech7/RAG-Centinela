@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2025.9.14)  28 OCT 2025 14:07
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2025.9.14)  28 OCT 2025 15:35
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1386,33 +1386,33 @@ LaTeX Info: Redefining \% on input line 23.
 odologia.aux) (./Capitulos/03Pruebas.aux))
 \openout1 = `0Tesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 181.
-LaTeX Font Info:    ... okay on input line 181.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 181.
-LaTeX Font Info:    ... okay on input line 181.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 181.
-LaTeX Font Info:    ... okay on input line 181.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 181.
-LaTeX Font Info:    ... okay on input line 181.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 181.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 182.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-81.
+82.
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 181.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 181.
-LaTeX Font Info:    ... okay on input line 181.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 181.
-LaTeX Font Info:    ... okay on input line 181.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 181.
-LaTeX Font Info:    ... okay on input line 181.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 181.
-LaTeX Font Info:    ... okay on input line 181.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 181.
-LaTeX Font Info:    ... okay on input line 181.
-LaTeX Info: Redefining \. on input line 181.
-LaTeX Info: Redefining \% on input line 181.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Info: Redefining \. on input line 182.
+LaTeX Info: Redefining \% on input line 182.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
@@ -1421,7 +1421,7 @@ Package caption Info: longtable package is loaded.
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 181.
+Package hyperref Info: Link coloring ON on input line 182.
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -1462,74 +1462,74 @@ Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
 
 \symlegacymaths=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 181.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 181.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 181.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 181.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 181.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 181.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 181.
-LaTeX Font Info:    Redeclaring math accent \check on input line 181.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 181.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 181.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 181.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 181.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 181.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 181.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 181.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 181.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 181.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 181.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 181.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 181.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 181.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 181.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 181.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 181.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 182.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 182.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 182.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 182.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 182.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 182.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 182.
+LaTeX Font Info:    Redeclaring math accent \check on input line 182.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 182.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 182.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 182.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 182.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 182.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 182.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 182.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 182.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 182.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 182.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 182.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 182.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 182.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 182.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 182.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 182.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 181.
+(Font)              `operators' in the math version `normal' on input line 182.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> TU/TeXGyrePagella(0)/m/n on input line 
-181.
+182.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 181.
+(Font)              `operators' in the math version `bold' on input line 182.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/cmr/bx/n --> TU/TeXGyrePagella(0)/m/n on input line
- 181.
+ 182.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  TU/TeXGyrePagella(0)/m/n --> TU/TeXGyrePagella(0)/m/n o
-n input line 181.
+n input line 182.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 (Font)                  OT1/cmr/m/it --> TU/TeXGyrePagella(0)/m/it on input lin
-e 181.
+e 182.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
 (Font)                  OT1/cmr/bx/n --> TU/TeXGyrePagella(0)/b/n on input line
- 181.
+ 182.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
 (Font)                  OT1/cmss/m/n --> TU/TeXGyreHeros(0)/m/n on input line 1
-81.
+82.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
 (Font)                  OT1/cmtt/m/n --> TU/TeXGyreCursor(0)/m/n on input line 
-181.
+182.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  TU/TeXGyrePagella(0)/m/n --> TU/TeXGyrePagella(0)/b/n o
-n input line 181.
+n input line 182.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> TU/TeXGyrePagella(0)/b/it on input li
-ne 181.
+ne 182.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  OT1/cmss/bx/n --> TU/TeXGyreHeros(0)/b/n on input line 
-181.
+182.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/TeXGyreCursor(0)/b/n on input line 
-181.
-LaTeX Info: Redefining \microtypecontext on input line 181.
-Package microtype Info: Applying patch `item' on input line 181.
-Package microtype Info: Applying patch `toc' on input line 181.
-Package microtype Info: Applying patch `eqnum' on input line 181.
-Package microtype Info: Applying patch `footnote' on input line 181.
-Package microtype Info: Applying patch `verbatim' on input line 181.
+182.
+LaTeX Info: Redefining \microtypecontext on input line 182.
+Package microtype Info: Applying patch `item' on input line 182.
+Package microtype Info: Applying patch `toc' on input line 182.
+Package microtype Info: Applying patch `eqnum' on input line 182.
+Package microtype Info: Applying patch `footnote' on input line 182.
+Package microtype Info: Applying patch `verbatim' on input line 182.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: No adjustment of tracking.
@@ -2092,8 +2092,8 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file '0Tesis.bbl' found.
 (./0Tesis.bbl)
-Package biblatex Info: Reference section=0 on input line 181.
-Package biblatex Info: Reference segment=0 on input line 181.
+Package biblatex Info: Reference section=0 on input line 182.
+Package biblatex Info: Reference segment=0 on input line 182.
 Package microtype Info: Character `ﬆ' is missing
 (microtype)             in font `\TU/TeXGyrePagella(0)/m/n/20.74'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -2548,14 +2548,14 @@ Package microtype Info: Character `⁺' is missing
 Package microtype Info: Character `⁻' is missing
 (microtype)             in font `\TU/TeXGyrePagella(0)/m/n/6'.
 (microtype)             Ignoring protrusion settings for this character.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 184
+LaTeX Font Info:    Trying to load font information for U+msa on input line 185
 .
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 184
+LaTeX Font Info:    Trying to load font information for U+msb on input line 185
 .
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -2644,17 +2644,17 @@ Package microtype Info: Character `⁻' is missing
 (microtype)             in font `\TU/TeXGyrePagella(0)/b/n/12'.
 (microtype)             Ignoring protrusion settings for this character.
 
-Underfull \hbox (badness 10000) in paragraph at lines 185--185
+Underfull \hbox (badness 10000) in paragraph at lines 186--186
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 185--185
+Underfull \hbox (badness 10000) in paragraph at lines 186--186
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 186--186
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
 
  []
 
@@ -4158,7 +4158,7 @@ Capítulo 3.
 
 
 ]
-Underfull \hbox (badness 2326) in paragraph at lines 212--212
+Underfull \hbox (badness 2326) in paragraph at lines 213--213
 \TU/TeXGyrePagella(0)/m/n/12 Augmented Large Language Models». En: \TU/TeXGyreP
 agella(0)/m/it/12 Proceedings of the 30th ACM
  []
@@ -4169,31 +4169,34 @@ agella(0)/m/it/12 Proceedings of the 30th ACM
 
 
 ]
-Underfull \hbox (badness 1448) in paragraph at lines 212--212
+Underfull \hbox (badness 1448) in paragraph at lines 213--213
 []\TU/TeXGyrePagella(0)/m/n/12 Tianyang Lin et al. «  A survey of transformers»
 . En: \TU/TeXGyrePagella(0)/m/it/12 AI Open \TU/TeXGyrePagella(0)/m/n/12 3 (202
 2),
  []
 
 [68]
-Underfull \hbox (badness 10000) in paragraph at lines 212--212
+Underfull \hbox (badness 10000) in paragraph at lines 213--213
 []\TU/TeXGyrePagella(0)/m/n/12 Balagopal Ramdurai. «  Large Language Models (LL
 Ms), Retrieval-
  []
 
 
-Underfull \hbox (badness 3098) in paragraph at lines 212--212
+Underfull \hbox (badness 3098) in paragraph at lines 213--213
 \TU/TeXGyrePagella(0)/m/n/12 (CNNs) in Application systems». En: \TU/TeXGyrePag
 ella(0)/m/it/12 International Journal of Marketing
  []
 
 
-Underfull \hbox (badness 1221) in paragraph at lines 212--212
+Underfull \hbox (badness 1221) in paragraph at lines 213--213
 []\TU/TeXGyrePagella(0)/m/n/12 Parth Sarthi et al. «  RAPTOR: Recursive Abstrac
 tive Processing for Tree-
  []
 
-[69] [70] (./0Tesis.aux
+[69] [70] [71
+
+
+] (./0Tesis.aux
 LaTeX Info: Redefining \sptext on input line 23.
 LaTeX Info: Redefining \. on input line 23.
 LaTeX Info: Redefining \% on input line 23.
@@ -4204,12 +4207,12 @@ Package logreq Info: Writing requests to '0Tesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 44947 strings out of 476696
- 939847 string characters out of 5806955
+ 44966 strings out of 476696
+ 940104 string characters out of 5806955
  1892018 words of memory out of 6000000
- 64404 multiletter control sequences out of 15000+600000
+ 64423 multiletter control sequences out of 15000+600000
  524106 words of font info for 137 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  99i,16n,104p,1455b,5475s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on 0Tesis.pdf (79 pages).
+Output written on 0Tesis.pdf (80 pages).
