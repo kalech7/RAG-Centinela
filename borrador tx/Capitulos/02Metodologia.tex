@@ -731,24 +731,66 @@ el sistema por etapas:
 \end{itemize}
 
 \paragraph{Diseño del experimento.}
-Se eligen tres áreas temáticas del corpus y, en cada una, se ejecutan 50 consultas.
-Las consultas se organizan en tres tipos: \emph{single-hop} (la respuesta está en un solo fragmento), \emph{multi-hop}
-(requiere fusionar 2--3 evidencias) y \emph{no answer} (no existe respuesta en el corpus).
-Las respuestas generadas se validan con apoyo de expertos.
+Para realizar una evaluación controlada, se ha construido un conjunto de pruebas compuesto por 15 consultas las cuales
+se han diversificado para abarcar la diversidad temática del corpus.
+Este conjunto se ha dividido para cubrir los 3 tipos de inferencia clave del sistema:
+\begin{itemize}[leftmargin=*,itemsep=0.2em]
+    \item 5 consultas \emph{single-hop} (la respuesta está en un solo fragmento).
+    \item 5 consultas \emph{multi-hop} (requiere fusionar 2--3 evidencias).
+    \item 5 consultas \emph{no answer} (no existe respuesta en el corpus).
+\end{itemize}
+Para cada consulta de este conjunto, se ha definido manualmente el ground truth, especificando
+los fragmentos de evidencia relevantes (para métricas de \textit{retrieval}) y la respuesta ideal esperada.
+Adicionalmente, las respuestas generadas por el sistema para cada consulta se validan con apoyo de expertos
+(para métricas de \textit{generación}).
+
+\subparagraph{Condiciones comparadas:}
+Evaluamos tres configuraciones del sistema para aislar el efecto de cada componente:
+\begin{itemize}[leftmargin=*,itemsep=0.2em]
+    \item \textbf{LLM-solo (sin retriever):} establece la \emph{línea base}.
+    \item \textbf{RAG-básico:} retriever + \emph{concatenación} de los documentos \emph{top-\(k\)} (sin reranqueo) + generación.
+    \item \textbf{RAG-completo:} retriever + (\emph{opcional}) \emph{reranking} + \emph{construcción de bloques de contexto} + generación.
+\end{itemize}
+
+\noindent\begin{minipage}{\linewidth}
+             \centering
+             \renewcommand{\arraystretch}{1.1}
+             \begin{tabular}{@{}lccccc@{}}
+                 \toprule
+                 \textbf{Condición} & \textbf{Retriever} & \textbf{Reranker} & \textbf{Contexto} & \textbf{Estrategia de contexto} & \textbf{Generación} \\
+                 \midrule
+                 LLM-solo        & --          & --          & --          & --                       & \checkmark \\
+                 RAG-básico      & \checkmark  & --          & \checkmark  & Concatenación top-\(k\)  & \checkmark \\
+                 RAG-completo    & \checkmark  & \checkmark   & \checkmark  & Bloques (builder)        & \checkmark \\
+                 \bottomrule
+             \end{tabular}
+\end{minipage}
+
+\vspace{0.4em}
+\noindent Para cada condición se ejecutan las 15 consultas, se calculan las métricas por consulta y se reportan
+\emph{promedios macro} sobre el conjunto de consultas.
+La \textbf{Ganancia de augmentation} se define frente a la línea base:
+\(\Delta\mathcal{M}=\mathcal{M}(\text{RAG})-\mathcal{M}(\text{LLM}_{\text{solo}})\).
+También reportamos la mejora de \emph{RAG-completo} sobre \emph{RAG-básico} para aislar el efecto del reranking y del
+builder.
+
 \begin{enumerate}[label=\textbf{(\roman*)},leftmargin=*,itemsep=0.35em]
-    \item \textit{Retriever}: usamos \textbf{Recall@k} (con \(k=20\)) para medir cuánta evidencia relevante entra
+    \item \textit{Retriever}: usamos \textbf{Recall@k} (con \(k=10\)) para medir cuánta evidencia relevante entra
     efectivamente en el top-\(k\) (cobertura), y \textbf{MRR} para reflejar \emph{qué tan arriba} aparece el primer
     relevante en el ranking (sensibilidad a la posición).
     Ambas se reportan como promedios macro sobre las consultas.
+
     \item \textit{Augmentation}: reportamos la \textbf{Ganancia de augmentation}, definida como la mejora de la métrica
     objetivo al inyectar contexto frente a usar el LLM solo,
     \(\mathcal{M}(\text{RAG})-\mathcal{M}(\text{LLM}_{\text{sin retriever}})\).
     Esto indica el valor añadido por la construcción de contexto.
     \item \textit{Generation}: para respuestas cortas usamos \textbf{Exact Match (EM)}; en respuestas abiertas evaluamos
     \textbf{Fidelidad} con un juez (\emph{LLM-as-judge}) condicionada al contexto recuperado y la
-    \textbf{Cobertura de citas} (porcentaje de afirmaciones sustentadas).
+    \textbf{Cobertura de citas} (porcentaje de afirmaciones sustentadas), donde se usa GPT~4.1 por medio de la API de OpenAI.
     Además, reportamos la \textbf{Tasa de alucinación} como \(1-\)fidelidad.
-    \item \textit{Operación}: medimos \textbf{Latencia (Response Time)} por consulta.
+
+    \item \textit{Operación}: medimos \textbf{Latencia (Response Time)} por consulta con cronometraje de \emph{end-to-end}
+    (retrieve + rerank + construcción de contexto + generación).
 \end{enumerate}
 
 

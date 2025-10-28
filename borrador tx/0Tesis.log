@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2025.9.14)  27 OCT 2025 17:21
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2025.9.14)  28 OCT 2025 14:07
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -4142,12 +4142,17 @@ Package microtype Info: Character `⁺' is missing
 Package microtype Info: Character `⁻' is missing
 (microtype)             in font `\TU/TeXGyrePagella(0)/b/n/7'.
 (microtype)             Ignoring protrusion settings for this character.
-[62] [63]) [64]
+[62] [63]
+Overfull \hbox (20.49838pt too wide) in paragraph at lines 758--767
+ [][] 
+ []
+
+[64]) [65]
 \openout2 = `Capitulos/03Pruebas.aux'.
 
 (./Capitulos/03Pruebas.tex
 Capítulo 3.
-) [65
+) [66
 
 
 
@@ -4158,7 +4163,7 @@ Underfull \hbox (badness 2326) in paragraph at lines 212--212
 agella(0)/m/it/12 Proceedings of the 30th ACM
  []
 
-[66
+[67
 
 
 
@@ -4170,7 +4175,7 @@ Underfull \hbox (badness 1448) in paragraph at lines 212--212
 2),
  []
 
-[67]
+[68]
 Underfull \hbox (badness 10000) in paragraph at lines 212--212
 []\TU/TeXGyrePagella(0)/m/n/12 Balagopal Ramdurai. «  Large Language Models (LL
 Ms), Retrieval-
@@ -4188,7 +4193,7 @@ Underfull \hbox (badness 1221) in paragraph at lines 212--212
 tive Processing for Tree-
  []
 
-[68] [69] (./0Tesis.aux
+[69] [70] (./0Tesis.aux
 LaTeX Info: Redefining \sptext on input line 23.
 LaTeX Info: Redefining \. on input line 23.
 LaTeX Info: Redefining \% on input line 23.
@@ -4199,12 +4204,12 @@ Package logreq Info: Writing requests to '0Tesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 44946 strings out of 476696
- 939832 string characters out of 5806955
+ 44947 strings out of 476696
+ 939847 string characters out of 5806955
  1892018 words of memory out of 6000000
- 64403 multiletter control sequences out of 15000+600000
+ 64404 multiletter control sequences out of 15000+600000
  524106 words of font info for 137 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  99i,16n,104p,1455b,5475s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on 0Tesis.pdf (78 pages).
+Output written on 0Tesis.pdf (79 pages).

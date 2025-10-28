@@ -65,10 +65,11 @@
 \contentsline {paragraph}{Características del equipo:}{63}{section*.51}%
 \contentsline {paragraph}{Dataset:}{63}{section*.52}%
 \contentsline {paragraph}{Diseño del experimento.}{63}{section*.53}%
-\contentsline {chapter}{\numberline {3}Pruebas, Resultados, Conclusiones y Recomendaciones}{65}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Demostración}{65}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Evaluación del desempeño}{65}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Resultados}{65}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Conclusiones}{65}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Recomendaciones}{65}{section.3.5}%
-\contentsline {chapter}{Bibliografía}{66}{chapter*.55}%
+\contentsline {subparagraph}{Condiciones comparadas:}{64}{section*.54}%
+\contentsline {chapter}{\numberline {3}Pruebas, Resultados, Conclusiones y Recomendaciones}{66}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Demostración}{66}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Evaluación del desempeño}{66}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Resultados}{66}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Conclusiones}{66}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Recomendaciones}{66}{section.3.5}%
+\contentsline {chapter}{Bibliografía}{67}{chapter*.56}%
