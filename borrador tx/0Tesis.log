@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2025.9.14)  28 OCT 2025 15:35
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2025.9.14)  31 OCT 2025 13:54
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -4196,7 +4196,10 @@ tive Processing for Tree-
 [69] [70] [71
 
 
-] (./0Tesis.aux
+]
+Overfull \vbox (3.86934pt too high) has occurred while \output is active []
+
+[72] (./0Tesis.aux
 LaTeX Info: Redefining \sptext on input line 23.
 LaTeX Info: Redefining \. on input line 23.
 LaTeX Info: Redefining \% on input line 23.
@@ -4207,12 +4210,12 @@ Package logreq Info: Writing requests to '0Tesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 44966 strings out of 476696
- 940104 string characters out of 5806955
+ 44968 strings out of 476696
+ 940126 string characters out of 5806955
  1892018 words of memory out of 6000000
- 64423 multiletter control sequences out of 15000+600000
+ 64425 multiletter control sequences out of 15000+600000
  524106 words of font info for 137 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  99i,16n,104p,1455b,5475s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on 0Tesis.pdf (80 pages).
+Output written on 0Tesis.pdf (81 pages).

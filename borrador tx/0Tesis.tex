@@ -263,8 +263,40 @@
 
 
 % --- Anexo B ---
-\anexosection{Tabla de datos}
-Tablas
+\anexosection{Consultas realizadas}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.15}
+    \begin{tabularx}{\textwidth}{@{}X l@{}}
+        \toprule
+        \textbf{Consulta} & \textbf{Inferencia} \\
+        \midrule
+        % ---------- SINGLE-HOP (5) ----------
+        ¿Qué modelo de aprendizaje automático reporta el mejor AUC para clasificar gravedad de COVID-19 en cohortes clínicas ecuatorianas? & \emph{single-hop} \\
+        ¿Qué variables clínicas aparecen como más influyentes según valores SHAP en la predicción de mortalidad por COVID-19 en Ecuador? & \emph{single-hop} \\
+        ¿Qué técnica se utilizó para el análisis de sentimiento en Twitter Ecuador sobre vacunación COVID-19? & \emph{single-hop} \\
+        ¿Qué es el learning rate y cómo afecta la convergencia del descenso por gradiente? & \emph{single-hop} \\
+        ¿Qué tasa de retroceso glacial se reporta para el Antisana? & \emph{single-hop} \\
+        \midrule
+        % ---------- MULTI-HOP (5) ----------
+        ¿Qué especie de manglar domina en estuarios ecuatorianos y qué servicio ecosistémico crítico se cuantifica ante escenarios de aumento del nivel del mar? & \emph{multi-hop} \\
+        ¿Qué impacto combinado de El Niño y el calentamiento de largo plazo se reporta sobre la pesquería frente a la costa ecuatoriana? & \emph{multi-hop} \\
+        ¿Cómo combinan los estudios de capacidad de carga y las reglas de uso para mitigar impactos en senderos y playas? & \emph{multi-hop} \\
+        ¿Qué relación existe entre procesos de internacionalización  y el fortalecimiento de posgrados e investigación? & \emph{multi-hop} \\
+        ¿De qué manera se conectan las rutas de navegación turística y la zonificación de la Reserva Marina con el avistamiento de megafauna? & \emph{multi-hop} \\
+        \midrule
+        % ---------- NO ANSWER (5) ----------
+        ¿Cuántas dosis de refuerzo se administraron en el 31 de octubre de 2025 por cantón en Ecuador? & \emph{no answer} \\
+        ¿Qué es el gradient clipping y cuándo se utiliza? & \emph{no answer} \\
+        ¿Cuántos milímetros subirá el nivel del mar en Esmeraldas cada año entre 2026 y 2050 ? & \emph{no answer} \\
+        ¿Cuál es la tasa de empleabilidad por egresado individual y su salario ? & \emph{no answer} \\
+        ¿Cuántos milímetros  de lluvia cayeron en cada barrio del país en cada día de 2024? & \emph{no answer} \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Conjunto de consultas sobre el corpus, clasificadas por tipo de inferencia.}
+    \label{tab:consultas}
+\end{table}
+
 
 % ... (puedes añadir más \anexosection aquí)
 \end{document}

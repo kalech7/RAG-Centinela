@@ -739,11 +739,11 @@ Este conjunto se ha dividido para cubrir los 3 tipos de inferencia clave del sis
     \item 5 consultas \emph{multi-hop} (requiere fusionar 2--3 evidencias).
     \item 5 consultas \emph{no answer} (no existe respuesta en el corpus).
 \end{itemize}
-Para cada consulta de este conjunto, se ha definido manualmente el ground truth, especificando
-los fragmentos de evidencia relevantes (para métricas de \textit{retrieval}) y la respuesta ideal esperada.
-Adicionalmente, las respuestas generadas por el sistema para cada consulta se validan con apoyo de expertos
-(para métricas de \textit{generación}).
-
+Las 15 consultas completas se presentan en el Anexo~\ref{tab:consultas}.
+Para cada una se definió manualmente el ground truth, identificando los fragmentos de evidencia relevantes
+(para las métricas de \textit{retrieval}) y estableciendo la respuesta ideal.
+Asimismo, las respuestas generadas por el sistema se validaron con apoyo de expertos
+(para las métricas de \textit{generación}).
 \subparagraph{Condiciones comparadas:}
 Evaluamos tres configuraciones del sistema para aislar el efecto de cada componente:
 \begin{itemize}[leftmargin=*,itemsep=0.2em]
