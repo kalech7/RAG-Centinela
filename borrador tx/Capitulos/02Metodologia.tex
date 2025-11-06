@@ -749,7 +749,7 @@ Evaluamos tres configuraciones del sistema para aislar el efecto de cada compone
 \begin{itemize}[leftmargin=*,itemsep=0.2em]
     \item \textbf{LLM-solo (sin retriever):} establece la \emph{línea base}.
     \item \textbf{RAG-básico:} retriever + \emph{concatenación} de los documentos \emph{top-\(k\)} (sin reranqueo) + generación.
-    \item \textbf{RAG-completo:} retriever + (\emph{opcional}) \emph{reranking} + \emph{construcción de bloques de contexto} + generación.
+    \item \textbf{RAG-completo:} retriever +  \emph{reranking} + \emph{construcción de bloques de contexto} + generación.
 \end{itemize}
 
 \noindent\begin{minipage}{\linewidth}
@@ -775,7 +775,7 @@ También reportamos la mejora de \emph{RAG-completo} sobre \emph{RAG-básico} pa
 builder.
 
 \begin{enumerate}[label=\textbf{(\roman*)},leftmargin=*,itemsep=0.35em]
-    \item \textit{Retriever}: usamos \textbf{Recall@k} (con \(k=10\)) para medir cuánta evidencia relevante entra
+    \item \textit{Retriever}: usamos \textbf{Recall@k} (con \(k=15\)) para medir cuánta evidencia relevante entra
     efectivamente en el top-\(k\) (cobertura), y \textbf{MRR} para reflejar \emph{qué tan arriba} aparece el primer
     relevante en el ranking (sensibilidad a la posición).
     Ambas se reportan como promedios macro sobre las consultas.
