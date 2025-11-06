@@ -237,7 +237,8 @@ contienen la información necesaria para representar el contenido del documento 
 
 De esta forma los campos título y abstract concentran la mayor parte de semántica relevante para crear embeddings y recuperar documentos, por lo que conviene tratarlos como el bloque principal de indexación.
 En cambio, DOI, ScopusID, Autores y Afiliaciones funcionan como metadatos de soporte: ayudan a auditar la procedencia, filtrar por institución o región, destingir entre entidades y evitar duplicados en la base 
-vectorial. Separar título/resumen de metadatos de control (DOI, ScopusID, autores, afiliaciones)  mejora la interpretabilidad del sistema y evita sobrecargar el espacio vectorial 
+vectorial.
+Separar título/resumen de metadatos de control (DOI, ScopusID, autores, afiliaciones)  mejora la interpretabilidad del sistema y evita sobrecargar el espacio vectorial
 con señales que no aportan significado textual directo.
 
 Con la siguiente función se extrae el corpus y se guardan en un CSV (UTF-8) para su procesamiento en fases posteriores.
@@ -771,18 +772,17 @@ Evaluamos tres configuraciones del sistema para aislar el efecto de cada compone
 \end{minipage}
 
 \vspace{0.4em}
-\noindent Para cada condición se ejecutan las 15 consultas, se calculan las métricas por consulta y se reportan
-promedios sobre el conjunto de consultas.
+
 
 \begin{enumerate}[label=\textbf{(\roman*)},leftmargin=*,itemsep=0.35em]
 
     \item \textit{Retriever}: se emplea \textbf{Recall@k} (con \(k=15\)) para medir la proporción de evidencia
     relevante incluida en el top-\(k\) (cobertura), y \textbf{MRR} para evaluar la posición promedio del primer documento
     relevante (sensibilidad al ranking).
-    Ambas métricas se reportan como promedios macro sobre las consultas.
+    Ambas métricas se reportan como promedios sobre las consultas.
 
     \item \textit{Augmentation}: se reporta la \textbf{Ganancia de augmentation}, definida como la mejora en la métrica
-    objetivo al inyectar contexto frente al uso del LLM sin recuperación,
+    objetiva al inyectar contexto frente al uso del LLM sin recuperación,
     \(\Delta\mathcal{M}=\mathcal{M}(\text{RAG})-\mathcal{M}(\text{LLM}_{\text{solo}})\).
     Esta diferencia refleja el valor añadido por la construcción del contexto.
 

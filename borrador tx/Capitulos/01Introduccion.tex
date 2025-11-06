@@ -79,7 +79,8 @@ con la popularización
 de los modelos de lenguaje basados en transformers\footnote{Se atribuye a hitos como BERT (2018), GPT-2 (2019) y T5 (2020), que impulsaron un avance 
 en la investigación del procesamiento del Lenguaje Natural}.
 Los estudios deben provenir de fuentes confiables y ser, a su vez, revisados por 
-un experto. Se da preferencia a aquellos que presenten una cobertura amplia de los temas más relevantes para el objeto de estudio.  
+un experto.
+Se da preferencia a aquellos que presenten una cobertura amplia de los temas más relevantes para el objeto de estudio.
 
 Se excluyen las revisiones narrativas, los documentos que carezcan de transparencia en sus métodos de búsqueda o síntesis, así como las publicaciones que no estén 
 directamente relacionadas con el objeto de estudio delimitado.
@@ -131,10 +132,10 @@ Con la literatura seleccionada se identificó la hoja de ruta que se presenta a 
 \begin{center}
 \begin{tikzpicture}[x=1cm,y=1cm]
   % distancia vertical entre pastillas
-  \def\step{-1.5}
+  \newcommand{\step}{-1.5}
 
   % y inicial (arriba)
-  \def\y{0}
+  \newcommand{\y}{0}
 
   \pill{\y}{softcream}{I}{Fundamentos}
   \pgfmathsetmacro\y{\y+\step}
