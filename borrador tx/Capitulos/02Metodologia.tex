@@ -1,14 +1,15 @@
 \chapter{Metodología}
 \section{Revisión sistemática}
 \label{sec:revision-sistematica}
-Umbrella Review, según los lineamientos del Instituto Joanna Briggs (JBI), es un tipo de revisión sistemática que recopila y analiza evidencia secundaria, 
+Umbrella Review, según \textcite{aromataris2014umbrella}, es un tipo de revisión sistemática que recopila y analiza evidencia secundaria,
 es decir, revisiones sistemáticas y metaanálisis ya publicados.
 Su propósito es consolidar el conocimiento disponible, identificar coincidencias y contradicciones en la literatura existente, así como señalar vacíos de evidencia.
 Para ello, requiere la elaboración de un protocolo previo que establezca criterios de inclusión y exclusión, estrategias de búsqueda y métodos de síntesis, garantizando 
 un proceso transparente y riguroso.
 
 Por otra parte, la estrategia de propagación de citaciones (Back-and-Forward Citation Propagating) complementa este enfoque al permitir encontrar dinámicamente la literatura. 
-A través de la propagación de citaciones se amplía y actualiza la literatura encontrada en las bases de datos tradicionales. De este modo, se superan limitaciones como la 
+A través de la propagación de citaciones se amplía y actualiza la literatura encontrada en las bases de datos tradicionales.
+De este modo, se superan limitaciones como la
 indexación incompleta, las variaciones en el uso de palabras clave o la exclusión de ciertas publicaciones.
 
 
@@ -18,7 +19,7 @@ Se han considerado las siguientes fases para dicho protocolo:
 \begin{enumerate}
     \item \textbf{Propósito de la revisión}  
     
-    La revisión se justifica en la necesidad de consolidar evidencia secundaria de calidad, aprovechando el enfoque de propagación de citaciones 
+    Se justifica en la necesidad de consolidar evidencia secundaria de calidad, aprovechando el enfoque de propagación de citaciones
     para garantizar una búsqueda amplia, estructurada y actualizada.
 
     \item \textbf{Objetivos específicos}  
@@ -90,11 +91,12 @@ reflejar la evolución del conocimiento disponible.
 
 
 \section{Enfoque Design Science Research (DSR)}
-De acuerdo con vom Brocke et al. \textcite{vombrocke2020}, Design Science Research, desarrollada en 1969, es un paradigma de resolución de problemas que busca mejorar el conocimiento humano mediante la creación de artefactos innovadores. En otras palabras, es una metodología que crea soluciones a problemas reales y, al mismo tiempo, genera conocimiento útil y aplicable sobre cómo diseñar estas soluciones. Las etapas que se aplicarán en el presente trabajo son las siguientes:
+De acuerdo con \textcite{vombrocke2020}, Design Science Research, desarrollada en 1969, es un paradigma de resolución de problemas que busca mejorar el conocimiento humano mediante la creación de artefactos innovadores. En otras palabras, es una metodología que crea soluciones a problemas reales y, al mismo tiempo, genera conocimiento útil y aplicable sobre cómo diseñar estas soluciones. Las etapas que se aplicarán en el presente trabajo son las siguientes:
 
 \begin{itemize}[align=left, label=--]
 \item \textbf{Identificación del problema y motivación} \
-En esta etapa se precisa el problema y se justifica por qué es necesaria una solución. De acuerdo con Peffers et al. (2008), esta etapa exige analizar el problema en detalle, descomponiéndolo en sus partes clave para identificar sus causas, efectos y alcance. Además, es crucial justificar la relevancia del problema, tanto desde una perspectiva teórica (es decir, cómo contribuye al conocimiento académico) como desde una perspectiva práctica (cómo afecta a organizaciones, usuarios o sistemas reales).
+En esta etapa se precisa el problema y se justifica por qué es necesaria una solución.
+De acuerdo con \textcite{peffers2008design}, esta etapa exige analizar el problema en detalle, descomponiéndolo en sus partes clave para identificar sus causas, efectos y alcance. Además, es crucial justificar la relevancia del problema, tanto desde una perspectiva teórica (es decir, cómo contribuye al conocimiento académico) como desde una perspectiva práctica (cómo afecta a organizaciones, usuarios o sistemas reales).
 También implica explorar la literatura para verificar que el problema es relevante, desafiante y nuevo, lo que permite definir los límites del proyecto de investigación.
 
 \item \textbf{Definir los objetivos para la solución} \
@@ -115,8 +117,9 @@ formativa que permita ciclos iterativos de rediseño y mejora a lo largo del pro
 Finalmente, esta etapa consiste en difundir de forma clara los resultados del diseño y de la investigación realizada.
 \end{itemize}
 
-Estos pasos están basados en el modelo clásico de DSR de Peffers (2008), que vom Brocke adapta y expande en su guía. En la Figura \ref{fig: DSR} muestra el ciclo de DSR  dedicado a Centinela. La fila superior muestra las 6 fases 
-y los recuadros inferiores brindan mayor informacion acerca de cada fase. Además, el contenedor inferior resume tres puntos de entrada de investigación que guían las
+Estos pasos están basados en el modelo clásico de DSR de \textcite{peffers2008design}, que vom Brocke adapta y expande en su guía.
+En la Figura~\ref{fig: DSR} muestra el ciclo de DSR  dedicado a Centinela. La fila superior muestra las 6 fases
+y los recuadros inferiores brindan mayor información acerca de cada fase. Además, el contenedor inferior resume tres puntos de entrada de investigación que guían las
  decisiones de diseño y delimitan el alcance. En conjunto, conectan el marco teórico con las decisiones técnicas y la evaluación, 
  asegurando coherencia a lo largo del proyecto.
 \begin{landscape}
@@ -217,15 +220,16 @@ De acuerdo con a la literatura, el desarrollo de RAG para Centinela se realiza u
 en \texttt{Jupyter Notebook}, está disponible en el repositorio de GitHub \href{https://github.com/kalech7/RAG-Centinela}{kalech7/RAG-Centinela}.
 
 \subsection{Ingesta} 
-De acuerdo al estudio exhaustiva de la literatura, el primer paso para la construccion de RAG es la obtencion de los datos. En nuestro caso
+De acuerdo al estudio exhaustivo de la literatura, el primer paso para la construccion de RAG es la obtencion de los datos. En nuestro caso
 los datos provienen de Scopus donde se extrae los metadatos de los articulos, en particular título y abstract, los cuales concentran la representación semántica principal del artículo y son los puntos 
-de entrada más frecuentes para consultas y embeddings\parencite{zhai2024llmIR}. De acuerdo con la literatura~\parencite{zhai2024llmIR,knollmeyer2024benchmarking,fan2021pretraining,ibrihich2022review,bernard2025fate,ma2025vector}, se han saleccionado los siguientes campos que 
+de entrada más frecuentes para consultas y embeddings\parencite{zhai2024llmIR}.
+De acuerdo con la literatura~\parencite{zhai2024llmIR,knollmeyer2024benchmarking,fan2021pretraining,ibrihich2022review,bernard2025fate,ma2025vector}, se han saleccionado los siguientes campos que
 contienen la información necesaria para representar el contenido del documento e identificarlo.
 
 \begin{itemize}
-    \item \textbf{Título y abstract}: condensan la información temática central del articulo y son la base principal para la recuperación y la generación de embeddings.
+    \item \textbf{Título y abstract}: condensan la información temática central del artículo y son la base principal para la recuperación y la generación de embeddings.
     \item \textbf{DOI}: garantiza trazabilidad y constata la fuente, enfrenta a los problemas de confianza y alucinación en RAG.
-    \item \textbf{Autores}: son un metadato clave ya que permite analizar impacto académico y coautorías. 
+    \item \textbf{Autores}: son un metadato clave, ya que permite analizar impacto académico y coautorías.
     \item \textbf{Afiliaciones}: aportan contexto institucional y geográfico, lo cual resulta útil para filtrar información por país o institución.
     \item \textbf{Número de citaciones}: es un metadato adicional para priorizar documentos de mayor impacto en la fase de ranking.
     \item \textbf{ScopusID}: asegura que cada documento tenga un identificador único, evitando duplicados en la VDB. 
@@ -761,42 +765,75 @@ Evaluamos tres configuraciones del sistema para aislar el efecto de cada compone
                  \midrule
                  LLM-solo        & --          & --          & --          & --                       & \checkmark \\
                  RAG-básico      & \checkmark  & --          & \checkmark  & Concatenación top-\(k\)  & \checkmark \\
-                 RAG-completo    & \checkmark  & \checkmark   & \checkmark  & Bloques (builder)        & \checkmark \\
+                 RAG-completo    & \checkmark  & \checkmark   & \checkmark  & Context Builder        & \checkmark \\
                  \bottomrule
              \end{tabular}
 \end{minipage}
 
 \vspace{0.4em}
 \noindent Para cada condición se ejecutan las 15 consultas, se calculan las métricas por consulta y se reportan
-\emph{promedios macro} sobre el conjunto de consultas.
-La \textbf{Ganancia de augmentation} se define frente a la línea base:
-\(\Delta\mathcal{M}=\mathcal{M}(\text{RAG})-\mathcal{M}(\text{LLM}_{\text{solo}})\).
-También reportamos la mejora de \emph{RAG-completo} sobre \emph{RAG-básico} para aislar el efecto del reranking y del
-builder.
+promedios sobre el conjunto de consultas.
 
 \begin{enumerate}[label=\textbf{(\roman*)},leftmargin=*,itemsep=0.35em]
-    \item \textit{Retriever}: usamos \textbf{Recall@k} (con \(k=15\)) para medir cuánta evidencia relevante entra
-    efectivamente en el top-\(k\) (cobertura), y \textbf{MRR} para reflejar \emph{qué tan arriba} aparece el primer
-    relevante en el ranking (sensibilidad a la posición).
-    Ambas se reportan como promedios macro sobre las consultas.
 
-    \item \textit{Augmentation}: reportamos la \textbf{Ganancia de augmentation}, definida como la mejora de la métrica
-    objetivo al inyectar contexto frente a usar el LLM solo,
-    \(\mathcal{M}(\text{RAG})-\mathcal{M}(\text{LLM}_{\text{sin retriever}})\).
-    Esto indica el valor añadido por la construcción de contexto.
-    \item \textit{Generation}: para respuestas cortas empleamos \textbf{Exact Match (EM)}.
-    Para preguntas abiertas, evaluamos con un juez (\emph{LLM-as-judge} usando GPT~4.1) los siguientes criterios:
-    \begin{itemize}[leftmargin=*,itemsep=0.2em]
-        \item \textbf{Fidelidad (Faithfulness):} cada afirmación de la respuesta está lógicamente derivada del contexto recuperado, sin contradicciones ni invenciones.
-        \item \textbf{Cobertura de citas (Citation Coverage):} porcentaje de afirmaciones de la respuesta correctamente sustentadas con una cita al contexto.
+    \item \textit{Retriever}: se emplea \textbf{Recall@k} (con \(k=15\)) para medir la proporción de evidencia
+    relevante incluida en el top-\(k\) (cobertura), y \textbf{MRR} para evaluar la posición promedio del primer documento
+    relevante (sensibilidad al ranking).
+    Ambas métricas se reportan como promedios macro sobre las consultas.
+
+    \item \textit{Augmentation}: se reporta la \textbf{Ganancia de augmentation}, definida como la mejora en la métrica
+    objetivo al inyectar contexto frente al uso del LLM sin recuperación,
+    \(\Delta\mathcal{M}=\mathcal{M}(\text{RAG})-\mathcal{M}(\text{LLM}_{\text{solo}})\).
+    Esta diferencia refleja el valor añadido por la construcción del contexto.
+
+    \item \textit{Generation}: dado que todas las consultas son de tipo abierto, la evaluación se realiza mediante un
+    juez automático (\emph{LLM-as-Judge}, GPT~4.1), siguiendo las recomendaciones metodológicas de \textcite{wu2025ragSurvey,han2024rag}.
+    El objetivo es valorar la calidad semántica y factual de las respuestas generadas, considerando tanto
+    su coherencia con el contexto recuperado como su concordancia con la respuesta ideal (\emph{ground truth}).
+
+    \subparagraph{Evaluación de fidelidad al contexto.}
+    En una primera etapa, el juez analiza la respuesta generada con base en los fragmentos de evidencia recuperados,
+    evaluando:
+    \begin{itemize}[leftmargin=*,itemsep=0.25em]
+        \item \textbf{Fidelidad (Faithfulness):} cada afirmación de la respuesta debe estar lógicamente derivada
+        del contexto, sin contradicciones ni invenciones.
+        \item \textbf{Cobertura de citas (Citation Coverage):} proporción de afirmaciones sustentadas con una cita
+        válida al contexto.
     \end{itemize}
-    Reportamos la \textbf{Tasa de alucinación} como \(1 - \text{Fidelidad}\).
-    El prompt exacto utilizado por el juez se detalla en el Anexo~\ref{ch:prompt_juez}.
+    La \textbf{tasa de alucinación} se define como \(1 - \text{Fidelidad}\).
+    El prompt exacto empleado por el juez para esta fase se presenta en el Anexo~\ref{ch:prompt_juez}.
 
+    \subparagraph{Evaluación del acuerdo con la respuesta ideal.}
+    En una segunda etapa, el juez compara la respuesta generada con la respuesta ideal definida en el ground truth,
+    con el fin de medir su acuerdo semántico y factual.
+    El protocolo seguido es el siguiente:
+    \begin{enumerate}[label=\textbf{P\arabic*},leftmargin=*,itemsep=0.25em]
+        \item \textbf{Preparación de datos:} se dispone, para cada consulta, de la pregunta,
+        la respuesta ideal (\emph{gold answer}) y la respuesta generada por el sistema (\emph{RAG output}),
+        almacenadas en un archivo CSV.
+        \item \textbf{Entrada al juez:} para cada par (\emph{gold}, \emph{RAG}), el modelo recibe un prompt que incluye
+        la pregunta, ambas respuestas y las instrucciones de comparación.
+        Se le solicita emitir un veredicto estructurado en formato JSON con puntuaciones en una escala de 0 a 5 en
+        las siguientes dimensiones:
+        \begin{enumerate}[label=\alph*),leftmargin=*,itemsep=0.15em]
+            \item \textbf{Exactitud factual:} coincidencia de hechos y ausencia de invenciones o distorsiones.
+            \item \textbf{Cobertura semántica:} inclusión de la información esencial de la respuesta ideal.
+            \item \textbf{Coherencia expresiva:} preservación del significado global, aunque la redacción difiera.
+        \end{enumerate}
+        \item \textbf{Repetición y control de variabilidad:} cada comparación se ejecuta tres veces con distinta
+        semilla, y las puntuaciones se promedian para reducir la varianza inherente al modelo evaluador~\parencite{casola2022pretrained}.
+        \item \textbf{Cálculo de métricas:}
+        Se obtiene un índice global de acuerdo por consulta (\(A_i\)), el promedio macro \(\overline{A}\) sobre el
+        conjunto de pruebas y el \textbf{coeficiente de acuerdo de Cohen} (\(\kappa\)),
+        tras binarizar las valoraciones (\emph{acuerdo} si \(A_i \geq 4\)).
+        \item \textbf{Interpretación:} valores altos de \(\overline{A}\) y \(\kappa\) indican mayor
+        proximidad semántica y factual de las respuestas generadas al ground truth, reflejando mejor desempeño del
+        generador y mayor coherencia entre configuraciones experimentales.
+    \end{enumerate}
+    Este procedimiento permite evaluar de forma integral la generación, combinando fidelidad al contexto y acuerdo
+    con la respuesta ideal, lo que ofrece una medida robusta de la calidad global del sistema.
 
-    \item \textit{Operación}: medimos \textbf{Latencia (Response Time)} por consulta con cronometraje de \emph{end-to-end}
-    (retrieve + rerank + construcción de contexto + generación).
+    \item \textit{Operación}: se mide la \textbf{Latencia (Response Time)} por consulta mediante cronometraje de
+    la ejecución \emph{end-to-end} (recuperación, reranqueo, construcción de contexto y generación).
+
 \end{enumerate}
-
-
-

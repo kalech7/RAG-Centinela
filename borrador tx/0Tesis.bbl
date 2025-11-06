@@ -72,7 +72,6 @@
       \field{labeltitlesource}{title}
       \field{title}{Methodology for JBI Umbrella Reviews}
       \field{year}{2014}
-      \true{nocite}
       \verb{urlraw}
       \verb https://ro.uow.edu.au/smhpapers/3344
       \endverb
@@ -1040,7 +1039,6 @@
       \field{title}{A design science research methodology for information systems research}
       \field{volume}{24}
       \field{year}{2008}
-      \true{nocite}
       \field{pages}{45 77}
       \range{pages}{-1}
       \verb{doi}
@@ -1297,18 +1295,11 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of the 2021 International Conference on Management of Data (SIGMOD '21)}
-      \field{isbn}{978-1-4503-8343-1}
       \field{note}{Industrial Track Paper}
       \field{title}{Milvus: A Purpose-Built Vector Data Management System}
       \field{year}{2021}
       \verb{doi}
       \verb 10.1145/3448016.3457550
-      \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.1145/3448016.3457550
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1145/3448016.3457550
       \endverb
     \endentry
     \entry{wu2025ragSurvey}{article}{}{}
