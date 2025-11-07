@@ -822,10 +822,18 @@ Evaluamos tres configuraciones del sistema para aislar el efecto de cada compone
         \end{enumerate}
         \item \textbf{Repetición y control de variabilidad:} cada comparación se ejecuta tres veces con distinta
         semilla, y las puntuaciones se promedian para reducir la varianza inherente al modelo evaluador~\parencite{casola2022pretrained}.
-        \item \textbf{Cálculo de métricas:}
-        Se obtiene un índice global de acuerdo por consulta (\(A_i\)), el promedio macro \(\overline{A}\) sobre el
-        conjunto de pruebas y el \textbf{coeficiente de acuerdo de Cohen} (\(\kappa\)),
-        tras binarizar las valoraciones (\emph{acuerdo} si \(A_i \geq 4\)).
+        \item \textbf{Cálculo de métricas:} las tres puntuaciones asignadas por el juez (exactitud, cobertura y coherencia) se promedian para cada consulta, obteniendo un \textbf{índice global de acuerdo} (\(A_i\)) que resume el nivel general de coincidencia entre la respuesta RAG y la respuesta ideal:
+        \[
+            A_i = \frac{\text{Exactitud}_i + \text{Cobertura}_i + \text{Coherencia}_i}{3}.
+        \]
+        Posteriormente, se calcula el promedio macro \(\overline{A}\) sobre todas las consultas del conjunto de prueba.
+        Para estimar la consistencia del sistema, las puntuaciones se transforman en valores
+        binarios~\footnote{Consiste en transformar las puntuaciones continuas en categorías binarias de
+        acuerdo (1) o desacuerdo (0), utilizando un umbral definido según la escala de evaluación empleada.},
+        considerando el acuerdo cuando \(A_i \ge 4\) y desacuerdo en caso contrario.
+        Con esta codificación se calcula el \textbf{coeficiente de acuerdo de Cohen} (\(\kappa\))~\footnote{Mide el grado
+        de coincidencia entre dos evaluaciones. Valores cercanos a 1 indican alta concordancia y cercanos a 0 poca o ninguna.},
+        que cuantifica la concordancia entre las evaluaciones más allá del azar.
         \item \textbf{Interpretación:} valores altos de \(\overline{A}\) y \(\kappa\) indican mayor
         proximidad semántica y factual de las respuestas generadas al ground truth, reflejando mejor desempeño del
         generador y mayor coherencia entre configuraciones experimentales.
