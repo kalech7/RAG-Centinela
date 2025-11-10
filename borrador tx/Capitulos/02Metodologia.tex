@@ -1,4 +1,4 @@
-\chapter{Metodología}
+\chapter{Metodología}\label{ch:metodologia}
 \section{Revisión sistemática}
 \label{sec:revision-sistematica}
 Umbrella Review, según \textcite{aromataris2014umbrella}, es un tipo de revisión sistemática que recopila y analiza evidencia secundaria,
@@ -183,7 +183,7 @@ y los recuadros inferiores brindan mayor información acerca de cada fase. Adem�
         \node[draw=black, rounded corners=10pt, thick, minimum width=23cm, minimum height=4cm, fill=gray!5, anchor=north, name=contenedor] 
 at ([yshift=-0.75cm]current bounding box.south) {};
         \coordinate (center) at (contenedor.center);
-        \def\sep{7} % Separación horizontal
+        \newcommand{\sep}{7} % Separación horizontal
         % Elipses dentro del contenedor
         \node[draw=black, ellipse, minimum width=3cm, minimum height=2.2cm, fill=blue!10, align=center, font=\small] 
             (elipse1) at ($(center) + (-\sep,0)$) 
@@ -241,7 +241,8 @@ vectorial.
 Separar título/resumen de metadatos de control (DOI, ScopusID, autores, afiliaciones)  mejora la interpretabilidad del sistema y evita sobrecargar el espacio vectorial
 con señales que no aportan significado textual directo.
 
-Con la siguiente función se extrae el corpus y se guardan en un CSV (UTF-8) para su procesamiento en fases posteriores.
+El Algoritmo~\ref{alg:export-articles-csv} describe el proceso de extracción del corpus y su almacenamiento en un
+archivo CSV (UTF-8) para su procesamiento en fases posteriores.
 \begin{algorithmEN}
 \caption{Export\_Articles\_to\_CSV}
 \begin{algorithmic}[1]
@@ -250,7 +251,7 @@ Con la siguiente función se extrae el corpus y se guardan en un CSV (UTF-8) par
 \State \textbf{Query Neo4j (filtered + ordered).}
 \State $query \Assign$ \textsc{CypherForArticles} \Comment{filter by non-empty \texttt{scopus\_id}, \texttt{title}, ...}
 \State $rows \Assign \textsc{RunCypher}(NEO4J\_URI,\ NEO4J\_AUTH,\ query)$
-\State $df \Assign \textsc{DataFrame}(rows)$ \Comment{tabularize query results}
+\State $df \Assign \textsc{DataFrame}(rows)$ \Comment{Tabularize query results}
 \Statex \textbf{Join list-valued columns}
 \Function{JoinList}{x}
   \State \Return $\textsc{IsList}(x) \ ?\ \textsc{Join}(x,\ \texttt{", "})\ :\ x$
@@ -270,6 +271,7 @@ Con la siguiente función se extrae el corpus y se guardan en un CSV (UTF-8) par
 \end{algorithmic}
 \label{alg:export-articles-csv}
 \end{algorithmEN}
+
 \subsection{Preprocesamiento}
 Una vez completada la ingesta de datos provienientes de Scopus, es fundamental preprocesarlos para normalizar y limpiar el texto, reducir ruido y mejorar la calidad semántica de las representaciones.
 En esta etapa aplicare el siguiente flujo reproducible compuesto por estos pasos:
@@ -333,15 +335,15 @@ es indeterminado) y se guarda un nuevo Parquet. La detección de idioma permite 
 \State $segs \Assign \{\,\texttt{en}\mapsto \textsc{PySBD}(en),\ \texttt{es}\mapsto \textsc{PySBD}(es)\,\}$ \Comment{load language segmenters}
 
 \Function{SegmentByLang}{text, lg}
-  \State $k \Assign \textsc{LowerPrefix}(lg)$ \Comment{e.g., "en", "es"}
+  \State $k \Assign \textsc{LowerPrefix}(\lg)$ \Comment{e.g., "en", "es"}
   \State $seg \Assign \textsc{Get}(segs,\ k)$
   \State \Return $seg.\textsc{Segment}(text)$
 \EndFunction
 
 \ForAll{$r \in \textsc{Rows}(df)$} \Comment{iterate over rows}
   \State $text \Assign df[COL][r]$
-  \State $lg \Assign df[LANG\_COL][r]$
-  \State $df[\texttt{sentences}][r] \Assign \textsc{SegmentByLang}(text,\ lg)$ \Comment{segment in its language}
+  \State $\lg \Assign df[LANG\_COL][r]$
+  \State $df[\texttt{sentences}][r] \Assign \textsc{SegmentByLang}(text,\ \lg)$ \Comment{segment in its language}
 \EndFor
 
 \Statex \textbf{One row per sentence:}
@@ -420,8 +422,8 @@ son stopwords; además, filter-tokens aplica filtros básicos (longitud mínima,
 \State $nlp\_es \Assign \textsc{LoadSpacy}(\texttt{es\_core\_news\_sm})$
 \State $nlp\_en \Assign \textsc{LoadSpacy}(\texttt{en\_core\_web\_sm})$
 \Statex \textbf{Build language masks from \texttt{lang} column}
-\State $idx\_es \Assign [\,\textsc{LowerPrefix}(lg)=\texttt{es}\ \textbf{for}\ lg \in df[\texttt{LANG\_COL}]\,]$
-\State $idx\_en \Assign [\,\textsc{LowerPrefix}(lg)=\texttt{en}\ \textbf{for}\ lg \in df[\texttt{LANG\_COL}]\,]$
+\State $idx\_es \Assign [\,\textsc{LowerPrefix}(\lg)=\texttt{es}\ \textbf{for}\ \lg \in df[\texttt{LANG\_COL}]\,]$
+\State $idx\_en \Assign [\,\textsc{LowerPrefix}(\lg)=\texttt{en}\ \textbf{for}\ \lg \in df[\texttt{LANG\_COL}]\,]$
 \State \textbf{Function to lemmatize a string}: return space-separated lowercase lemmas
 \Statex \textbf{Process ES batch}
 \State $stream\_es \Assign nlp\_es.\textsc{Pipe}(\dots)$ \Comment{batched iterator of Docs}
@@ -484,6 +486,7 @@ Genera  tokens lematizados en minúsculas, separados por espacios y guarda el re
 \State $out \gets chunks[save\_cols]$
 \State \textsc{ToParquet}$(out,\ \texttt{pyarrow})$ 
 \end{algorithmic}
+    \label{alg:chunking}
 \end{algorithmEN}
 
 Finalmente, para fragmentar el texto tomamos el Parquet lematizado, consolidamos un solo documento por artículo 
@@ -501,7 +504,7 @@ consulta y los fragmentos en un espacio vectorial de baja dimensión (vector cor
 capturando relaciones semánticas más allá de coincidencias léxicas y mejorando la recuperación en escenarios RAG y open-domain QA.
 Además, estos embeddings se indexan en bases de datos vectoriales con búsqueda aproximada de vecinos cercanos (ANN), lo que viabiliza el escalamiento eficiente del sistema\parencite{joshi2025vector}.
 \begin{algorithmEN}[H]
-  \caption{Vectorizacion }
+  \caption{Vectorización }
   \begin{algorithmic}[1]
     \Require \texttt{chunks\_df[text\_chunk]}, \texttt{EMB\_MODEL}, \texttt{FAISS\_PATH}, \texttt{PKL\_PATH}, \texttt{INIT\_BATCH}, \texttt{EMB\_MAX\_SEQ\_LEN}
     \State $model \gets \textsc{LoadModel}(\texttt{EMB\_MODEL}, cpu)$ \Comment{Load E5 on CPU}
@@ -516,10 +519,11 @@ Además, estos embeddings se indexan en bases de datos vectoriales con búsqueda
     \State $\textsc{WriteFAISS}(index,\ \texttt{FAISS\_PATH})$ \Comment{Persist FAISS}
     \State $\textsc{EnsureVecID}(\texttt{chunks\_df},\ 0..|P|-1)$ \Comment{0-based contiguous ids}
   \State $cols \gets [\texttt{vec\_id},\ \texttt{chunk\_uid},\ \texttt{doc\_id},\ \texttt{chunk\_id},...,\ \texttt{scopus\_id}]$
-  \State $meta\_min \gets \textsc{Select}(\texttt{chunks\_df},\ cols)$
+  \State $meta\_\min \gets \textsc{Select}(\texttt{chunks\_df},\ cols)$
     \State $\textsc{WritePKL}(\{\texttt{model},\ \texttt{device},\ \texttt{dim},\ \texttt{meta\_min}\},\ \texttt{PKL\_PATH})$
 
   \end{algorithmic}
+    \label{alg:vectorize}
 \end{algorithmEN}
 
 
@@ -538,7 +542,7 @@ Procesa los textos por lotes (reduce el tamaño si hay errores de memoria), junt
     \State $index \gets \textsc{InitIndex}(\textit{dim}=meta.dim,\ \textit{metric}=\texttt{inner\_product})$
     \State $\textsc{AddVectors}(index,\ X)$
     \State $\textsc{SaveIndex}(index,\ \texttt{OUT\_INDEX})$
-    \State $info \gets \textsc{BuildRecord}(model,\ dim,\ count,\ paths)$
+    \State $info \gets \textsc{BuildRecord}(model,\ \dim,\ count,\ paths)$
     \State $\textsc{SaveObject}(\texttt{OUT\_INFO},\ info)$
   \end{algorithmic}
   \label{alg:build_vector_index}
@@ -653,11 +657,11 @@ Proporcionar cada texto en chunks manejables (longitud fija), preservando su tra
   \If{$trim$} \Comment optional clipping
     \State $body \gets \textsc{Shorten}(body, L)$ \Comment enforce char limit
   \EndIf
-  \State $auth\_raw \gets r[\texttt{authors}]$ \textbf{or} ``'' \Comment raw authors
+  \State $auth\_raw \gets r[\texttt{authors}]$ \textbf{or} \(``''\) \Comment raw authors
   \State $mention \gets \textsc{FormatAuthorsForMention}(auth\_raw)$ \Comment short citation string
   \State $year \gets \textsc{ExtractYear}(r)$ \Comment publication year
-  \State $doi \gets r[\texttt{doi}]$ \textbf{or} ``'' \Comment DOI if present
-  \State $cid \gets \textsc{RowId}(r)$ \Comment prefer scopus\_id"
+  \State $doi \gets r[\texttt{doi}]$ \textbf{or} \(``''\) \Comment DOI if present
+  \State $cid \gets \textsc{RowId}(r)$ \Comment prefer scopus\_id
 
   \State \textbf{append} \{
     \texttt{cite\_id}: $cid$,\,

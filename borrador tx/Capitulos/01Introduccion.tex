@@ -42,16 +42,22 @@ filtrado por metadatos) manteniendo latencia baja y trazabilidad de los fragment
 \section{Marco Teórico}
 
 \section{Revisión de literatura}
-En los últimos años, la evolución de los modelos de lenguaje de gran escala (Large Language Models, LLM) ha redefinido el procesamiento del lenguaje natural
+En los últimos años, la evolución de los modelos de lenguaje de gran escala (Large Language Models, LLM) ha
+redefinido el procesamiento del lenguaje natural
 e impulsado nuevas líneas de investigación. 
 Sin embargo, estos modelos dependen únicamente de los datos empleados durante su entrenamiento, lo que limita su capacidad para ofrecer respuestas actualizadas, verificables y 
-contextualizadas. En respuesta a esta limitación surge el enfoque de Retrieval-Augmented Generation (RAG), el cual combina la recuperación de información con la generación de 
-lenguaje natural, logrando mejorar la precisión, la coherencia y la actualidad de las respuestas producidas por los modelos.
-
-Dada la creciente relevancia de los LLM, resulta necesario llevar a cabo una revisión exhaustiva de la literatura que permita consolidar los avances recientes y evaluar los desafíos aún presentes.
-Para ello, esta revisión se apoya en Umbrella SLR y propagación de citaciones usando el protocolo propuesto en la Sección~\ref{sec:revision-sistematica};
-En esta sección se presenta un análisis estructurado de la literatura disponible, considerando tanto los fundamentos conceptuales de RAG como sus fases de desarrollo, 
-aplicaciones y el futuro. Para ello, el proceso de revisión se organiza en las fases que se presentan a continuación:
+contextualizadas.
+En respuesta a esta limitación surge el enfoque de Retrieval-Augmented Generation (RAG), el cual combina la recuperación
+de información con la generación de
+lenguaje natural, logrando mejorar la precisión, la coherencia y la actualidad de las respuestas producidas por los
+modelos.
+Dada la creciente relevancia de los LLM, resulta necesario llevar a cabo una revisión exhaustiva de la literatura que
+permita consolidar los avances recientes y evaluar los desafíos aún presentes.
+Para ello, esta revisión se apoya en Umbrella SLR y propagación de citaciones usando el protocolo propuesto en la
+Sección~\ref{sec:revision-sistematica}.
+En esta sección, se presenta un análisis estructurado de la literatura disponible, considerando tanto los fundamentos conceptuales de RAG como sus fases de desarrollo,
+aplicaciones y el futuro.
+Para ello, el proceso de revisión se organiza en las fases que se presentan a continuación:
 
 \begin{itemize}
     \item \nameref{subsec:proposito-objetivos}
@@ -60,23 +66,27 @@ aplicaciones y el futuro. Para ello, el proceso de revisión se organiza en las 
     \item \nameref{subsec:valoracion-evidencias}
     \item \nameref{subsec:sintesis-resultados}
 \end{itemize}
-Las cuales buscan garantizar la consistencia, validez y pertinencia de la evidencia obtenida.
+Estas fases buscan garantizar la consistencia, validez y pertinencia de la evidencia obtenida.
 
 \subsection{Propósito y objetivos de la revisión}
 \label{subsec:proposito-objetivos}
 El propósito de esta revisión es consolidar la información disponible sobre los RAG, abordando su estudio desde los fundamentos hasta las fases de desarrollo. 
 Se inicia con su definición y arquitectura, para luego profundizar en las etapas clave del proceso: extracción del corpus, preprocesamiento, vectorización, recuperación de información, 
-evaluación, almacenamiento en bases vectoriales y generación de resultados. Asimismo, se examinan los paradigmas, las métricas de evaluación y el futuro de RAG.
+evaluación, almacenamiento en bases vectoriales y generación de resultados.
+Asimismo, se examinan los paradigmas, las métricas de evaluación y el futuro de RAG.
 Durante esta revisión se busca lograr el objetivo general de proporcionar un panorama global y actualizado sobre los RAG,
 exponiendo sus fundamentos, desarrollo y aplicación.
 
 \subsection{Criterios de inclusión y exclusión}
 \label{subsec:criterios-inclusion-exclusion}
-Se incluyen únicamente revisiones sistemáticas y metaanálisis publicados entre 2018 y 2025, en inglés o español, dado que la producción 
-científica en el área comenzó a incrementarse a partir de 2018, con base en información de Lens.org\footnote{Es una plataforma abierta
-para la búsqueda, análisis y visualización de literatura científica y patentes. Accesible en: \href{https://www.lens.org/}{Lens.org}}, este incremento coincide
+Se incluyen únicamente revisiones sistemáticas y metaanálisis publicados entre 2018 y 2025, en inglés o español, dado que la producción
+científica en el área comenzó a incrementarse a partir de 2018.
+Con base en información de
+Lens.org~\footnote{Es una plataforma abierta
+para la búsqueda, análisis y visualización de literatura científica y patentes.
+Accesible en: \href{https://www.lens.org/}{Lens.org}}, este incremento coincide
 con la popularización 
-de los modelos de lenguaje basados en transformers\footnote{Se atribuye a hitos como BERT (2018), GPT-2 (2019) y T5 (2020), que impulsaron un avance 
+de los modelos de lenguaje basados en transformers~\footnote{Se atribuye a hitos como BERT (2018), GPT-2 (2019) y T5 (2020), que impulsaron un avance
 en la investigación del procesamiento del Lenguaje Natural}.
 Los estudios deben provenir de fuentes confiables y ser, a su vez, revisados por 
 un experto.
@@ -156,10 +166,11 @@ Con la literatura seleccionada se identificó la hoja de ruta que se presenta a 
 \end{figure}
 
 A partir de esta hoja de ruta se desarrolla un esquema más detallado, en el que primero se exploran la teoría, 
-las características y las aplicaciones, como se muestra en la Figura.~\ref{fig:Fudamentos}. Posteriormente, se profundiza en la arquitectura, Figura. \ref{fig:arquitectura_rag}, 
+las características y las aplicaciones, como se muestra en la Figura.~\ref{fig:Fudamentos}.
+Posteriormente, se profundiza en la arquitectura, Figura. \ref{fig:arquitectura_rag},
 donde se describe cada uno de los componentes que la conforman (Retriever, Augmented y Generation), así como las variantes y mejoras que existen en cada uno. 
 Más adelante, se detalla el proceso de implementación (ver la  Figura.~\ref{fig:pipeline-rag}), desde la preparación de los datos hasta el componente de generación, incluyendo las técnicas y herramientas más relevantes.  
-En la Figura.~\ref{fig:paradigmas} correspondiente se examinan los paradigmas de RAG, presentando sus tipos y clases; seguidamente, se introducen las métricas y evaluadores automáticos 
+En la Figura.~\ref{fig:paradigmas}, se examinan los paradigmas de RAG, presentando sus tipos y clases; seguidamente, se introducen las métricas y evaluadores automáticos
 empleados en la evaluación de sistemas RAG, junto con las consideraciones éticas y de equidad que deben tenerse en cuenta.  
 Finalmente, se discuten las tendencias emergentes, los desafíos actuales y las posibles direcciones futuras que podrían orientar la evolución de los sistemas RAG.  
 
@@ -276,8 +287,8 @@ De acuerdo con la revisión exhaustiva de la literatura los RAGs aportan:
     \item \textbf{Reducción de costos y actualización ágil del conocimiento}: en lugar de reentrenar o usar fine-tuning el LLM, basta con actualizar el corpus o el índice, lo que permite incorporar información reciente de manera eficiente \parencite{gao2023rag,zhai2024llmIR}.
     \item \textbf{Cobertura y ampliación de conocimiento especializado}: los RAG permiten abordar información de long-tail\footnote{Información poco frecuente, rara o muy especializada que casi no aparece en los datos de entrenamiento de un modelo.} que no suele estar bien representada en los datos de entrenamiento de un LLM, al tiempo que extienden su utilidad a campos especializados como derecho, medicina, finanzas y automatización de revisiones sistemáticas de literatura (SLR), apoyando procesos de búsqueda, filtrado, extracción y síntesis de evidencia \parencite{gao2023rag,hu2024ragrau,zhai2024llmIR}.
     \item \textbf{Manejo de documentos largos}: técnicas como RAPTOR organizan documentos extensos en árboles de resúmenes que permiten recuperar a distintos niveles de abstracción, mejorando el rendimiento en QA (Question Answering)\footnote{Es la tarea de responder preguntas a partir de evidencia extraída de uno o varios textos. }
-    complejo y multi-hop \footnote{La respuesta a una pregunta no se puede obtener de una única fuente, sino que requiere combinar la evidencia de varias fuentes distintas.} \parencite{sarthi2024raptor}.
-    \item \textbf{Aportes en evaluación}: se han desarrollado métricas específicas para auditar la calidad de un pipeline RAG (p. ej., context relevance, faithfulness, answer correctness, citation quality), hoy ya sistematizadas en la literatura \parencite{knollmeyer2024benchmarking}.
+    complejo y multi-hop~\footnote{La respuesta a una pregunta no se puede obtener de una única fuente, sino que requiere combinar la evidencia de varias fuentes distintas.} \parencite{sarthi2024raptor}.
+    \item \textbf{Aportes en evaluación}: se han desarrollado métricas específicas para auditar la calidad de un pipeline RAG (ej., context relevance, faithfulness, answer correctness, citation quality), hoy ya sistematizadas en la literatura \parencite{knollmeyer2024benchmarking}.
 \end{enumerate}
 
 \paragraph{RAG vs Fine Tuning}  
@@ -354,24 +365,29 @@ RAG puede usarse en 4 modalidades:
 \label{fig:arquitectura_rag}
 \end{figure}
 
-RAG se compone de tres fases: recuperación, augmentation y generación (ver Figura~\ref{fig:arquitectura_rag}). Como lo menciona \textcite{gao2023rag}, primero se 
-localizan documentos relevantes para la consulta (Recuperación); luego, se enriquece la entrada del usuario con esos textos (augmentation); y finalmente, el modelo produce 
-una respuesta basada tanto en su conocimiento interno como en la información recuperada (Generación). Gracias a este enfoque, RAG incrementa la exactitud 
+RAG se compone de tres fases: recuperación, aumentación y generación (ver Figura~\ref{fig:arquitectura_rag}).
+Como lo menciona \textcite{gao2023rag}, primero se
+localizan documentos relevantes para la consulta (Recuperación); luego, se enriquece la entrada del usuario con esos textos (aumentación); y finalmente, el modelo produce
+una respuesta basada tanto en su conocimiento interno como en la información recuperada (Generación).
+Gracias a este enfoque, RAG incrementa la exactitud
 de las respuestas, facilita la actualización del conocimiento sin necesidad de reentrenar el modelo y mejora la transparencia al permitir la 
-cita de fuentes. Se trata de una de las técnicas más relevantes en tareas que requieren una gran 
+cita de fuentes.
+Se trata de una de las técnicas más relevantes en tareas que requieren una gran
 cantidad de conocimiento, como en los ámbitos médico, legal o de investigación científica.
+La Tabla~\ref{tab:retriver} resume el componente recuperación en tres categorías:
+\begin{enumerate}[label=(\roman*)]
+    \item \textbf{Indexación}: incluye bases vectoriales y algoritmos de búsqueda.
+    \item \textbf{Enhancements}: conjunto de técnicas que mejoran la calidad del contexto recuperado y su ordenación.
+    \item \textbf{Tipos de retrievers}: abarcan enfoques \textit{sparse}, \textit{dense} e híbridos.
+\end{enumerate}
 
-La Tabla~\ref{tab:retriver} resume el componente retriever en tres categorías: (i) \textbf{indexación}, que incluye bases vectoriales y algoritmos de búsqueda ; 
-(ii) \textbf{enhancements}, conjunto de técnicas que mejoran la calidad del contexto recuperado y su ordenación; y (iii)~\textbf{tipos de retrievers}, que abarcan enfoques 
-sparse, dense e híbridos.
-
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \begin{tabularx}{\textwidth}{l l X}
 \toprule
 \textbf{Categoría} & \textbf{Subcategoría / Tipo} & \textbf{Técnicas} \\
 \midrule
-Indexing     & Vector DB               & FAISS, Annoy, Milvus, Weaviate, Pinecone, Qdrant\\
+Indexación    & Vector DB               & FAISS, Annoy, Milvus, Weaviate, Pinecone, Qdrant\\
               & Algoritmos de búsqueda  & Approximate Nearest Neighbors, Locality-Sensitive Hashing \\
 \midrule
 Enhancements & Reranking               & CEDR, DuoBERT, DRMM\\
@@ -391,11 +407,13 @@ Tipos de retrievers & Sparse            & BM25, TF-IDF \\
 \label{tab:retriver}
 \end{table}
 
-\paragraph{Indexing:} Es el encargado de organizar y representar la información de forma eficiente. En este sentido, los vector databases (VDBs) han aumentado su popularidad, ya que permiten almacenar 
-vectores de alta dimensionalidad y realizar búsquedas por similitud semántica. Como explica \textcite{joshi2025vector}, estas bases de datos resultan esenciales para 
+\paragraph{Indexación:} Es el encargado de organizar y representar la información de forma eficiente.
+En este sentido, los vector databases (VDBs) han aumentado su popularidad, ya que permiten almacenar
+vectores de alta dimensionalidad y realizar búsquedas por similitud semántica.
+Como explica~\textcite{joshi2025vector}, estas bases de datos resultan esenciales para
 la aplicación de inteligencia artificial generativa, ya que superan las limitaciones de las bases relacionales en el manejo de datos no estructurados.  
 Los VDBs integran mecanismos de búsqueda aproximada de vecinos más cercanos (ANNS), lo que posibilita consultas rápidas incluso sobre miles de objetos. Además, como lo menciona
-\textcite{ma2025vector}, incorporan técnicas de optimización como particionamiento, sharding \footnote{ Es una técnica de partición horizontal que divide una base de datos
+\textcite{ma2025vector}, incorporan técnicas de optimización como particionamiento, sharding~\footnote{ Es una técnica de partición horizontal que divide una base de datos
  en fragmentos distribuidos entre múltiples nodos, lo que permite escalar de forma eficiente y balancear la carga en bases de datos vectoriales},
   cachés y replicación para garantizar escalabilidad y baja latencia en entornos distribuidos.  
 
@@ -409,6 +427,13 @@ de sistemas RAG.
 
 \paragraph{Enhancements:} Son técnicas complementarias que se añaden antes, durante o después de la recuperación para subir la calidad sin reemplazar al 
 recuperador base.
+De acuerdo con la Tabla~\ref{tab:enhancementstechnics}, resume un conjunto de técnicas de mejora del pipeline RAG:
+\textit{Reranking} (segunda etapa de ordenamiento), \textit{Retriever finetuning} (ajuste del recuperador), \textit{Hybrid search} (combinación dispersa-densa),
+\textit{Chunk optimization} (segmentación/jerarquización de documentos largos), \textit{Recursive retrieval} (búsqueda iterativa con razonamiento),
+\textit{RAG pipeline enhancement} (módulos basados en reglas y en modelos) y \textit{Query reformulation} (reescritura/expansión de consultas).
+De acuerdo con la literatura \parencite{hambarde2023ir,fan2021pretraining,han2024rag,wu2025ragSurvey}, estas categorías agrupan las técnicas más empleadas y reportadas en revisiones exhaustivas de la literatura.
+No obstante,
+existen otras variantes y propuestas que, aunque menos citadas, complementan este panorama.
 \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.30\textwidth} X}
 \toprule
 \textbf{Técnicas} & \textbf{Descripción} \\
@@ -496,20 +521,14 @@ Convierte la consulta en un pseudo-documento que actúa como proxy para recupera
     Además, existen modelos de \textit{agregación aprendida} como \textsc{PARADE}, que primero codifican cada fragmento y luego aprenden a combinarlos (p.\,ej., con otra capa/transformer) para producir \(\mathrm{score}(d)\), superando a estas heurísticas en diversos escenarios \parencite{fan2021pretraining}.
 \end{itemize}
 
-\noindent De acuerdo con la Tabla \ref{tab:enhancementstechnics}, resume un conjunto de técnicas de mejora del pipeline RAG:
- \textit{Reranking} (segunda etapa de ordenamiento), \textit{Retriever finetuning} (ajuste del recuperador), \textit{Hybrid search} (combinación dispersa-densa), 
- \textit{Chunk optimization} (segmentación/jerarquización de documentos largos), \textit{Recursive retrieval} (búsqueda iterativa con razonamiento), 
- \textit{RAG pipeline enhancement} (módulos basados en reglas y en modelos) y \textit{Query reformulation} (reescritura/expansión de consultas). 
-De acuerdo con la literatura \parencite{hambarde2023ir,fan2021pretraining,han2024rag,wu2025ragSurvey}, estas categorías agrupan las técnicas más empleadas y reportadas en revisiones exhaustivas de la literatura.
-No obstante,
- existen otras variantes y propuestas que, aunque menos citadas, complementan este panorama.
 
 \paragraph{Tipos de retrievers:} Los retrievers se agrupan en tres familias: sparse, dense y híbridos/otros.
 Los métodos sparse representan consultas y documentos como vectores dispersos de términos ponderados, son eficientes, interpretables y dependen del matching léxico.
 Los dense usan representaciones continuas aprendidas (embeddings) para medir similitud semántica, capturando sinonimia y paráfrasis con mejor recall semántico, aunque
- con mayor costo de indexación y búsqueda. Los enfoques híbridos/otros combinan señales léxicas y semánticas
+ con mayor costo de indexación y búsqueda.
+ Los enfoques híbridos/otros combinan señales léxicas y semánticas
 fusionando resultados sparse y dense o usando interacciones tardías  y re-rankers para equilibrar precisión, cobertura y eficiencia.
-
+A continuación, se listan los diferentes tipos de retrievers.
 % Lista de retrievers por categoría (sparse, dense, híbridos/otros)
 \begin{itemize}
   \item \textbf{Sparse}
@@ -534,6 +553,8 @@ fusionando resultados sparse y dense o usando interacciones tardías  y re-ranke
     \end{itemize}
 \end{itemize}
 
+La Tabla~\ref{tab:aumentación} contiene tres ejes del componente aumentación: Tipos, Data y Process. Los cuales enriquecen el contexto disponible y mejoran la pertinencia
+de la recuperación.
 
 
 
@@ -554,24 +575,22 @@ Data    & Structured            & Knowledge Graphs \\
         & Unstructured          & open corpus (Common Crawl, PubMed, etc.) \\
         & LLM generated content & self-retrieval \\
 \midrule
-Process & Once                  & document augmentation \\
+Process & Once                  & document aumentación \\
         & Iterative             & pseudo-relevance feedback (PRF) \\
         & Adaptative            & SKR (Selective Knowledge Retrieval)\\
 \bottomrule
 \end{tabularx}
-\caption{Componente Augmentation}
-\label{tab:augmentation}
+\caption{Componente aumentación}
+\label{tab:aumentación}
 \end{table}
 
-Augmentation es el proceso el cual un modelo de lenguaje incorpora información adicional 
+Aumentación es el proceso el cual un modelo de lenguaje incorpora información adicional
 ya sea externa, como documentos, bases de conocimiento o corpus abiertos, o procesada internamente en diferentes etapas de su funcionamiento.
 Los autores coinciden en que esta integración cumple objetivos clave: mejorar la precisión de las respuestas al aportar evidencia relevante, 
 reducir las alucinaciones al contrastar el conocimiento implícito del modelo con fuentes verificables, y actualizar el conocimiento de los LLMs sin 
 necesidad de reentrenarlos desde cero, ya que el acceso a información recuperada permite mantenerlos al día en dominios dinámicos como ciencia, medicina o derecho.
-La Tabla~\ref{tab:augmentation} contiene tres ejes del componente augmentation: Tipos, Data y Process. Los cuales enriquecen el contexto disponible y mejoran la pertinencia
-de la recuperación.
 
-\paragraph{Tipos de augmentation:} \textcite{zhao2024rag} señalan que se puede aplicar en tres momentos distintos. En el pre-training, se integran representaciones estructuradas 
+\paragraph{Tipos de aumentación:} \textcite{zhao2024rag} señalan que se puede aplicar en tres momentos distintos. En el pre-training, se integran representaciones estructuradas 
 como knowledge graph embeddings que dotan al modelo de memoria explícita sobre entidades y relaciones. En la fase de fine-tuning, se ajustan los parámetros del modelo 
 (y/o del recuperador) con datos del dominio para alinear formato y criterios de evaluación con la tarea. Para lograr este objetivo, existen estrategias como SFT el cual 
 consiste en volver a entrenar el modelo usando datos etiquetados de la tarea objetivo para alinear el formato y criterios de salida. 
@@ -579,10 +598,11 @@ Este ajuste del modelo es efectivo, sin embargo resulta costoso y sensible a los
 Variables de configuración externas al modelo que controlan cómo aprende durante el entrenamiento (e.g., tasa de aprendizaje, batch size, warmup, regularización, scheduler
 y número de épocas), regulando el tamaño y el ritmo de las actualizaciones y la duración del entrenamiento.}%
 e incluso a la semilla inicial (números aleatorios del entorno de entrenamiento , por ejemplo, la inicialización de pesos y el orden de muestreo de los datos), 
-lo que impacta la selección de modelo y la fiabilidad de la evaluación~\textcite{casola2022pretrained}.
-Por otra parte, PEFT modifican muy pocos parámetros usando prompt tunning (soft prompts) donde se aprenden vectores continuos que se anteponen al input para guiar la generación, 
-sin cambiar la base del modelo y prefix tunning es una variante de prompt tunning el cual agrega prefijos de claves o valores en las capas de atención del transformer y a su vez
-puede anteponer vectores al input. Asi, cada capa contiene el contexto que dirige la atención del modelo hacia patrones deseados, manteniendo intactos los pesos base del modelo.
+lo que impacta la selección de modelo y la fiabilidad de la evaluación.
+Por otra parte, PEFT modifican muy pocos parámetros usando prompt tunning (soft prompts) donde se aprenden vectores continuos que se anteponen al input para guiar la generación.
+Sin cambiar la base del modelo y prefix, tunning es una variante de prompt tunning el cual agrega prefijos de claves o valores en las capas de atención del transformer y a su vez
+puede anteponer vectores al input.
+Asi, cada capa contiene el contexto que dirige la atención del modelo hacia patrones deseados, manteniendo intactos los pesos base del modelo.
 El ajuste del recuperador en el método REPLUG se realiza mediante la divergencia de Kullback–Leibler (KL), que compara la distribución de probabilidad de documentos
 estimada por el recuperador $P_{R}(d \mid x)$ con la distribución inducida por el modelo de lenguaje $Q_{\mathrm{LM}}(d \mid x,y)$. La función objetivo es:
 \[
@@ -590,20 +610,22 @@ estimada por el recuperador $P_{R}(d \mid x)$ con la distribución inducida por 
 = \sum_{d\in\mathcal{C}(x)} P_{R}(d\mid x)\,\log\!\frac{P_{R}(d\mid x)}{Q_{\mathrm{LM}}(d\mid x,y)}.
 \]
 Minimizar esta divergencia significa entrenar el recuperador para que su distribución de documentos recuperados se acerque a la que el propio LLM, tratado como caja negra, 
-considera más adecuada. De este modo, el recuperador aprende a imitar las preferencias del LLM respecto a qué documentos son más relevantes, 
-logrando así seleccionar de manera más efectiva aquellos fragmentos que aportan información útil. Este alineamiento mejora el \textit{recall@k} y asegura que el contexto
+considera más adecuada.
+De este modo, el recuperador aprende a imitar las preferencias del LLM respecto a qué documentos son más relevantes,
+logrando así seleccionar de manera más efectiva aquellos fragmentos que aportan información útil.
+Este alineamiento mejora el \textit{recall@k} y asegura que el contexto
 suministrado al generador no solo sea pertinente, sino también consistente con la forma en que el LLM procesa y utiliza la evidencia externa~\textcite{gao2023rag}.
 
 UPRISE, por su parte, entrena un prompt retriever usando a un LLM congelado como supervisor: el LLM puntúa qué prompts (de un banco de plantillas) 
 ayudan más a producir buenas respuestas para cada entrada; esos puntajes se convierten en señales de entrenamiento para que el retriever aprenda a seleccionar, 
 en inferencia y sin reentrenar el LLM, los prompts más útiles en zero-shot\footnote{Resolver una tarea sin ejemplos etiquetados de esa tarea durante el ajuste}, elevando la calidad del contexto que finalmente consume el 
-generador~\textcite{zhao2024rag,fan2024ragllm}.
+generador.
 
 Finalmente, en la inferencia, se aplican métodos sin reentrenamiento: por ejemplo, 
 RARR (Retrieve-then-Read-then-Revise) refina las respuestas con evidencia recuperada, mientras que la mitigación de Lost in the Middle reorganiza documentos recuperados
 para que el modelo aproveche mejor la ventana de contexto.
 
-\paragraph{Datos:} \textcite{fan2024ragllm} destacan tres clases. La información estructurada, como los Knowledge Graphs, es fundamental para tareas de razonamiento 
+\paragraph{Datos para la fase de aumentación:} \textcite{fan2024ragllm} destacan tres clases. La información estructurada, como los Knowledge Graphs, es fundamental para tareas de razonamiento
 factual ya que permite modelar entidades y relaciones explícitas. La información no estructurada, como corpus abiertos (Common Crawl, PubMed, Wikipedia), se ha vuelto estándar en open-domain QA.
 Tal como explican~\textcite{gao2023rag} estos corpus aportan amplitud temática, pero también requieren mecanismos de filtrado, chunking y re-ranking 
 para evitar ruido y mitigar el problema de Lost in the Middle. Finalmente, surge la categoría de contenido generado por LLM, donde el propio modelo actúa 
@@ -612,8 +634,8 @@ hipótesis o representaciones que se utilizan posteriormente como consultas o ev
 si el propio contenido generado basta para resolver la tarea. Gracias a este enfoque, como subraya~\textcite{fan2024ragllm}, se abre la posibilidad de que los modelos se autocomplementen y 
 reutilicen su conocimiento previo sin depender exclusivamente de bases externas.
 
-\paragraph{Procesos de augmentation:} Se clasifican en tres modalidades según~\textcite{zhao2024rag}. 
-Augmentation puede aplicarse una sola vez (Once), como en el caso de la document augmentation, 
+\paragraph{Procesos de aumentación:} Se clasifican en tres modalidades según~\textcite{zhao2024rag}. 
+aumentación puede aplicarse una sola vez (Once), como en el caso de la document aumentación, 
 donde se enriquece directamente la entrada con información adicional antes de la generación. 
 Otra modalidad es la iterativa, que emplea técnicas como el pseudo-relevance feedback (PRF), 
 mediante el cual la consulta inicial se reformula a partir de los resultados recuperados, repitiendo el ciclo 
@@ -647,8 +669,7 @@ El componente generador (ver Tabla~\ref{tab:generator}) es el encargado de produ
 de estrategias que optimizan su rendimiento y controlan la calidad de las salidas. Estas mejoras incluyen prompt engineering, el fine-tuning especializado en dominios y 
 ajustes en los métodos de decodificación para equilibrar coherencia y diversidad en la generación. En este sentido, comprender tanto los tipos de modelos como las técnicas de optimización resulta fundamental para evaluar el papel del \textit{Generator} 
 en sistemas avanzados como los de Retrieval-Augmented Generation (RAG), donde la combinación de arquitectura y optimización garantiza la generación de respuestas 
-más fiables, contextualizadas y relevantes 
-\parencite{casola2022pretrained,fan2024ragllm,zhang2025hallucination}
+más fiables, contextualizadas y relevantes~\parencite{casola2022pretrained,fan2024ragllm,zhang2025hallucination}.
 
 Los transformers son la arquitectura más influyente en NLP ya que, según lo menciona \textcite{casola2022pretrained}, su capacidad de manejar dependencias a largo plazo 
 mediante mecanismos de auto-atención ha permitido el desarrollo de modelos como GPT, BART y T5, los cuales han superado ampliamente a enfoques previos y marcado un cambio 
@@ -662,22 +683,26 @@ Más recientemente los Diffusion Models
 se han consolidado en el ámbito multimodal (imagen, audio y video), gracias a su capacidad de producir datos de alta calidad a partir de procesos de ruido inverso,
 ampliando las fronteras de la generación más allá del texto. 
 
-Con respecto a la mejora, el Prompt Engineering ha demostrado ser una técnica central para guiar los modelos hacia respuestas más precisas y controladas. Según \textcite{zhang2025hallucination}
+Con respecto a la mejora, el Prompt Engineering ha demostrado ser una técnica central para guiar los modelos hacia respuestas más precisas y controladas.
+Según \textcite{zhang2025hallucination},
 incluye el diseño de instrucciones específicas, así como métodos como chain of thought o step-back prompting, que mejoran la coherencia y reducen alucinaciones en los resultados.
 Otra estrategia es el fine-tuning que consiste en adaptar un modelo a un dominio concreto, optimizando su capacidad de manejar información especializada y aumentando su fiabilidad en tareas críticas,
 por ejemplo en contextos científicos o legales.  
 El Decoding Tuning se refiere al ajuste de los métodos utilizados por un modelo generativo para decidir qué palabra o token producir a continuación. 
 En lugar de limitarse a elegir siempre la opción con mayor probabilidad, lo cual puede generar textos repetitivos y poco naturales, se aplican estrategias 
-que permiten modular el balance entre coherencia y diversidad. Entre ellas, el beam search explora varias rutas posibles de generación en paralelo para seleccionar 
-la más prometedora, garantizando coherencia aunque sacrificando creatividad. Por su parte, el nucleus sampling restringe las opciones a un conjunto dinámico de palabras 
+que permiten modular el balance entre coherencia y diversidad.
+Entre ellas, el beam search explora varias rutas posibles de generación en paralelo para seleccionar
+la más prometedora, garantizando coherencia aunque sacrificando creatividad.
+Por su parte, el nucleus sampling restringe las opciones a un conjunto dinámico de palabras
 que concentran la mayor parte de la probabilidad acumulada y selecciona una de ellas de manera aleatoria, lo que produce textos más naturales y variados. Finalmente, 
 el top-k sampling limita las elecciones a las k palabras más probables y elige una de ellas de acuerdo con su distribución de probabilidad, lo que ofrece un equilibrio 
-controlado entre precisión y diversidad. Estas estrategias permiten modular el equilibrio entre coherencia y diversidad en la generación de texto, 
+controlado entre precisión y diversidad.
+Estas estrategias permiten modular el equilibrio entre coherencia y diversidad en la generación de texto,
 adaptando el comportamiento del modelo sin necesidad de modificar su arquitectura \parencite{hu2024ragrau}.
 
 
 
-\subsubsection{Fases de Implementación}
+\subsubsection{Fases de Implementación de los sistemas RAG}
 \begin{figure}[H]
 \begin{center}
 \begin{tikzpicture}[x=1cm,y=1cm]
@@ -763,7 +788,7 @@ sistema. De acuerdo con \textcite{gao2023rag}, \textcite{ibrihich2022review} y \
 \end{enumerate}
 
 Este paso es importante ya que el texto procesado debe adaptarse a las limitaciones de los LLM, lo cual implica fragmentar en chunks y generar representaciones 
-vectoriales, siendo así que \textcite{knollmeyer2024benchmarking} 
+vectoriales. \textcite{knollmeyer2024benchmarking}
 afirma que la calidad del preprocesamiento incide directamente en dimensiones de evaluación como la relevancia contextual y la fidelidad de las respuestas. Una preparación deficiente del texto puede introducir ruido en el contexto recuperado 
 y favorecer inconsistencias en la generación, lo cual incrementa el riesgo de alucinaciones; en este sentido, se entiende que el preprocesamiento actúa como una primera barrera de mitigación de errores (\textcite{zhang2025hallucination}).
 
@@ -919,7 +944,7 @@ generadas.
 
 \paragraph{Evaluación:} 
 La evaluación en sistemas RAG debe abordarse de forma multifásica, verificando tanto la recuperación (calidad y suficiencia del contexto) como la generación
- (fidelidad y atribución), ya que el desempeño global depende de ambas etapas del pipeline~\textcite{knollmeyer2024benchmarking}.
+ (fidelidad y atribución), ya que el desempeño global depende de ambas etapas del pipeline~\parencite{knollmeyer2024benchmarking}.
 \mbox{}\\
 \noindent\textbf{Enfoque por fases.} La evaluación en los sistemas RAG es un proceso donde no se centra únicamente en evaluar la calidad de la respuesta generada, sino que debe evaluarse en todas las fases de implementación. 
 \mbox{}\\
@@ -937,9 +962,14 @@ La evaluación en sistemas RAG debe abordarse de forma multifásica, verificando
 \mbox{}\\
 \noindent\textbf{Criterios FATE.} Sin embargo, en los últimos años se ha propuesto integrar criterios de Fairness, Accountability, Transparency and Ethics (FATE) como parte de la evaluación. Según \textcite{bernard2025fate}, la confianza en los sistemas de recuperación y generación depende no solo de su precisión, sino también de que sean justos (sin sesgos desproporcionados hacia ciertos grupos), responsables (documentando el procedimiento de evaluación y anotadores), transparentes (explicando cómo se recuperó y procesó la información) y éticos (respetando la privacidad, la diversidad de fuentes y evitando desinformación).  
 \mbox{}\\
-\noindent\textbf{Iteración y multimodalidad.} Incluir FATE como un parámetro de evaluación permite generar confianza social y regulatoria, además de estar alineado con la calidad técnica. Como sugiere \textcite{ramdurai2025llm}, la evaluación debe ser iterativa y multimodal: incluir tanto experimentos controlados en benchmarks como pruebas de usabilidad en escenarios reales. De esta manera se garantiza que el sistema sea confiable, útil, socialmente responsable y no solamente funcione bien en métricas numéricas.  
+\noindent\textbf{Iteración y multimodalidad.} Incluir FATE como un parámetro de evaluación permite generar confianza social y regulatoria, además de estar alineado con la calidad técnica. Como sugiere \textcite{ramdurai2025llm}, la evaluación debe ser iterativa y multimodal: incluir tanto experimentos controlados en benchmarks como pruebas de usabilidad en escenarios reales. De esta manera se garantiza que el sistema sea confiable, útil, socialmente responsable y no solamente funcione bien en métricas numéricas.
 
-\subsubsection{Paradigmas}
+El proceso de evaluación, sus fases específicas y las métricas asociadas se describen con mayor detalle en la
+Sección~\ref{subsubsec:metricas}, donde se resumen las métricas clásicas de recuperación,
+generación y fidelidad, así como los indicadores operativos y criterios FATE
+que complementan la evaluación integral del sistema.
+
+\subsubsection{Paradigmas RAG}
 \begin{figure}[H]
 \begin{center}
 \begin{tikzpicture}[x=1cm,y=1cm]
@@ -967,12 +997,12 @@ La evaluación en sistemas RAG debe abordarse de forma multifásica, verificando
 }
 
 % ================== Parámetros  ==================
-\def\sideW{4.5cm}  % MISMO ancho para ambos hijos de nivel 1
-\def\sideX{4.0}    % desplazamiento horizontal simétrico de hijos
-\def\sideY{2.7}    % desplazamiento vertical de hijos
-\def\suby{-2.0}    % caída vertical de subnodos de RAG
-\def\dx{3.8}       % separación horizontal de subnodos de RAG
-\def\childShift{-1.5}
+\newcommand{\sideW}{4.5cm}  % MISMO ancho para ambos hijos de nivel 1
+\newcommand{\sideX}{4.0}    % desplazamiento horizontal simétrico de hijos
+\newcommand{\sideY}{2.7}    % desplazamiento vertical de hijos
+\newcommand{\suby}{-2.0}    % caída vertical de subnodos de RAG
+\newcommand{\dx}{3.8}       % separación horizontal de subnodos de RAG
+\newcommand{\childShift}{-1.5}
 
 % --- Nodo central, exactamente en el centro de la figura
 \node[mindcenter] (paradigmas) at (0,0) {Paradigmas};
@@ -1047,8 +1077,7 @@ Logit-based RAG y Speculative RAG. De esta forma se expande la aplicación de RA
     \end{itemize}
 \end{itemize}
 
-\subsubsection{Evaluación y Métricas}
-
+\subsubsection{Evaluación y Métricas}\label{subsubsec:metricas}
 La evaluación de los sistemas de Recuperación de Información (IR) y de Retrieval-Augmented Generation (RAG) ha sido objeto de un creciente interés en la literatura reciente. 
 En el ámbito de IR, \textcite{bernard2025fate} destacan que las nociones de equidad, transparencia y responsabilidad requieren enfoques diversos: mientras la \textit{fairness} 
 se mide mayormente con métricas automáticas, la \textit{transparency} y la \textit{accountability} suelen evaluarse mediante auditorías y estudios con usuarios. En contraste, 
@@ -1065,7 +1094,7 @@ aspectos como coherencia, transparencia y verificabilidad.
 \begin{itemize}
   \item \textbf{Enfoques de Evaluación}
         \begin{itemize}
-          \item Evaluación independiente por etapas: análisis separado de retrieval, augmentation y generation, con métricas específicas en cada módulo.
+          \item Evaluación independiente por etapas: análisis separado de retrieval, aumentación y generation, con métricas específicas en cada módulo.
           \item Evaluación End-to-End: valoración directa de la salida final del sistema RAG, con dos variantes:
           \begin{itemize}
               \item Evaluación End-to-End automática: consiste en medir la calidad final de un sistema RAG sobre su salida
@@ -1188,11 +1217,11 @@ la generación condicionada al contexto (cobertura de citas y fidelidad/faithful
     Relevancia de contexto (clasificador/reranker) & \% de fragmentos recuperados juzgados relevantes automáticamente. &
     $\displaystyle \frac{\#\,\text{chunks relevantes}}{\#\,\text{chunks evaluados}}$ & pertinencia \\[4pt]
 
-% --- Augmentation
+% --- aumentación
     \addlinespace[2pt]
-    \multicolumn{4}{l}{\textbf{Augmentation}}\\
+    \multicolumn{4}{l}{\textbf{Aumentación}}\\
     \cmidrule(lr){1-4}
-    Ganancia de augmentation & Efecto marginal de inyectar contexto frente a usar el LLM sin recuperación. &
+    Ganancia de aumentación & Efecto marginal de inyectar contexto frente a usar el LLM sin recuperación. &
     $\displaystyle \mathcal{M}(\text{RAG}) - \mathcal{M}(\text{LLM}_{\text{sin retriever}})$ & mejora \\[4pt]
 
 % --- Ranking
