@@ -455,6 +455,7 @@ Genera  tokens lematizados en minúsculas, separados por espacios y guarda el re
     El algoritmo~\ref{alg:chunking} muestra el procedimiento empleado para segmentar los textos en fragmentos
     parcialmente superpuestos, preservando la continuidad del contenido y optimizando la detección de evidencia
     relevante en las fases de recuperación y generación del sistema RAG.
+
 \begin{algorithmEN}[H]
 \caption{Chunking \texttt{text\_lemma} }
 \begin{algorithmic}[1]
@@ -510,6 +511,7 @@ Para el diseño de este sistema se usa un retriever denso de arquitectura bi-enc
 consulta y los fragmentos en un espacio vectorial de baja dimensión (vector corto y continuo de tamaño fijo) y comparar por similitud, 
 capturando relaciones semánticas más allá de coincidencias léxicas y mejorando la recuperación en escenarios RAG y open-domain QA.
 Además, estos embeddings se indexan en bases de datos vectoriales con búsqueda aproximada de vecinos cercanos (ANN), lo que viabiliza el escalamiento eficiente del sistema\parencite{joshi2025vector}.
+
 \begin{algorithmEN}[H]
   \caption{Vectorización }
   \begin{algorithmic}[1]
@@ -538,6 +540,7 @@ Toma los textos del archivo parquet, los limpia y les asigna identificadores (ve
 Procesa los textos por lotes (reduce el tamaño si hay errores de memoria), junta todos los embeddings en una matriz (N, dim) y finalmente guarda en dos archivos .npy (donde estan los vectores) y .pkl con la información mínima (modelo, dimensiones e índices que vinculan cada vector con su texto original).
 
 \subsection{Vector DB}\label{subsec:vector-db}
+El Algoritmo~\ref{alg:build_vector_index} describe cómo construir un índice vectorial (FAISS) a partir de una matriz de embeddings previamente generada.
 \begin{algorithmEN}[H]
   \caption{Build Vector Index from Embedding Matrix}
   \begin{algorithmic}[1]
@@ -558,6 +561,8 @@ Procesa los textos por lotes (reduce el tamaño si hay errores de memoria), junt
 Carga los embeddings normalizados verifica que las dimensiones coincidan, construye un índice FAISS y  el resultado se guarda en disco (.bin)
 
 \subsection{Recuperación}\label{subsec:recuperacion}
+El Algoritmo~\ref{alg:search_vector_index} describe el proceso de \textbf{búsqueda y recuperación de información} utilizando el índice
+vectorial (FAISS) y los metadatos generados en el paso anterior.
 \begin{algorithmEN}[H]
   \caption{Query Search over Vector Index}
   \begin{algorithmic}[1]
@@ -587,8 +592,9 @@ Carga los embeddings normalizados verifica que las dimensiones coincidan, constr
 
 Primero cargamos el vector DB, luego vectorizamos  la consulta (query) y normaliza el embedding con ese vector hace búsqueda k-NN en FAISS y obtiene scores e ids.
 Para obtener un contexto mejorado se une el resultado con el CSV de Scopus por scopus-id para agregar la demas metadata que contiene el csv.
+
 \subsection{Re-ranking}\label{subsec:re-ranking}
-Se implementa un cross encoder entrenado de segunda capa que reordena los candidatos recuperados en la primera etapa densa. El puntaje final se obtiene por fusión lineal (min-max + suma ponderada)
+El Algoritmo~\ref{alg:re-ranking} implementa un cross encoder entrenado de segunda capa que reordena los candidatos recuperados en la primera etapa densa. El puntaje final se obtiene por fusión lineal (min-max + suma ponderada)
 entre el score denso de la recuperación inicial y el score del cross-encoder. 
 Esta estrategia equilibra eficacia (precisión en el top-k) y eficiencia (coste computacional), y se ejecuta en CPU con MiniLM por ser un modelo compacto (menor latencia y memoria).
 \begin{algorithmEN}[H]
@@ -637,6 +643,7 @@ Esta estrategia equilibra eficacia (precisión en el top-k) y eficiencia (coste 
 
     \State \Return $\textsc{SortBy}(D',\ \texttt{score\_final},\ \textit{desc}=True)$ \Comment{final ranking}
   \end{algorithmic}
+    \label{alg:re-ranking}
 \end{algorithmEN}
 
 Primero toma una lista de candidatos recuperadaos para una consulta y los reordena usando un cross encoder.
@@ -646,7 +653,8 @@ el puntaje denso del recuperador) con min-max y luego los fusiona mediante una s
 
 \subsection{Construcción de Contexto}\label{subsec:construccion-de-contexto}
 La evidencia recolectada en el paso anterior se convierte en un bloque de evidencia utilizable por el LLM, equilibrando cobertura semántica y límite de longitud. 
-Proporcionar cada texto en chunks manejables (longitud fija), preservando su trazabilidad (título, autores, año, DOI); y ensamblar un “paquete” de contexto con instrucciones de uso para el modelo
+Proporcionar cada texto en chunks manejables (longitud fija), preservando su trazabilidad (título, autores, año, DOI); y ensamblar un “paquete” de contexto con instrucciones de uso para el modelo.
+El Algoritmo~\ref{alg:build-context-blocks} procesa los k mejores documentos para crear una lista estructurada de bloques de contexto.
 \begin{algorithmEN}[H]
 \caption{BuildContextBlocks}
 \begin{algorithmic}[1]
@@ -683,6 +691,7 @@ Proporcionar cada texto en chunks manejables (longitud fija), preservando su tra
 
 \State \Return $blocks$ \Comment final list
 \end{algorithmic}
+    \label{alg:build-context-blocks}
 \end{algorithmEN}
 
 A partir de la tabla reranqueada, se eligen las columnas para título (title/chunk title) y cuerpo (abstract/chunktext/summary), se limita el número de filas a top-k y se crea la lista blocks.
@@ -692,7 +701,7 @@ Para las n primeras filas se obtienen el título y el texto; si trim está activ
 
 \subsection{Generación (LLM)}\label{subsec:generacion-(llm)}
 En esta penultima etapa el LLM produce una respuesta dependiendo de la evidencia externa extraída previamente.
-Recibe un prompt estructurado que incluye la instrucción de estilo y formato
+El Algoritmo~\ref{alg:llm-generate-via-http} recibe un prompt estructurado que incluye la instrucción de estilo y formato
 la pregunta del usuario y los fragmentos seleccionados tras la recuperación y reraking el llm cita explícitamente las fuentes dentro de cada párrafo para asegurar trazabilidad y verificabilidad
 \begin{algorithmEN}[H]
 \caption{LLMGenerateViaHTTP}
@@ -713,6 +722,7 @@ la pregunta del usuario y los fragmentos seleccionados tras la recuperación y r
 \State $\textit{answer\_text} \gets \textsc{SafeStr}(data[\texttt{"message"}][\texttt{"content"}])$ 
 \State \Return $\textit{answer\_text}$
 \end{algorithmic}
+    \label{alg:llm-generate-via-http}
 \end{algorithmEN}
 
 Para iniciar la generación, se construye el prompt a partir de la consulta y de los bloques de contexto, ajustándolos a un tope de caracteres y limpiandolos con SafeStr. 

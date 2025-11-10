@@ -57,7 +57,7 @@
 \contentsline {subsection}{\numberline {2.3.2}Preprocesamiento:}{51}{subsection.2.3.2}%
 \contentsline {subsection}{\numberline {2.3.3}Vectorización}{58}{subsection.2.3.3}%
 \contentsline {subsection}{\numberline {2.3.4}Vector DB}{59}{subsection.2.3.4}%
-\contentsline {subsection}{\numberline {2.3.5}Recuperación}{60}{subsection.2.3.5}%
+\contentsline {subsection}{\numberline {2.3.5}Recuperación}{59}{subsection.2.3.5}%
 \contentsline {subsection}{\numberline {2.3.6}Re-ranking}{60}{subsection.2.3.6}%
 \contentsline {subsection}{\numberline {2.3.7}Construcción de Contexto}{62}{subsection.2.3.7}%
 \contentsline {subsection}{\numberline {2.3.8}Generación (LLM)}{63}{subsection.2.3.8}%
