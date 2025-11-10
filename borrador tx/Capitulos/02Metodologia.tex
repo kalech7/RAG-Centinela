@@ -272,16 +272,16 @@ archivo CSV (UTF-8) para su procesamiento en fases posteriores.
 \label{alg:export-articles-csv}
 \end{algorithmEN}
 
-\subsection{Preprocesamiento}
-Una vez completada la ingesta de datos provienientes de Scopus, es fundamental preprocesarlos para normalizar y limpiar el texto, reducir ruido y mejorar la calidad semántica de las representaciones.
-En esta etapa aplicare el siguiente flujo reproducible compuesto por estos pasos:
+\subsection{Preprocesamiento:}
+Una vez completada la ingesta de datos provenientes de Scopus, es fundamental preprocesarlos para normalizar y limpiar el texto, reducir ruido y mejorar la calidad semántica de las representaciones.
+En esta etapa aplicaré el siguiente flujo reproducible compuesto por estos pasos:
 \begin{enumerate}
-    \item \textbf{Normalización}. Consiste en estandarizar la forma del texto mediante 
+    \item \textbf{Normalización:} Consiste en estandarizar la forma del texto mediante
     UTF-8, la corrección de caracteres extraños, la conversión a minúsculas, la eliminación de puntuación no informativa, 
     símbolos y números aislados, así como la normalización de espacios y se etiqueta el idioma de cada documento; no se fuerza la traducción, preservando la variación lingüística para análisis por idioma.
-    para garantizar la coherencia. Cuando corresponde, se desduplican registros o resúmenes 
+    Para garantizar la coherencia. Cuando corresponde, se desduplican registros o resúmenes
     (comparación por DOI o por título+autor+año) con el fin de homogeneizar el vocabulario y reducir sesgos por repeticiones.
-Con el siguiente pseudocodigo se procedera a normalizar las columnas que contienen toda la semantica:
+El Algoritmo~\ref{alg:process-and-label} muestra el procedimiento para normalizar las columnas que contienen toda la semántica:
 \begin{algorithmEN}
 \caption{Process and Label\_Language}
 \begin{algorithmic}[1]
@@ -321,10 +321,11 @@ Se lee el CSV (separador “|”) y se generan title-norm y abstract-norm corrig
 minúsculas y limpiando caracteres no informativos; luego se guarda todo en formato Parquet (columna-orientado y 
 comprimido) que conserva el esquema, reduce tamaño y acelera lecturas/filtrado frente a CSV. A continuación se 
 carga el Parquet procesado, se detecta el idioma de abstract-norm con langdetect (columna lang, usando “und” si
-es indeterminado) y se guarda un nuevo Parquet. La detección de idioma permite tratar corpus multilingües de forma óptima (stopwords/tokenización por lengua y elección del modelo de embeddings multilingüe).
+es indeterminado) y se guarda un nuevo Parquet.
+La detección de idioma permite tratar corpus multilingües de forma óptima (stopwords/tokenización por lengua y elección del modelo de embeddings multilingüe).
 
- \item \textbf{Segmentación en oraciones}. Dividir el texto en oraciones completas utilizando delimitadores válidos (puntos, signos de cierre), con el fin de 
-    estructurar unidades coherentes para el análisis posterior. 
+ \item \textbf{Segmentación en oraciones:} El algoritmo~\ref{alg:segment-text-lang-aware}
+    ilustra el proceso de segmentación sensible al idioma, aplicado sobre los textos previamente normalizados.
 \begin{algorithmEN}
 \caption{Segment Text }
 \begin{algorithmic}[1]
@@ -357,8 +358,9 @@ Se lee el Parquet de entrada, elige la columna abstract-norm y segmenta sus text
 Devuelve una lista de oraciones por fila; luego crea una fila por oración, conserva metadatos útiles 
 añadiendo el índice de oración sentence-idx dentro de cada documento y escribe el resultado en processed-sentences.parquet.
 
-    \item \textbf{Tokenización}. Segmentar cada oración en tokens (palabras o subpalabras) preservando frases clave frecuentes (p.\,ej.,\textit{aprendizaje automático}), a fin de mantener unidades semánticas estables.
-
+    \item \textbf{Tokenización:}
+    Segmentar cada oración en tokens (palabras o subpalabras) preservando frases clave frecuentes (ej.,\textit{aprendizaje automático}), a fin de mantener unidades semánticas estables.
+    El algoritmo~\ref{alg:tokenize} ilustra el proceso de tokenización aplicado a las oraciones segmentadas.
   \begin{algorithmEN}[H]
   \caption{Tokenize} 
   \begin{algorithmic}[1] 
@@ -380,8 +382,8 @@ añadiendo el índice de oración sentence-idx dentro de cada documento y escrib
 Carga el parquet y tokeniza con una expresión regular y entrena detectores de bigramas y trigramas con Gensim usando mincount=5 y threshold=10. 
 Luego aplica ambos phrasers para unir collocations frecuentes en un solo token el cual a su vez genera tokens. Los tokens son unidos por comas y se guardan en el nuevo parquet.
 
-    \item \textbf{Eliminación de stop words}. Remover términos de alta frecuencia y escaso valor semántico.
-
+    \item \textbf{Eliminación de stop words:} Consiste en remover términos de alta frecuencia y escaso valor semántico.
+El algoritmo~\ref{alg:remove_stopwords_lang} describe el proceso de eliminación de \textit{stop words} adaptado al idioma de cada documento.
 \begin{algorithmEN}[H]
   \caption{Remove Stopwords by Language}
   \begin{algorithmic}[1]
@@ -409,8 +411,10 @@ Una vez tokenizado eliminamos las stop words asegura las listas, normaliza a min
 La función is-stop considera tokens compuestos (espacios/guiones) y solo los descarta si todas sus partes 
 son stopwords; además, filter-tokens aplica filtros básicos (longitud mínima, quitar numéricos)
 
-\item \textbf{Aplicación de Lematización o stemming}. Preferir lematización sobre \textit{stemming} para conservar la forma canónica y reducir 
-    la varianza léxica sin pérdida de significado \parencite{tabassum2020}.
+\item \textbf{Aplicación de Lematización o stemming:} Se prefiere la lematización frente al stemming para conservar la forma canónica de las palabras y reducir la varianza léxica sin pérdida de significado \parencite{tabassum2020}.
+    El algoritmo~\ref{alg:lemmatize-spacy} muestra el proceso de lematización multilingüe aplicado al corpus depurado,
+    empleando modelos lingüísticos específicos para español e inglés con el fin de unificar las variantes morfológicas
+    y optimizar la coherencia semántica del texto para su posterior representación vectorial.
 \begin{algorithmEN}[H]
 \caption{Lemmatize\_spaCy}
 \begin{algorithmic}[1]
@@ -446,8 +450,11 @@ son stopwords; además, filter-tokens aplica filtros básicos (longitud mínima,
 Iniciamos leyendo el parquet de entrada de la fase anterior y y lematiza en lote con spaCy usando dos modelos (ES/EN) dependiendo de la etiqueta que habiamos usado agregado anteriormente.
 Genera  tokens lematizados en minúsculas, separados por espacios y guarda el resultado en el nuevo parquet.
 
-\item \textbf{\textit{Chunking} para LLM/RAG}. Dividir documentos largos en fragmentos (\(\sim 200\text{--}400\) tokens) con solape (15–30\,\%) para respetar 
-    límites de contexto de los transformadores y mejorar la recuperación a nivel de pasaje (Hambarde \& Proença, 2023).
+\item \textbf{\textit{Chunking} para LLM/RAG:} Consiste dividir documentos largos en fragmentos (\(\sim 200\text{--}400\) tokens) con solape (15–30\,\%) para respetar
+    límites de contexto de los transformadores y mejorar la recuperación a nivel de fragmentos de texto.
+    El algoritmo~\ref{alg:chunking} muestra el procedimiento empleado para segmentar los textos en fragmentos
+    parcialmente superpuestos, preservando la continuidad del contenido y optimizando la detección de evidencia
+    relevante en las fases de recuperación y generación del sistema RAG.
 \begin{algorithmEN}[H]
 \caption{Chunking \texttt{text\_lemma} }
 \begin{algorithmic}[1]
