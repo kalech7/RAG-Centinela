@@ -69,7 +69,7 @@
 \contentsline {subparagraph}{Evaluación de fidelidad al contexto.}{66}{section*.56}%
 \contentsline {subparagraph}{Evaluación del acuerdo con la respuesta ideal.}{66}{section*.57}%
 \contentsline {chapter}{\numberline {3}Pruebas, Resultados, Conclusiones y Recomendaciones}{68}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Pruebas}{69}{section.3.1}%
+\contentsline {section}{\numberline {3.1}Pruebas}{68}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Resultados}{69}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Discusión}{70}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Conclusiones}{70}{section.3.4}%
