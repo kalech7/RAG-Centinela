@@ -507,7 +507,7 @@ lo que reduce inconsistencias y riesgo de alucinaciones en la generación. En t�
 
 
 \subsection{Vectorización}\label{subsec:vectorizacion}
-Para el diseño de este sistema se usa un retriever denso de arquitectura bi-encoder tipo BERT para la generación de embeddings, ya que permite codificar por separado la 
+Para el diseño de este sistema se usa un Recuperador denso de arquitectura bi-encoder tipo BERT para la generación de embeddings, ya que permite codificar por separado la 
 consulta y los fragmentos en un espacio vectorial de baja dimensión (vector corto y continuo de tamaño fijo) y comparar por similitud, 
 capturando relaciones semánticas más allá de coincidencias léxicas y mejorando la recuperación en escenarios RAG y open-domain QA.
 Además, estos embeddings se indexan en bases de datos vectoriales con búsqueda aproximada de vecinos cercanos (ANN), lo que viabiliza el escalamiento eficiente del sistema\parencite{joshi2025vector}.
@@ -751,7 +751,7 @@ Dichos artículos fueron procesados para su indexación y posterior uso en un es
 formularon conjuntos de preguntas \textit{single-hop}, \textit{multi-hop} y no respondibles, con el objetivo de evaluar
 el sistema por etapas:
 \begin{itemize}[leftmargin=*, itemsep=0.25em]
-    \item \textit{Retriever}: Cobertura y ranking.
+    \item \textit{Recuperador}: Cobertura y ranking.
     \item \textit{Augmentation}: Relevancia y suficiencia del contexto inyectado.
     \item \textit{Generation}: Corrección, fidelidad a las evidencias y calidad de la citación.
 \end{itemize}
@@ -773,31 +773,34 @@ Asimismo, las respuestas generadas por el sistema se validaron con apoyo de expe
 \subparagraph{Condiciones comparadas:}
 Evaluamos tres configuraciones del sistema para aislar el efecto de cada componente:
 \begin{itemize}[leftmargin=*,itemsep=0.2em]
-    \item \textbf{LLM-solo (sin retriever):} establece la \emph{línea base}.
-    \item \textbf{RAG-básico:} retriever + \emph{concatenación} de los documentos \emph{top-\(k\)} (sin reranqueo) + generación.
-    \item \textbf{RAG-completo:} retriever +  \emph{reranking} + \emph{construcción de bloques de contexto} + generación.
+    \item \textbf{LLM-solo (sin Recuperador):} establece la \emph{línea base}.
+    \item \textbf{RAG-básico:} Recuperador + \emph{concatenación} de los documentos \emph{top-\(k\)} (sin reranqueo) + generación.
+    \item \textbf{RAG-completo:} Recuperador +  \emph{reranking} + \emph{construcción de bloques de contexto} + generación.
 \end{itemize}
-
-\noindent\begin{minipage}{\linewidth}
-             \centering
-             \renewcommand{\arraystretch}{1.1}
-             \begin{tabular}{@{}lccccc@{}}
-                 \toprule
-                 \textbf{Condición} & \textbf{Retriever} & \textbf{Reranker} & \textbf{Contexto} & \textbf{Estrategia de contexto} & \textbf{Generación} \\
-                 \midrule
-                 LLM-solo        & --          & --          & --          & --                       & \checkmark \\
-                 RAG-básico      & \checkmark  & --          & \checkmark  & Concatenación top-\(k\)  & \checkmark \\
-                 RAG-completo    & \checkmark  & \checkmark   & \checkmark  & Context Builder        & \checkmark \\
-                 \bottomrule
-             \end{tabular}
-\end{minipage}
+La Tabla~\ref{tab:comparativa} presenta una comparación entre las tres configuraciones principales evaluadas en este trabajo: LLM-solo, RAG-básico y RAG-completo.
+En ella se resumen los componentes activos y la estrategia de integración utilizada en cada caso.
+\begin{table}[ht]
+    \centering
+    \renewcommand{\arraystretch}{1.1}
+    \begin{tabular}{@{}lccccc@{}}
+        \toprule
+        \textbf{Condición} & \textbf{Recuperador} & \textbf{Reranker} & \textbf{Contexto} & \textbf{Estrategia de contexto} & \textbf{Generación} \\
+        \midrule
+        LLM-solo        & --          & --          & --          & --                       & \checkmark \\
+        RAG-básico      & \checkmark  & --          & \checkmark  & Concatenación top-\(k\)  & \checkmark \\
+        RAG-completo    & \checkmark  & \checkmark   & \checkmark  & Context Builder        & \checkmark \\
+        \bottomrule
+    \end{tabular}
+    \caption{Comparativa entre las tres configuraciones del sistema.}
+    \label{tab:comparativa}
+\end{table}
 
 \vspace{0.4em}
 
 
 \begin{enumerate}[label=\textbf{(\roman*)},leftmargin=*,itemsep=0.35em]
 
-    \item \textit{Retriever}: se emplea \textbf{Recall@k} (con \(k=15\)) para medir la proporción de evidencia
+    \item \textit{Recuperador}: se emplea \textbf{Recall@k} (con \(k=15\)) para medir la proporción de evidencia
     relevante incluida en el top-\(k\) (cobertura), y \textbf{MRR} para evaluar la posición promedio del primer documento
     relevante (sensibilidad al ranking).
     Ambas métricas se reportan como promedios sobre las consultas.
@@ -811,7 +814,7 @@ Evaluamos tres configuraciones del sistema para aislar el efecto de cada compone
     juez automático (\emph{LLM-as-Judge}, GPT~4.1), siguiendo las recomendaciones metodológicas de \textcite{wu2025ragSurvey,han2024rag}.
     El objetivo es valorar la calidad semántica y factual de las respuestas generadas, considerando tanto
     su coherencia con el contexto recuperado como su concordancia con la respuesta ideal (\emph{ground truth}).
-
+    A continuación, se va a explicar el protocolo utilizado para evaluar las métricas en la etapa de generación.
     \subparagraph{Evaluación de fidelidad al contexto.}
     En una primera etapa, el juez analiza la respuesta generada con base en los fragmentos de evidencia recuperados,
     evaluando:

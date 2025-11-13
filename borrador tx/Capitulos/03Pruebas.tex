@@ -3,16 +3,63 @@ En este capítulo se presenta la fase de validación experimental expuesta en
 la Sección~\ref{subsec:evaluacion}.
  Se detallan las pruebas realizadas, se analizan los resultados obtenidos y, finalmente, se exponen las conclusiones y
 recomendaciones derivadas del estudio.
-\section{Demostración}\label{sec:demostracion}
+\section{Pruebas}\label{sec:demostracion}
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.15}
+    \small
+    \begin{tabular}{@{}p{3.2cm} p{10.5cm}@{}}
+        \toprule
+        \textbf{Bloque} & \textbf{Resumen} \\
+        \midrule
+
+        \textbf{Conjunto de pruebas} &
+        15 consultas totales: 5 \textit{single-hop}, 5 \textit{multi-hop}, 5 \textit{no answer}.
+        Incluyen ground truth manual con evidencia relevante y respuesta ideal. \\
+
+        \textbf{Condiciones evaluadas} &
+        \begin{itemize}[leftmargin=1em,itemsep=0.1em]
+            \item \textbf{LLM-solo}: sin recuperación; línea base.
+            \item \textbf{RAG-básico}: Recuperador + concatenación top-$k$.
+            \item \textbf{RAG-completo}: Recuperador + reranking + context builder.
+        \end{itemize} \\
+
+        \textbf{Retrieval} &
+        Recall@15 y MRR para medir: (i) cobertura de evidencia en el top-$k$,
+        (ii) posición del primer documento relevante. \\
+
+        \textbf{Augmentation} &
+        Ganancia: $\Delta\mathcal{M} = \mathcal{M}(\text{RAG}) - \mathcal{M}(\text{LLM-solo})$,
+        que refleja el aporte del contexto recuperado. \\
+
+        \textbf{Generation (LLM-as-Judge)} &
+        Evaluación en dos etapas:
+        \begin{itemize}[leftmargin=1em,itemsep=0.1em]
+            \item Fidelidad al contexto: \textit{faithfulness}, cobertura de citas.
+            \item Acuerdo con la respuesta ideal: exactitud, cobertura semántica, coherencia (0–5), con 3 repeticiones por consulta.
+        \end{itemize} \\
+
+        \textbf{Agregación y consistencia} &
+        Índice global por consulta $A_i$ y macro-promedio $\overline{A}$.
+        Consistencia mediante Cohen's $\kappa$ (acuerdo binarizado con umbral $A_i \ge 4$). \\
+
+        \textbf{Operación} &
+        Latencia end-to-end por consulta (recuperación + reranking + contexto + generación). \\
+
+        \bottomrule
+    \end{tabular}
+    \caption{Resumen general del diseño experimenta.}
+    \label{tab:table}
+\end{table}
 
 
+\section{Resultados}\label{sec:evaluacion-del-desempeno}
 
-\section{Evaluación del desempeño}\label{sec:evaluacion-del-desempeno}
+estos son los resultados con los valores que obtuve y se puede presentar en un diagrama
+\section{Discusión}\label{sec:resultados}
 
-
-\section{Resultados}\label{sec:resultados}
-
-
+explico los resultados los describo
 \section{Conclusiones}\label{sec:conclusiones}
 
 

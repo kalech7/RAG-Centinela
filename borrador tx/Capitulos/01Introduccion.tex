@@ -1292,8 +1292,19 @@ Los sistemas RAG enfrentan varios retos clave que afectan su adopción y desempe
 Abordar estos desafíos es permitirán avanzar en la fiabilidad, equidad y aplicabilidad de los sistemas RAG en
 escenarios sensibles y de alto impacto.
 
-\paragraph{Direcciones Potenciales:}  
+\paragraph{Direcciones Potenciales:}
 \mbox{}\\
+Como se muestra en la Figura~\ref{fig:mindmap-direcciones}, las líneas de avance incluyen el desarrollo de retrievers más robustos, la optimización de las interacciones entre modelo y recuperación,
+así como mecanismos de evaluación que prioricen la relevancia y la coherencia. \textcite{ramdurai2025llm} enfatiza la sinergia con arquitecturas multimodales y con sistemas
+capaces de combinar información textual, visual y estructurada.
+Asimismo, enfoques como RAPTOR, que introduce resúmenes recursivos y jerárquicos en la recuperación,
+muestran cómo superar la fragmentación del contexto y mejorar la integración semántica~\parencite{sarthi2024raptor}.
+Otra dirección destacada es la incorporación de
+bases de datos vectoriales como memorias semánticas persistentes, que permiten gestionar grandes volúmenes de embeddings, mitigar el olvido catastrófico de los modelos
+y ofrecer personalización en la recuperación~\parencite{jing2024vecdb}.
+Finalmente, cabe mencionar que los pre-trained transformers aplicados a IR han abierto el camino hacia modelos más sofisticados para tareas de ranking y matching semántico,
+aunque todavía requieren diseños de pre entrenamiento adaptados a los desafíos específicos de la recuperación de información~\parencite{fan2021pretraining}.
+
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -1311,16 +1322,6 @@ escenarios sensibles y de alto impacto.
     \caption{Principales direcciones}
     \label{fig:mindmap-direcciones}
 \end{figure}
-Como se muestra en la Figura~\ref{fig:mindmap-direcciones}, las líneas de avance incluyen el desarrollo de retrievers más robustos, la optimización de las interacciones entre modelo y recuperación,
-así como mecanismos de evaluación que prioricen la relevancia y la coherencia. \textcite{ramdurai2025llm} enfatiza la sinergia con arquitecturas multimodales y con sistemas
-capaces de combinar información textual, visual y estructurada.
-Asimismo, enfoques como RAPTOR, que introduce resúmenes recursivos y jerárquicos en la recuperación,
-muestran cómo superar la fragmentación del contexto y mejorar la integración semántica~\parencite{sarthi2024raptor}.
-Otra dirección destacada es la incorporación de
-bases de datos vectoriales como memorias semánticas persistentes, que permiten gestionar grandes volúmenes de embeddings, mitigar el olvido catastrófico de los modelos
- y ofrecer personalización en la recuperación~\parencite{jing2024vecdb}.
-Finalmente, cabe mencionar que los pre-trained transformers aplicados a IR han abierto el camino hacia modelos más sofisticados para tareas de ranking y matching semántico,
-aunque todavía requieren diseños de pre entrenamiento adaptados a los desafíos específicos de la recuperación de información~\parencite{fan2021pretraining}.
 
 \paragraph{Perspectivas:} 
 \mbox{}\\
